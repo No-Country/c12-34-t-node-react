@@ -4,7 +4,7 @@
 
 ## :book: Informacion sobre el proyecto 
 
-`en que consiste el proyecto`
+`Sistema de gestion de un Gym`
 _____________________________________________________________________
 - ## Pasos para hacer la instalacion
  
