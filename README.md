@@ -14,6 +14,8 @@ _____________________________________________________________________
  
  3|scripts para correr la aplicacion: `npm run dev`.
 
+  |Skills UX UI: `figma`
+
   |Skills Frontend: `react`
 
   |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv`
