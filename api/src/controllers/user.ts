@@ -4,16 +4,19 @@ import { IUser } from '../interfaces/IUser';
 
 
 
+
+
+
 export const registerUser = async (req: Request, res: Response) => {
+
 
   const usuario = req.body as IUser
 
   try {
 
-    if (!usuario.name || !usuario.lastName || !usuario.password || !usuario.email) {
 
+    if (!usuario.name || !usuario.lastName || !usuario.password || !usuario.email)
       return res.status(400).json({ msg: "Todos los campos son requeridos" })
-    }
 
     const existUser = await User.findOne(
       {
@@ -27,8 +30,8 @@ export const registerUser = async (req: Request, res: Response) => {
     const newUser = await User.create({
       name: usuario.name,
       lastName: usuario.lastName,
+      email: usuario.email,
       password: usuario.password,
-      email: usuario.email
     })
 
 
@@ -42,4 +45,5 @@ export const registerUser = async (req: Request, res: Response) => {
     console.log(error)
 
   }
-} 
+}
+

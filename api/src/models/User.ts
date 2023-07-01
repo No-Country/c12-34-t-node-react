@@ -1,12 +1,16 @@
 import { db } from "../db"
 import { IUser } from '../interfaces/IUser';
-import { Model, DataTypes } from "sequelize";
+import { Model, DataTypes, UUIDV4 } from 'sequelize';
+
+
+
+
 // import db from "../config/db";
 // import bcrypt from "bcrypt";
 // import { IUser } from "../interfaces/IUser";
 
 class User extends Model<IUser> implements IUser {
-  id!: number;
+  id!: string;
   name!: string;
   lastName!: string;
   email!: string;
@@ -24,12 +28,14 @@ class User extends Model<IUser> implements IUser {
   // }
 
 }
+
 User.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      autoIncrement: true
+      // autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,

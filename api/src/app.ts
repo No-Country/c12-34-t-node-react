@@ -11,6 +11,7 @@ import userRoutes from "./routes/user"
 
 const app: Application = express()
 
+
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -21,7 +22,6 @@ app.use(userRoutes)
 
 
 const port = process.env.PORT || 3002
-
 
 
 db.sync({ force: false }).then(async () => {
