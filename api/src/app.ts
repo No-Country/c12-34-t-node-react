@@ -1,7 +1,7 @@
-import express from "express"
+import express, { Application } from "express"
 import "dotenv/config"
 import cors from "cors"
-import { sequelize } from "./db"
+import { db } from "./db"
 import morgan from "morgan"
 import "../src/models/User"
 import userRoutes from "./routes/user"
@@ -9,7 +9,7 @@ import userRoutes from "./routes/user"
 
 
 
-const app = express()
+const app: Application = express()
 
 app.use(cors());
 app.use(express.json())
@@ -24,12 +24,12 @@ const port = process.env.PORT || 3002
 
 
 
-sequelize.sync({ force: true }).then(async () => {
+db.sync({ force: false }).then(async () => {
   try {
     app.listen(port, () => {
       console.log(`Escuchando en el puerto: http://localhost:${port}`)
     })
-    await sequelize.authenticate();
+    await db.authenticate();
     console.log('Conexion a sequelize');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
