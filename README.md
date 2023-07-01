@@ -16,7 +16,7 @@ _____________________________________________________________________
 
   |Skills UX UI: `figma`
 
-  |Skills Frontend: `react`
+  |Skills Frontend: `react - tailwind - daisy Components`
 
   |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv`
 
