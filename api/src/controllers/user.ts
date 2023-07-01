@@ -1,17 +1,18 @@
-import { User } from '../models/User'
+import User from '../models/User'
 import { Request, Response } from "express"
+import { IUser } from '../interfaces/IUser';
 
 
 
 export const registerUser = async (req: Request, res: Response) => {
 
-  const { name, lastName, password, email } = req.body;
+  const { name, lastName, password, email } = req.body as IUser
 
   try {
 
     if (!name || !lastName || !password || !email) {
 
-      res.status(400).json({ msg: "Todos los campos son requeridos" })
+      return res.status(400).json({ msg: "Todos los campos son requeridos" })
     }
 
     const existUser = await User.findOne(

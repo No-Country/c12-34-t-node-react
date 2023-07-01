@@ -1,11 +1,30 @@
-import { sequelize } from "../db"
-import { DataTypes } from "sequelize"
+import { db } from "../db"
 import { IUser } from '../interfaces/IUser';
+import { Model, DataTypes } from "sequelize";
+// import db from "../config/db";
+// import bcrypt from "bcrypt";
+// import { IUser } from "../interfaces/IUser";
+
+class User extends Model<IUser> implements IUser {
+  id!: number;
+  name!: string;
+  lastName!: string;
+  email!: string;
+  password!: string;
 
 
+  // public hash(password: string, salt: string): Promise<string> {
+  //     return bcrypt.hash(password, salt);
+  // }
 
-export const User = sequelize.define(
-  "users",
+  // public validatePassword(password: string): Promise<boolean> {
+  //     return this.hash(password, this.salt).then(
+  //         (hash) => hash === this.password
+  //     );
+  // }
+
+}
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,22 +33,38 @@ export const User = sequelize.define(
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: true
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
+
   },
   {
-    timestamps: false,
-  })
+    sequelize: db,
+    modelName: "user"
+  }
+);
+
+// User.addHook("beforeCreate", async (user: User) => {
+//     const salt = bcrypt.genSaltSync(9);
+//     user.salt = salt;
+//     const hash = await bcrypt.hash(user.password, salt);
+//     user.password = hash;
+// });
+
+export default User;
+
+
