@@ -1,6 +1,7 @@
 import User from '../models/User'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
+import { passwordHashado } from '../helper/bcrypt';
 
 
 
@@ -24,14 +25,16 @@ export const registerUser = async (req: Request, res: Response) => {
       })
 
     if (existUser) {
-      return res.status(400).json({ message: "El usuario ya existe", existUser })
+      return res.status(400).json({ msg: "El usuario ya existe", existUser })
     }
+
+    const encriptado = await passwordHashado(usuario.password)
 
     const newUser = await User.create({
       name: usuario.name,
       lastName: usuario.lastName,
       email: usuario.email,
-      password: usuario.password,
+      password: encriptado
     })
 
 
@@ -39,11 +42,17 @@ export const registerUser = async (req: Request, res: Response) => {
       return res.status(200).json({ msg: "Usuario creado", newUser })
     }
 
-
-
   } catch (error) {
     console.log(error)
 
   }
 }
 
+
+export const loginUser = () => {
+  try {
+
+  } catch (error) {
+    console.log(error)
+  }
+}
