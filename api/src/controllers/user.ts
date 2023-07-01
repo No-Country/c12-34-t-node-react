@@ -6,25 +6,32 @@ import { IUser } from '../interfaces/IUser';
 
 export const registerUser = async (req: Request, res: Response) => {
 
-  const { name, lastName, password, email } = req.body as IUser
+  const usuario = req.body as IUser
 
   try {
 
-    if (!name || !lastName || !password || !email) {
+    if (!usuario.name || !usuario.lastName || !usuario.password || !usuario.email) {
 
       return res.status(400).json({ msg: "Todos los campos son requeridos" })
     }
 
     const existUser = await User.findOne(
       {
-        where: { email }
+        where: { email: usuario.email },
       })
 
     if (existUser) {
       return res.status(400).json({ message: "El usuario ya existe", existUser })
     }
 
-    const newUser = await User.create(req.body)
+    const newUser = await User.create({
+      name: usuario.name,
+      lastName: usuario.lastName,
+      password: usuario.password,
+      email: usuario.email
+    })
+
+
     if (newUser) {
       return res.status(200).json({ msg: "Usuario creado", newUser })
     }
