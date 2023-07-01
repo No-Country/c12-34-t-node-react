@@ -3,30 +3,12 @@ import { IUser } from '../interfaces/IUser';
 import { Model, DataTypes, UUIDV4 } from 'sequelize';
 
 
-
-
-// import db from "../config/db";
-// import bcrypt from "bcrypt";
-// import { IUser } from "../interfaces/IUser";
-
 class User extends Model<IUser> implements IUser {
   id!: string;
   name!: string;
   lastName!: string;
   email!: string;
   password!: string;
-
-
-  // public hash(password: string, salt: string): Promise<string> {
-  //     return bcrypt.hash(password, salt);
-  // }
-
-  // public validatePassword(password: string): Promise<boolean> {
-  //     return this.hash(password, this.salt).then(
-  //         (hash) => hash === this.password
-  //     );
-  // }
-
 }
 
 User.init(
@@ -60,7 +42,8 @@ User.init(
   },
   {
     sequelize: db,
-    modelName: "user"
+    modelName: "user",
+    // timestamps: false
   }
 );
 
