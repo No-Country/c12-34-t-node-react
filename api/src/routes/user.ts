@@ -9,7 +9,7 @@ const router = Router()
 
 router.post("/api/auth", registerUser)
 
-router.get("api/login", loginUser)
+router.post("/api/login", loginUser)
 
 
 export default router
