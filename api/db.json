@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Cinta de correr",
+    "type": "Cardio",
+    "description": "Máquina para correr o caminar en el lugar.",
+    "price": 1500,
+    "year": 2020,
+    "image": "https://ejemplo.com/imagen-cinta-correr.jpg",
+    "state": "nuevo"
+  },
+  {
+    "id": 2,
+    "name": "Máquina elíptica",
+    "type": "Cardio",
+    "description": "Máquina de ejercicio que simula el movimiento de caminar o correr, pero con menos impacto en las articulaciones.",
+    "price": 2500,
+    "year": 2018,
+    "image": "https://ejemplo.com/imagen-maquina-eliptica.jpg",
+    "state": "semi nuevo"
+  },
+  {
+    "id": 3,
+    "name": "Bicicleta estática",
+    "type": "Cardio",
+    "description": "Máquina de ejercicio que simula el pedaleo de una bicicleta, proporcionando un entrenamiento cardiovascular.",
+    "price": 1200,
+    "year": 2021,
+    "image": "https://ejemplo.com/imagen-bicicleta-estatica.jpg",
+    "state": "usado"
+  },
+  {
+    "id": 4,
+    "name": "Máquina de pesas",
+    "type": "Fuerza",
+    "description": "Equipo de entrenamiento de fuerza que utiliza placas de peso para resistencia.",
+    "price": 1800,
+    "year": 2019,
+    "image": "https://ejemplo.com/imagen-maquina-pesas.jpg",
+    "state": "en reparación"
+  },
+  {
+    "id": 5,
+    "name": "Máquina de remo",
+    "type": "Cardio",
+    "description": "Máquina que simula el movimiento de remar, trabajando muchos grupos musculares al mismo tiempo.",
+    "price": 2200,
+    "year": 2022,
+    "image": "https://ejemplo.com/imagen-maquina-remo.jpg",
+    "state": "nuevo"
+  }
+]
