@@ -14,11 +14,14 @@ _____________________________________________________________________
  
  3|scripts para correr la aplicacion: `npm run dev`.
 
+
   |Skills UX UI: `figma`
 
   |Skills Frontend: `react - tailwind - daisy Components`
 
   |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv`
+
+  |Skills Testing: `jira`
 
  
 
@@ -33,5 +36,7 @@ Variables de entorno: .env
 `DB_USER=`
 
 `DB_HOST=`
+
+`TOKEN=`
 
 
