@@ -2,6 +2,7 @@ import User from '../models/User'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
+import { generarToken } from '../helper/JWToken';
 
 
 
@@ -70,7 +71,14 @@ export const loginUser = async (req: Request, res: Response) => {
 
     if (compararPassword) {
 
-      return res.status(200).json({ msg: "clave correcta", compararPassword })
+      const token = await generarToken(existUser.email)
+
+      const data = {
+        user: existUser,
+        token
+      }
+
+      return res.status(200).json({ msg: "Session y token valido", data })
 
     } else {
 
