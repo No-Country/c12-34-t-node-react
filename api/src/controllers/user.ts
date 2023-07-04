@@ -58,7 +58,8 @@ export const loginUser = async (req: Request, res: Response) => {
     const existUser = await User.findOne(
       {
         where: { email: usuario.email }
-      }
+      },
+
     )
 
     if (!existUser) {
@@ -75,7 +76,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
       const data = {
         user: existUser,
-        token
+        token,
       }
 
       return res.status(200).json({ msg: "Session y token valido", data })
