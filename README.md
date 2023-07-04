@@ -4,7 +4,7 @@
 
 ## :book: Informacion sobre el proyecto 
 
-`Sistema de gestion de un Gym`
+`Sistema de gestion de un gimnasio: Fitness Center Gym`
 _____________________________________________________________________
 - ## Pasos para hacer la instalacion
  
