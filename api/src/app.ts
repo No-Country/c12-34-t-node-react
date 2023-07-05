@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import "dotenv/config";
 import cors from "cors";
 import { db } from "./db";
@@ -12,6 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use((_req: Request, res: Response, next: NextFunction ) => {
+   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173/");
+});
+
 
 app.use(allRoutes);
 
