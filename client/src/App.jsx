@@ -6,6 +6,7 @@ import Login from './componentes/Login'
 import Register from './componentes/Register'
 import './index.css'
 import Navbar from './componentes/Navbar'
+import DemoRegister from './componentes/DemoRegister'
 
 function App() {
   
@@ -22,7 +23,7 @@ function App() {
     
            <Login/>
            <br />
-           <Register />
+           <DemoRegister />
     
      
       </div>

@@ -1,7 +1,6 @@
-import { db } from "../db"
-import { IUser } from '../interfaces/IUser';
-import { Model, DataTypes, UUIDV4 } from 'sequelize';
-
+import { db } from "../db";
+import { IUser } from "../interfaces/IUser";
+import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
   id!: string;
@@ -17,43 +16,33 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      // autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
-      }
+        isEmail: true,
+      },
     },
     password: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
-
   },
   {
     sequelize: db,
     modelName: "user",
-    timestamps: false
+    timestamps: false,
   }
 );
 
-// User.addHook("beforeCreate", async (user: User) => {
-//     const salt = bcrypt.genSaltSync(9);
-//     user.salt = salt;
-//     const hash = await bcrypt.hash(user.password, salt);
-//     user.password = hash;
-// });
 
 export default User;
-
-

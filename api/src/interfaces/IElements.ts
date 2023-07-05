@@ -1,7 +1,7 @@
 export type enumState = "Nuevo" | "Semi nuevo" | "Usado" | "En reparacion";
 
 export interface IElements {
-  id?: number,
+  id?: string,
   name: string,
   type: string,
   description: string,

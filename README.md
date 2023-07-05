@@ -4,7 +4,7 @@
 
 ## :book: Informacion sobre el proyecto 
 
-`Sistema de gestion de un Gym`
+`Sistema de gestion de un gimnasio: Fitness Center Gym`
 _____________________________________________________________________
 - ## Pasos para hacer la instalacion
  
@@ -19,7 +19,7 @@ _____________________________________________________________________
 
   |Skills Frontend: `react - tailwind - daisy Components`
 
-  |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv`
+  |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv - sequelize`
 
   |Skills Testing: `jira`
 
