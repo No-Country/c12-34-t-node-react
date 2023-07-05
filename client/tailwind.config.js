@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import formsPlugin from '@tailwindcss/forms';
 import daisyui from 'daisyui';
-import daisyui from 'daisyui'
 
 export default {
   content: [

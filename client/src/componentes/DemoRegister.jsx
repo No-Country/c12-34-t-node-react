@@ -1,12 +1,23 @@
-import React from "react";
 import gmail from "../img/gmail.png";
+import  axios from 'axios'
+import {useState} from 'react'
 
 const DemoRegister = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const submitCredentials = (e) => {
+    const name = e.target.name.value
+    const password = e.target.password.value
+    const email = e.target.email.value
+    setName(name)
+    setPassword(password)
+    setEmail(email)
+  }
+
   const register = () => {
+    
     const userData = {
       name: name,
       password: password,
@@ -28,7 +39,7 @@ const DemoRegister = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form  onSubmit={submitCredentials} type='submit' className="space-y-6" action="#" method="POST">
             <div>
               <div className="flex items-center justify-between">
                 <label
@@ -43,7 +54,7 @@ const DemoRegister = () => {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
+                  name="name"
                   placeholder="usuario"
                   type="text"
                   autoComplete="email"
@@ -139,7 +150,6 @@ const DemoRegister = () => {
 
             <div>
               <button
-                type="submit"
                 onClick={register}
                 className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
