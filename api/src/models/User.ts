@@ -1,6 +1,6 @@
 import { db } from "../db";
 import { IUser } from "../interfaces/IUser";
-import { Model, DataTypes, UUIDV4 } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
   id!: string;
@@ -16,7 +16,6 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      // autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,

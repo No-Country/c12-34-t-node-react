@@ -1,9 +1,9 @@
 import { IElements } from "./../interfaces/IElements";
 import { db } from "../db";
-import { Model, DataTypes, UUIDV4 } from "sequelize";
+import { Model, DataTypes } from "sequelize";
 import { enumState } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
-  id!: number;
+  id!: string;
   name!: string;
   type!: string;
   description!: string;
@@ -47,10 +47,10 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    isSelected: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
+    // isSelected: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false,
+    // },
   },
   {
     sequelize: db,
