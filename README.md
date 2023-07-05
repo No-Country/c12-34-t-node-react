@@ -19,7 +19,7 @@ _____________________________________________________________________
 
   |Skills Frontend: `react - tailwind - daisy Components`
 
-  |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv`
+  |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv - sequelize`
 
   |Skills Testing: `jira`
 
