@@ -7,7 +7,6 @@ const DemoRegister = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-
   const register = () => {
 
     const userData = {
