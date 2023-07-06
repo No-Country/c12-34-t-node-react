@@ -1,4 +1,4 @@
-import { Footer } from '../../componentes/index'
+import { Section, Hero, Header, Footer, Carrusel, Cards } from '../../componentes/index'
 
 
 const Landing = () => {
@@ -11,11 +11,26 @@ const Landing = () => {
       color: 'black',
       flexGrow: 1,
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      gap:'80px'
     }}>
     
+      <Header />
 
+    <Section>
+      <Hero />
+    </Section>
+
+    <Section>
+      <Carrusel />
+    </Section>
+
+    <Section>
+      <Cards />
+    </Section>
+    
       <Footer />
+
       
     </div>
   )
