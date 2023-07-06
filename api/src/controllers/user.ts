@@ -2,6 +2,7 @@ import User from '../models/User'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
+import { generarToken } from "../helper/JWToken"
 
 
 
