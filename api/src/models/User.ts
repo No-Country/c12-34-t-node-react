@@ -5,7 +5,7 @@ import { Model, DataTypes } from "sequelize";
 class User extends Model<IUser> implements IUser {
   id!: string;
   name!: string;
-  lastName!: string;
+  // lastName!: string;
   email!: string;
   password!: string;
 }
@@ -21,10 +21,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // lastName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

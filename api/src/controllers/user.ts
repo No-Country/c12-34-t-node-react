@@ -16,7 +16,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
   try {
 
-    if (!usuario.name || !usuario.lastName || !usuario.password || !usuario.email)
+    if (!usuario.name || !usuario.password || !usuario.email)
 
       return res.status(400).json({ msg: "Todos los campos son requeridos" })
 
@@ -33,7 +33,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const newUser = await User.create({
       name: usuario.name,
-      lastName: usuario.lastName,
+      // lastName: usuario.lastName,
       email: usuario.email,
       password: encriptado
     })
