@@ -1,28 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-// import viteLogo from '/vite.svg'
-import "./App.css";
-import Login from "./componentes/Login";
-import Register from "./componentes/Register";
-import "./index.css";
-import Navbar from "./componentes/Navbar";
-import DemoRegister from "./componentes/DemoRegister";
+import './App.css'
+import './index.css'
+import { Route, Routes } from 'react-router-dom'
+import Landing from './pages/Landing'
+import { Login, Register } from './componentes'
+
 
 function App() {
-  return (
-    <>
-      <div>
-        <Navbar />
-        <br />
-        <br />
-        <br />
 
-        <Login />
-        <br />
-        <DemoRegister />
-      </div>
-    </>
-  );
+  return (
+    <Routes>
+      <Route exact path='/landing' element={<Landing />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+
+     </Routes>
+  )
 }
 
 export default App;

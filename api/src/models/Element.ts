@@ -3,7 +3,7 @@ import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
 import { enumState } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
-  id!: string;
+  // id!: string;
   name!: string;
   type!: string;
   description!: string;

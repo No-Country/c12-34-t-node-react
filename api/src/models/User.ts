@@ -1,10 +1,14 @@
 import { db } from "../db";
 import { IUser } from "../interfaces/IUser";
 import { Model, DataTypes } from "sequelize";
+import { db } from "../db";
+import { IUser } from "../interfaces/IUser";
+import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
   id!: string;
   name!: string;
+  // lastName!: string;
   // lastName!: string;
   email!: string;
   password!: string;
@@ -20,7 +24,12 @@ User.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      allowNull: false,
     },
+    // lastName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     // lastName: {
     //   type: DataTypes.STRING,
     //   allowNull: false,
@@ -32,14 +41,18 @@ User.init(
       validate: {
         isEmail: true,
       },
+        isEmail: true,
+      },
     },
     password: {
+      type: DataTypes.STRING,
       type: DataTypes.STRING,
     },
   },
   {
     sequelize: db,
     modelName: "user",
+    timestamps: false,
     timestamps: false,
   }
 );
