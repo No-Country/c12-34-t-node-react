@@ -2,6 +2,7 @@ import User from '../models/User'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
+import { generarToken } from '../helper/JWToken';
 
 
 
@@ -15,7 +16,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
   try {
 
-    if (!usuario.name || !usuario.lastName || !usuario.password || !usuario.email)
+    if (!usuario.name || !usuario.password || !usuario.email)
 
       return res.status(400).json({ msg: "Todos los campos son requeridos" })
 
@@ -32,7 +33,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const newUser = await User.create({
       name: usuario.name,
-      lastName: usuario.lastName,
+      // lastName: usuario.lastName,
       email: usuario.email,
       password: encriptado
     })
@@ -57,7 +58,8 @@ export const loginUser = async (req: Request, res: Response) => {
     const existUser = await User.findOne(
       {
         where: { email: usuario.email }
-      }
+      },
+
     )
 
     if (!existUser) {
@@ -70,7 +72,14 @@ export const loginUser = async (req: Request, res: Response) => {
 
     if (compararPassword) {
 
-      return res.status(200).json({ msg: "clave correcta", compararPassword })
+      const token = await generarToken(existUser.email)
+
+      const data = {
+        user: existUser,
+        token,
+      }
+
+      return res.status(200).json({ msg: "Session y token valido", data })
 
     } else {
 
