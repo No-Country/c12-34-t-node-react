@@ -3,7 +3,6 @@ import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import { Login, Register } from './componentes'
-import { Toaster, toast } from 'sonner'
 
 
 function App() {

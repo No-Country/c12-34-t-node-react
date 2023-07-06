@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom"
 import Section from "../Section"
 import {CgAsterisk} from 'react-icons/cg'
 import Header from "../Header"
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+import swAlert from "@sweetalert/with-react"
 
 const Login = () => {
 
@@ -19,10 +22,15 @@ const Login = () => {
         email: name, 
         password: password
        }
+
+       const userName = localStorage.getItem('user')
+
     axios
-    .post("http://localhost:3001/api/login", userData)
+    .post("http://localhost:3002/api/login", userData)
     .then(res => { 
-            console.log(res.data)
+            const user = res.data
+            console.log(user?.name)
+            swAlert(<h2>Bienvenido {userName}</h2>)
             navigate('/landing')
             if(name.length === 0) { 
               setNotName(true)
@@ -30,6 +38,7 @@ const Login = () => {
           })
           .catch(err => {
             console.log(err);
+            swAlert(<h2>No has podido ingresar</h2>)
             navigate('/register')
           })
   }
@@ -37,6 +46,9 @@ const Login = () => {
 
   return (
     <>
+
+    <ToastContainer />
+
 
     <Header />
 
@@ -51,7 +63,7 @@ const Login = () => {
       <div className="w-300">
       <div style={{boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)'}} className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded-lg bg-gray-200 p-4 w-[50vh]">
          <div className="sm:mx-auto sm:w-full sm:max-w-sm " >
-           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Inicio de sesión</h2>
+           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">Inicio de sesión</h2>
          </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -59,7 +71,7 @@ const Login = () => {
             <div>
 
             <div className="flex items-center align-middle">
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white"> Email </label>
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-black"> Email </label>
               <CgAsterisk color='black'/>
             </div>
 
@@ -73,7 +85,7 @@ const Login = () => {
 
         <div>
           <div className="flex items-center">
-            <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Contraseña</label>
+            <label htmlFor="password" className="block text-sm font-medium leading-6 text-black">Contraseña</label>
             <CgAsterisk color='black'/>
             
           </div>

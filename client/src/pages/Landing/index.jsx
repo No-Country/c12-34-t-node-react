@@ -12,7 +12,9 @@ const Landing = () => {
       flexGrow: 1,
       display: 'flex',
       flexDirection: 'column',
-      gap:'80px'
+      gap:'80px',
+      width:'100%',
+      maxWidth:'2300px'
     }}>
     
       <Header />

@@ -1,11 +1,13 @@
 import gmail from '../Register/gmail.png';
 import { useState } from 'react';
 import axios from 'axios'
-import { toast } from 'sonner';
 import { Link, useNavigate } from 'react-router-dom';
 import Section from '../Section';
 import { CgAsterisk } from 'react-icons/cg';
 import Header from '../Header';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import swAlert from "@sweetalert/with-react"
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -34,20 +36,22 @@ const Register = () => {
       return
     }
 
-    axios.post("http://localhost:3001/api/auth", userData)
+    axios.post("http://localhost:3002/api/auth", userData)
       .then(res => {
-        toast('Te has registrado correctamente')
-        console.log(res.data)
+        localStorage.setItem('user', userData.name)
+        swAlert('Te has registrado correctamente')
         navigate('/login')
+        console.log(res.data)
       }) 
       .catch(err => {
+        swAlert('No te has podido registrar')
         console.log(err);
-        toast.error('No te has podido registrar')
       })
 
   };
   return (
     <>
+    <ToastContainer />
     <Header />
     <Section>
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap: '10px'}}>
