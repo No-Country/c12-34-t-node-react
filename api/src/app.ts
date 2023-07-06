@@ -6,22 +6,27 @@ import morgan from "morgan";
 import "../src/models/User";
 import allRoutes from "./routes/routes";
 
-const app: Application = express();
 
-app.use(cors());
+const app: Application = express();
+app.use(
+  cors({
+    credentials: true,
+    origin: true
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use((_req: Request, res: Response, next: NextFunction ) => {
-   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5173");
-});
+// app.use((_req: Request, res: Response, next: NextFunction) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+// });
 
 
 app.use(allRoutes);
 
 const port = process.env.PORT || 3002;
 
-db.sync({ force: false }).then(async () => {
+db.sync({ force: true }).then(async () => {
   try {
     app.listen(port, () => {
       console.log(`Escuchando en el puerto: http://localhost:${port}`);
