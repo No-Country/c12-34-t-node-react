@@ -7,7 +7,6 @@ import Section from '../Section';
 import { CgAsterisk } from 'react-icons/cg';
 import Header from '../Header';
 
-
 const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
