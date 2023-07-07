@@ -1,5 +1,6 @@
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/aebb3106-dc8f-45ae-89c0-b0fc06f0b66c)
 
+
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/87939958/8f1cb103-2fcf-4487-b68e-4227d56f37ed)
 
 
 
