@@ -90,3 +90,21 @@ export const loginUser = async (req: Request, res: Response) => {
     console.log(error)
   }
 }
+
+export const perfil = async (req: any, res: Response) => {
+
+
+  try {
+
+    const usuarioRegistado = await User.findOne(req.usuarioId)
+
+    if (!usuarioRegistado) return res.status(404).json({ message: "No se encontro el pefil" })
+
+    res.status(200).json({ message: "Perfil del usuario", usuarioRegistado })
+
+  } catch (error) {
+    console.log(error)
+  }
+
+
+}

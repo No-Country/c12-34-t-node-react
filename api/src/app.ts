@@ -26,7 +26,7 @@ app.use(allRoutes);
 
 const port = process.env.PORT || 3002;
 
-db.sync({ force: true }).then(async () => {
+db.sync({ force: false }).then(async () => {
   try {
     app.listen(port, () => {
       console.log(`Escuchando en el puerto: http://localhost:${port}`);
