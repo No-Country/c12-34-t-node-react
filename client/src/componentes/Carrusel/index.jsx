@@ -1,24 +1,32 @@
+import { useState } from 'react'
 
-function ItemMenuCarrusel({ i, last }) {
+const hrVariants = ['absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-300 border-0 -z-10 transition-colors ease-out', 'absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-600 border-0 -z-10 transition-colors ease-out']
+const aVariants = ['peer btn btn-xs bg-amber-100 text-gray-600 rounded-full', 'peer btn btn-xs bg-amber-300 text-gray-600 rounded-full']
+
+function ItemMenuCarrusel({ i, last, onClick, isActive }) {
   return (
     <span className='relative'>
-      <a href={`${'#item' + i}`} className=" btn btn-xs bg-amber-200 hover:bg-amber-50 text-gray-600 rounded-full">{i}</a>
-      {!last &&
-        <hr className='absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-300 border-0 -z-10' />
+      <a href={`${'#item' + i}`} onClick={onClick} className={isActive ? aVariants[0] : aVariants[1]}>{i}</a>
+      {
+        !last && (<hr className={isActive ? hrVariants[0] : hrVariants[1]} />)
       }
     </span>
   )
 }
 
 const Carrusel = () => {
+  const [activeIndex, setActiveIndex] = useState(-1)
+  const handleClick = (index) => {
+    setActiveIndex(index === activeIndex ? -1 : index)
+  }
   return (
     <section>
       <div className="flex justify-around w-full py-2 gap-2 ">
-        <ItemMenuCarrusel i={1} />
-        <ItemMenuCarrusel i={2} />
-        <ItemMenuCarrusel i={3} />
-        <ItemMenuCarrusel i={4} />
-        <ItemMenuCarrusel i={5} last={true} />
+        <ItemMenuCarrusel i={1} isActive={1 === activeIndex} onClick={() => handleClick(1)} />
+        <ItemMenuCarrusel i={2} isActive={2 === activeIndex} onClick={() => handleClick(2)} />
+        <ItemMenuCarrusel i={3} isActive={3 === activeIndex} onClick={() => handleClick(3)} />
+        <ItemMenuCarrusel i={4} isActive={4 === activeIndex} onClick={() => handleClick(4)} />
+        <ItemMenuCarrusel i={5} isActive={5 === activeIndex} onClick={() => handleClick(5)} last={true} />
       </div>
 
       <div className="carousel carousel-vertical w-full h-96 rounded-md">
