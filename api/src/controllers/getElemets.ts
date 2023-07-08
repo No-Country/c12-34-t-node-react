@@ -15,7 +15,7 @@ export const getElements = async () => {
         description: el.description,
         price: el.price,
         year: el.year,
-        image: el.image,
+        // image: el.image,
         state: el.state,
       }
     });
