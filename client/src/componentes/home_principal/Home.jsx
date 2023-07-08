@@ -16,15 +16,15 @@ import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 export const Home = () => {
 
   const menus = [
-    { name: "Home", link: "/", icon: MdOutlineDashboard },
-    { name: "Perfil administrador", link: "/", icon: AiOutlineUser,description:"Datos" },
-    { name: "Bienes", link: "/", icon: FiMessageSquare,description:"Maquinas, elementos, mobiliario" },
-    { name: "Staff", link: "/", icon: TbReportAnalytics,description:"Profesores, encargados, personal" },
-    { name: "Clientes", link: "/", icon: FiFolder,description:"Datos clientes" },
-    { name: "Proveedores", link: "/", icon: FiShoppingCart,description:"Datos y pedidos" },
-    { name: "Horarios", link: "/", icon: MdOutlineBrowseGallery,description:"Horarios semanales" },
-    { name: "Reservas", link: "/", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
-    { name: "Gastos", link: "/", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
+    { name: "Home", link: "/home", icon: MdOutlineDashboard },
+    { name: "Perfil administrador", link: "/admin", icon: AiOutlineUser,description:"Datos" },
+    { name: "Bienes", link: "/bienes", icon: FiMessageSquare,description:"Maquinas, elementos, mobiliario" },
+    { name: "Staff", link: "/staff", icon: TbReportAnalytics,description:"Profesores, encargados, personal" },
+    { name: "Clientes", link: "/clientes", icon: FiFolder,description:"Datos clientes" },
+    { name: "Proveedores", link: "/proovedores", icon: FiShoppingCart,description:"Datos y pedidos" },
+    { name: "Horarios", link: "/horarios", icon: MdOutlineBrowseGallery,description:"Horarios semanales" },
+    { name: "Reservas", link: "/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
+    { name: "Gastos", link: "/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
   ];
   
   const filteredMenus = menus.filter((menu) => menu.name !== "Home");

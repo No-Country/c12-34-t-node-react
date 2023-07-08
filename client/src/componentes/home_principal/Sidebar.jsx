@@ -2,6 +2,7 @@
 import { createElement, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({menus}) => {
   const [open, setOpen] = useState(true);
@@ -23,7 +24,9 @@ const Sidebar = ({menus}) => {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
           {menus.map((menu,i) => (
-            <a
+          
+            <Link
+              menu={menu}
               to={menu.link}
               key={menu.name}
               className={` ${
@@ -48,7 +51,7 @@ const Sidebar = ({menus}) => {
               >
                 {menu?.name}
               </h2>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
