@@ -1,4 +1,9 @@
-export type enumState = "Nuevo" | "Semi nuevo" | "Usado" | "En reparacion";
+export enum State {
+  Nuevo = "Nuevo",
+  SemiNuevo = "Semi-nuevo",
+  Usado = "Usado",
+  En_reparacion = "En reparacion",
+}
 
 export interface IElements {
   id?: string,
@@ -7,6 +12,6 @@ export interface IElements {
   description: string,
   price: number,
   year: number,
-  image: string,
-  state: enumState,
+  image?: string,
+  state: State,
 }

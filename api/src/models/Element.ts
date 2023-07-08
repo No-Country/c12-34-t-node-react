@@ -1,16 +1,16 @@
 import { IElements } from "./../interfaces/IElements";
 import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
-import { enumState } from "./../interfaces/IElements";
+import { State } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
-  // id!: string;
+  id!: string;
   name!: string;
   type!: string;
   description!: string;
   price!: number;
   year!: number;
-  image!: string;
-  state!: enumState;
+  // image!: string;
+  state!: State;
 }
 Elements.init(
   {
@@ -39,10 +39,10 @@ Elements.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+    // image: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
