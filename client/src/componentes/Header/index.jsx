@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-  <div style={{display:'flex', width:'100%' }}>
+  <div style={{display:'flex', width:'100%', maxWidth:'2000px' }}>
       <div
         style={{
           backgroundColor: "white",
@@ -12,7 +12,7 @@ const Header = () => {
         className="navbar bg-base-100 w-full absolute top-0 left-0 right-0 main-content z-50"
       >
         <div className="flex-1">
-          <Link to="/landing">
+          <Link to="/">
             <svg
               style={{ marginLeft: "3px" }}
               width="210"

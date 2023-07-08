@@ -5,7 +5,6 @@ import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
 import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from 'react-toastify';
 import swAlert from "@sweetalert/with-react";
 
 const Login = () => {
@@ -38,7 +37,7 @@ const Login = () => {
       })
       .catch(err => {
         console.log(err);
-        swAlert(<h2>No has podido ingresar</h2>);
+        swAlert(<h2>{err}</h2>);
         navigate('/register');
       });
   };
@@ -47,14 +46,9 @@ const Login = () => {
   return (
     <>
 
-      <ToastContainer />
-
-
-      <Header />
-
       <Section>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-          <Link to="/landing">
+          <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M303 248.174C303 352.46 235.171 437 151.5 437C67.8288 437 0 352.46 0 248.174C0 143.888 67.8294 343.394 151.501 343.394C235.172 343.394 303 143.888 303 248.174Z" fill="#F9D51C" />
               <path d="M53 230.4C53 342.466 217.821 230.4 108.745 230.4C168.473 27.4862 272 436.243 272 324.177C272 212.11 -0.329771 0 108.745 0C217.821 0 53 118.334 53 230.4Z" fill="#343A40" />
@@ -121,6 +115,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+
       </Section>
     </>
   );

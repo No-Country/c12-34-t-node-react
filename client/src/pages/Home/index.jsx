@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { Footer, Header } from '../../componentes'
 
 
 const HomePrincipal = () => {
@@ -15,15 +14,15 @@ const HomePrincipal = () => {
       flexDirection: 'column',
       gap:'80px',
       width:'100%',
-      maxWidth:'2300px'
+      maxWidth:'2400px'
     }}>
 
-  <Header />
+ 
 
   {/* acá se agrega el sidebar */}
  
     <Routes>
-      <Route path='/home' element={<h1>acá iria el componente home</h1>} />
+      <Route path='/dashboard' element={<h1>acá iria el componente home</h1>} />
       <Route path='/admin' element={<h1>acá iria el componente admin</h1>} />
       <Route path='/bienes' element={<h1>acá iria el componente bienes</h1>} />
       <Route path='/staff' element={<h1>acá iria el componente staff</h1>} />
@@ -36,7 +35,6 @@ const HomePrincipal = () => {
     </Routes>
     
     
-    <Footer />
    
     </div>
   )

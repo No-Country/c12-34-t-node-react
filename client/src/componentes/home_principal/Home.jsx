@@ -16,7 +16,7 @@ import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 export const Home = () => {
 
   const menus = [
-    { name: "Home", link: "/home", icon: MdOutlineDashboard },
+    { name: "Home", link: "/dashboard", icon: MdOutlineDashboard },
     { name: "Perfil administrador", link: "/admin", icon: AiOutlineUser,description:"Datos" },
     { name: "Bienes", link: "/bienes", icon: FiMessageSquare,description:"Maquinas, elementos, mobiliario" },
     { name: "Staff", link: "/staff", icon: TbReportAnalytics,description:"Profesores, encargados, personal" },
