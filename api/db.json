@@ -5,7 +5,7 @@
     "type": "Pesas",
     "description": "Ideales para ejercicios de fortalecimiento muscular.",
     "price": 45,
-    "year": 2021,
+    "date": "02-09-2021",
     "image": "",
     "state": "Usado"
   },
@@ -15,7 +15,7 @@
     "type": "Cardio",
     "description": "Máquina para correr o caminar en el lugar.",
     "price": 1200,
-    "year": 2020,
+    "date": "28-03-2020",
     "image": "",
     "state": "Semi-nuevo"
   },
@@ -25,7 +25,7 @@
     "type": "Pesas",
     "description": "Utilizadas para ejercicios de levantamiento de peso.",
     "price": 60,
-    "year": 2022,
+    "date": "15-07-2022",
     "image": "",
     "state": "Nuevo"
   },
@@ -35,7 +35,7 @@
     "type": "Cardio",
     "description": "Máquina de ejercicio que simula el movimiento de caminar o correr, pero con menos impacto en las articulaciones.",
     "price": 1800,
-    "year": 2021,
+    "date": "12-11-2021",
     "image": "",
     "state": "En reparación"
   },
@@ -45,7 +45,7 @@
     "type": "Cardio",
     "description": "Máquina de ejercicio que simula el pedaleo de una bicicleta, proporcionando un entrenamiento cardiovascular.",
     "price": 900,
-    "year": 2023,
+    "date": "19-05-2023",
     "image": "",
     "state": "Usado"
   },
@@ -55,7 +55,7 @@
     "type": "Pesas",
     "description": "Equipo de entrenamiento de fuerza que utiliza placas de peso para resistencia.",
     "price": 1500,
-    "year": 2022,
+    "date": "10-03-2022",
     "image": "",
     "state": "Nuevo"
   },
@@ -65,7 +65,7 @@
     "type": "Cardio",
     "description": "Máquina que simula el movimiento de remar, trabajando muchos grupos musculares al mismo tiempo.",
     "price": 1600,
-    "year": 2020,
+    "date": "06-09-2020",
     "image": "",
     "state": "Semi-nuevo"
   },
@@ -75,7 +75,7 @@
     "type": "Cardio",
     "description": "Máquina de ejercicio que simula el movimiento de caminar o correr, pero con menos impacto en las articulaciones.",
     "price": 2000,
-    "year": 2023,
+    "date": "24-07-2023",
     "image": "",
     "state": "Nuevo"
   },
@@ -85,7 +85,7 @@
     "type": "Cardio",
     "description": "Máquina de ejercicio que simula subir escaleras.",
     "price": 1200,
-    "year": 2022,
+    "date": "05-12-2022",
     "image": "",
     "state": "Usado"
   },
@@ -95,7 +95,7 @@
     "type": "Fuerza",
     "description": "Banco especializado para ejercicios de levantamiento de peso.",
     "price": 500,
-    "year": 2021,
+    "date": "18-10-2021",
     "image": "",
     "state": "Semi-nuevo"
   },
@@ -105,7 +105,7 @@
     "type": "Fuerza",
     "description": "Equipo de entrenamiento de fuerza que utiliza poleas para crear resistencia.",
     "price": 800,
-    "year": 2022,
+    "date": "09-06-2022",
     "image": "",
     "state": "Usado"
   },
@@ -115,7 +115,7 @@
     "type": "Fuerza",
     "description": "Máquina diseñada para ejercitar los músculos de las piernas.",
     "price": 700,
-    "year": 2020,
+    "date": "31-08-2020",
     "image": "",
     "state": "En reparación"
   },
@@ -125,7 +125,7 @@
     "type": "Fuerza",
     "description": "Banco específico para ejercicios de abdominales.",
     "price": 200,
-    "year": 2021,
+    "date": "07-04-2021",
     "image": "",
     "state": "Nuevo"
   },
@@ -135,7 +135,7 @@
     "type": "Fuerza",
     "description": "Equipo para realizar ejercicios de dominadas y fortalecimiento de la espalda.",
     "price": 300,
-    "year": 2023,
+    "date": "13-02-2023",
     "image": "",
     "state": "Usado"
   },
@@ -145,7 +145,7 @@
     "type": "Fuerza",
     "description": "Máquina diseñada para ejercitar los músculos de las piernas.",
     "price": 600,
-    "year": 2022,
+    "date": "20-09-2022",
     "image": "",
     "state": "Semi-nuevo"
   },
@@ -155,7 +155,7 @@
     "type": "Fuerza",
     "description": "Equipo para realizar ejercicios de press de banca y fortalecimiento del pecho.",
     "price": 1000,
-    "year": 2021,
+    "date": "11-07-2021",
     "image": "",
     "state": "Nuevo"
   },
@@ -165,7 +165,7 @@
     "type": "Fuerza",
     "description": "Equipo para ejercicios de dips y fortalecimiento de los tríceps.",
     "price": 150,
-    "year": 2020,
+    "date": "14-05-2020",
     "image": "",
     "state": "Semi-nuevo"
   },
@@ -175,7 +175,7 @@
     "type": "Fuerza",
     "description": "Equipo para ejercitar los músculos de los femorales en la parte posterior de las piernas.",
     "price": 500,
-    "year": 2022,
+    "date": "13-02-2023",
     "image": "",
     "state": "Usado"
   },
@@ -185,7 +185,7 @@
     "type": "Fuerza",
     "description": "Equipo para ejercitar los músculos aductores de las piernas.",
     "price": 400,
-    "year": 2021,
+    "date": "20-09-2022",
     "image": "",
     "state": "Nuevo"
   },
@@ -195,7 +195,7 @@
     "type": "Fuerza",
     "description": "Máquina con poleas cruzadas para ejercitar varios grupos musculares.",
     "price": 800,
-    "year": 2023,
+    "date": "11-07-2021",
     "image": "",
     "state": "En reparación"
   },
@@ -205,7 +205,7 @@
     "type": "Fuerza",
     "description": "Equipo para ejercitar los músculos de la espalda y los hombros.",
     "price": 600,
-    "year": 2022,
+    "date": "14-05-2020",
     "image": "",
     "state": "Usado"
   },
@@ -215,7 +215,7 @@
     "type": "Fuerza",
     "description": "Máquina para ejercitar los músculos pectorales y los hombros.",
     "price": 700,
-    "year": 2021,
+    "date": "20-09-2022",
     "image": "",
     "state": "Semi-nuevo"
   }

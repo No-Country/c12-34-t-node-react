@@ -2,7 +2,6 @@ import { Router } from "express"
 import {
   registerUser,
   loginUser,
-  perfil
 } from "../controllers/user"
 import { deleteElementsGym, getElementsGym, postElementsGym, putElemetsGym } from "../services/getElements"
 import { authToken } from "../middlewares/authToken"
