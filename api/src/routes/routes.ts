@@ -3,8 +3,11 @@ import {
   registerUser,
   loginUser,
 } from "../controllers/user"
-import { deleteElementsGym, getElementsGym, postElementsGym, putElemetsGym } from "../services/getElements"
 import { authToken } from "../middlewares/authToken"
+import { getElementsGym } from "../services/crudElements/get"
+import { postElementsGym } from "../services/crudElements/post"
+import { putElemetsGym } from "../services/crudElements/put"
+import { deleteElementsGym } from "../services/crudElements/delete"
 
 const allRoutes = Router()
 
