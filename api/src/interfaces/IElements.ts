@@ -13,4 +13,5 @@ export interface IElements {
   price: number,
   date: string,
   state: State,
+  nameUser: string,
 }

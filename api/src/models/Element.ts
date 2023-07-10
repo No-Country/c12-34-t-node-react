@@ -10,6 +10,10 @@ class Elements extends Model<IElements> implements IElements {
   price!: number;
   date!: string;
   state!: State;
+  nameUser!: string;
+  // static associate(models: any) {
+  //   Elements.hasMany(models.User);
+  // }
 }
 Elements.init(
   {
@@ -41,6 +45,9 @@ Elements.init(
     state: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    nameUser: {
+      type: DataTypes.STRING,
     },
     // isSelected: {
     //   type: DataTypes.BOOLEAN,

@@ -1,5 +1,5 @@
 import { db } from "../db";
-import { IUser } from "../interfaces/IUser";
+import { Elements, IUser } from "../interfaces/IUser";
 import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
@@ -8,6 +8,7 @@ class User extends Model<IUser> implements IUser {
   // lastName!: string;
   email!: string;
   password!: string;
+  elementsUser!: Array<Elements>;
 }
 
 User.init(
@@ -35,6 +36,9 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
+    },
+    elementsUser: {
+      type: DataTypes.JSONB(),
     },
   },
   {
