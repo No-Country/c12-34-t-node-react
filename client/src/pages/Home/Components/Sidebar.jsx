@@ -1,12 +1,32 @@
 
 import { createElement, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({menus}) => {
+import {
+  
+  MdOutlineBrowseGallery,
+  MdOutlineCalendarMonth,
+  MdOutlineCurrencyExchange,
+} from "react-icons/md";
+import { TbReportAnalytics } from "react-icons/tb";
+import { AiOutlineUser } from "react-icons/ai";
+import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
+
+const Sidebar = () => {
   const [open, setOpen] = useState(true);
 
+  const menus = [
+    
+    { name: "Perfil administrador", link: "/admin", icon: AiOutlineUser,description:"Datos" },
+    { name: "Bienes", link: "/admin/bienes", icon: FiMessageSquare,description:"Maquinas, elementos, mobiliario" },
+    { name: "Staff", link: "/admin/staff", icon: TbReportAnalytics,description:"Profesores, encargados, personal" },
+    { name: "Clientes", link: "/admin/clientes", icon: FiFolder,description:"Datos clientes" },
+    { name: "Proveedores", link: "/admin/proovedores", icon: FiShoppingCart,description:"Datos y pedidos" },
+    { name: "Horarios", link: "/admin/horarios", icon: MdOutlineBrowseGallery,description:"Horarios semanales" },
+    { name: "Reservas", link: "/admin/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
+    { name: "Gastos", link: "/admin/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
+  ];
   
   return (
     <section className="flex gap-6">
@@ -62,14 +82,6 @@ const Sidebar = ({menus}) => {
   
 };
 
-Sidebar.propTypes = {
-    menus: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        link: PropTypes.string.isRequired,
-        icon: PropTypes.elementType.isRequired,
-      })
-    ).isRequired,
-  };
+
 
 export default Sidebar;
