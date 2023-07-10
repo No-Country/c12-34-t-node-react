@@ -36,7 +36,7 @@ const Register = () => {
       return;
     }
 
-    axios.post("http://localhost:3001/api/auth", userData)
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
         localStorage.setItem('user', userData.name);
         swAlert(<h2>Te has registrado correctamente</h2>);
@@ -53,7 +53,7 @@ const Register = () => {
     <>
       <ToastContainer />
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop:'-70px'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '-70px' }}>
 
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">

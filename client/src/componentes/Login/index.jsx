@@ -25,10 +25,11 @@ const Login = () => {
     const userName = localStorage.getItem('user');
 
     axios
-      .post("http://localhost:3001/api/login", userData)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
       .then(res => {
         const user = res.data;
         console.log(user?.name);
+
         swAlert(<h2>Bienvenido {userName}</h2>);
         navigate('/landing');
         if (name.length === 0) {
