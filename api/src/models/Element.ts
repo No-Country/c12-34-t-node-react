@@ -8,9 +8,12 @@ class Elements extends Model<IElements> implements IElements {
   type!: string;
   description!: string;
   price!: number;
-  year!: number;
-  // image!: string;
+  date!: string;
   state!: State;
+  nameUser!: string;
+  // static associate(models: any) {
+  //   Elements.hasMany(models.User);
+  // }
 }
 Elements.init(
   {
@@ -35,17 +38,16 @@ Elements.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    year: {
-      type: DataTypes.INTEGER,
+    date: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    // image: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    // },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    nameUser: {
+      type: DataTypes.STRING,
     },
     // isSelected: {
     //   type: DataTypes.BOOLEAN,

@@ -7,4 +7,4 @@ export { default as Hero } from './Hero'
 export { default as Card } from './Card/SingleCard'
 export { default as Cards } from './Card/Cards'
 export { default as Section } from './Section'
-
+export {default as TableV1} from './Table'

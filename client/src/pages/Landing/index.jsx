@@ -1,6 +1,7 @@
 import { Section, Hero, Carrusel, Cards } from '../../componentes/index'
 
 
+
 const Landing = () => {
 
   return (
@@ -18,6 +19,7 @@ const Landing = () => {
     <Section>
       <Cards />
     </Section>
+
 
 </>
       

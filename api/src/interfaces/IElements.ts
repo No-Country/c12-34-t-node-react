@@ -11,7 +11,7 @@ export interface IElements {
   type: string,
   description: string,
   price: number,
-  year: number,
-  image?: string,
+  date: string,
   state: State,
+  nameUser: string,
 }

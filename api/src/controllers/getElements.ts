@@ -14,8 +14,7 @@ export const getElements = async () => {
         type: el.type,
         description: el.description,
         price: el.price,
-        year: el.year,
-        // image: el.image,
+        date: el.date,
         state: el.state,
       }
     });
