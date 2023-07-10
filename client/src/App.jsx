@@ -3,7 +3,8 @@ import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import { Footer, Header, Login, Register } from './componentes'
-import { Home } from './componentes/home_principal/Home'
+import HomePrincipal from './pages/Home/index'
+
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Route exact path='/' element={<Landing />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path="/dashboard" element={<Home />} />
+        <Route path="/admin/*" element={<HomePrincipal/>} />
       </Routes>
       </div>
       

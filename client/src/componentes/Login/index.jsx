@@ -31,7 +31,7 @@ const Login = () => {
         console.log(user?.name);
 
         swAlert(<h2>Bienvenido {userName}</h2>);
-        navigate('/landing');
+        navigate('/admin');
         if (name.length === 0) {
           setNotName(true);
         }
