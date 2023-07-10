@@ -27,6 +27,7 @@ _____________________________________________________________________
 
   
 
+
 Variables de entorno del frontend: .env
 
 `VITE_BACKEND_URL`=
