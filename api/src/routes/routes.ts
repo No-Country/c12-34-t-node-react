@@ -2,6 +2,7 @@ import { Router } from "express"
 import {
   registerUser,
   loginUser,
+  getAllUsers,
 } from "../controllers/user"
 import { authToken } from "../middlewares/authToken"
 import { getElementsGym } from "../services/crudElements/get"
@@ -14,6 +15,7 @@ const allRoutes = Router()
 allRoutes.post("/api/auth", registerUser)
 
 allRoutes.post("/api/login", loginUser)
+allRoutes.get("/api/all-users", getAllUsers)
 
 
 allRoutes.get("/api/elements", authToken, getElementsGym);

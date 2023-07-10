@@ -35,7 +35,8 @@ export const registerUser = async (req: Request, res: Response) => {
       name: usuario.name,
       // lastName: usuario.lastName,
       email: usuario.email,
-      password: encriptado
+      password: encriptado,
+      elementsUser: usuario.elementsUser,
     })
 
 
@@ -107,4 +108,21 @@ export const perfil = async (req: any, res: Response) => {
   }
 
 
+}
+
+export const getAllUsers = async (_: Request, res: Response) => {
+  try {
+    const allUsers = await User.findAll();
+  
+    if (!allUsers.length) {
+      throw new Error("No hay usuarios registrados");
+    } else {
+      return res.status(200).json(allUsers);
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(404).json({ error: error.message, });
+    }
+    return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+  }
 }

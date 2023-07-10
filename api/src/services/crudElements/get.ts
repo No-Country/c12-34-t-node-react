@@ -1,4 +1,4 @@
-import { getElements } from "../../controllers/getElemets";
+import { getElements } from "../../controllers/getElements";
 import { Request, Response } from "express";
 
 export const getElementsGym = async (_: Request, res: Response) => {
