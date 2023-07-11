@@ -25,9 +25,16 @@ _____________________________________________________________________
 
   |Skills Testing: `jira`
 
- 
+  
 
-Variables de entorno: .env
+
+Variables de entorno del frontend: .env
+
+`VITE_BACKEND_URL`=
+
+
+
+Variables de entorno del backend: .env
 
 `PORT=`
 

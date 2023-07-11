@@ -35,6 +35,7 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
+      unique: true
     },
   },
   {
