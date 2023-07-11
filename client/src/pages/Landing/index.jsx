@@ -1,4 +1,5 @@
 import { Section, Hero, Carrusel, Cards } from '../../componentes/index'
+import AdminPage from '../../componentes/AdminPage'
 
 
 
@@ -18,6 +19,10 @@ const Landing = () => {
 
     <Section>
       <Cards />
+    </Section>
+
+    <Section>
+       <AdminPage/>
     </Section>
 
 
