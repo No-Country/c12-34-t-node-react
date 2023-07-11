@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { IElements, State } from "../../interfaces/IElements";
+import { ElementUser, State } from "../../interfaces/IElements";
 import Elements from "../../models/Element";
-import { ElementsUser } from "../../models/relations";
 
 export const postElementsGym = async (req: Request, res: Response) => {
-  const element = req.body as IElements;
+  const element = req.body as ElementUser;
 
   const errorName = typeof element.name !== "string" || element.name.length === 0
   const errorType = typeof element.type !== "string" || element.type.length === 0
@@ -24,9 +23,7 @@ export const postElementsGym = async (req: Request, res: Response) => {
     if (errorDate) throw new Error(`Incorrecto o falta la fecha`);
     if (errorState) throw new Error(`Incorrecto o falta el estado`);
     else {
-      let postElement = await Elements.create(element, {
-        include: [ ElementsUser ]
-      });
+      let postElement = await Elements.create(element);
 
       return res.status(200).json({ message: `Ah sido agregado un nuevo elemento`, postElement });
     }
