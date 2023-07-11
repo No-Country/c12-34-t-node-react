@@ -4,9 +4,12 @@ export type Elements = {
 
 export interface IUser {
   id?: string;
-  name: string;
+  user: string;
   // lastName: string;
   email?: string;
   password: string;
-  elementsUser: Array<Elements>
+}
+
+export interface UserElement extends IUser {
+  elementsUser?: Array<Elements>
 }

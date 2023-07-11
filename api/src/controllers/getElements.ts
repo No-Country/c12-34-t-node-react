@@ -1,11 +1,16 @@
 import { IElements } from "interfaces/IElements";
-import Elements from "../models/Element";
+import {User} from "../models/relations";
+import {Elements} from "../models/relations";
 
 const elementsGym = require("../../db.json");
 
 export const getElements = async () => {
-
-  const elementsInDb = await Elements.findAll();
+  const elementsInDb = await Elements.findAll({
+    include: {
+      model: User,
+      attributes: ["user", "email"],
+    },
+  });
 
   if (!elementsInDb.length) {
     let elements = elementsGym.map((el: IElements) => {
