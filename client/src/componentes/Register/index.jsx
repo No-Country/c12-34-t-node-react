@@ -45,7 +45,7 @@ const Register = () => {
       })
       .catch(err => {
         swAlert(err);
-        console.log(<h2>{err}</h2>);
+        console.log(<h2>{err.msg}</h2>);
       });
 
   };
@@ -190,6 +190,7 @@ const Register = () => {
                     ></img>
                     Inicia sesión con Google
                   </button>
+                 <Link to={"/login"}> <p> Login</p></Link> 
                 </div>
               </div>
             </div>

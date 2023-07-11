@@ -15,7 +15,8 @@ const allRoutes = Router()
 allRoutes.post("/api/auth", registerUser)
 
 allRoutes.post("/api/login", loginUser)
-allRoutes.get("/api/all-users", getAllUsers)
+allRoutes.get("/api/all-users", getAllUsers);
+
 
 
 allRoutes.get("/api/elements", authToken, getElementsGym);
@@ -25,3 +26,4 @@ allRoutes.put("/api/elements/:id", putElemetsGym);
 allRoutes.delete("/api/elements/:id", deleteElementsGym);
 
 export default allRoutes;
+

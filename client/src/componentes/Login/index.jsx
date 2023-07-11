@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
@@ -14,6 +14,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
+  const [userTok, setuserTok] = useState("")
 
   const logUser = (e) => {
     e.preventDefault();
@@ -28,20 +29,33 @@ const Login = () => {
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
       .then(res => {
         const user = res.data;
-        console.log(user?.name);
-
-        swAlert(<h2>Bienvenido {userName}</h2>);
-        navigate('/admin');
+        console.log(user.data.token);
+        const newToken = user.data.token
+        sessionStorage.setItem('userToken', newToken);
+        console.log(sessionStorage.getItem("userToken"))
+        console.log("El token que me trae el back es: " + newToken)
+       
+          
+      
+        swAlert(<h2> Bienvenido {userName} </h2>);
+       navigate('/admin');
         if (name.length === 0) {
           setNotName(true);
         }
       })
       .catch(err => {
         console.log(err);
-        swAlert(<h2>{err}</h2>);
+        swAlert(<h2>{err.response.data.msg}</h2>);
         navigate('/register');
+        console.log(err.response.data.msg)
       });
   };
+ 
+  
+   
+ 
+
+      
 
 
   return (
@@ -69,6 +83,8 @@ const Login = () => {
                       <label htmlFor="email" className="block text-sm font-medium leading-6 text-black"> Email </label>
                       <CgAsterisk color='black' />
                     </div>
+           
+ 
 
                     <div className="mt-2">
                       <input style={{ padding: '5px' }} id="email" name="email" placeholder='Email' type="email" autoComplete="email" required onChange={(e) => setName(e.target.value)}

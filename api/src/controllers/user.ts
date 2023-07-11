@@ -13,6 +13,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
 
   const usuario = req.body as IUser
+  console.log(req.body)
 
   try {
 
@@ -26,7 +27,9 @@ export const registerUser = async (req: Request, res: Response) => {
       })
 
     if (existUser) {
+      console.log(req.body)
       return res.status(400).json({ msg: "El usuario ya existe", existUser })
+     
     }
 
     const encriptado = await passwordHashado(usuario.password)
@@ -54,6 +57,8 @@ export const registerUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
 
   const usuario = req.body as IUser
+  console.log(req.body)
+
 
   try {
     const existUser = await User.findOne(
@@ -106,8 +111,6 @@ export const perfil = async (req: any, res: Response) => {
   } catch (error) {
     console.log(error)
   }
-
-
 }
 
 export const getAllUsers = async (_: Request, res: Response) => {
