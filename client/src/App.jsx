@@ -18,19 +18,19 @@ function App() {
         flexDirection: 'column',
         marginTop: 70,
       }}>
-      
-      <Routes>
-        <Route exact path='/' element={<Landing />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path="/dashboard" element={<Home />} />
-      </Routes>
+
+        <Routes>
+          <Route exact path='/' element={<Landing />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path="/dashboard" element={<Home />} />
+        </Routes>
       </div>
-      
+
       <Footer />
     </>
 
   )
 }
 
-export default App;
+export default App
