@@ -1,8 +1,8 @@
 import './App.css'
 import './index.css'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
-import { Footer, Header, Login, Register } from './componentes'
+import { Header, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
 import NotFound from './pages/NotFound'
 
@@ -10,8 +10,8 @@ import NotFound from './pages/NotFound'
 
 function App() {
 
-  const {pathname} = useLocation()
-  const isAdminPage = pathname.includes('admin')
+  // const {pathname} = useLocation()
+  // const isAdminPage = pathname.includes('admin')
 
   return (
     <>
@@ -34,10 +34,10 @@ function App() {
       </Routes>
       </div>
       
-      {!isAdminPage &&
+      {/* {!isAdminPage &&
 
       <Footer />
-      }
+      } */}
     </>
 
   )
