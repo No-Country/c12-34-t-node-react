@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/Ri";
 import { BiEditAlt } from "react-icons/Bi";
 // import { AiOutlineUser } from "react-icons/Ai";
@@ -7,46 +7,46 @@ import "react-toastify/dist/ReactToastify.css";
 
 const TableV1 = () => {
 
-    const tableHeader = [
-        "Nombre completo",
-        "Plan",
-        "Celular",
-        "Mail",
-        "Inicio",
-        "Vencimiento",
-        "Acción",
-      ];
-      const tableBody = [
-        {
-          id: 1,
-          nombre: "Kristin Watson",
-          plan: "full",
-          celular: "123456789",
-          mail: "kristin@mail.com",
-          inicio: "Text",
-          vencimiento: "08/08/2023",
-        },
-        {
-          id: 2,
-          nombre: "Floyd Miles",
-          plan: "free pass",
-          celular: "456789123",
-          mail: "floyd@mail.com",
-          inicio: "Text",
-          vencimiento: "08/08/2023",
-        },
-        {
-          id: 3,
-          nombre: "Brooklyn Simmons",
-          plan: "2 weeks",
-          celular: "789123456",
-          mail: "brooklyn@mail.com",
-          inicio: "Text",
-          vencimiento: "08/08/2023",
-        },
-      ];
-      const [tHeader, setTHeader] = useState(tableHeader);
-      const [tBody, setTBody] = useState(tableBody);
+  const tableHeader = [
+    "Nombre completo",
+    "Plan",
+    "Celular",
+    "Mail",
+    "Inicio",
+    "Vencimiento",
+    "Acción",
+  ];
+  const tableBody = [
+    {
+      id: 1,
+      nombre: "Kristin Watson",
+      plan: "full",
+      celular: "123456789",
+      mail: "kristin@mail.com",
+      inicio: "Text",
+      vencimiento: "08/08/2023",
+    },
+    {
+      id: 2,
+      nombre: "Floyd Miles",
+      plan: "free pass",
+      celular: "456789123",
+      mail: "floyd@mail.com",
+      inicio: "Text",
+      vencimiento: "08/08/2023",
+    },
+    {
+      id: 3,
+      nombre: "Brooklyn Simmons",
+      plan: "2 weeks",
+      celular: "789123456",
+      mail: "brooklyn@mail.com",
+      inicio: "Text",
+      vencimiento: "08/08/2023",
+    },
+  ];
+  const [tHeader, setTHeader] = useState(tableHeader);
+  const [tBody, setTBody] = useState(tableBody);
 
 
 
