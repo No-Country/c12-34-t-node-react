@@ -11,6 +11,7 @@ class Provider extends Model<IProvider> implements IProvider {
   email!: string;
   description!: string;
   provider!: string;
+  date!: string;
 }
 
 Provider.init(
@@ -42,6 +43,11 @@ Provider.init(
     },
     provider: {
       type: DataTypes.STRING,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+
     },
   },
   {
