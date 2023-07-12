@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const hrVariants = ['absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-300 border-0 -z-10 transition-colors ease-out', 'absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-600 border-0 -z-10 transition-colors ease-out']
-const aVariants = ['peer btn btn-xs bg-amber-100 text-gray-600 rounded-full', 'peer btn btn-xs bg-amber-300 text-gray-600 rounded-full']
+const aVariants = ['peer btn btn-xs hover:bg-amber-200 bg-amber-100 text-gray-600 rounded-full', 'peer btn btn-xs hover:bg-amber-200 bg-amber-300 text-gray-600 rounded-full']
 
 function ItemMenuCarrusel({ i, last, onClick, isActive }) {
   return (
@@ -17,7 +17,7 @@ function ItemMenuCarrusel({ i, last, onClick, isActive }) {
 const Carrusel = () => {
   const [activeIndex, setActiveIndex] = useState(-1)
   const handleClick = (index) => {
-    setActiveIndex(index === activeIndex ? -1 : index)
+    setActiveIndex(index === activeIndex ? activeIndex : index)
   }
   return (
     <section>
