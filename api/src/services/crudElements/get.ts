@@ -7,7 +7,7 @@ export const getElementsGym = async (_: Request, res: Response) => {
     const infoElements = await Elements.findAll({
       include: {
         model: User,
-        attributes: ["user", "email"],
+        attributes: ["user", "email", "rol"],
       },
     });
     if (!infoElements.length) {

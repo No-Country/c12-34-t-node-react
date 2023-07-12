@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { ElementUser, State } from "../../interfaces/IElements";
+import { ElementUser, IElements, State } from "../../interfaces/IElements";
 import Elements from "../../models/Element";
 
 export const postElementsGym = async (req: Request, res: Response) => {
-  const element = req.body as ElementUser;
+  // const element = req.body as ElementUser;
+  const element = req.body as IElements;
 
   const errorName = typeof element.name !== "string" || element.name.length === 0
   const errorType = typeof element.type !== "string" || element.type.length === 0
