@@ -4,6 +4,7 @@ import cors from "cors";
 import { db } from "./db";
 import morgan from "morgan";
 import "../src/models/User";
+import "../src/models/Providers"
 import allRoutes from "./routes/routes";
 
 const app: Application = express();
