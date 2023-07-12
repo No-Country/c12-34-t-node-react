@@ -2,13 +2,20 @@ import './App.css'
 import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
-import { Footer, Header, Login, Register } from './componentes'
+import { Header, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
+
 import AdminPage from './componentes/AdminPage'
+
+import NotFound from './pages/NotFound'
+
 
 
 
 function App() {
+
+  // const {pathname} = useLocation()
+  // const isAdminPage = pathname.includes('admin')
 
   return (
     <>
@@ -26,11 +33,18 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path="/admin/*" element={<HomePrincipal/>} />
+
         <Route path="/admin" element={<AdminPage/>} />
+
+        <Route path='*' element={<NotFound />} />
+
       </Routes>
       </div>
       
+      {/* {!isAdminPage &&
+
       <Footer />
+      } */}
     </>
 
   )

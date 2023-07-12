@@ -1,14 +1,14 @@
 import { db } from "../db";
-import { Elements, IUser } from "../interfaces/IUser";
+import { IUser, Rol } from "../interfaces/IUser";
 import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
   id!: string;
-  name!: string;
+  user!: string;
   // lastName!: string;
   email!: string;
   password!: string;
-  elementsUser!: Array<Elements>;
+  rol!: Rol;
 }
 
 User.init(
@@ -18,7 +18,7 @@ User.init(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    name: {
+    user: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -34,12 +34,13 @@ User.init(
       //   isEmail: true,
       // },
     },
+    rol: {
+      type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.User),
+      allowNull: false,
+    },
     password: {
       type: DataTypes.STRING,
       unique: true
-    },
-    elementsUser: {
-      type: DataTypes.JSONB(),
     },
   },
   {

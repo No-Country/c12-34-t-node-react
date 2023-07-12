@@ -1,17 +1,20 @@
-import { IElements } from "./../interfaces/IElements";
 import { db } from "../db";
+import { IProvider } from "../interfaces/IProviders"
 import { Model, DataTypes } from "sequelize";
-import { State } from "./../interfaces/IElements";
-class Elements extends Model<IElements> implements IElements {
+
+
+class Provider extends Model<IProvider> implements IProvider {
   id!: string;
   name!: string;
-  type!: string;
+  product!: string;
+  contact!: string;
+  email!: string;
   description!: string;
-  price!: number;
+  provider!: string;
   date!: string;
-  state!: State;
 }
-Elements.init(
+
+Provider.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -22,35 +25,37 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
+    product: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    contact: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
     description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
+      type: DataTypes.STRING,
     },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    provider: {
+      type: DataTypes.STRING,
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
+
     },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // isSelected: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
   },
   {
     sequelize: db,
-    modelName: "elements",
+    modelName: "provider",
     timestamps: false,
   }
 );
-export default Elements;
+
+
+export default Provider;

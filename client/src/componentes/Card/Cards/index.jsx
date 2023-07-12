@@ -39,6 +39,7 @@ const Card = () => {
   return (
     <>
       <div className="flex flex-wrap gap-4 justify-evenly">
+        
         {data.map(({ id }) => (
           <div key={id}>
             <ItemCard data={data[id]} />

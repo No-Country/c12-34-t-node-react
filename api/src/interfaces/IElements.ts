@@ -5,6 +5,7 @@ export enum State {
   En_reparacion = "En reparacion",
 }
 
+//* Interface del Modelo Elements
 export interface IElements {
   id?: string,
   name: string,
@@ -13,5 +14,8 @@ export interface IElements {
   price: number,
   date: string,
   state: State,
-  nameUser: string,
+}
+
+export interface ElementUser extends IElements {
+  userId: string,
 }
