@@ -29,7 +29,7 @@ const AdminPage = () => {
         <div>
               <div > 
                   <div className='flex justify-center'>
-                     <img src={logo} alt="" className="w-[20vh] xxxl:ml-[750px] xxl:ml-[140px] xl:ml-[100px] lg:ml-[170px] sm:ml-[200px]   xxxs:mt-[100px] sm:mt-[80px] xxs:mt-[80px] lg:mt-[40px] xl:mt-[20px]"/>
+                     <img src={logo} alt="" className="w-[20vh] xxxl:ml-[550px] xxl:ml-[140px] xl:ml-[100px] lg:ml-[170px] sm:ml-[200px]   xxxs:mt-[100px] sm:mt-[80px] xxs:mt-[80px] lg:mt-[40px] xl:mt-[20px]"/>
                   </div>
                    <br />
                    <div className='position-left'>
@@ -43,7 +43,7 @@ const AdminPage = () => {
             <div>
             <button className="btn btn-warning mt-5 ml-[5vh] xxxs:text-[10px] xxxs:w-[100px] xxxs:mb-[80px]">Mi Cuenta</button>
               <div className="hero min-h-screen bg-white">
-                <div className="hero-content flex-col lg:flex-row xxxl:ml-[580px] xxl:ml-[45vh] xl:mb-[1000px]  xl:ml-[300px] lg:mb-[700px] lg:ml-[300px] md:mb-[1000px] md:ml-[150px] sm:mb-[1000vh] sm:ml-[250px] xxs:mb-[800px] xxs:ml-[200px] xxxs:mb-[500px] xxxs:ml-[50px]">
+                <div className="hero-content flex-col lg:flex-row xxxl:ml-[480px] xxl:ml-[45vh] xl:mb-[1000px]  xl:ml-[300px] lg:mb-[700px] lg:ml-[300px] md:mb-[1000px] md:ml-[150px] sm:mb-[1000vh] sm:ml-[250px] xxs:mb-[800px] xxs:ml-[200px] xxxs:mb-[500px] xxxs:ml-[50px]">
                 <div className="avatar md:position-relative bottom-[10vh] ">
                     <div className="w-[30vh] rounded-full">
                         <img src={profesor} />
