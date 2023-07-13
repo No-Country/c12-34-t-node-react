@@ -12,8 +12,8 @@ const GroupClasses = () => {
         </div>
 
         <div>
-             <div>
-                 <img src={logoConNombre} alt="" className='w-[200px] mt-[40px]  ml-[800px]'/>
+             <div className='xxxxl:visible xxxl:visible xxl:visible xl:visible lg:visible md:visible sm:visible xxs:visible xxxs:visible  '>
+                 <img src={logoConNombre} alt="" className='w-[200px] mt-[40px]  ml-[800px]  xxxl:ml-[700px] xxl:ml-[600px] xl:ml-[540px] lg:ml-[540px] md:ml-[540px] sm:ml-[540px] xxs:ml-[540px] xxxs:ml-[500px] '/>
              </div>
 
              <div>
@@ -24,25 +24,25 @@ const GroupClasses = () => {
                     </div>
 
                     <div>
-                    <button className=" btn-primary text-12px w-[120px] h-[22px] rounded-lg ml-[50px]">Hoy 25/7</button>
+                    <button className=" btn-primary text-12px w-[120px] h-[22px] rounded-lg ml-[50px] ">Hoy 25/7</button>
                     </div>
                  </div>
              </div>
 
-             <div className='flex mb-10'>
+             <div className='flex mb-100 xxxxl:flex xxxl:flex  xxl:flex xl:flex lg:flex md:flex sm:flex xxs:flex xxxs:flex xxxxs:inline-block'>
 
-             <div className='flex-direction: colum ml-[250px] mt-[50px]'>
+             <div className='flex-direction: colum xxxxl:ml-[220px] mt-[20px] xxxl:ml-[120px] xxl:ml-[40px]        '>
 
             <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px]">Mañana</button>
               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
                          <div className="w-24 rounded-full">
-                             <img src="https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/vivirsalud/L/Los-SI-y-NO-del-aerobox-4.jpg" />
+                             <img src="https://contenidos.imq.es/hubfs/Imported_Blog_Media/crossfit-entrenamiento-1.jpg" />
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">Aero Box</h2>
+                    <h2 className="card-title text-[15px] text-white b">CROSSFIT</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Noe</button>
@@ -101,11 +101,11 @@ const GroupClasses = () => {
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
                          <div className="w-24 rounded-full">
-                             <img src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/yoga-regla.jpg.webp?itok=PNVZueQF" />
+                             <img src="https://pymstatic.com/6843/conversions/spinning-wide.jpg" />
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">YOGA</h2>
+                    <h2 className="card-title text-[15px] text-white b">Spinning</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Carla</button>
@@ -120,21 +120,42 @@ const GroupClasses = () => {
             
              </div>
 
-             <div className='flex-direction: colum ml-[30px] mt-[50px]'>
+             <div className='flex-direction: colum ml-[30px] mt-[20px]'>
 
              <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px]">Tarde</button>
               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
                          <div className="w-24 rounded-full">
-                             <img src="https://uvn-brightspot.s3.amazonaws.com/assets/vixes/imj/vivirsalud/L/Los-SI-y-NO-del-aerobox-4.jpg" />
+                             <img src="https://pymstatic.com/6843/conversions/spinning-wide.jpg" />
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">Aero Box</h2>
+                    <h2 className="card-title text-[15px] text-white b">Spinning</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Noe</button>
+                      <div className='text-white text-[12px] ml-[40px]'>
+                         <p>5 Lugares</p>
+                      </div>
+                      
+                    </div>
+                  </div>
+              </div>
+               </div>
+
+               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
+                 <div className='flex'>
+                    <div className="avatar float-left h-[80px] mt-[25px]">
+                         <div className="w-24 rounded-full">
+                             <img src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/yoga-regla.jpg.webp?itok=PNVZueQF" /> 
+                         </div>
+                   </div>
+                  <div className="card-body">
+                    <h2 className="card-title text-[15px] text-white b">Yoga</h2>
+                    <p className='text-white'>09:30 am - 60 min</p>
+                    <div className="card-actions float-right ">
+                      <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Maria</button>
                       <div className='text-white text-[12px] ml-[40px]'>
                          <p>5 Lugares</p>
                       </div>
@@ -155,27 +176,6 @@ const GroupClasses = () => {
                     <h2 className="card-title text-[15px] text-white b">Musculacion</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
-                      <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Maria</button>
-                      <div className='text-white text-[12px] ml-[40px]'>
-                         <p>5 Lugares</p>
-                      </div>
-                      
-                    </div>
-                  </div>
-              </div>
-               </div>
-
-               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
-                 <div className='flex'>
-                    <div className="avatar float-left h-[80px] mt-[25px]">
-                         <div className="w-24 rounded-full">
-                             <img src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/yoga-regla.jpg.webp?itok=PNVZueQF" />
-                         </div>
-                   </div>
-                  <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">YOGA</h2>
-                    <p className='text-white'>09:30 am - 60 min</p>
-                    <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Carla</button>
                       <div className='text-white text-[12px] ml-[40px]'>
                          <p>5 Lugares</p>
@@ -194,10 +194,10 @@ const GroupClasses = () => {
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">YOGA</h2>
+                    <h2 className="card-title text-[15px] text-white b">Aero Box</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
-                      <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Aero Box</button>
+                      <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Maria</button>
                       <div className='text-white text-[12px] ml-[40px]'>
                          <p>5 Lugares</p>
                       </div>
@@ -209,7 +209,7 @@ const GroupClasses = () => {
             
              </div>
 
-             <div className='flex-direction: colum ml-[30px] mt-[50px]'>
+             <div className='flex-direction: colum ml-[30px] mt-[20px]'>
 
                  <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px]">Noche</button>
               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
@@ -258,11 +258,11 @@ const GroupClasses = () => {
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
                          <div className="w-24 rounded-full">
-                             <img src="https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/yoga-regla.jpg.webp?itok=PNVZueQF" />
+                             <img src="https://contenidos.imq.es/hubfs/Imported_Blog_Media/crossfit-entrenamiento-1.jpg" />
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">YOGA</h2>
+                    <h2 className="card-title text-[15px] text-white b">CROSSFIT</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Carla</button>
@@ -279,11 +279,11 @@ const GroupClasses = () => {
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
                          <div className="w-24 rounded-full">
-                             <img src="https://www.musculacion.net/biceps-triceps-a-muerte.png" />
+                             <img src="https://pymstatic.com/6843/conversions/spinning-wide.jpg" />
                          </div>
                    </div>
                   <div className="card-body">
-                    <h2 className="card-title text-[15px] text-white b">Musculacion</h2>
+                    <h2 className="card-title text-[15px] text-white b">Spinning</h2>
                     <p className='text-white'>09:30 am - 60 min</p>
                     <div className="card-actions float-right ">
                       <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg">Profe Carla</button>
