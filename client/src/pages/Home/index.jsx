@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { TableV1, Bienes } from '../../componentes/index'
+import { TableV1, Bienes,BienesMaquinas } from '../../componentes/index'
 import Sidebar from './Components/Sidebar'
 import Horarios from './Components/Horarios'
 import Footer from './Components/Footer'
 
 const HomePrincipal = () => {
-
+  
   return (
 
     <>
@@ -22,6 +22,7 @@ const HomePrincipal = () => {
 
           <Route path='/admin' element={<h1>acá iria el componente admin</h1>} />
           <Route path='/bienes' element={<Bienes />} />
+          <Route path='/bienes/maquinas' element={<BienesMaquinas/>} />
           <Route path='/staff' element={<h1 className='m-auto'>acá iria el componente staff</h1>} />
           <Route path='/clientes' element={<TableV1 />} />
           <Route path='/proovedores' element={<h1>acá iria el componente proovedores</h1>} />
