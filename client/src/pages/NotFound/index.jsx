@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { Footer } from "../../componentes";
 
 const NotFound = () => {
 
-
   return (
+    <div style={{backgroundColor:'white'}}>
     <div style={{
       display: 'flex',
       width: '100%',
@@ -32,6 +33,9 @@ const NotFound = () => {
           Ir al inicio
         </Link>
       </div>
+      
+    </div>
+    <Footer />
     </div>
   );
 };
