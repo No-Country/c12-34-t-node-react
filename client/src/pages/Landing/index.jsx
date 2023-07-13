@@ -1,4 +1,4 @@
-import { Section, Hero, Carrusel, Cards, Footer } from '../../componentes/index'
+import {   Footer } from '../../componentes/index'
 import { Section, Hero, Carrusel, Cards } from '../../componentes/index'
 import AdminPage from '../../componentes/AdminPage'
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import logoConNombre from "../../img/logoConNombre.png"
+import "./clases.css"
 
 //https://statics-cuidateplus.marca.com/cms/styles/natural/azblob/yoga-regla.jpg.webp?itok=PNVZueQF
 
@@ -12,19 +13,19 @@ const GroupClasses = () => {
         </div>
 
         <div>
-             <div className='xxxxl:visible xxxl:visible xxl:visible xl:visible lg:visible md:visible sm:visible xxs:visible xxxs:visible  '>
-                 <img src={logoConNombre} alt="" className='w-[200px] mt-[40px]  ml-[800px]  xxxl:ml-[700px] xxl:ml-[600px] xl:ml-[540px] lg:ml-[540px] md:ml-[540px] sm:ml-[540px] xxs:ml-[540px] xxxs:ml-[500px] '/>
+             <div className='custom-hidden'>
+                 <img src={logoConNombre} alt="" className='w-[200px] mt-[40px]  ml-[800px]  xxxl:ml-[700px] xxl:ml-[600px] xl:ml-[540px] lg:ml-[540px] md:ml-[540px] sm:ml-[540px] xxs:ml-[540px] xxxs:ml-[500px] ' />
              </div>
 
              <div>
-                 <div className='flex'>
+                 <div className='xxxs:flex xxs:flex xxxxs:inline-block'>
                     <div>
-                      <p className='ml-6'><b>Clases Grupales</b></p>
+                      <p className='ml-6 xxxxs:ml-[120px] xxxs:mt-[1px] xxs:mt-[1px] xxxxs:mt-[30px]'><b>Clases Grupales</b></p>
                       <hr className='h-10 text-black'/>
                     </div>
 
-                    <div>
-                    <button className=" btn-primary text-12px w-[120px] h-[22px] rounded-lg ml-[50px] ">Hoy 25/7</button>
+                    <div className=''>
+                    <button className=" btn-primary text-12px w-[120px] h-[22px] rounded-lg ml-[50px] xxxxs:ml-[120px]">Hoy 25/7</button>
                     </div>
                  </div>
              </div>
@@ -120,9 +121,9 @@ const GroupClasses = () => {
             
              </div>
 
-             <div className='flex-direction: colum ml-[30px] mt-[20px]'>
+             <div className='flex-direction: colum ml-[30px] mt-[20px] xxxxs:ml-[5px]'>
 
-             <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px]">Tarde</button>
+             <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px] xxxxs:ml-[140px]">Tarde</button>
               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 
                  <div className='flex'>
                     <div className="avatar float-left h-[80px] mt-[25px]">
@@ -209,7 +210,7 @@ const GroupClasses = () => {
             
              </div>
 
-             <div className='flex-direction: colum ml-[30px] mt-[20px]'>
+             <div className='flex-direction: colum ml-[30px] mt-[20px] xxxxs:ml-[5px]'>
 
                  <button className=" btn-primary text-[13px] w-[120px] h-[20px] rounded-lg ml-[120px]">Noche</button>
               <div className="card w-96  bg-[#343A40]  shadow-xl h-[140px]  m-[9px]"> 

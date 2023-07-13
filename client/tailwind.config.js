@@ -37,7 +37,7 @@ export default {
       sm: "640px",
       xxs: "480px",
       xxxs: "390px",
-      xxxxs: "0px"
+      xxxxs: "1px"
     },
   },
   plugins: [
