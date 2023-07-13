@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import Provider from "../models/Providers"
 import { IProvider } from "interfaces/IProviders"
+import { User } from "../models/relations"
 
 
 
@@ -8,7 +9,12 @@ export const getProvider = async (req: Request, res: Response) => {
 
 
   try {
-    const proveedores = await Provider.findAll()
+    const proveedores = await Provider.findAll({
+      include: {
+        model: User,
+        attributes: ["user"]
+      }
+    })
 
     return res.status(200).json({ msg: "Todos los proveedores", proveedores })
 
@@ -49,7 +55,10 @@ export const postProvider = async (req: Request, res: Response) => {
 
     const newProveedor = await Provider.create(req.body)
 
-    res.send(newProveedor)
+    if (newProveedor) {
+      return res.status(200).json({ msg: "Se registro el proveedor con exito", newProveedor })
+    }
+
 
   } catch (error) {
     console.log(error)

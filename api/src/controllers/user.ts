@@ -1,9 +1,9 @@
-// import {User} from '../models/relations'
+import { Provider, User } from '../models/relations'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import { Elements, User } from '../models/relations';
+import { Elements } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
@@ -12,7 +12,6 @@ export const registerUser = async (req: Request, res: Response) => {
 
   try {
 
-    // if (!usuario.user || !usuario.password || !usuario.email || !usuario.rol)
     if (!usuario.user || !usuario.password || !usuario.email)
 
       return res.status(400).json({ msg: "Todos los campos son requeridos" })
@@ -33,7 +32,6 @@ export const registerUser = async (req: Request, res: Response) => {
       // lastName: usuario.lastName,
       email: usuario.email,
       password: encriptado,
-      // rol: usuario.rol
     })
 
 
@@ -48,15 +46,16 @@ export const registerUser = async (req: Request, res: Response) => {
 }
 
 export const loginUser = async (req: Request, res: Response) => {
+
   const usuario = req.body as IUser
 
   try {
-    const existUser = await User.findOne({
-      where: {
-        email: usuario.email,
-        rol: usuario.rol,
-      }
-    })
+    const existUser = await User.findOne(
+      {
+        where: { email: usuario.email }
+      },
+
+    )
 
     if (!existUser) {
       return res.status(401).json({ msg: "Esta cuenta no esta registrada" })
@@ -67,6 +66,7 @@ export const loginUser = async (req: Request, res: Response) => {
     const compararPassword = await passwordCorrecto(usuario.password, passwordEncriptado)
 
     if (compararPassword) {
+
       const token = await generarToken(existUser.email)
 
       const data = {
@@ -75,7 +75,9 @@ export const loginUser = async (req: Request, res: Response) => {
       }
 
       return res.status(200).json({ msg: "Session y token valido", data })
+
     } else {
+
       return res.status(403).json({ msg: "Clave invalida" })
     }
 
@@ -87,13 +89,16 @@ export const loginUser = async (req: Request, res: Response) => {
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const allUsers = await User.findAll({
-      include: {
+      include: [{
         model: Elements,
         attributes: ["name"],
-      },
-      attributes: ["id", "user", "email", "rol"],
+      }, {
+        model: Provider,
+        attributes: ["name"]
+      }],
+      attributes: ["id", "user", "email"],
     });
-  
+
     if (!allUsers.length) {
       throw new Error("No hay usuarios registrados");
     } else {
