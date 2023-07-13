@@ -55,9 +55,6 @@ allRoutes.put("/api/provider/:id", putProvider)
 
 allRoutes.delete("/api/provider/:id", deleteProvider)
 
-// ─── Clases Grupales ───────────────────────────────────────────────────────────────
-allRoutes.post("/api/class-group", postClassGym)
-
 
 
 export default allRoutes;

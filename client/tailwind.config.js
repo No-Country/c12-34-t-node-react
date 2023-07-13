@@ -28,6 +28,7 @@ export default {
       },
     },
     screens: {
+      xxxxl:"1920px",
       xxxl: "1580px",
       xxl: "1400px",
       xl: "1280px",
@@ -35,7 +36,8 @@ export default {
       md: "768px",
       sm: "640px",
       xxs: "480px",
-      xxxs: "320px",
+      xxxs: "390px",
+      xxxxs: "0px"
     },
   },
   plugins: [
