@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import { Header, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
+import AdminPage from './componentes/AdminPage'
 import NotFound from './pages/NotFound'
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path="/admin/*" element={<HomePrincipal/>} />
+        <Route path="/admin" element={<AdminPage/>} />
 
         <Route path='*' element={<NotFound />} />
       </Routes>

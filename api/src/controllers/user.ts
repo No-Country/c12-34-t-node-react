@@ -9,6 +9,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
 
   const usuario = req.body as IUser
+  console.log(req.body)
 
   try {
 
@@ -23,7 +24,9 @@ export const registerUser = async (req: Request, res: Response) => {
       })
 
     if (existUser) {
+      console.log(req.body)
       return res.status(400).json({ msg: "El usuario ya existe", existUser })
+     
     }
 
     const encriptado = await passwordHashado(usuario.password)
@@ -49,6 +52,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
 export const loginUser = async (req: Request, res: Response) => {
   const usuario = req.body as IUser
+  console.log(req.body)
+
 
   try {
     const existUser = await User.findOne({
@@ -78,6 +83,22 @@ export const loginUser = async (req: Request, res: Response) => {
     } else {
       return res.status(403).json({ msg: "Clave invalida" })
     }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const perfil = async (req: any, res: Response) => {
+
+
+  try {
+
+    const usuarioRegistado = await User.findOne(req.usuarioId)
+
+    if (!usuarioRegistado) return res.status(404).json({ message: "No se encontro el pefil" })
+
+    res.status(200).json({ message: "Perfil del usuario", usuarioRegistado })
 
   } catch (error) {
     console.log(error)
