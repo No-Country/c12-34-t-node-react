@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        PoppinsRegular: ["Poppins-Regular", "sans-serif"],
+        PoppinsRegular: ["Poppins", "sans-serif"],
         PoppinsMedium: ["Poppins-Medium", "sans-serif"],
         PoppinsSemibold: ["Poppins-Semibold", "sans-serif"],
         PoppinsBold: ["Poppins-Bold", "sans-serif"],
