@@ -3,7 +3,7 @@ import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import { Elements, User } from '../models/relations';
+import { Class, Elements, User } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
@@ -33,7 +33,7 @@ export const registerUser = async (req: Request, res: Response) => {
       // lastName: usuario.lastName,
       email: usuario.email,
       password: encriptado,
-      // rol: usuario.rol
+      rol: usuario.rol
     })
 
 
@@ -87,10 +87,13 @@ export const loginUser = async (req: Request, res: Response) => {
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const allUsers = await User.findAll({
-      include: {
+      include: [{
         model: Elements,
         attributes: ["name"],
-      },
+      }, {
+        model: Class,
+        attributes: ["name"]
+      }],
       attributes: ["id", "user", "email", "rol"],
     });
   
