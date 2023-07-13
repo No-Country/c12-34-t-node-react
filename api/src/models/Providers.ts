@@ -45,14 +45,14 @@ Provider.init(
       type: DataTypes.STRING,
     },
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
 
     },
   },
   {
     sequelize: db,
-    modelName: "provider",
+    modelName: "Provider",
     timestamps: false,
   }
 );

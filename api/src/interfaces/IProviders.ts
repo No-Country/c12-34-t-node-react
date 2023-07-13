@@ -6,5 +6,5 @@ export interface IProvider {
   email: string;
   description: string;
   provider: string;
-  date: string
+  date?: string
 }
