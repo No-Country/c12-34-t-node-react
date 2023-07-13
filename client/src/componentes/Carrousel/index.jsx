@@ -6,7 +6,7 @@ import img5 from './assets/weight-lifting-gd5a63555c_1920.jpg'
 
 function ItemMenuCarrusel({ i, last }) {
   return (
-    <span className='relative'>
+    <span id='galeria' className='relative'>
       <a href={`${'#item' + i}`} className=" btn btn-xs bg-amber-200 hover:bg-amber-50 text-gray-600 rounded-full">{i}</a>
       {!last &&
         <hr className='absolute -bottom-1 h-px w-[20vw] mb-4 mt-0 bg-violet-300 border-0 -z-10' />

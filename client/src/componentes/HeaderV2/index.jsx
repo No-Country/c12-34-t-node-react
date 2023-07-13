@@ -1,37 +1,34 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+
+import { Link, useNavigate } from "react-router-dom";
+// import Button from "../Button";
+import SideMenu from "./SideMenu";
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { AiOutlineClose } from 'react-icons/ai'
+
+import styles from "./styles.module.css";
 
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const openMenu = () => setShowMenu(true);
+  const closeMenu = () => setShowMenu(false);
+
+  const navigate = useNavigate()
+
+  const token = sessionStorage.getItem("userToken")
+  // const toggleMenu = () => setShowMenu(prev => !prev);
+
   return (
-    <navbar
-      className="navbar bg-base-100 main-content w-full w-max-[2000px] shadow-lg absolute top-0 left-0 right-0 z-50"
+    <div
+      className={styles.container}
+      style={{ backgroundColor: showMenu ? "#1d232a" : "#1d232a" }}
     >
-      <div className='navbar-start'>
-        <div className='dropdown'>
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-          </label>
-          {/* contenido */}
-          <div className='flex w-full w-max-[455px]'>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box menu-horizontal">
-              <li>
-                <a>Link</a>
-              </li>
-              <li>
-                <a>Galería</a>
-              </li>
-              <li>
-                <a>Colaboradores</a>
-              </li>
-              <li>
-                <a>Contacto</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="flex-1">
-        <Link to="/">
-          <svg
+      <div className={styles.content}>
+
+      <div className={styles.left}>
+        <Link className={styles.linkLogo} to="/">
+        <svg
             style={{ marginLeft: "3px" }}
             width="210"
             height="15"
@@ -45,41 +42,84 @@ const Header = () => {
             />
           </svg>
         </Link>
+
       </div>
-      <div className='navbar-end hidden lg:flex w-full w-max-[455px] '>
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box menu-horizontal">
-          <li>
-            <a>Link</a>
-          </li>
-          <li>
-            <a>Galería</a>
-          </li>
-          <li>
-            <a>Colaboradores</a>
-          </li>
-          <li>
-            <a>Contacto</a>
-          </li>
-        </ul>
+
+      <nav className={styles.navMenu}>
+        <a href="#galeria">Galería</a>
+        <a href="#colaboradores">Colaboradores</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      { token === null
+        ? <div className={styles.login}>
+            <button onClick={() => navigate('/login')}>Ingresar</button>
+          </div>
+        : <div className={styles.login}>
+            <button onClick={() => {
+              sessionStorage.clear('userToken')
+              navigate('/')
+              }}>Salir</button>
+          </div>
+      
+      }
+   
+
+      <button
+        // variant='outline'
+        onClick={showMenu ? closeMenu : openMenu}
+        className={styles.btnMenu}
+      >
+        {showMenu
+          ? <AiOutlineClose size={22} style={{color: 'white', marginTop: '7px'}} />
+          : <GiHamburgerMenu size={22} style={{marginTop: '8px'}}  />
+        }
+      </button>
+
+      {showMenu && <div className={styles.background} />}
+
+      <SideMenu
+       isOpen={showMenu}
+      />
+
+      {/* {showMenu && <SideMenu isOpen={showMenu} />} */}
       </div>
-      <div className=' flex items-center justify-between '>
-        <Link
-          to="/register"
-          style={{ padding: "10px", color: "white", marginRight: "7px" }}
-          className="bg-blue-500 rounded-lg"
-        >
-          Registrarse
-        </Link>
-        <Link
-          to="/login"
-          style={{ padding: "10px", color: "white" }}
-          className="bg-gray-500 rounded-lg"
-        >
-          Ingresar
-        </Link>
-      </div>
-    </navbar>
-  )
+
+    </div>
+  );
+};
+
+export default Header;
+
+{
+  /* <div className={styles.burgerMenu} onClick={handleMenuClick}>
+          <div className={styles.lines}></div>
+          <div className={styles.lines}></div>
+          <div className={styles.lines}></div>
+        </div>
+          {showMenu && (
+          <nav className={styles.navMenu}>
+              <Link to="/movies">Movies</Link>
+              <Link to="/tvshows">TV Shows</Link>
+              <Link to="/mylist">My Lists</Link>
+          </nav> 
+          )} */
 }
 
-export default Header
+//   <div className={styles.container}>
+//     <div className={styles.left}>
+//       <Link className={styles.linkLogo} to="/">
+//         <img src={streamiaIMG} />
+//       </Link>
+
+//       <nav className={`${styles.navMenu} ${showMenu ? styles.showMenu : ""}`}>
+//         <Link to="/movies">Movies</Link>
+//         <Link to="/tvshows">TV Shows</Link>
+//         <Link to="/mylist">My Lists</Link>
+//       </nav>
+//     </div>
+//     <div className={styles.right}>
+//       <Button>Log In</Button>
+//     </div>
+//   </div>
+// );

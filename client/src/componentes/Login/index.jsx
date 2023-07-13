@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
-import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
 
@@ -14,6 +13,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
+  const [userTok, setuserTok] = useState("")
 
   const logUser = (e) => {
     e.preventDefault();
@@ -28,27 +28,45 @@ const Login = () => {
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
       .then(res => {
         const user = res.data;
-        console.log(user?.name);
-
-        swAlert(<h2>Bienvenido {userName}</h2>);
-        navigate('/admin');
+        console.log(user.data.token);
+        const newToken = user.data.token
+        sessionStorage.setItem('userToken', newToken);
+        console.log(sessionStorage.getItem("userToken"))
+        console.log("El token que me trae el back es: " + newToken)
+       console.log(user)
+          
+      
+        swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
+       navigate('/admin');
         if (name.length === 0) {
           setNotName(true);
         }
       })
       .catch(err => {
         console.log(err);
-        swAlert(<h2>{err}</h2>);
-        navigate('/register');
+        swAlert(<h2>{err.response.data.msg}</h2>);
+        if (err.response.data.msg === 'Esta cuenta no está registrada')
+        {
+          navigate('/register')
+        } 
+
+        
+        console.log(err.response.data.msg)
       });
   };
+ 
+  
+   
+ 
+
+      
 
 
   return (
     <>
 
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M303 248.174C303 352.46 235.171 437 151.5 437C67.8288 437 0 352.46 0 248.174C0 143.888 67.8294 343.394 151.501 343.394C235.172 343.394 303 143.888 303 248.174Z" fill="#F9D51C" />
@@ -69,6 +87,8 @@ const Login = () => {
                       <label htmlFor="email" className="block text-sm font-medium leading-6 text-black"> Email </label>
                       <CgAsterisk color='black' />
                     </div>
+           
+ 
 
                     <div className="mt-2">
                       <input style={{ padding: '5px' }} id="email" name="email" placeholder='Email' type="email" autoComplete="email" required onChange={(e) => setName(e.target.value)}

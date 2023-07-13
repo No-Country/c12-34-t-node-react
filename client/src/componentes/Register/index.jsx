@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Section from '../Section';
 import { CgAsterisk } from 'react-icons/cg';
-import Header from '../Header';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
@@ -19,14 +18,16 @@ const Register = () => {
   const register = () => {
 
     const userData = {
-      name: name,
+      user: name,
       password: password,
       email: email,
     };
 
+   console.log(userData)
+
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (userData.name === '' || userData.password === '') {
+    if (userData.user === '' || userData.password === '') {
       toast.error('Los campos no pueden estar vacíos');
       return;
     }
@@ -38,14 +39,14 @@ const Register = () => {
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
-        localStorage.setItem('user', userData.name);
+        // localStorage.setItem('user', userData.user);
         swAlert(<h2>Te has registrado correctamente</h2>);
         navigate('/login');
         console.log(res.data);
       })
       .catch(err => {
-        swAlert(err);
-        console.log(<h2>{err}</h2>);
+        swAlert(<h2>{err.response.data.msg}</h2>);
+        console.log(err);
       });
 
   };
@@ -53,7 +54,7 @@ const Register = () => {
     <>
       <ToastContainer />
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '-70px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)' }}>
 
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,9 +63,9 @@ const Register = () => {
             </svg>
           </Link>
           <div className="w-300">
-            <div style={{ boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)' }} className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded-lg bg-gray-200 p-4  w-[50vh]">
+            <div style={{ boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)' }} className="flex min-h-full flex-1 flex-col justify-center px-6 py-10 lg:px-8 rounded-lg bg-gray-200 p-4  w-[50vh]">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className=" text-center text-2xl font-bold leading-7 tracking-tight text-gray-900">
                   {" "}
                   Registrarse{" "}
                 </h2>
@@ -84,8 +85,8 @@ const Register = () => {
 
                   <div className="mt-2">
                     <input style={{ padding: '5px' }} onChange={(e) => setName(e.target.value)}
-                      id="name"
-                      name="name"
+                      id="user"
+                      name="user"
                       placeholder="Usuario"
                       type="text"
                       required
@@ -190,6 +191,10 @@ const Register = () => {
                     ></img>
                     Inicia sesión con Google
                   </button>
+                  <p className="mt-5 text-center text-sm text-gray-500">
+                    Ya estás registrado?
+                  <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px'}}>Iniciar sesión</Link>
+                  </p>
                 </div>
               </div>
             </div>
