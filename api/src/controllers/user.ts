@@ -1,9 +1,9 @@
-import {User} from '../models/relations'
+import { Provider, User } from '../models/relations'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import {Elements} from '../models/relations';
+import { Elements } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
@@ -89,13 +89,16 @@ export const loginUser = async (req: Request, res: Response) => {
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const allUsers = await User.findAll({
-      include: {
+      include: [{
         model: Elements,
         attributes: ["name"],
-      },
+      }, {
+        model: Provider,
+        attributes: ["name"]
+      }],
       attributes: ["id", "user", "email"],
     });
-  
+
     if (!allUsers.length) {
       throw new Error("No hay usuarios registrados");
     } else {
