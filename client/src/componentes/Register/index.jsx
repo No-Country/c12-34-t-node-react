@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Section from '../Section';
 import { CgAsterisk } from 'react-icons/cg';
-import Header from '../Header';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
@@ -53,7 +52,7 @@ const Register = () => {
     <>
       <ToastContainer />
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '-70px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)' }}>
 
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,9 +61,9 @@ const Register = () => {
             </svg>
           </Link>
           <div className="w-300">
-            <div style={{ boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)' }} className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded-lg bg-gray-200 p-4  w-[50vh]">
+            <div style={{ boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)' }} className="flex min-h-full flex-1 flex-col justify-center px-6 py-10 lg:px-8 rounded-lg bg-gray-200 p-4  w-[50vh]">
               <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className=" text-center text-2xl font-bold leading-7 tracking-tight text-gray-900">
                   {" "}
                   Registrarse{" "}
                 </h2>
@@ -190,7 +189,10 @@ const Register = () => {
                     ></img>
                     Inicia sesión con Google
                   </button>
-                 <Link to={"/login"}> <p> Login</p></Link> 
+                  <p className="mt-5 text-center text-sm text-gray-500">
+                    Ya estás registrado?
+                  <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px'}}>Iniciar sesión</Link>
+                  </p>
                 </div>
               </div>
             </div>

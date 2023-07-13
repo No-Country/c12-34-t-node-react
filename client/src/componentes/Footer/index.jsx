@@ -7,7 +7,7 @@ import {IoLogoWhatsapp} from 'react-icons/io'
 
 const Footer = () => {
   return (
-    <footer >
+    <footer id='contacto' >
       
       <div style={{display:'flex', width:'100%', height:'100%', maxWidth:'2000px', alignItems:'center', boxShadow: "0px 0px 20px rgba(78, 78, 78, 0.1)"}}>
         <div style={{display:'flex', justifyContent:'space-between', maxHeight:'240px', width:'100%', maxWidth:'2400px', padding:'10px' }}>
