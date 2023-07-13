@@ -17,5 +17,5 @@ export interface IElements {
 }
 
 export interface ElementUser extends IElements {
-  nameUser: string,
+  userId: string,
 }
