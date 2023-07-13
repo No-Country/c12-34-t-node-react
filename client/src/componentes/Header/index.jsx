@@ -27,13 +27,13 @@ const Header = () => {
         <div className='flex items-center w-full  w-max-[455px] '>
           <ul tabIndex={0} className="menu menu-horizontal ml-auto gap-2 sm:gap-1">
             <li>
-              <a href='#galería' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Galería</a>
+              <a href='#galería' className="p-1 sm:p-2 font-PoppinsRegular text-pallete-blue">Galería</a>
             </li>
             <li>
-              <a href='#colaboradores' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Colaboradores</a>
+              <a href='#colaboradores' className="p-1 sm:p-2 font-PoppinsRegular text-pallete-blue">Colaboradores</a>
             </li>
             <li>
-              <a href='#contacto' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Contacto</a>
+              <a href='#contacto' className="p-1 sm:p-2 font-PoppinsRegular text-pallete-blue">Contacto</a>
             </li>
           </ul>
         </div>
