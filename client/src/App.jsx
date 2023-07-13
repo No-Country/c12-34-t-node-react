@@ -2,7 +2,7 @@ import './App.css'
 import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
-import { Header, Login, Register } from './componentes'
+import { Header, HeaderV2, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
 
 import AdminPage from './componentes/AdminPage'
@@ -19,7 +19,8 @@ function App() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <HeaderV2 />
 
       <div style={{
         flexGrow: 1,

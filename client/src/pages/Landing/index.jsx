@@ -16,7 +16,7 @@ const Landing = () => {
     </Section>
 
     <div className='flex flex-col text-center gap-10'>
-        <h2 className='text-4xl text-black font-bold'>Colaboradores</h2>
+        <h2 id="colaboradores" className='text-4xl text-black font-bold'>Colaboradores</h2>
       <Section>
         
 
