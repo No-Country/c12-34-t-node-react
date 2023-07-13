@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import { Header, HeaderV2, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
+import GroupClasses from './componentes/GroupClasses'
 
 import AdminPage from './componentes/AdminPage'
 
@@ -38,6 +39,8 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
 
           <Route path='*' element={<NotFound />} />
+
+          <Route path="/admin/reservas" element={<GroupClasses/>}></Route>
 
         </Routes>
       </div>
