@@ -19,6 +19,7 @@ import {
   postProvider,
   putProvider
 } from "../controllers/provider"
+import { postClassGym } from "../services/crudClass/post"
 
 const allRoutes = Router()
 
@@ -49,10 +50,13 @@ allRoutes.delete("/api/elements/:id", deleteElementsGym);
 allRoutes.get("/api/providers", getProvider)
 
 allRoutes.post("/api/provider", postProvider)
-
+allRoutes.post("/api/provider", postProvider)
 allRoutes.put("/api/provider/:id", putProvider)
 
 allRoutes.delete("/api/provider/:id", deleteProvider)
+
+// ─── Clases Grupales ───────────────────────────────────────────────────────────────
+allRoutes.post("/api/class-group", postClassGym)
 
 
 

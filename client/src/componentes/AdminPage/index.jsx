@@ -69,12 +69,8 @@ const AdminPage = () => {
               </div>
             </div>
             </div>
-  
         </div>
-      
       </div>
-    
-       
     </div>
   )
 }

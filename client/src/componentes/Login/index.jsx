@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
-import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
 
@@ -34,10 +33,10 @@ const Login = () => {
         sessionStorage.setItem('userToken', newToken);
         console.log(sessionStorage.getItem("userToken"))
         console.log("El token que me trae el back es: " + newToken)
-       
+       console.log(user)
           
       
-        swAlert(<h2> Bienvenido {userName} </h2>);
+        swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
        navigate('/admin');
         if (name.length === 0) {
           setNotName(true);
@@ -46,7 +45,12 @@ const Login = () => {
       .catch(err => {
         console.log(err);
         swAlert(<h2>{err.response.data.msg}</h2>);
-        navigate('/register');
+        if (err.response.data.msg === 'Esta cuenta no está registrada')
+        {
+          navigate('/register')
+        } 
+
+        
         console.log(err.response.data.msg)
       });
   };
@@ -62,7 +66,7 @@ const Login = () => {
     <>
 
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M303 248.174C303 352.46 235.171 437 151.5 437C67.8288 437 0 352.46 0 248.174C0 143.888 67.8294 343.394 151.501 343.394C235.172 343.394 303 143.888 303 248.174Z" fill="#F9D51C" />

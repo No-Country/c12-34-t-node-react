@@ -27,6 +27,8 @@ const Sidebar = () => {
     { name: "Reservas", link: "/admin/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
     { name: "Gastos", link: "/admin/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
   ];
+
+
   
   return (
     <section className="flex gap-6">
@@ -54,7 +56,7 @@ const Sidebar = () => {
               } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
             >
               <div>{createElement(menu?.icon, { size: "20" })}</div>
-              <h2
+              <h2 
                 style={{
                   transitionDelay: `${i + 3}00ms`,
                 }}
