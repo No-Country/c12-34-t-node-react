@@ -1,11 +1,14 @@
 import styles from "./styles.module.css";
 import {useNavigate } from "react-router-dom";
 
-const SideMenu = ({ isOpen }) => {
+const SideMenu = ({ isOpen}) => {
 
   const navigate = useNavigate()
+  
 
   return (
+
+
     <div 
       style={{ right: isOpen ? 0 : -250 }}
       className={styles.container}
@@ -16,10 +19,12 @@ const SideMenu = ({ isOpen }) => {
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <button className={styles.login} onClick={() => {navigate('/login')
-       
+      <button className={styles.login} onClick={() => {
+        navigate('/login')
     }}> Ingresar</button>
     </div>
+  
+
   );
 };
 

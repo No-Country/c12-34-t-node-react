@@ -18,14 +18,16 @@ const Register = () => {
   const register = () => {
 
     const userData = {
-      name: name,
+      user: name,
       password: password,
       email: email,
     };
 
+   console.log(userData)
+
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (userData.name === '' || userData.password === '') {
+    if (userData.user === '' || userData.password === '') {
       toast.error('Los campos no pueden estar vacíos');
       return;
     }
@@ -37,14 +39,14 @@ const Register = () => {
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
-        localStorage.setItem('user', userData.name);
+        // localStorage.setItem('user', userData.user);
         swAlert(<h2>Te has registrado correctamente</h2>);
         navigate('/login');
         console.log(res.data);
       })
       .catch(err => {
-        swAlert(err);
-        console.log(<h2>{err.msg}</h2>);
+        swAlert(<h2>{err.response.data.msg}</h2>);
+        console.log(err);
       });
 
   };
@@ -83,8 +85,8 @@ const Register = () => {
 
                   <div className="mt-2">
                     <input style={{ padding: '5px' }} onChange={(e) => setName(e.target.value)}
-                      id="name"
-                      name="name"
+                      id="user"
+                      name="user"
                       placeholder="Usuario"
                       type="text"
                       required

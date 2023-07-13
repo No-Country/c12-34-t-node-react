@@ -33,10 +33,10 @@ const Login = () => {
         sessionStorage.setItem('userToken', newToken);
         console.log(sessionStorage.getItem("userToken"))
         console.log("El token que me trae el back es: " + newToken)
-       
+       console.log(user)
           
       
-        swAlert(<h2> Bienvenido {userName} </h2>);
+        swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
        navigate('/admin');
         if (name.length === 0) {
           setNotName(true);
@@ -45,7 +45,12 @@ const Login = () => {
       .catch(err => {
         console.log(err);
         swAlert(<h2>{err.response.data.msg}</h2>);
-        navigate('/register');
+        if (err.response.data.msg === 'Esta cuenta no está registrada')
+        {
+          navigate('/register')
+        } 
+
+        
         console.log(err.response.data.msg)
       });
   };

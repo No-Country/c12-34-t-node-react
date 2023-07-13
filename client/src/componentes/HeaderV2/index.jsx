@@ -16,6 +16,7 @@ const Header = () => {
 
   const navigate = useNavigate()
 
+  const token = sessionStorage.getItem("userToken")
   // const toggleMenu = () => setShowMenu(prev => !prev);
 
   return (
@@ -50,9 +51,19 @@ const Header = () => {
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <div className={styles.login}>
-        <button onClick={() => navigate('/login')}>Ingresar</button>
-      </div>
+      { token === null
+        ? <div className={styles.login}>
+            <button onClick={() => navigate('/login')}>Ingresar</button>
+          </div>
+        : <div className={styles.login}>
+            <button onClick={() => {
+              sessionStorage.clear('userToken')
+              navigate('/')
+              }}>Salir</button>
+          </div>
+      
+      }
+   
 
       <button
         // variant='outline'
@@ -67,7 +78,10 @@ const Header = () => {
 
       {showMenu && <div className={styles.background} />}
 
-      <SideMenu isOpen={showMenu} />
+      <SideMenu
+       isOpen={showMenu}
+      />
+
       {/* {showMenu && <SideMenu isOpen={showMenu} />} */}
       </div>
 
