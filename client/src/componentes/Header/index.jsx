@@ -4,7 +4,7 @@ import Logo from "../Header/assets/FitnessCenterLogoGym.png"
 const Header = () => {
   return (
     <nav
-      className="navbar flex flex-col sm:flex-row items-center w-full bg-pallete-white shadow-lg absolute top-0 left-0 right-0 z-50"
+      className="navbar flex flex-col sm:flex-row items-center w-full gap-3 sm:gap-0 bg-pallete-white shadow-lg absolute top-0 left-0 right-0 z-50"
     >
       <div className="flex-1">
         <Link to="/">
@@ -23,22 +23,22 @@ const Header = () => {
         </Link>
       </div>
       <img className=' w-20 sm:hidden' src={Logo} alt="FitnessCenterLogoGym" />
-      <div className='flex flex-col sm:flex-row items-center gap-5 justify-between'>
+      <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-between'>
         <div className='flex items-center w-full  w-max-[455px] '>
-          <ul tabIndex={0} className="menu menu-horizontal ml-auto">
+          <ul tabIndex={0} className="menu menu-horizontal ml-auto gap-2 sm:gap-1">
             <li>
-              <a href='#galería' className="font-PoppinsRegular">Galería</a>
+              <a href='#galería' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Galería</a>
             </li>
             <li>
-              <a href='#colaboradores' className="font-PoppinsRegular">Colaboradores</a>
+              <a href='#colaboradores' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Colaboradores</a>
             </li>
             <li>
-              <a href='#contacto' className="font-PoppinsRegular">Contacto</a>
+              <a href='#contacto' className="p-0 sm:p-2 font-PoppinsRegular text-pallete-blue">Contacto</a>
             </li>
           </ul>
         </div>
         <div className='hidden sm:flex items-center justify-between gap-2 '>
-          <button className='btn btn-sm text-pallete-white bg-pallete-lightgrey hover:bg-pallete-grey border-none rounded-full'>
+          <button className='btn sm:btn-xs md:btn-sm text-pallete-white bg-pallete-lightgrey hover:bg-pallete-grey border-none rounded-full'>
             <Link
               to="/login"
               className="  rounded-full font-PoppinsMedium"
@@ -46,7 +46,7 @@ const Header = () => {
               Ingresar
             </Link>
           </button>
-          <button className='btn btn-sm text-pallete-white bg-pallete-blue hover:bg-pallete-black border-none rounded-full'>
+          <button className='btn sm:btn-xs md:btn-sm text-pallete-white bg-pallete-blue hover:bg-pallete-black border-none rounded-full'>
             <Link
               to="/register"
               className="  font-PoppinsMedium"
