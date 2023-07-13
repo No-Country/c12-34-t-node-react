@@ -1,9 +1,8 @@
-import { Provider, User } from '../models/relations'
 import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import { Elements } from '../models/relations';
+import { Class, Elements, Provider, User } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
@@ -92,6 +91,9 @@ export const getAllUsers = async (_: Request, res: Response) => {
       include: [{
         model: Elements,
         attributes: ["name"],
+      }, {
+        model: Class,
+        attributes: ["name"]
       }, {
         model: Provider,
         attributes: ["name"]
