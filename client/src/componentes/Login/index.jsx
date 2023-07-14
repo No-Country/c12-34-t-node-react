@@ -44,14 +44,6 @@ const Login = () => {
          userCtx.updateUserTokenRegistered(res.data.data.token)
       
 
-
-        //const user = res.data;
-        //console.log("El nombre del usuario que inicio sesion es", + res.data.user)
-        //console.log(user.data.token);
-        //const newToken = user.data.token
-        //sessionStorage.setItem('userToken', newToken);
-        //console.log(sessionStorage.getItem("userToken"))
-        //console.log("El token que me trae el back es: " + newToken)
     
         swAlert(<h2> Bienvenido {userName} </h2>);
        navigate('/admin');
