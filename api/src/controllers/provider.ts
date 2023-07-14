@@ -1,18 +1,19 @@
 import { Request, Response } from "express"
 import Provider from "../models/Providers"
 import { IProvider } from "interfaces/IProviders"
-import { User } from "../models/relations"
-
-
+import { Elements, User } from "../models/relations"
 
 export const getProvider = async (req: Request, res: Response) => {
-
 
   try {
     const proveedores = await Provider.findAll({
       include: {
         model: User,
-        attributes: ["user"]
+        attributes: ["user"],
+        include: [{
+          model: Elements,
+          attributes: ["name"],
+        }],
       }
     })
 

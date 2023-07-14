@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
+import { useContext } from "react";
+import { UserContext } from "../../store/userContext";
 
 const Login = () => {
 
@@ -13,7 +15,8 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
-  const [userTok, setuserTok] = useState("")
+
+  const userCtx = useContext(UserContext)
 
   const logUser = (e) => {
     e.preventDefault();
@@ -22,26 +25,35 @@ const Login = () => {
       password: password
     };
 
-    const userName = localStorage.getItem('user');
-
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
-      .then(res => {
-        const user = res.data;
-        console.log(user.data.token);
-        const newToken = user.data.token
-        sessionStorage.setItem('userToken', newToken);
-        console.log(sessionStorage.getItem("userToken"))
-        console.log("El token que me trae el back es: " + newToken)
-       console.log(user)
-          
-      
+      .then((res) => {
+        console.log(res.data)
+        console.log(res.data.data.user.user)
+        console.log(res.data.data.user.email)
+        console.log(res.data.data.token)
+        
+         userCtx.updateUser(res.data.data.user.id)
+         userCtx.updateUserNameRegistered(res.data.data.user.user)
+         userCtx.updateUserEmailRegistered(res.data.data.user.email)
+         userCtx.updateUserTokenRegistered(res.data.data.token)
+
+
+         //estas 3 líneas son necesarias para loguear hasta que actualicemos todo lo que utiliza el token del sessionStorage
+         const user = res.data;
+         const newToken = user.data.token
+         sessionStorage.setItem('userToken', newToken);
+        
         swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
-       navigate('/admin');
+        setTimeout(() => { 
+          navigate('/home/admin');
+        }, 500)
+       
         if (name.length === 0) {
           setNotName(true);
         }
       })
+
       .catch(err => {
         console.log(err);
         swAlert(<h2>{err.response.data.msg}</h2>);
@@ -55,16 +67,15 @@ const Login = () => {
       });
   };
  
+    let token = sessionStorage.getItem('userToken')
+    // let token = userCtx.userTokenRegistered
   
-   
- 
-
-      
-
 
   return (
     <>
-
+    {token !== null 
+    ? <Navigate to='/home' />
+    :
       <Section>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>
           <Link to="/">
@@ -79,6 +90,7 @@ const Login = () => {
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">Inicio de sesión</h2>
               </div>
 
+          <form action="#" method="POST">
               <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" action="#" method="POST">
                   <div>
@@ -133,12 +145,15 @@ const Login = () => {
                   <Link to="/register" className="font-semibold leading-6 text-lime-600" style={{ padding: '10px' }} >Crear cuenta</Link>
                 </p>
               </div>
+            </form>
             </div>
           </div>
         </div>
 
       </Section>
+    }
     </>
+
   );
 };
 
