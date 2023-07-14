@@ -1,4 +1,6 @@
 import axios from "axios"
+import React, { useEffect, useContext } from 'react'
+import { UserContext } from "../../store/userContext"
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
@@ -16,6 +18,23 @@ const AdminPage = () => {
       })
   }
 
+  const userCtx = useContext(UserContext)
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("EL ID DEL CONTEXTO FUE SETEADO A" + userCtx.userId)
+      console.log("EL NOMBRE DEL CONTEXTO FUE SETEADO A" + userCtx.userNameRegistered)
+      console.log("EL EMAIL DEL CONTEXTO FUE SETEADO A" + userCtx.userEmailRegistered)
+      console.log("EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered)
+    }, 2500)
+  }, [userCtx.length])
+
+
+
+
+
+
+  const userName = localStorage.getItem('user')
 
   return (
     <div className='flex'>
@@ -33,14 +52,13 @@ const AdminPage = () => {
             <div className='ml-10 '>
               <div>
                 <label htmlFor=""> <b>Nombre y Apellido</b></label>
-                <p>Juan Rodriguez</p>
+                <p>{userCtx.userNameRegistered}</p>
               </div>
 
               <div>
                 <label htmlFor=""> <b>Correo</b></label>
-                <p>juanrodriguez@gmail.com</p>
+                <p>{userCtx.userEmailRegistered}</p>
               </div>
-
               <div>
                 <label htmlFor=""> <b>Cargo</b></label>
                 <p>Administrador</p>

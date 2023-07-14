@@ -54,12 +54,12 @@ export const loginUser = async (req: Request, res: Response) => {
 
 
   try {
-    const existUser = await User.findOne(
-      {
-        where: { email: usuario.email }
-      },
-
-    )
+    const existUser = await User.findOne({
+      where: {
+        email: usuario.email
+       // rol: usuario.rol,
+      }
+    })
 
     if (!existUser) {
       return res.status(401).json({ msg: "Esta cuenta no esta registrada" })
