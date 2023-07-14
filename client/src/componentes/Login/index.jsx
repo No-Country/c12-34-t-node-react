@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
@@ -13,7 +13,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
-  const [userTok, setuserTok] = useState("")
+  
 
   const logUser = (e) => {
     e.preventDefault();
@@ -22,26 +22,20 @@ const Login = () => {
       password: password
     };
 
-    const userName = localStorage.getItem('user');
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
       .then(res => {
         const user = res.data;
-        console.log(user.data.token);
         const newToken = user.data.token
         sessionStorage.setItem('userToken', newToken);
-        console.log(sessionStorage.getItem("userToken"))
-        console.log("El token que me trae el back es: " + newToken)
-       console.log(user)
-          
-      
         swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
-       navigate('/admin');
-        if (name.length === 0) {
-          setNotName(true);
-        }
+        navigate('/admin');
+          if (name.length === 0) {
+            setNotName(true);
+          }
       })
+
       .catch(err => {
         console.log(err);
         swAlert(<h2>{err.response.data.msg}</h2>);
@@ -56,10 +50,6 @@ const Login = () => {
   };
  
   
-   
- 
-
-      
 
 
   return (
@@ -79,6 +69,7 @@ const Login = () => {
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">Inicio de sesión</h2>
               </div>
 
+          <form action="#" method="POST">
               <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" action="#" method="POST">
                   <div>
@@ -133,6 +124,7 @@ const Login = () => {
                   <Link to="/register" className="font-semibold leading-6 text-lime-600" style={{ padding: '10px' }} >Crear cuenta</Link>
                 </p>
               </div>
+            </form>
             </div>
           </div>
         </div>

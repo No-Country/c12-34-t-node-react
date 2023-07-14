@@ -54,7 +54,7 @@ const Register = () => {
     <>
       <ToastContainer />
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 72px)' }}>
 
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,8 +70,8 @@ const Register = () => {
                   Registrarse{" "}
                 </h2>
               </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <form action="#" method="POST">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
                 <div>
                   <div className="flex items-center">
                     <label style={{ textAlign: 'center' }}
@@ -197,6 +197,7 @@ const Register = () => {
                   </p>
                 </div>
               </div>
+            </form>
             </div>
           </div>
         </div>
