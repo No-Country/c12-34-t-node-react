@@ -1,22 +1,20 @@
 export enum Rol {
   Admin = "Admin",
   Employees = "Employees",
-  User = "User",
+  Client = "Client",
 }
-
-// export type Elements = {
-//   name: string,
-// }
 
 export interface IUser {
   id?: string;
   user: string;
-  // lastName: string;
-  email?: string;
+  email: string;
   password: string;
+  // PARA EL CLIENTE
+  plan?: string;
+  contact?: string;
+  // PARA EL CLIENTE
+  // PARA EL EMPLEADOR
+  occupation?: string;
+  // PARA EL EMPLEADOR
   rol?: Rol;
 }
-
-// export interface UserElement extends IUser {
-//   elementsUser?: Array<Elements>
-// }
