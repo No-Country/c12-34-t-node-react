@@ -37,9 +37,9 @@ function App() {
           <Route exact path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path="/admin/*" element={<HomePrincipal />} />
+          <Route path="/admin*" element={<HomePrincipal />} />
 
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/:id" element={<AdminPage />} />
 
           <Route path='*' element={<NotFound />} />
 

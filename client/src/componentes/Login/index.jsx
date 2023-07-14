@@ -45,7 +45,10 @@ const Login = () => {
 
     
         swAlert(<h2> Bienvenido {userName} </h2>);
-       navigate('/admin');
+        setTimeout(() => { 
+          navigate(`/admin/${userCtx.userId}`);
+        }, 500)
+       
         if (name.length === 0) {
           setNotName(true);
         }
