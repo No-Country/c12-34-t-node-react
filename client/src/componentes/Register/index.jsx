@@ -19,14 +19,14 @@ const Register = () => {
   const register = () => {
 
     const userData = {
-      name: name,
+      user: name,
       password: password,
       email: email,
     };
 
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (userData.name === '' || userData.password === '') {
+   { if (userData.user === '' || userData.password === '') {
       toast.error('Los campos no pueden estar vacíos');
       return;
     }
@@ -34,12 +34,14 @@ const Register = () => {
     if (email !== '' && !regexEmail.test(email)) {
       toast.error('El e-mail no es válido');
       return;
-    }
+    } }
+
+
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
-        localStorage.setItem('user', userData.name);
-        swAlert(<h2>Te has registrado correctamente</h2>);
+        localStorage.setItem('user', userData.user);
+        swAlert(<h2> {name},  Te has registrado correctamente</h2>);
         navigate('/login');
         console.log(res.data);
       })

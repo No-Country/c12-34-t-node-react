@@ -6,6 +6,8 @@ import { CgAsterisk } from 'react-icons/cg';
 import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
+import { useContext } from "react";
+import { UserContext } from "../../store/userContext";
 
 const Login = () => {
 
@@ -15,6 +17,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
   const [userTok, setuserTok] = useState("")
+  const [nameOfUser, setNameOfUser] = useState("")
+
+  const userCtx = useContext(UserContext)
 
   const logUser = (e) => {
     e.preventDefault();
@@ -27,16 +32,27 @@ const Login = () => {
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
-      .then(res => {
-        const user = res.data;
-        console.log(user.data.token);
-        const newToken = user.data.token
-        sessionStorage.setItem('userToken', newToken);
-        console.log(sessionStorage.getItem("userToken"))
-        console.log("El token que me trae el back es: " + newToken)
-       
-          
+      .then((res) => {
+        console.log(res.data)
+        console.log(res.data.data.user.user)
+        console.log(res.data.data.user.email)
+        console.log(res.data.data.token)
+        
+         userCtx.updateUser(res.data.data.user.id)
+         userCtx.updateUserNameRegistered(res.data.data.user.user)
+         userCtx.updateUserEmailRegistered(res.data.data.user.email)
+         userCtx.updateUserTokenRegistered(res.data.data.token)
       
+
+
+        //const user = res.data;
+        //console.log("El nombre del usuario que inicio sesion es", + res.data.user)
+        //console.log(user.data.token);
+        //const newToken = user.data.token
+        //sessionStorage.setItem('userToken', newToken);
+        //console.log(sessionStorage.getItem("userToken"))
+        //console.log("El token que me trae el back es: " + newToken)
+    
         swAlert(<h2> Bienvenido {userName} </h2>);
        navigate('/admin');
         if (name.length === 0) {

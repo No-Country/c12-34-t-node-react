@@ -9,6 +9,7 @@ import GroupClasses from './componentes/GroupClasses'
 import AdminPage from './componentes/AdminPage'
 
 import NotFound from './pages/NotFound'
+import { UserProvider } from './store/userContext'
 
 
 
@@ -20,6 +21,9 @@ function App() {
 
   return (
     <>
+    <UserProvider>
+
+   
       <Header />
 
       <div style={{
@@ -28,7 +32,7 @@ function App() {
         flexDirection: 'column',
         marginTop: 70,
       }}>
-
+      
         <Routes>
           <Route exact path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
@@ -48,6 +52,7 @@ function App() {
 
       <Footer />
       } */}
+       </UserProvider>
     </>
 
   )

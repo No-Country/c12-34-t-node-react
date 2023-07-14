@@ -9,6 +9,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
 
   const usuario = req.body as IUser
+  console.log(req.body)
 
   try {
 
@@ -53,8 +54,8 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const existUser = await User.findOne({
       where: {
-        email: usuario.email,
-        rol: usuario.rol,
+        email: usuario.email
+       // rol: usuario.rol,
       }
     })
 
