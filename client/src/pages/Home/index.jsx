@@ -33,7 +33,7 @@ const HomePrincipal = () => {
     ? <Navigate to='/' />
     :
     <>
-      <div  className="flex bg-[#F4F7FF]">
+      <div className="flex bg-[#F4F7FF]">
      
         <div>
           <Sidebar />

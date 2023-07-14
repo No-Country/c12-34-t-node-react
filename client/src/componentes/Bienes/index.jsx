@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Logo from "./assets/FitnessCenterLogoGym.png"
+import Title from '../Title'
 
 const MENU = [
   {
@@ -28,10 +28,7 @@ const MENU = [
 const Bienes = () => {
   return (
     <main className='flex flex-col w-full gap-2 m-5'>
-      <header className='flex justify-center items-center'>
-        <img className='w-32' src={Logo} alt="FitnessCenterLogoGym logo de la marca y aplicación web Fitness Center" />
-      </header>
-      <h3 className='self-start text-2xl font-PoppinsBold underline underline-offset-8  decoration-pallete-green'>Bienes</h3>
+      <Title title={'Bienes'} />
       <section className='flex flex-col items-center justify-between gap-5'>
         {
           MENU.map((el) => (
