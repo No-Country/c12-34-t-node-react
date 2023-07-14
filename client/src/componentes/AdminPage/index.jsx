@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo from "../../img/logo.png"
 import profesor from "../../img/profesor.jpg"
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import axios from "axios"
+import { useContext } from "react";
+import { UserContext } from "../../store/userContext";
 
 const AdminPage = () => {
 
@@ -17,6 +19,23 @@ const AdminPage = () => {
           })
   }
 
+  const userCtx = useContext(UserContext)
+
+  useEffect(() => { 
+    setTimeout(() => { 
+  console.log( "EL ID DEL CONTEXTO FUE SETEADO A" +   userCtx.userId)
+  console.log( "EL NOMBRE DEL CONTEXTO FUE SETEADO A" + userCtx.userNameRegistered)
+  console.log( "EL EMAIL DEL CONTEXTO FUE SETEADO A" +userCtx.userEmailRegistered)
+  console.log( "EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered)
+    }, 2500)
+  }, [userCtx.length])
+
+
+     
+
+
+  
+  const userName = localStorage.getItem('user');
 
   return (
     <div>
@@ -52,17 +71,17 @@ const AdminPage = () => {
                 <div className='ml-10 '>
                    <div>
                       <label htmlFor=""> <b>Nombre y Apellido</b></label>
-                      <p>Juan Rodriguez</p>
+                      <p>{userCtx.userNameRegistered}</p>
                    </div>
 
                    <div>
                       <label htmlFor=""> <b>Correo</b></label>
-                      <p>juanrodriguez@gmail.com</p>
+                      <p>{userCtx.userEmailRegistered}</p>
                    </div>
 
                    <div>
                       <label htmlFor=""> <b>Cargo</b></label>
-                      <p>Administrador</p>
+                      <p>Administrador </p>
                    </div>
                   <button className="btn btn-warning mt-3" onClick={() => getUsers()}>Editar Perfil</button>
                 </div>
