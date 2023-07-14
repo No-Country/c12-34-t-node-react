@@ -12,17 +12,22 @@ import { postElementsGym } from "../services/crudElements/post"
 import { putElemetsGym } from "../services/crudElements/put"
 import { deleteElementsGym } from "../services/crudElements/delete"
 
-
 import {
   getProvider,
   deleteProvider,
   postProvider,
   putProvider
 } from "../controllers/provider"
+
 import { postClassGym } from "../services/crudClass/post"
 import { getClassGroupGym } from "../services/crudClass/get"
 import { deleteClassGroupGym } from "../services/crudClass/delete"
 import { putClassGroupGym } from "../services/crudClass/put"
+
+import { postExpenseGym } from "../services/crudExpense/post"
+import { getExpensesGym } from "../services/crudExpense/get"
+import { deleteExpensesGym } from "../services/crudExpense/delete"
+import { putExpensesGym } from "../services/crudExpense/put"
 
 const allRoutes = Router()
 
@@ -50,6 +55,7 @@ allRoutes.delete("/api/elements/:id", deleteElementsGym);
 
 
 // ─── Proveedor ───────────────────────────────────────────────────────────────
+
 allRoutes.get("/api/providers", getProvider)
 
 allRoutes.post("/api/provider", postProvider)
@@ -68,5 +74,14 @@ allRoutes.delete("/api/class-group/:id", deleteClassGroupGym)
 
 allRoutes.put("/api/class-group/:id", putClassGroupGym)
 
+// ─── Gastos Mensuales ───────────────────────────────────────────────────────────────
+
+allRoutes.get("/api/expenses", getExpensesGym)
+
+allRoutes.post("/api/expense", postExpenseGym)
+
+allRoutes.delete("/api/expense/:id", deleteExpensesGym)
+
+allRoutes.put("/api/expense/:id", putExpensesGym)
 
 export default allRoutes;

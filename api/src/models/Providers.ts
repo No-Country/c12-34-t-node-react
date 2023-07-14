@@ -52,7 +52,7 @@ Provider.init(
   },
   {
     sequelize: db,
-    modelName: "Provider",
+    modelName: "provider",
     timestamps: false,
   }
 );

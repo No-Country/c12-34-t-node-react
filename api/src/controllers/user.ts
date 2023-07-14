@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import { ClassGroup, Elements, Provider, User } from '../models/relations';
+import { ClassGroup, Elements, Provider, User, Expense } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
@@ -114,6 +114,9 @@ export const getAllUsers = async (_: Request, res: Response) => {
         attributes: ["name"]
       }, {
         model: Provider,
+        attributes: ["name"]
+      }, {
+        model: Expense,
         attributes: ["name"]
       }],
       attributes: ["id", "user", "email"],
