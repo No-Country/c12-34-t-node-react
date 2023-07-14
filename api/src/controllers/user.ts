@@ -2,13 +2,12 @@ import { Request, Response } from "express"
 import { IUser } from '../interfaces/IUser';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
-import { Class, Elements, Provider, User } from '../models/relations';
+import { ClassGroup, Elements, Provider, User, Expense } from '../models/relations';
 
 export const registerUser = async (req: Request, res: Response) => {
 
 
   const usuario = req.body as IUser
-  console.log(req.body)
 
   try {
 
@@ -22,7 +21,6 @@ export const registerUser = async (req: Request, res: Response) => {
       })
 
     if (existUser) {
-      console.log(req.body)
       return res.status(400).json({ msg: "El usuario ya existe", existUser })
      
     }
@@ -50,7 +48,6 @@ export const registerUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
 
   const usuario = req.body as IUser
-  console.log(req.body)
 
 
   try {
@@ -112,11 +109,22 @@ export const getAllUsers = async (_: Request, res: Response) => {
       include: [{
         model: Elements,
         attributes: ["name"],
+        include: [{
+          model: Provider,
+          attributes: ["name"],
+        }],
       }, {
-        model: Class,
+        model: ClassGroup,
         attributes: ["name"]
       }, {
         model: Provider,
+        attributes: ["name"],
+        include: [{
+          model: Elements,
+          attributes: ["name"],
+        }],
+      }, {
+        model: Expense,
         attributes: ["name"]
       }],
       attributes: ["id", "user", "email"],

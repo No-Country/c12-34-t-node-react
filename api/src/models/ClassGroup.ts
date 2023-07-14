@@ -1,17 +1,18 @@
-import { ClassGroup, InDay } from "../interfaces/IClassGroup";
+import { IClassGroup, InDay, WeekDays } from "../interfaces/IClassGroup";
 import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
 
-class Class extends Model<ClassGroup> implements ClassGroup {
+class ClassGroup extends Model<IClassGroup> implements IClassGroup {
   id!: string;
   name!: string;
   trainer!: string;
-  time!: string;
-  hour!: string;
+  duration!: string;
+  schedule!: string;// HORARIO
   inDay!: InDay;
+  weekDays!: WeekDays;
 }
 
-Class.init(
+ClassGroup.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -26,11 +27,11 @@ Class.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    time: {
+    duration: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    hour: {
+    schedule: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -38,13 +39,24 @@ Class.init(
       type: DataTypes.ENUM(InDay.Afternoon, InDay.Morning, InDay.Night),
       allowNull: false,
     },
+    weekDays: {
+      type: DataTypes.ENUM(
+        WeekDays.Friday,
+        WeekDays.Monday,
+        WeekDays.Saturday,
+        WeekDays.Sunday,
+        WeekDays.Thursday,
+        WeekDays.Tuesday,
+        WeekDays.Wednesday
+      ),
+      allowNull: false,
+    }
   },
   {
     sequelize: db,
-    modelName: "class",
+    modelName: "groupClass",
     timestamps: false,
   }
 );
 
-
-export default Class;
+export default ClassGroup;

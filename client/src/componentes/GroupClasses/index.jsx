@@ -1,5 +1,3 @@
-import React from 'react'
-import Sidebar from '../../pages/Home/Components/Sidebar'
 import logoConNombre from "../../img/logoConNombre.png"
 import "./clases.css"
 
@@ -8,9 +6,7 @@ import "./clases.css"
 const GroupClasses = () => {
   return (
     <div className='flex '>
-        <div >
-            <Sidebar/>
-        </div>
+
 
         <div>
              <div className='custom-hidden'>

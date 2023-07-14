@@ -8,21 +8,21 @@ const MENU = [
     title: ["Máquinas"],
     desc: ["aparatos de sala de musculación"],
     alt: "Máquinas",
-    link: "/admin/bienes/maquinas"
+    link: "/home/bienes/maquinas"
   }, {
     id: 2,
     img: ["imagebienes2.jpg"],
     title: ["Elementos"],
     desc: ["pesas, colchonetas, etc"],
     alt: "Elementos",
-    link: "/admin/bienes/elementos"
+    link: "/home/bienes/elementos"
   }, {
     id: 3,
     img: ["imagebienes3.jpg"],
     title: ["Mobiliario"],
     desc: ["muebles, estantes, etc"],
     alt: "Mobiliario",
-    link: "/admin/bienes/mobiliario"
+    link: "/home/bienes/mobiliario"
   }]
 
 const Bienes = () => {

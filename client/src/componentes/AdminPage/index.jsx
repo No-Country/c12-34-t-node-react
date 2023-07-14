@@ -1,3 +1,4 @@
+
 import axios from "axios"
 import React, { useEffect, useContext } from 'react'
 import { UserContext } from "../../store/userContext"
@@ -34,7 +35,7 @@ const AdminPage = () => {
 
 
 
-  const userName = localStorage.getItem('user')
+
 
   return (
     <div className='flex'>

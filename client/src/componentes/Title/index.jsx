@@ -1,3 +1,4 @@
+
 import Logo from "./assets/FitnessCenterLogoGym.png"
 
 const Title = ({ title }) => {
@@ -14,3 +15,4 @@ const Title = ({ title }) => {
 }
 
 export default Title
+
