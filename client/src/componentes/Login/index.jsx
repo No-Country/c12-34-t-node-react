@@ -62,7 +62,6 @@ const Login = () => {
           navigate('/register')
         } 
 
-        
         console.log(err.response.data.msg)
       });
   };

@@ -1,10 +1,11 @@
 import styles from "./styles.module.css";
-import {useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 
 const SideMenu = ({ isOpen}) => {
 
   const navigate = useNavigate()
   
+  const token = sessionStorage.getItem("userToken")
 
   return (
 
@@ -17,11 +18,25 @@ const SideMenu = ({ isOpen}) => {
         <a href="#galeria">Galería</a>
         <a href="#colaboradores">Colaboradores</a>
         <a href="#contacto">Contacto</a>
+        { !!token &&          
+          <Link to='/home/admin'> Administrador</Link>
+        }
       </nav>
 
-      <button className={styles.login} onClick={() => {
-        navigate('/login')
-    }}> Ingresar</button>
+      { token === null
+        ? <div style={{textAlign:'center'}} className={styles.login}>
+            <button onClick={() => navigate('/login')}>Ingresar</button>
+          </div>
+        : <div style={{textAlign:'center'}} className={styles.login}>
+            <button onClick={() => {
+              sessionStorage.clear('userToken')
+              navigate('/')
+              }}>
+                Salir
+            </button>
+          </div>
+      }
+
     </div>
   
 

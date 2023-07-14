@@ -49,7 +49,14 @@ const Header = () => {
         <a href="#galeria">Galería</a>
         <a href="#colaboradores">Colaboradores</a>
         <a href="#contacto">Contacto</a>
+        { !!token &&          
+          <Link to='/home/admin'> Administrador</Link>
+        }
       </nav>
+
+      {/* <div style={{marginLeft:'-5px'}} className={styles.login}>
+            <button onClick={() => navigate('/home/admin')}>Admin</button>
+      </div> */}
 
       { token === null
         ? <div className={styles.login}>
@@ -63,7 +70,6 @@ const Header = () => {
                 Salir
             </button>
           </div>
-      
       }
    
 
