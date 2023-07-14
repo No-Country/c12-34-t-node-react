@@ -38,6 +38,8 @@ const HomePrincipal = () => {
           <Route path='/admin' element={<AdminPage />} />
           <Route path='/bienes' element={<Bienes />} />
           <Route path='/bienes/maquinas' element={<BienesMaquinas/>} />
+          <Route path='/bienes/elementos' element={<h1>pag elementos</h1>} />
+          <Route path='/bienes/mobiliario' element={<h1>pag mobiliario</h1>} />
           <Route path='/staff' element={<h1 className='m-auto'>acá iria el componente staff</h1>} />
           <Route path='/clientes' element={<TableV1 />} />
           <Route path='/proovedores' element={<h1>acá iria el componente proovedores</h1>} />

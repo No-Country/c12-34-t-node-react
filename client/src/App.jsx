@@ -8,6 +8,7 @@ import GroupClasses from './componentes/GroupClasses'
 
 
 import NotFound from './pages/NotFound'
+import { UserProvider } from './store/userContext'
 
 
 
@@ -19,7 +20,10 @@ function App() {
 
   return (
     <>
+
       <HeaderV2 />
+    
+    <UserProvider>
 
       <div style={{
         flexGrow: 1,
@@ -27,16 +31,19 @@ function App() {
         flexDirection: 'column',
         marginTop: 70,
       }}>
-
+      
         <Routes>
           <Route exact path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path="/home/*" element={<HomePrincipal />} />
+            
+
+
+          <Route path="/admin/:id" element={<AdminPage />} />
 
           <Route path='*' element={<NotFound />} />
 
-          <Route path="/admin/reservas" element={<GroupClasses/>}></Route>
 
         </Routes>
       </div>
@@ -45,6 +52,7 @@ function App() {
 
       <Footer />
       } */}
+       </UserProvider>
     </>
 
   )
