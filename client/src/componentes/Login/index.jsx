@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,7 +30,7 @@ const Login = () => {
         const newToken = user.data.token
         sessionStorage.setItem('userToken', newToken);
         swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
-        navigate('/admin');
+        navigate('/home/admin');
           if (name.length === 0) {
             setNotName(true);
           }
@@ -49,12 +49,14 @@ const Login = () => {
       });
   };
  
+    let token = sessionStorage.getItem('userToken')
   
-
 
   return (
     <>
-
+    {token !== null 
+    ? <Navigate to='/admin' />
+    :
       <Section>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>
           <Link to="/">
@@ -130,7 +132,9 @@ const Login = () => {
         </div>
 
       </Section>
+    }
     </>
+
   );
 };
 

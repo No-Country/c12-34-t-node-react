@@ -1,5 +1,5 @@
 import gmail from '../Register/gmail.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Section from '../Section';
@@ -22,8 +22,6 @@ const Register = () => {
       password: password,
       email: email,
     };
-
-   console.log(userData)
 
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -48,8 +46,14 @@ const Register = () => {
         swAlert(<h2>{err.response.data.msg}</h2>);
         console.log(err);
       });
-
   };
+
+  let token = sessionStorage.getItem('userToken')
+  
+    useEffect(() => {
+      token && navigate('/admin') 
+    }, [token, navigate])
+
   return (
     <>
       <ToastContainer />

@@ -1,14 +1,29 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
 import { TableV1, Bienes,BienesMaquinas } from '../../componentes/index'
 import Sidebar from './Components/Sidebar'
 import Horarios from './Components/Horarios'
 import Footer from './Components/Footer'
+import { useEffect } from 'react'
+import AdminPage from '../../componentes/AdminPage'
+import GroupClasses from '../../componentes/GroupClasses'
+
 
 const HomePrincipal = () => {
   
-  return (
+  const navigate = useNavigate();
+  
+  let token = sessionStorage.getItem('userToken')
 
+  useEffect(() => {
+    !token && navigate('/') 
+  }, [token, navigate])
+
+  return (
+<>
+    {token === null 
+    ? <Navigate to='/' />
+    :
     <>
       <div className='flex'>
 
@@ -20,14 +35,14 @@ const HomePrincipal = () => {
 
         <Routes>
 
-          <Route path='/admin' element={<h1>acá iria el componente admin</h1>} />
+          <Route path='/admin' element={<AdminPage />} />
           <Route path='/bienes' element={<Bienes />} />
           <Route path='/bienes/maquinas' element={<BienesMaquinas/>} />
           <Route path='/staff' element={<h1 className='m-auto'>acá iria el componente staff</h1>} />
           <Route path='/clientes' element={<TableV1 />} />
           <Route path='/proovedores' element={<h1>acá iria el componente proovedores</h1>} />
           <Route path='/horarios' element={<Horarios />} />
-          <Route path='/reservas' element={<h1>acá iria el componente reservas</h1>} />
+          <Route path='/reservas' element={<GroupClasses />} />
           <Route path='/gastos' element={<h1>acá iria el componente gastos</h1>} />
 
         </Routes>
@@ -35,7 +50,8 @@ const HomePrincipal = () => {
       </div>
 
       <Footer />
-
+    </>
+    }
     </>
 
   )

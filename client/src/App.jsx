@@ -2,11 +2,10 @@ import './App.css'
 import './index.css'
 import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
-import { Header, HeaderV2, Login, Register } from './componentes'
+import { HeaderV2, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
 import GroupClasses from './componentes/GroupClasses'
 
-import AdminPage from './componentes/AdminPage'
 
 import NotFound from './pages/NotFound'
 
@@ -20,7 +19,6 @@ function App() {
 
   return (
     <>
-      {/* <Header /> */}
       <HeaderV2 />
 
       <div style={{
@@ -34,9 +32,7 @@ function App() {
           <Route exact path='/' element={<Landing />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path="/admin/*" element={<HomePrincipal />} />
-
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/home/*" element={<HomePrincipal />} />
 
           <Route path='*' element={<NotFound />} />
 

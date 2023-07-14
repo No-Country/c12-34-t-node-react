@@ -1,7 +1,5 @@
-import React from 'react'
 import logo from "../../img/logo.png"
 import profesor from "../../img/profesor.jpg"
-import Sidebar from '../../pages/Home/Components/Sidebar'
 import axios from "axios"
 
 const AdminPage = () => {
@@ -22,9 +20,7 @@ const AdminPage = () => {
     <div>
 
       <div className='flex'>
-          <div>
-              <Sidebar/>
-          </div>
+
 
         <div>
               <div > 
