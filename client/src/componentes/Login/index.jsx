@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Section from "../Section";
 import { CgAsterisk } from 'react-icons/cg';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,6 +15,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
+
   const [userTok, setuserTok] = useState("")
   const [nameOfUser, setNameOfUser] = useState("")
 
@@ -26,8 +27,6 @@ const Login = () => {
       email: name,
       password: password
     };
-
-    const userName = localStorage.getItem('user');
 
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
@@ -53,6 +52,7 @@ const Login = () => {
           setNotName(true);
         }
       })
+
       .catch(err => {
         console.log(err);
         swAlert(<h2>{err.response.data.msg}</h2>);
@@ -66,16 +66,14 @@ const Login = () => {
       });
   };
  
+    let token = sessionStorage.getItem('userToken')
   
-   
- 
-
-      
-
 
   return (
     <>
-
+    {token !== null 
+    ? <Navigate to='/admin' />
+    :
       <Section>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>
           <Link to="/">
@@ -90,6 +88,7 @@ const Login = () => {
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-black">Inicio de sesión</h2>
               </div>
 
+          <form action="#" method="POST">
               <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form className="space-y-6" action="#" method="POST">
                   <div>
@@ -144,12 +143,15 @@ const Login = () => {
                   <Link to="/register" className="font-semibold leading-6 text-lime-600" style={{ padding: '10px' }} >Crear cuenta</Link>
                 </p>
               </div>
+            </form>
             </div>
           </div>
         </div>
 
       </Section>
+    }
     </>
+
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import logo from "../../img/logo.png"
 import profesor from "../../img/profesor.jpg"
-import Sidebar from '../../pages/Home/Components/Sidebar'
 import axios from "axios"
 import { useContext } from "react";
 import { UserContext } from "../../store/userContext";
@@ -41,9 +40,7 @@ const AdminPage = () => {
     <div>
 
       <div className='flex'>
-          <div>
-              <Sidebar/>
-          </div>
+
 
         <div>
               <div > 
