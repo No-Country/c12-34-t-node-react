@@ -8,7 +8,7 @@ import {
 
 import { authToken } from "../middlewares/authToken"
 import { getElementsGym } from "../services/crudElements/get"
-import { postElementsGym } from "../services/crudElements/post"
+import { postRelationElements } from "../services/crudElements/post"
 import { putElemetsGym } from "../services/crudElements/put"
 import { deleteElementsGym } from "../services/crudElements/delete"
 
@@ -47,41 +47,42 @@ allRoutes.put("/api/update-user/:id", upDateUser)
 
 allRoutes.get("/api/elements", authToken, getElementsGym);
 
-allRoutes.post("/api/elements", authToken, postElementsGym);
+// RELACION ELEMENTO VS PROVEEDOR VS ADMIN
+allRoutes.post("/api/element-client", authToken, postRelationElements);
 
-allRoutes.put("/api/elements/:id", putElemetsGym);
+allRoutes.put("/api/elements/:id", authToken, putElemetsGym);
 
-allRoutes.delete("/api/elements/:id", deleteElementsGym);
+allRoutes.delete("/api/elements/:id", authToken, deleteElementsGym);
 
 
 // ─── Proveedor ───────────────────────────────────────────────────────────────
 
-allRoutes.get("/api/providers", getProvider)
+allRoutes.get("/api/providers", authToken, getProvider)
 
-allRoutes.post("/api/provider", postProvider)
+allRoutes.post("/api/provider", authToken, postProvider)
 
-allRoutes.put("/api/provider/:id", putProvider)
+allRoutes.put("/api/provider/:id", authToken, putProvider)
 
-allRoutes.delete("/api/provider/:id", deleteProvider)
+allRoutes.delete("/api/provider/:id", authToken, deleteProvider)
 
 // ─── Clases Grupales ───────────────────────────────────────────────────────────────
 
-allRoutes.get("/api/class-group", getClassGroupGym)
+allRoutes.get("/api/class-group", authToken, getClassGroupGym)
 
-allRoutes.post("/api/class-group", postClassGym)
+allRoutes.post("/api/class-group", authToken, postClassGym)
 
-allRoutes.delete("/api/class-group/:id", deleteClassGroupGym)
+allRoutes.delete("/api/class-group/:id", authToken, deleteClassGroupGym)
 
-allRoutes.put("/api/class-group/:id", putClassGroupGym)
+allRoutes.put("/api/class-group/:id", authToken, putClassGroupGym)
 
 // ─── Gastos Mensuales ───────────────────────────────────────────────────────────────
 
-allRoutes.get("/api/expenses", getExpensesGym)
+allRoutes.get("/api/expenses", authToken, getExpensesGym)
 
-allRoutes.post("/api/expense", postExpenseGym)
+allRoutes.post("/api/expense", authToken, postExpenseGym)
 
-allRoutes.delete("/api/expense/:id", deleteExpensesGym)
+allRoutes.delete("/api/expense/:id", authToken, deleteExpensesGym)
 
-allRoutes.put("/api/expense/:id", putExpensesGym)
+allRoutes.put("/api/expense/:id", authToken, putExpensesGym)
 
 export default allRoutes;

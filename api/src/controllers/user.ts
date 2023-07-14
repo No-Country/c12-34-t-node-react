@@ -109,12 +109,20 @@ export const getAllUsers = async (_: Request, res: Response) => {
       include: [{
         model: Elements,
         attributes: ["name"],
+        include: [{
+          model: Provider,
+          attributes: ["name"],
+        }],
       }, {
         model: ClassGroup,
         attributes: ["name"]
       }, {
         model: Provider,
-        attributes: ["name"]
+        attributes: ["name"],
+        include: [{
+          model: Elements,
+          attributes: ["name"],
+        }],
       }, {
         model: Expense,
         attributes: ["name"]
