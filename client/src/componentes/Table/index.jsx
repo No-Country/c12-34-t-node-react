@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { RiDeleteBin5Line } from "react-icons/Ri";
-import { BiEditAlt } from "react-icons/Bi";
+// import { RiDeleteBin5Line } from "react-icons/Ri";
+// import { BiEditAlt } from "react-icons/Bi";
 // import { AiOutlineUser } from "react-icons/Ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -128,13 +128,13 @@ function ButtonsTable({ id, tBody, setTBody }) {
         onClick={() => editItem(id)}
         className="hover:scale-125 transition-all"
       >
-        <BiEditAlt />
+        {/* <BiEditAlt /> */} Editar
       </button>
       <button
         onClick={() => deleteItem(id)}
         className="hover:scale-125 transition-all"
       >
-        <RiDeleteBin5Line />
+        {/* <RiDeleteBin5Line /> */} Eliminar
       </button>
       <ToastContainer autoClose={1000} />
     </td>
