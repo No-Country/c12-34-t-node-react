@@ -1,35 +1,28 @@
-
-import { createElement, useState } from "react";
+import { menus } from "../../../config/constants";
+import { createElement, useEffect, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
-import {
-  
-  MdOutlineBrowseGallery,
-  MdOutlineCalendarMonth,
-  MdOutlineCurrencyExchange,
-} from "react-icons/md";
-import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser } from "react-icons/ai";
-import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [view, setView] = useState('');
 
-  const menus = [
-    
-    { name: "Perfil administrador", link: "/admin", icon: AiOutlineUser,description:"Datos" },
-    { name: "Bienes", link: "/admin/bienes", icon: FiMessageSquare,description:"Maquinas, elementos, mobiliario" },
-    { name: "Staff", link: "/admin/staff", icon: TbReportAnalytics,description:"Profesores, encargados, personal" },
-    { name: "Clientes", link: "/admin/clientes", icon: FiFolder,description:"Datos clientes" },
-    { name: "Proveedores", link: "/admin/proovedores", icon: FiShoppingCart,description:"Datos y pedidos" },
-    { name: "Horarios", link: "/admin/horarios", icon: MdOutlineBrowseGallery,description:"Horarios semanales" },
-    { name: "Reservas", link: "/admin/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
-    { name: "Gastos", link: "/admin/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
-  ];
+  useEffect(() => {
+    const storedView = localStorage.getItem('selectedView');
+    if (storedView) {
+      setView(JSON.parse(storedView));
+    } else {
+      setView(menus[0]);
+    }
+  }, []);
+
+  const handleMenuClick = (menu) => {
+    setView(menu);
+    localStorage.setItem('selectedView', JSON.stringify(menu));
+  };
 
 
-  
   return (
     <section className="flex gap-6">
       <div
@@ -48,12 +41,14 @@ const Sidebar = () => {
           {menus.map((menu,i) => (
           
             <Link
+              onClick={() => handleMenuClick(menu)}
               menu={menu}
               to={menu.link}
               key={menu.name}
-              className={` ${
-                menu?.margin && "mt-1"
-              } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+              className={` 
+              ${menu?.margin && "mt-1"} group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md
+              ${view.link === menu.link ? 'bg-gray-800' : ''}
+              `}
             >
               <div>{createElement(menu?.icon, { size: "20" })}</div>
               <h2 
