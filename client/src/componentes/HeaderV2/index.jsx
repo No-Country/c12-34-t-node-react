@@ -59,7 +59,9 @@ const Header = () => {
             <button onClick={() => {
               sessionStorage.clear('userToken')
               navigate('/')
-              }}>Salir</button>
+              }}>
+                Salir
+            </button>
           </div>
       
       }
