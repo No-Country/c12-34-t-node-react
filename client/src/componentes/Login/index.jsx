@@ -16,9 +16,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [notName, setNotName] = useState(false);
 
-  const [userTok, setuserTok] = useState("")
-  const [nameOfUser, setNameOfUser] = useState("")
-
   const userCtx = useContext(UserContext)
 
   const logUser = (e) => {
@@ -40,12 +37,16 @@ const Login = () => {
          userCtx.updateUserNameRegistered(res.data.data.user.user)
          userCtx.updateUserEmailRegistered(res.data.data.user.email)
          userCtx.updateUserTokenRegistered(res.data.data.token)
-      
 
-    
-        swAlert(<h2> Bienvenido {userName} </h2>);
+
+         //estas 3 líneas son necesarias para loguear hasta que actualicemos todo lo que utiliza el token del sessionStorage
+         const user = res.data;
+         const newToken = user.data.token
+         sessionStorage.setItem('userToken', newToken);
+        
+        swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
         setTimeout(() => { 
-          navigate(`/admin/${userCtx.userId}`);
+          navigate('/home/admin');
         }, 500)
        
         if (name.length === 0) {
@@ -67,12 +68,13 @@ const Login = () => {
   };
  
     let token = sessionStorage.getItem('userToken')
+    // let token = userCtx.userTokenRegistered
   
 
   return (
     <>
     {token !== null 
-    ? <Navigate to='/admin' />
+    ? <Navigate to='/home' />
     :
       <Section>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 70px)'}}>

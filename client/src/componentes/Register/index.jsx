@@ -53,7 +53,7 @@ const Register = () => {
   let token = sessionStorage.getItem('userToken')
   
     useEffect(() => {
-      token && navigate('/admin') 
+      token && navigate('/home') 
     }, [token, navigate])
 
   return (

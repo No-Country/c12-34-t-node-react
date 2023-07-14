@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import logo from "../../img/logo.png"
 import profesor from "../../img/profesor.jpg"
 import axios from "axios"
@@ -34,7 +34,7 @@ const AdminPage = () => {
 
 
   
-  const userName = localStorage.getItem('user');
+
 
   return (
     <div>

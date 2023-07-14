@@ -4,11 +4,11 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from './pages/Landing'
 import { HeaderV2, Login, Register } from './componentes'
 import HomePrincipal from './pages/Home/index'
-import GroupClasses from './componentes/GroupClasses'
 
 
 import NotFound from './pages/NotFound'
 import { UserProvider } from './store/userContext'
+import AdminPage from './componentes/AdminPage'
 
 
 
