@@ -16,6 +16,6 @@ export interface IElements {
   state: State,
 }
 
-export interface ElementUser extends IElements {
-  userId: string,
-}
+// export interface ElementUser extends IElements {
+//   userId: string,
+// }

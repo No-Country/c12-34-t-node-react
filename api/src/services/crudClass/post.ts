@@ -1,34 +1,33 @@
 import { Request, Response } from "express";
-import { Clases_Grupales, ClassGroup } from "interfaces/IClassGroup";
-import { Class, User } from "../../models/relations";
+import { IClassGroup, InDay, WeekDays } from "../../interfaces/IClassGroup";
+import { ClassGroup } from "../../models/relations";
 
 export const postClassGym = async (req: Request, res: Response) => {
-  const clase = req.body as Clases_Grupales;
+  const clase = req.body as IClassGroup;
 
   const errorName = typeof clase.name !== "string" || clase.name.length === 0
   const errorTrainer = typeof clase.trainer !== "string" || clase.trainer.length === 0
-  const errorTime = typeof clase.time !== "string" || clase.time.length === 0
-  const errorHour = typeof clase.hour !== "string" || clase.hour.length === 0
-  const errorInDay = typeof clase.inDay !== "string" || clase.inDay.length === 0
+  const errorDuration = typeof clase.duration !== "string" || clase.duration.length === 0
+  const errorSchedule = typeof clase.schedule !== "string" || clase.schedule.length === 0
+  const errorInDay = typeof clase.inDay !== "string" || !Object.values(InDay).includes(clase.inDay)
+  const errorWeekDays = typeof clase.weekDays !== "string" || !Object.values(WeekDays).includes(clase.weekDays)
   
   try {
-    if (errorName && errorTrainer && errorTime && errorHour && errorInDay) {
+    if (errorName && errorTrainer && errorDuration && errorSchedule && errorInDay) {
       throw new Error(`Faltan todas las propiedades`);
     }
     if (errorName) throw new Error(`Incorrecto o falta el nombre de la clase`);
     if (errorTrainer) throw new Error(`Incorrecto o falta el nombre del trainer`);
-    if (errorTime) throw new Error(`Incorrecto o falta la duración de la clase`);
-    if (errorHour) throw new Error(`Incorrecto o falta la hora de la clase`);
+    if (errorDuration) throw new Error(`Incorrecto o falta la duración de la clase`);
+    if (errorSchedule) throw new Error(`Incorrecto o falta el horario de la clase`);
     if (errorInDay) throw new Error(`Incorrecto o falta la jornada de la clase`);
+    if (errorWeekDays) throw new Error(`Incorrecto o falta el día de la clase`);
     else {
-      let createClass = await Class.create(clase, {
-        // include: "users",
-        include: [User],
-      });
-      createClass = JSON.parse(JSON.stringify(createClass))
-      console.log("CREATE:", createClass)
+      let createClass = await ClassGroup.create(clase);
+      // createClass = JSON.parse(JSON.stringify(createClass))
+      // console.log("CREATE:", createClass)
 
-      return res.status(200).json({ message: `Ah sido agregado una nueva clase`, createClass });
+      return res.status(200).json({ message: `Ah sido agregada una nueva clase grupal`, createClass });
     }
   } catch (error) {
     if (error instanceof Error) {
