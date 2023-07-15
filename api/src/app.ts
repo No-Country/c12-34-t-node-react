@@ -3,8 +3,6 @@ import "dotenv/config";
 import cors from "cors";
 import { db } from "./db";
 import morgan from "morgan";
-import "../src/models/User";
-import "../src/models/Providers"
 import allRoutes from "./routes/routes";
 import passport from 'passport'
 import session from 'express-session';
@@ -23,13 +21,10 @@ app.use(morgan("dev"));
 
 app.use(passport.initialize())
 app.use(session({
-  secret: "12345",
+  secret: typeof process.env.SECRET_SESSION,
   resave: false,
   saveUninitialized: false
 }));
-
-
-// app.use(express.static(path.join(__dirname, 'public', 'email')));
 
 app.use(allRoutes);
 
