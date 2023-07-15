@@ -1,4 +1,4 @@
-import { Router } from "express"
+import { Request, Response, Router } from "express"
 import {
   registerUser,
   loginUser,
@@ -29,6 +29,11 @@ import { getExpensesGym } from "../services/crudExpense/get"
 import { deleteExpensesGym } from "../services/crudExpense/delete"
 import { putExpensesGym } from "../services/crudExpense/put"
 
+
+import passport from "passport"
+
+import "../helper/auth"
+
 const allRoutes = Router()
 
 
@@ -41,6 +46,16 @@ allRoutes.post("/api/login", loginUser)
 allRoutes.get("/api/all-users", getAllUsers)
 
 allRoutes.put("/api/update-user/:id", upDateUser)
+
+
+allRoutes.get("/google", passport.authenticate("google", { scope: "profile" }))
+
+allRoutes.get("/auth/google/callback", passport.authenticate('google', {
+  // successRedirect: '/auth/google/success',
+  failureRedirect: '/login'
+}), (req: Request, res: Response) => {
+  res.json({ msg: "Usuario logeado" })
+});
 
 
 // ─── Productos ───────────────────────────────────────────────────────────────
