@@ -6,6 +6,8 @@ import morgan from "morgan";
 import "../src/models/User";
 import "../src/models/Providers"
 import allRoutes from "./routes/routes";
+import passport from 'passport'
+import session from 'express-session';
 
 const app: Application = express();
 app.use(
@@ -14,9 +16,20 @@ app.use(
     origin: true
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
+app.use(passport.initialize())
+app.use(session({
+  secret: "12345",
+  resave: false,
+  saveUninitialized: false
+}));
+
+
+// app.use(express.static(path.join(__dirname, 'public', 'email')));
 
 app.use(allRoutes);
 
