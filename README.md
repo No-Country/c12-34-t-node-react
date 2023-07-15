@@ -48,6 +48,14 @@ Variables de entorno del backend: .env
 
 `TOKEN=`
 
+`GOOGLE_CLIENT_ID=`193481864569-0cmrhpfe0mnut2f52mrdne07bqcgakd7.apps.googleusercontent.com
+
+`GOOGLE_CLIENT_SECRET=`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
+
+`GOOGLE_CALLBACK_URL=`http://localhost:3001/auth/google/callback
+
+`SECRET_SESSION=`cd8ef67f-7012-4d19-8b9a-04ce60a0d54d
+
 
 ![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/531dacd8-5596-4e1c-b7c9-1dae95b117b2)
 ![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/1f540e63-d63d-4c7f-b666-a6c7b3f45d72)
