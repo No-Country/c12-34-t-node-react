@@ -35,7 +35,7 @@ User.init(
     },
     rol: {
       type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.Client),
-     // allowNull: false,
+      // allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
