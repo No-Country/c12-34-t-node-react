@@ -1,19 +1,10 @@
 import { Request } from 'express';
 import passport from "passport";
+import { IUser } from '../interfaces/IUser';
+import Google from '../models/Google';
+import { where } from 'sequelize';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-
-passport.serializeUser((user: any, done: any) => {
-  // console.log("USUARIO:", user)
-  // console.log("USUARIO:", typeof user)
-
-  return done(null, user.id)
-})
-
-
-passport.deserializeUser((user: any, done: any) => {
-  return done(null, user)
-})
 
 
 passport.use(new GoogleStrategy({
@@ -22,8 +13,34 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.GOOGLE_CALLBACK_URL,
   passReqToCallback: true
 },
-  function (req: Request, accessToken: any, refreshToken: any, profile: any, done: any) {
-    // console.log(profile)
-    done(null, profile)
+  async function (req: Request, accessToken: any, refreshToken: any, profile: any, done: any) {
+
+    try {
+      let user = await Google.findOne({
+        where: {
+          googleId: profile.id
+
+        }
+      })
+      if (user) {
+        return done(null, user);
+      } else {
+        const newUser = ({
+
+          googleId: profile.id,
+          name: profile.displayName,
+          photo: profile.photos[0].value,
+        });
+        user = await Google.create(newUser)
+        console.log(newUser)
+        return done(null, user);
+
+      }
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 ));
+
+
