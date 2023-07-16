@@ -9,6 +9,8 @@ class User extends Model<IUser> implements IUser {
   password!: string;
   // PARA EL CLIENTE
   plan!: string;
+  dateIn!: string;
+  dateOut!: string;
   contact!: string;
   // PARA EL CLIENTE
   // PARA EL EMPLEADOR
@@ -42,6 +44,12 @@ User.init(
       unique: true
     },
     plan: {
+      type: DataTypes.STRING,
+    },
+    dateIn: {
+      type: DataTypes.STRING,
+    },
+    dateOut: {
       type: DataTypes.STRING,
     },
     contact: {

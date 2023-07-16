@@ -11,6 +11,8 @@ export interface IUser {
   password: string;
   // PARA EL CLIENTE
   plan?: string;
+  dateIn?: string;
+  dateOut?: string;
   contact?: string;
   // PARA EL CLIENTE
   // PARA EL EMPLEADOR
