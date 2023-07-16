@@ -22,6 +22,7 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // MAQUINAS OH ELEMENTOS - MOBILIARIO
     type: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -42,10 +43,6 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // isSelected: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
   },
   {
     sequelize: db,

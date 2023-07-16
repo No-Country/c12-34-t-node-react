@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import { db } from "./db";
 import morgan from "morgan";
-import allRoutes from "./routes/routes";
+import { router } from "./routes";
 import passport from 'passport'
 import session from 'express-session';
 
@@ -26,7 +26,7 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.use(allRoutes);
+app.use(router);
 
 const port = process.env.PORT || 3002;
 
