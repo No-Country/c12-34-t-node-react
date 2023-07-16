@@ -10,27 +10,36 @@
 C12-34-T-Node-React
 
 _____________________________________________________________________
-- ## Pasos para hacer la instalacion
- 
- 1|clonar el repositorio de GitHub.
- 
- 2|hacer `npm i` para que se instalen todas las dependencias.
- 
- 3|scripts para correr la aplicacion: `npm run dev`.
-
 🏋🏻‍♀️Para que fue creado Fitness Center Gym?
 La necesidad de crear este sistema surge de los desafíos que enfrentan los gimnasios en la gestión eficiente de sus operaciones diarias.Este sistema de gestión fue creado con el propósito de proporcionar una plataforma fácil de usar para los administradores de gimnasios. Les permite tener un control completo sobre el flujo de clientes, gestionar ingresos y egresos, también llevar un registro detallado de las personas que asisten al establecimiento.Al brindar información en tiempo real, el sistema permite a los administradores tomar decisiones basadas en datos y optimizar la eficiencia operativa del gimnasio.
 
+📜Qué problemas resuelve?
+✔️Proporciona una visión clara de los clientes activos, sus datos personales y la fecha de vencimiento de sus membresías.
+✔️Permite al administrador mantener un registro de las personas que forman parte del establecimiento como instructores, proveedores, clientes.
+✔️Permite llevar un registro completo de todo el mobiliario y máquinas.
+✔️ ️Proporciona una visión clara de las reservas para poder realizar un seguimiento de la asistencia a las clases.
+
+🔧 Tecnologías
+Figma
+Jira
+Trello
+Tailwind
+Sequelize
+JSON Web Token
+PostgreSQL
+TypeScript
+React
+NodeJS
+
+
+
+
+
+
  
 
 
-  |Skills UX UI: `figma`
-
-  |Skills Frontend: `react - tailwind - daisy Components`
-
-  |Skills backend: `typescript - express - postgres - bcrypt - jsonWebToken - node - morgan - nodemon -dotenv - sequelize`
-
-  |Skills Testing: `jira`
+  
 
   
 
