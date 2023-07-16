@@ -18,6 +18,11 @@ _____________________________________________________________________
  
  3|scripts para correr la aplicacion: `npm run dev`.
 
+🏋🏻‍♀️Para que fue creado Fitness Center Gym?
+La necesidad de crear este sistema surge de los desafíos que enfrentan los gimnasios en la gestión eficiente de sus operaciones diarias.Este sistema de gestión fue creado con el propósito de proporcionar una plataforma fácil de usar para los administradores de gimnasios. Les permite tener un control completo sobre el flujo de clientes, gestionar ingresos y egresos, también llevar un registro detallado de las personas que asisten al establecimiento.Al brindar información en tiempo real, el sistema permite a los administradores tomar decisiones basadas en datos y optimizar la eficiencia operativa del gimnasio.
+
+ 
+
 
   |Skills UX UI: `figma`
 
