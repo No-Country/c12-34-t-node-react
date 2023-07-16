@@ -7,6 +7,8 @@
 ## :book: Informacion sobre el proyecto 
 
 `Sistema de gestion de un gimnasio: Fitness Center Gym`
+C12-34-T-Node-React
+
 _____________________________________________________________________
 - ## Pasos para hacer la instalacion
  
