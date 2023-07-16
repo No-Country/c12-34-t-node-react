@@ -75,7 +75,7 @@ export const createElement = (object: any): IElements => {
     type: parseType(object.type),
     description: parseDescription(object.description),
     price: parsePrice(object.price),
-    year: parseYear(object.year),
+    // date: parseYear(object.date),
     state: parseState(object.state),
   }
   return newElement;

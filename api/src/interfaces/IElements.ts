@@ -12,7 +12,7 @@ export interface IElements {
   type: string,
   description: string,
   price: number,
-  date: string,
+  date?: string,// PENDIENTE DESCOMENTAR
   state: State,
 }
 
