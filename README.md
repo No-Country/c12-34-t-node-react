@@ -28,16 +28,28 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 
 
-[![2023-07-17-13h54-45.png](https://i.postimg.cc/tTmJmBKH/2023-07-17-13h54-45.png)](https://postimg.cc/xJM9X3js)
 
 
 
-Variables de entorno del frontend: .env
+
+
+
+
+
+- ## Pasos para hacer la instalación
+ 
+ 1|clonar el repositorio de GitHub. 
+ 2|hacer `npm i` para que se instalen todas las dependencias.  
+ 3|scripts para correr la aplicación: `npm run dev`.
+
+
+
+- ## Variables de entorno del frontend: .env
 
 `VITE_BACKEND_URL`=
 
 
-Variables de entorno del backend: .env
+- ## Variables de entorno del backend: .env
 
 `PORT=`
 
