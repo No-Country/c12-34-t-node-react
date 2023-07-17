@@ -1,6 +1,9 @@
 import { Router } from "express"
 import { authToken } from "../middlewares/authToken"
-import { deleteProvider, getProvider, postProvider, putProvider } from "../controllers/provider"
+import { getProvider } from "../services/crudProvider/get"
+import { postProvider } from "../services/crudProvider/post"
+import { putProvider } from "../services/crudProvider/put"
+import { deleteProvider } from "../services/crudProvider/delete"
 
 export const providerRoutes = Router()
 
