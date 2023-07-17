@@ -5,9 +5,17 @@ import { Model, DataTypes } from "sequelize";
 class User extends Model<IUser> implements IUser {
   id!: string;
   user!: string;
-  // lastName!: string;
   email!: string;
   password!: string;
+  // PARA EL CLIENTE
+  plan!: string;
+  dateIn!: string;
+  dateOut!: string;
+  contact!: string;
+  // PARA EL CLIENTE
+  // PARA EL EMPLEADOR
+  occupation!: string;
+  // PARA EL EMPLEADOR
   rol!: Rol;
 }
 
@@ -22,25 +30,33 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // lastName: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      // validate: {
-      //   isEmail: true,
-      // },
     },
     rol: {
-      type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.User),
-     // allowNull: false,
+      type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.Client),
+      // allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
       unique: true
+    },
+    plan: {
+      type: DataTypes.STRING,
+    },
+    dateIn: {
+      type: DataTypes.STRING,
+    },
+    dateOut: {
+      type: DataTypes.STRING,
+    },
+    contact: {
+      type: DataTypes.STRING,
+    },
+    occupation: {
+      type: DataTypes.STRING,
     },
   },
   {

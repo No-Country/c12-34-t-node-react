@@ -1,23 +1,25 @@
-import { IUser } from "./IUser";
-
 export enum InDay {
   Morning = "Mañana",
   Afternoon = "Tarde",
   Night = "Noche",
 }
 
-export interface ClassGroup {
+export enum WeekDays {
+  Monday = "Lunes",
+  Tuesday = "Martes",
+  Wednesday = "Miercoles",
+  Thursday = "Jueves",
+  Friday = "Viernes",
+  Saturday = "Sabado",
+  Sunday = "Domingo",
+}
+
+export interface IClassGroup {
   id?: string;
   name: string;
   trainer: string;
-  time: string;
-  hour: string;
+  duration: string;
+  schedule: string; // HORARIO
   inDay: InDay;
-}
-
-type nameUsers = Pick<IUser, "user">
-
-// export interface Clases_Grupales extends ClassGroup, nameUsers {
-export interface Clases_Grupales extends ClassGroup {
-  user: string[]
+  weekDays: WeekDays
 }

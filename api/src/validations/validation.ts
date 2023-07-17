@@ -6,7 +6,7 @@ export const validations = (object: IElements): IElements => {
   const errorType = typeof object.type !== "string" || object.type.length === 0
   const errorDescription = typeof object.description !== "string" || object.description.length <= 11
   const errorPrice = typeof object.price !== "number"
-  const errorYear = typeof object.year !== "number"
+  const errorYear = typeof object.date !== "string"
   const errorState = typeof object.state !== "string" || !Object.values(State).includes(object.state)
 
   if (errorName && errorType && errorDescription && errorPrice && errorYear && errorState) {

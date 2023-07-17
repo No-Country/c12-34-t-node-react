@@ -1,11 +1,11 @@
-import { IElements } from "./../interfaces/IElements";
+import { IElements, Types } from "./../interfaces/IElements";
 import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
 import { State } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
   id!: string;
   name!: string;
-  type!: string;
+  type!: Types;
   description!: string;
   price!: number;
   date!: string;
@@ -22,8 +22,14 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // MAQUINAS OH ELEMENTOS - MOBILIARIO
     type: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM(
+        Types.Element,
+        Types.Machine,
+        Types.Office,
+      ),
+      // defaultValue: "Elemento",
       allowNull: false,
     },
     description: {
@@ -39,13 +45,13 @@ Elements.init(
       allowNull: false,
     },
     state: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM(
+        State.En_reparacion,
+        State.Nuevo,
+        State.Usado,
+      ),
       allowNull: false,
     },
-    // isSelected: {
-    //   type: DataTypes.BOOLEAN,
-    //   defaultValue: false,
-    // },
   },
   {
     sequelize: db,

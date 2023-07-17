@@ -1,24 +1,15 @@
-import Jwt, { JwtPayload } from "jsonwebtoken";
+import Jwt from "jsonwebtoken";
 import User from "../models/User";
 import { NextFunction, Request, Response } from "express";
-
-
-interface IPayload {
-  id: string,
-  iat: number,
-  exp: number
-}
+import { IPayload } from "../interfaces/IPayload";
 
 export const authToken = async (req: any, res: Response, next: NextFunction) => {
-
-
-
+  // console.log("REQ.USERID:", typeof req)
 
   if (req.headers.authorization) {
 
     try {
       const token = req.headers.authorization.split(" ")[1]
-
 
       const payload = Jwt.verify(token, process.env.TOKEN || "CL@VE") as IPayload
 
@@ -26,8 +17,6 @@ export const authToken = async (req: any, res: Response, next: NextFunction) => 
         where: { email: payload.id },
       })
       req.usuarioId = usuarioid
-
-
 
       return next()
 

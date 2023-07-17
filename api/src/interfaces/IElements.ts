@@ -1,6 +1,11 @@
+export enum Types {
+  Machine = "Maquina",
+  Element = "Elemento",
+  Office = "Oficina",
+}
+
 export enum State {
   Nuevo = "Nuevo",
-  SemiNuevo = "Semi-nuevo",
   Usado = "Usado",
   En_reparacion = "En reparacion",
 }
@@ -9,13 +14,9 @@ export enum State {
 export interface IElements {
   id?: string,
   name: string,
-  type: string,
+  type: Types,
   description: string,
   price: number,
   date: string,
   state: State,
-}
-
-export interface ElementUser extends IElements {
-  userId: string,
 }

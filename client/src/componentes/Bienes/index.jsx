@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Logo from "./assets/FitnessCenterLogoGym.png"
+import Title from '../Title'
 
 const MENU = [
   {
@@ -8,30 +8,27 @@ const MENU = [
     title: ["Máquinas"],
     desc: ["aparatos de sala de musculación"],
     alt: "Máquinas",
-    link: "/admin/bienes/maquinas"
+    link: "/home/bienes/maquinas"
   }, {
     id: 2,
     img: ["imagebienes2.jpg"],
     title: ["Elementos"],
     desc: ["pesas, colchonetas, etc"],
     alt: "Elementos",
-    link: "/admin/bienes/elementos"
+    link: "/home/bienes/elementos"
   }, {
     id: 3,
     img: ["imagebienes3.jpg"],
     title: ["Mobiliario"],
     desc: ["muebles, estantes, etc"],
     alt: "Mobiliario",
-    link: "/admin/bienes/mobiliario"
+    link: "/home/bienes/mobiliario"
   }]
 
 const Bienes = () => {
   return (
     <main className='flex flex-col w-full gap-2 m-5'>
-      <header className='flex justify-center items-center'>
-        <img className='w-32' src={Logo} alt="FitnessCenterLogoGym logo de la marca y aplicación web Fitness Center" />
-      </header>
-      <h3 className='self-start text-2xl font-PoppinsBold underline underline-offset-8  decoration-pallete-green'>Bienes</h3>
+      <Title title={'Bienes'} />
       <section className='flex flex-col items-center justify-between gap-5'>
         {
           MENU.map((el) => (
