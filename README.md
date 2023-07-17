@@ -33,6 +33,7 @@ PostgreSQL
 TypeScript
 React
 NodeJS
+[![2023-07-17-12h08-00.png](https://i.postimg.cc/Pxy9tZSK/2023-07-17-12h08-00.png)](https://postimg.cc/XGZQLZSy)
 
 
 
