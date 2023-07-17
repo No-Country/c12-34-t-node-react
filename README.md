@@ -24,8 +24,7 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 🔧 Tecnologías
 
 Figma
-Jira ![image](https://github.com/No-Country/c12-34-t-node-react/assets/138165595/f0129259-c94b-4c16-8708-e9bdf64135c9)
-
+Jira 
 trello
 Tailwind
 Sequelize
