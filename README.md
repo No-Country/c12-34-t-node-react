@@ -25,7 +25,7 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 Figma
 Jira
-Trello
+trello-logo.pngTrello
 Tailwind
 Sequelize
 JSON Web Token
