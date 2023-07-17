@@ -67,14 +67,11 @@ Variables de entorno del backend: .env
 `SECRET_SESSION=`cd8ef67f-7012-4d19-8b9a-04ce60a0d54d
 
 
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/531dacd8-5596-4e1c-b7c9-1dae95b117b2)
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/1f540e63-d63d-4c7f-b666-a6c7b3f45d72)
 
 
 
 
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/3926337f-d6ac-4056-a0ac-b844a70e5327)
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/abcb52d2-cf2a-4b89-9748-98288828a707)
+
 
 
 
