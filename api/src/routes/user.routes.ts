@@ -1,10 +1,8 @@
 import { Router } from "express"
-import {
-  registerUser,
-  loginUser,
-  getAllUsers,
-  upDateUser,
-} from "../controllers/user"
+import { registerUser } from "../services/crudUser/register"
+import { loginUser } from "../services/crudUser/login"
+import { getAllUsers } from "../services/crudUser/get"
+import { upDateUser } from "../services/crudUser/put"
 
 import passport from "passport"
 import "../helper/auth"

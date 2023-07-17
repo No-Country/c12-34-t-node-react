@@ -1,11 +1,8 @@
 import { Request } from 'express';
 import passport from "passport";
-import { IUser } from '../interfaces/IUser';
 import Google from '../models/Google';
-import { where } from 'sequelize';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -19,14 +16,12 @@ passport.use(new GoogleStrategy({
       let user = await Google.findOne({
         where: {
           googleId: profile.id
-
         }
       })
       if (user) {
         return done(null, user);
       } else {
         const newUser = ({
-
           googleId: profile.id,
           name: profile.displayName,
           photo: profile.photos[0].value,
@@ -34,7 +29,6 @@ passport.use(new GoogleStrategy({
         user = await Google.create(newUser)
         console.log(newUser)
         return done(null, user);
-
       }
     }
     catch (error) {
@@ -42,5 +36,3 @@ passport.use(new GoogleStrategy({
     }
   }
 ));
-
-
