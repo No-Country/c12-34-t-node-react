@@ -23,7 +23,7 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 🔧 Tecnologias
 
-
+[![2023-07-17-13h38-11.png](https://i.postimg.cc/KvzJdjC7/2023-07-17-13h38-11.png)](https://postimg.cc/3WsXG88W)
 
 
 
