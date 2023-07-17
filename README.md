@@ -22,7 +22,7 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 ✔️ ️Proporciona una visión clara de las reservas para poder realizar un seguimiento de la asistencia a las clases.
 
 🔧 Tecnologias
-(https://i.postimg.cc/KvzJdjC7/2023-07-17-13h38-11.png)](https://postimg.cc/3WsXG88W)
+
 
 
 
