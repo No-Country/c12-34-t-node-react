@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IElements, State } from "../../interfaces/IElements";
+import { IElements, State, Types } from "../../interfaces/IElements";
 import { Elements } from "../../models/relations";
 
 // RELACION ELEMENTO VS PROVEEDOR VS ADMIN
@@ -7,7 +7,7 @@ export const postRelationElements = async (req: Request, res: Response) => {
   const element = req.body as IElements;
 
   const errorName = typeof element.name !== "string" || element.name.length === 0
-  const errorType = typeof element.type !== "string" || element.type.length === 0
+  const errorType = typeof element.type !== "string" || !Object.values(Types).includes(element.type)
   const errorDescription = typeof element.description !== "string" || element.description.length <= 11
   const errorPrice = typeof element.price !== "number"
   const errorDate = typeof element.date !== "string" || !Boolean(Date.parse(element.date)) || element.date.length < 10
