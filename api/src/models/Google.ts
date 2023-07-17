@@ -5,6 +5,7 @@ import { Model, DataTypes } from "sequelize";
 class Google extends Model<IGoogle> implements IGoogle {
   googleId!: string;
   name!: string;
+  email!: string;
   photo!: string;
 }
 
@@ -18,8 +19,12 @@ Google.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    photo: {
+    email: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    photo: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
   },
