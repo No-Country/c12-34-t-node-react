@@ -23,11 +23,20 @@ const express_session_1 = __importDefault(require("express-session"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     credentials: true,
-    origin: true
+    origin: "*",
+    methods: ["POST", "GET", "DELETE", "PUT"]
 }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, morgan_1.default)("dev"));
+app.use((_req, res, next) => {
+    // res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    next();
+});
 app.use(passport_1.default.initialize());
 app.use((0, express_session_1.default)({
     secret: typeof process.env.SECRET_SESSION,
