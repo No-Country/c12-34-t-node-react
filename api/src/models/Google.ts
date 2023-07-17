@@ -6,7 +6,6 @@ class Google extends Model<IGoogle> implements IGoogle {
   googleId!: string;
   name!: string;
   photo!: string;
-
 }
 
 Google.init(
@@ -18,14 +17,11 @@ Google.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false
-
     },
     photo: {
       type: DataTypes.STRING,
       allowNull: false
-
     },
-
   },
   {
     sequelize: db,
@@ -33,6 +29,5 @@ Google.init(
     timestamps: false,
   }
 );
-
 
 export default Google;
