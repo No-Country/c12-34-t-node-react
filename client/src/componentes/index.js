@@ -15,4 +15,5 @@ export { default as Title } from "./Title";
 export { default as SectionProvider } from "./SectionProvider/index";
 export { default as SectionClients } from "./SectionClients/index";
 export { default as SectionStaff } from "./SectionStaff/index.jsx";
-
+export { default as BienesElementos } from "./BienesElementos";
+export { default as BienesMobiliario } from "./BienesMobiliario";
