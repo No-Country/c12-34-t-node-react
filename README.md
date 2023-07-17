@@ -40,17 +40,19 @@ NodeJS
 
 
  
+- ## Pasos para hacer la instalacion
+ 
+ 1|clonar el repositorio de GitHub.
+ 
+ 2|hacer `npm i` para que se instalen todas las dependencias.
+ 
+ 3|scripts para correr la aplicacion: `npm run dev`.
 
-
-  
-
-  
 
 
 Variables de entorno del frontend: .env
 
 `VITE_BACKEND_URL`=
-
 
 
 Variables de entorno del backend: .env
