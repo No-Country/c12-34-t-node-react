@@ -1,14 +1,21 @@
+import { useEffect } from "react";
 import styles from "./styles.module.css";
-import {useNavigate } from "react-router-dom";
+import {useLocation, useNavigate } from "react-router-dom";
 
-const SideMenu = ({ isOpen}) => {
+const SideMenu = ({ isOpen, close }) => {
 
   const navigate = useNavigate()
-  
+  const {pathname} = useLocation()  
+
+
+  useEffect(() => {
+    if (isOpen) {
+      close()
+    }
+  }, [pathname])
+
 
   return (
-
-
     <div 
       style={{ right: isOpen ? 0 : -250 }}
       className={styles.container}

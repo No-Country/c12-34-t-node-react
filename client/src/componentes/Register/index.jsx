@@ -7,8 +7,13 @@ import { CgAsterisk } from 'react-icons/cg';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
+import { useSession } from '../../providers/session';
+
 
 const Register = () => {
+
+  const { user, signIn, signOut } = useSession()
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -187,8 +192,11 @@ const Register = () => {
                   </button>
                 </div>
 
-                <div>
-                  <button
+
+              </div>
+            </form>
+            <button
+                    onClick={signIn}
                     className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     <img
@@ -197,13 +205,12 @@ const Register = () => {
                     ></img>
                     Inicia sesión con Google
                   </button>
+                  <div>
                   <p className="mt-5 text-center text-sm text-gray-500">
                     Ya estás registrado?
                   <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px'}}>Iniciar sesión</Link>
                   </p>
                 </div>
-              </div>
-            </form>
             </div>
           </div>
         </div>

@@ -13,10 +13,12 @@ import AdminPage from './componentes/AdminPage'
 
 
 
+
 function App() {
 
   // const {pathname} = useLocation()
   // const isAdminPage = pathname.includes('admin')
+
 
   return (
     <>

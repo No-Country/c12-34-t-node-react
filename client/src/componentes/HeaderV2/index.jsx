@@ -82,6 +82,7 @@ const Header = () => {
 
       <SideMenu
        isOpen={showMenu}
+       close={closeMenu}
       />
 
       {/* {showMenu && <SideMenu isOpen={showMenu} />} */}

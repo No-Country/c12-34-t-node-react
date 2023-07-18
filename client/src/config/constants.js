@@ -18,3 +18,5 @@ export const menus = [
   { name: "Reservas", link: "/home/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
   { name: "Gastos", link: "/home/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
 ];
+
+export const GOOGLE_CLIENT_ID = '193481864569-0cmrhpfe0mnut2f52mrdne07bqcgakd7.apps.googleusercontent.com'
