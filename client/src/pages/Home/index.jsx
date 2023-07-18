@@ -2,7 +2,9 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 
 import {
   Bienes,
+  BienesElementos,
   BienesMaquinas,
+  BienesMobiliario,
   SectionClients,
   SectionProvider,
   SectionStaff,
@@ -44,8 +46,8 @@ const HomePrincipal = () => {
           <Route path='/admin' element={<AdminPage />} />
           <Route path='/bienes' element={<Bienes />} />
           <Route path='/bienes/maquinas' element={<BienesMaquinas/>} />
-          <Route path='/bienes/elementos' element={<h1>pag elementos</h1>} />
-          <Route path='/bienes/mobiliario' element={<h1>pag mobiliario</h1>} />
+          <Route path='/bienes/elementos' element={<BienesElementos/>} />
+          <Route path='/bienes/mobiliario' element={<BienesMobiliario/>} />
           <Route path="/staff" element={<SectionStaff />} />
           <Route path="/clientes" element={<SectionClients />} />
           <Route path="/proovedores" element={<SectionProvider />} />
@@ -59,7 +61,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-    }
+  }
     </>
   );
 };
