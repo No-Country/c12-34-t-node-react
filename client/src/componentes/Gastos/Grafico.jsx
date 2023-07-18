@@ -5,7 +5,7 @@ const ChartComponent = () => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const labels = ['E', 'F', 'M', 'A', 'M', 'J', 'J', "A", "S"];
+    const labels = ['E', 'F', 'M', 'A', 'M', 'J', 'J'];
     const data = {
       labels: labels,
       datasets: [
@@ -14,12 +14,14 @@ const ChartComponent = () => {
           data: [65, 59, 80, 81, 56, 55, 40],
           borderColor: 'red',
           backgroundColor: 'rgba(255, 0, 0, 0.5)',
+          pointStyle: 'circle',
         },
         {
           label: 'Egresos',
           data: [28, 48, 40, 19, 86, 27, 90],
           borderColor: '#26F8CF',
           backgroundColor: 'rgba(0, 0, 255, 0.5)',
+          pointStyle: 'circle',
         }
       ]
     };
@@ -33,12 +35,19 @@ const ChartComponent = () => {
           legend: {
             position: 'top',
           },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          }
-        }
-      },
+         
+        },
+        scales: {
+            y: {
+                display: false, // Desactivar la visualización de las etiquetas del eje Y
+              },
+            x: {
+              grid: {
+                display: false, // Ocultar las líneas de referencia del eje X
+              },
+            },
+          },
+        },
       actions: [
         {
           name: 'Randomize',
@@ -60,7 +69,7 @@ const ChartComponent = () => {
     };
   }, []);
 
-  return <canvas ref={chartRef} />;
+  return <div  style={{ width: '400px', height: '400px' }}><canvas ref={chartRef}/></div> ;
 };
 
 export default ChartComponent;

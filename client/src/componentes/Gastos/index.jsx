@@ -43,10 +43,19 @@ const Gastos = () => {
     <div>
         <div className='mt-[20px]'>
           <Title title={"Gastos"}/>
-          <div className='w-[500px]'>
-            <ChartComponent/>
+        </div>
+
+        <div className='mr-[120px]' style={{float:"right"}}>
+            <div className='flex'>
+              
+                <p className='text-orange-600 mt-[100px] mr-[100px]'><b>Pendiente</b> </p>
+              
+             
+               <ChartComponent/>
+              
+          
           </div>
-         
+      
         </div>
 
         <div className='flex mt-[150px]'>
