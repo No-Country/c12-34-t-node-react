@@ -11,6 +11,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ChartComponent from './Grafico';
+import ModalGastos from './Modal';
+import ModalDos from './ModalDos';
 
 
 
@@ -58,7 +60,7 @@ const Gastos = () => {
       
         </div>
 
-        <div className='flex mt-[150px]'>
+        <div className='flex mt-[150px] xxxxl:flex xxxl:flex xxl:flex xl:flex lg:flex md:flex sm:flex xxs:flex xxxs:inline-block' >
           <div className='mt-[150px] ml-[100px]'>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -80,8 +82,8 @@ const Gastos = () => {
                   </TableBody>
              </Table>
           </TableContainer>
-             <div className='text-center'>
-             <button className="btn btn-active btn-primary mt-[20px]">Agregar</button>
+             <div className='text-center mt-[20px]'>
+             <ModalGastos title={"Agregar Gastos Mensuales"}/>
              </div>
           </div>
           
@@ -107,8 +109,8 @@ const Gastos = () => {
                   </TableBody>
              </Table>
           </TableContainer>
-          <div  className='text-center'>
-             <button className="btn btn-active btn-primary mt-[20px]">Agregar</button>
+          <div  className='text-center mt-[20px]'>
+            <ModalDos/>
              </div>
           </div>
         </div>
