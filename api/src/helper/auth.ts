@@ -1,8 +1,7 @@
-import { Request } from 'express';
 import passport from "passport";
-import Google from '../models/Google';
-import { IUser, Rol } from '../interfaces/IUser';
+import { IUser } from '../interfaces/IUser';
 import User from '../models/User';
+import { ParamsAuth } from '../interfaces/IGoogle';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
@@ -12,8 +11,12 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.GOOGLE_CALLBACK_URL,
   passReqToCallback: true
 },
-  async function (req: Request, accessToken: any, refreshToken: any, profile: any, done: any) {
-
+  async function (
+    // { req, accessToken, refreshToken, profile, done }:
+    // ParamsAuth
+    _req: any, _accessToken:any, _refreshToken: any, profile: any, done: any
+  ) {
+    console.log("profile:", profile.id)
     try {
       let user = await User.findOne({
         where: {
@@ -26,13 +29,11 @@ passport.use(new GoogleStrategy({
         const newUser: IUser = {
           googleId: profile.id,
           user: profile.displayName,
-          email: profile.emails[0].value,
+          email: profile.email,
           password: "",
-          photo: profile.photos[0].value,
-          // rol: Rol.Client
+          photo: profile.picture,
         }
         user = await User.create(newUser)
-        console.log("NEW USER:", user)
         return done(null, user);
       }
     }

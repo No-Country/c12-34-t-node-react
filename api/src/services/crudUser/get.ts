@@ -1,11 +1,7 @@
 import { Request, Response } from "express";
 import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
-import { allUsers } from "../../controllers/user";
 
 export const getAllUsers = async (_: Request, res: Response) => {
-  
-  // let d = await allUsers()
-  // console.log("DATA:", d)
   try {
     const allUsers = await User.findAll({
       include: [{

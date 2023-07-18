@@ -15,7 +15,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault();
 
     const userData = {
       user: name,
@@ -56,6 +57,12 @@ const Register = () => {
       token && navigate('/home') 
     }, [token, navigate])
 
+    const callBack = async (e) => {
+      e.preventDefault();
+      // await axios.get(`${import.meta.env.VITE_BACKEND_URL}/google`)
+      window.location.href = `${import.meta.env.VITE_BACKEND_URL}/google`
+    }
+
   return (
     <>
       <ToastContainer />
@@ -76,7 +83,7 @@ const Register = () => {
                   Registrarse{" "}
                 </h2>
               </div>
-              <form action="#" method="POST">
+              <form action="#" onSubmit={register}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
                 <div>
                   <div className="flex items-center">
@@ -189,6 +196,7 @@ const Register = () => {
 
                 <div>
                   <button
+                    onClick={callBack}
                     className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     <img

@@ -1,7 +1,7 @@
 export enum Rol {
-  Admin = "Admin",
-  Employees = "Employees",
-  Client = "Client",
+  Admin = "Administrador",
+  Employees = "Empleados",
+  Client = "Clientes",
 }
 
 export interface IUser {
