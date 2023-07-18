@@ -1,6 +1,8 @@
 import { Request } from 'express';
 import passport from "passport";
 import Google from '../models/Google';
+import { IUser, Rol } from '../interfaces/IUser';
+import User from '../models/User';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
@@ -13,7 +15,7 @@ passport.use(new GoogleStrategy({
   async function (req: Request, accessToken: any, refreshToken: any, profile: any, done: any) {
 
     try {
-      let user = await Google.findOne({
+      let user = await User.findOne({
         where: {
           googleId: profile.id
         }
@@ -21,14 +23,16 @@ passport.use(new GoogleStrategy({
       if (user) {
         return done(null, user);
       } else {
-        const newUser = ({
+        const newUser: IUser = {
           googleId: profile.id,
-          name: profile.displayName,
+          user: profile.displayName,
           email: profile.emails[0].value,
+          password: "",
           photo: profile.photos[0].value,
-        });
-        user = await Google.create(newUser)
-        console.log(newUser)
+          // rol: Rol.Client
+        }
+        user = await User.create(newUser)
+        console.log("NEW USER:", user)
         return done(null, user);
       }
     }

@@ -6,8 +6,10 @@ export enum Rol {
 
 export interface IUser {
   id?: string;
+  googleId?: string,
   user: string;
   email: string;
+  photo?: string;
   password: string;
   // PARA EL CLIENTE
   plan?: string;
