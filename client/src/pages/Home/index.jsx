@@ -22,17 +22,17 @@ const HomePrincipal = () => {
   
   const navigate = useNavigate();
   
-  let token = sessionStorage.getItem('userToken')
+  //let token = sessionStorage.getItem('userToken')
 
-  useEffect(() => {
+  /*useEffect(() => {
     !token && navigate('/') 
   }, [token, navigate])
-
+*/
   return (
 <>
-    {token === null 
+    {/*{token === "" 
     ? <Navigate to='/' />
-    :
+    : */ }
     <>
       <div className="flex bg-[#F4F7FF]">
      
@@ -62,7 +62,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-    }
+    
     </>
   );
 };

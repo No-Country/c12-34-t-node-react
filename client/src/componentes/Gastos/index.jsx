@@ -1,54 +1,112 @@
-import React from 'react'
+
 import Title from '../Title'
 import iconDelete from "../../img/delete.png"
 import iconEdit from "../../img/edit.png"
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import ChartComponent from './Grafico';
+
+
+
+
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData('Alquiler', "$43.000", ),
+  createData('Luz', "$400.000", ),
+  createData('Gas', "$400.000", ),
+  createData('Agua', "$400.000", ),
+  createData('Tasa', "$400.000", ),
+  createData('Habilitacion', "$400.000"),
+];
+
+const ingresos = [ 
+  createData('Cuotas' ),
+  createData('Cuota', "$400.000", ),
+  createData('Cuota', "$400.000", ),
+  createData('Cuota', "$400.000", ),
+  createData('Cuota', "$400.000", )
+]
+
 
 const Gastos = () => {
   return (
     <div>
-        <div>
-        <Title title={"Gastos"}/>
+        <div className='mt-[20px]'>
+          <Title title={"Gastos"}/>
+          <div className='w-[500px]'>
+            <ChartComponent/>
+          </div>
+         
         </div>
 
-         <div className='mt-[140px] ml-[200px]'>
+        <div className='flex mt-[150px]'>
+          <div className='mt-[150px] ml-[100px]'>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell  style={{color:"blue"}}>Gastos Mensuales</TableCell>
+                      </TableRow>
+                     </TableHead>
+                    <TableBody>
+                      {rows.map((row) => (
+                        <TableRow  key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                            <TableCell component="th" scope="row">
+                               {row.name}
+                            </TableCell>
+                          <TableCell align="right"> <b>{row.calories}</b>  </TableCell>
+                          <TableCell align="right"><img src={iconEdit} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
+                          <TableCell align="right"><img src={iconDelete} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
+                     </TableRow> ))}
+                  </TableBody>
+             </Table>
+          </TableContainer>
+             <div className='text-center'>
+             <button className="btn btn-active btn-primary mt-[20px]">Agregar</button>
+             </div>
+          </div>
+          
+          <div className='ml-[50px] mt-[178px]'>
+          <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell style={{color:"blue"}}>Ingresos Mensuales</TableCell>
+                      </TableRow>
+                     </TableHead>
+                    <TableBody>
+                      {ingresos.map((row) => (
+                        <TableRow  key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                            <TableCell component="th" scope="row">
+                               {row.name}
+                            </TableCell>
+                          <TableCell align="right"> <b className='text-teal-400'>{row.calories}</b> </TableCell>
+                          <TableCell align="right">{row.fat}</TableCell>
+                          <TableCell align="right"><img src={iconEdit} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
+                          <TableCell align="right"><img src={iconDelete} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
+                     </TableRow> ))}
+                  </TableBody>
+             </Table>
+          </TableContainer>
+          <div  className='text-center'>
+             <button className="btn btn-active btn-primary mt-[20px]">Agregar</button>
+             </div>
+          </div>
+        </div>
 
-         <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <img src={iconEdit} className=''></img>
-        <img src={iconDelete}  className='w-[15px] h-[15px] ml-[20px]'></img  >
-      </tr>
-      {/* row 2 */}
-      <tr className="hover">
-        
-       
-      <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <img src={iconEdit}  className='w-[15px] h-[15px]'></img>
-        <img src={iconDelete}  className='w-[15px] h-[15px]'></img >
-      </tr>
-      {/* row 3 */}
-      <tr>
-       
-       
-      <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <img src={iconEdit}  className='w-[15px] h-[15px]'></img>
-        <img src={iconDelete}  className='w-[15px] h-[15px]'></img >
-      </tr>
-    </tbody>
-  </table>
-</div>
-           
-             
-         </div>
+      
+
+          
     </div>
   )
 }
