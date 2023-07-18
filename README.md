@@ -39,7 +39,9 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 - ## Pasos para hacer la instalación
  
  1|clonar el repositorio de GitHub. 
- 2|hacer `npm i` para que se instalen todas las dependencias.  
+ 
+ 2|hacer `npm i` para que se instalen todas las dependencias. 
+ 
  3|scripts para correr la aplicación: `npm run dev`.
 
 
