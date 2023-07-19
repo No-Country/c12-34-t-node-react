@@ -21,19 +21,19 @@ import GroupClasses from '../../componentes/GroupClasses'
 
 const HomePrincipal = () => {
   
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   
-  // let token = sessionStorage.getItem('userToken')
+  let token = sessionStorage.getItem('userToken')
 
-  // useEffect(() => {
-  //   !token && navigate('/') 
-  // }, [token, navigate])
+  useEffect(() => {
+    !token && navigate('/') 
+  }, [token, navigate])
 
   return (
 <>
-    {/* {token === null 
+    {token === null 
     ? <Navigate to='/' />
-    : */}
+    :
     <>
       <div className="flex bg-[#F4F7FF]">
      
@@ -61,7 +61,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-  {/* } */}
+  }
     </>
   );
 };
