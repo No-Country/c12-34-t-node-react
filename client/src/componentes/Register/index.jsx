@@ -7,6 +7,7 @@ import { CgAsterisk } from 'react-icons/cg';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
+const { VITE_BACKEND_URL } = import.meta.env
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault();
 
     const userData = {
       user: name,
@@ -37,7 +39,7 @@ const Register = () => {
 
 
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
+    axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
         localStorage.setItem('user', userData.user);
         swAlert(<h2> {name},  Te has registrado correctamente</h2>);
@@ -55,6 +57,11 @@ const Register = () => {
     useEffect(() => {
       token && navigate('/home') 
     }, [token, navigate])
+
+    const callBack = async (e) => {
+      e.preventDefault();
+      window.location.href = `${VITE_BACKEND_URL}/google`
+    }
 
   return (
     <>
@@ -76,7 +83,7 @@ const Register = () => {
                   Registrarse{" "}
                 </h2>
               </div>
-              <form action="#" method="POST">
+              <form action="#" onSubmit={register}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
                 <div>
                   <div className="flex items-center">
@@ -189,6 +196,7 @@ const Register = () => {
 
                 <div>
                   <button
+                    onClick={callBack}
                     className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                   >
                     <img

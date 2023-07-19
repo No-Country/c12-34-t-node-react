@@ -65,10 +65,6 @@ const HomePrincipal = () => {
 
     </>
 
-    
-
-  }
-
     </>
   );
 };

@@ -4,9 +4,11 @@ import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
   id!: string;
+  googleId!: string;
   user!: string;
   email!: string;
   password!: string;
+  photo!: string;
   // PARA EL CLIENTE
   plan!: string;
   dateIn!: string;
@@ -26,6 +28,10 @@ User.init(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+    googleId: {
+      type: DataTypes.STRING,
+      // allowNull: false
+    },
     user: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,6 +40,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    photo: {
+      type: DataTypes.TEXT,
+      // allowNull: false
     },
     rol: {
       type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.Client),

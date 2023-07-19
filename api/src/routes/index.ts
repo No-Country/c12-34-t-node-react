@@ -4,6 +4,7 @@ import { elementRoutes } from "./element.routes";
 import { providerRoutes } from "./provider.routes";
 import { groupClassRoutes } from "./groupClass.routes";
 import { expensesRoutes } from "./expenses.routes";
+import { incomeRoutes } from "./income.routes";
 
 export const router = Router()
 
@@ -16,3 +17,5 @@ router.use(providerRoutes)
 router.use(groupClassRoutes)
 
 router.use(expensesRoutes)
+
+router.use(incomeRoutes)

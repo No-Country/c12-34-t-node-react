@@ -1,13 +1,15 @@
 export enum Rol {
-  Admin = "Admin",
-  Employees = "Employees",
-  Client = "Client",
+  Admin = "Administrador",
+  Employees = "Empleados",
+  Client = "Clientes",
 }
 
 export interface IUser {
   id?: string;
+  googleId?: string,
   user: string;
   email: string;
+  photo?: string;
   password: string;
   // PARA EL CLIENTE
   plan?: string;

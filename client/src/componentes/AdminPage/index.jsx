@@ -6,10 +6,19 @@ import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
 import ModalEditarPerfil from "./ModalEditarPerfil"
+const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
 
-
+  const getUsers = () => {
+    axios.get(`${VITE_BACKEND_URL}/api/all-users`)
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   const userCtx = useContext(UserContext)
 
@@ -21,7 +30,6 @@ const AdminPage = () => {
       console.log("EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered)
     }, 2500)
   }, [userCtx.length])
-
 
 
 
@@ -56,7 +64,7 @@ const AdminPage = () => {
                 <label htmlFor=""> <b>Cargo</b></label>
                 <p>{userCtx.userCargoRegistered}</p>
               </div>
-              <ModalEditarPerfil/>
+              <button className="btn btn-warning mt-3" onClick={() => getUsers()}>Editar Perfil</button>
             </div>
           </div>
         </section>
