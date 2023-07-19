@@ -5,12 +5,13 @@ import { UserContext } from "../../store/userContext"
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
+const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
 
 
   const getUsers = () => {
-    axios.get("http://localhost:3001/api/all-users")
+    axios.get(`${VITE_BACKEND_URL}/api/all-users`)
       .then((res) => {
         console.log(res.data)
       })

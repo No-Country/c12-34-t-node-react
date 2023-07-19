@@ -7,6 +7,7 @@ import { CgAsterisk } from 'react-icons/cg';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
+const { VITE_BACKEND_URL } = import.meta.env
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -38,7 +39,7 @@ const Register = () => {
 
 
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
+    axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
         localStorage.setItem('user', userData.user);
         swAlert(<h2> {name},  Te has registrado correctamente</h2>);
