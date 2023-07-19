@@ -17,23 +17,24 @@ import Footer from './Components/Footer'
 import { useEffect } from 'react'
 import AdminPage from '../../componentes/AdminPage'
 import GroupClasses from '../../componentes/GroupClasses'
+import Gastos from '../../componentes/Gastos';
 
 
 const HomePrincipal = () => {
   
   const navigate = useNavigate();
   
-  let token = sessionStorage.getItem('userToken')
+  //let token = sessionStorage.getItem('userToken')
 
-  useEffect(() => {
+  /*useEffect(() => {
     !token && navigate('/') 
   }, [token, navigate])
-
+*/
   return (
 <>
-    {token === null 
+    {/*{token === "" 
     ? <Navigate to='/' />
-    :
+    : */ }
     <>
       <div className="flex bg-[#F4F7FF]">
      
@@ -53,7 +54,9 @@ const HomePrincipal = () => {
           <Route path="/proovedores" element={<SectionProvider />} />
           <Route path='/horarios' element={<Horarios />} />
           <Route path='/reservas' element={<GroupClasses />} />
-          <Route path='/gastos' element={<h1>acá iria el componente gastos</h1>} />
+          <Route path='/gastos' element={<Gastos />} />
+
+          
 
         </Routes>
       </div>
@@ -61,7 +64,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-  }
+
     </>
   );
 };

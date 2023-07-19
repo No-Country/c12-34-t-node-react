@@ -50,14 +50,7 @@ const IndexTable = () => {
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
-      <div className="flex flex-col mb-10">
-        <div className="flex justify-center">
-          <div className="md:w-36 w-32">
-            <img src={Logo} alt="logo" />
-          </div>
-        </div>
-        <SectionTitle title={title} />
-      </div>
+      <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
         <Table
           tHeader={tableHeader}

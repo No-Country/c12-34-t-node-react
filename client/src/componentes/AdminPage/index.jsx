@@ -5,6 +5,7 @@ import { UserContext } from "../../store/userContext"
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
+import ModalEditarPerfil from "./ModalEditarPerfil"
 const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
@@ -61,7 +62,7 @@ const AdminPage = () => {
               </div>
               <div>
                 <label htmlFor=""> <b>Cargo</b></label>
-                <p>Administrador</p>
+                <p>{userCtx.userCargoRegistered}</p>
               </div>
               <button className="btn btn-warning mt-3" onClick={() => getUsers()}>Editar Perfil</button>
             </div>

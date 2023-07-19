@@ -8,7 +8,7 @@ const port = process.env.PORT || 3002;
 db.sync({ force: forceStatus }).then(async () => {
   try {
     app.listen(port, () => {
-      console.log(`Escuchando en el puerto: http://localhost:${port}`);
+      console.log(`Escuchandoo en el puerto: http://localhost:${port}`);
     });
     await db.authenticate();
     console.log("Conexion a sequelize");
