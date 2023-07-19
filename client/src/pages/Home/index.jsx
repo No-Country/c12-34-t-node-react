@@ -61,7 +61,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-  }
+}
     </>
   );
 };
