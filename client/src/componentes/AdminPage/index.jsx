@@ -9,7 +9,6 @@ const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
 
-
   const getUsers = () => {
     axios.get(`${VITE_BACKEND_URL}/api/all-users`)
       .then((res) => {
@@ -30,7 +29,6 @@ const AdminPage = () => {
       console.log("EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered)
     }, 2500)
   }, [userCtx.length])
-
 
 
 

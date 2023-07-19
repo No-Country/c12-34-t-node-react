@@ -60,8 +60,7 @@ const Register = () => {
 
     const callBack = async (e) => {
       e.preventDefault();
-      // await axios.get(`${import.meta.env.VITE_BACKEND_URL}/google`)
-      window.location.href = `${import.meta.env.VITE_BACKEND_URL}/google`
+      window.location.href = `${VITE_BACKEND_URL}/google`
     }
 
   return (

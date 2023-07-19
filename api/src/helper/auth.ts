@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
     // ParamsAuth
     _req: any, _accessToken:any, _refreshToken: any, profile: any, done: any
   ) {
-    console.log("profile:", profile.id)
+    console.log("profile:", profile)
     try {
       let user = await User.findOne({
         where: {
@@ -34,6 +34,7 @@ passport.use(new GoogleStrategy({
           photo: profile.picture,
         }
         user = await User.create(newUser)
+        console.log("NEW USER:", newUser)
         return done(null, user);
       }
     }
