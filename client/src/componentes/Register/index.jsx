@@ -1,19 +1,21 @@
-import gmail from '../Register/gmail.png';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import Section from '../Section';
-import { CgAsterisk } from 'react-icons/cg';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import swAlert from "@sweetalert/with-react";
+import gmail from './assets/gmail.png'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
+import Section from '../Section'
+import { CgAsterisk } from 'react-icons/cg'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import swAlert from "@sweetalert/with-react"
+import logo from "./assets/Group 409ss.png"
+
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const register = () => {
 
@@ -21,195 +23,178 @@ const Register = () => {
       user: name,
       password: password,
       email: email,
-    };
-
-    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-   { if (userData.user === '' || userData.password === '') {
-      toast.error('Los campos no pueden estar vacíos');
-      return;
     }
 
-    if (email !== '' && !regexEmail.test(email)) {
-      toast.error('El e-mail no es válido');
-      return;
-    } }
+    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+    {
+      if (userData.user === '' || userData.password === '') {
+        toast.error('Los campos no pueden estar vacíos')
+        return
+      }
+
+      if (email !== '' && !regexEmail.test(email)) {
+        toast.error('El e-mail no es válido')
+        return
+      }
+    }
 
 
 
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
       .then(res => {
-        localStorage.setItem('user', userData.user);
-        swAlert(<h2> {name},  Te has registrado correctamente</h2>);
-        navigate('/login');
-        console.log(res.data);
+        localStorage.setItem('user', userData.user)
+        swAlert(<h2> {name},  Te has registrado correctamente</h2>)
+        navigate('/login')
+        console.log(res.data)
       })
       .catch(err => {
-        swAlert(<h2>{err.response.data.msg}</h2>);
-        console.log(err);
-      });
-  };
+        swAlert(<h2>{err.response.data.msg}</h2>)
+        console.log(err)
+      })
+  }
 
   let token = sessionStorage.getItem('userToken')
-  
-    useEffect(() => {
-      token && navigate('/home') 
-    }, [token, navigate])
+
+  useEffect(() => {
+    token && navigate('/home')
+  }, [token, navigate])
 
   return (
     <>
       <ToastContainer />
-      <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 72px)' }}>
+      <main className='flex items-center justify-center gap-10 sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-10'>
 
-          <Link to="/">
-            <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M303 248.174C303 352.46 235.171 437 151.5 437C67.8288 437 0 352.46 0 248.174C0 143.888 67.8294 343.394 151.501 343.394C235.172 343.394 303 143.888 303 248.174Z" fill="#F9D51C" />
-              <path d="M53 230.4C53 342.466 217.821 230.4 108.745 230.4C168.473 27.4862 272 436.243 272 324.177C272 212.11 -0.329771 0 108.745 0C217.821 0 53 118.334 53 230.4Z" fill="#343A40" />
-            </svg>
-          </Link>
-          <div className="w-300">
-            <div style={{ boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)' }} className="flex min-h-full flex-1 flex-col justify-center px-6 py-10 lg:px-8 rounded-lg bg-gray-200 p-4  w-[50vh]">
-              <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h2 className=" text-center text-2xl font-bold leading-7 tracking-tight text-gray-900">
-                  {" "}
-                  Registrarse{" "}
-                </h2>
-              </div>
-              <form action="#" method="POST">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
-                <div>
-                  <div className="flex items-center">
-                    <label style={{ textAlign: 'center' }}
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Usuario
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
+        <Link to="/" className='basis-1/2 mx-auto hidden md:block'>
+          <img src={logo} alt="Logo de Fitness Center Gym" className='basis-1/2 w-[30vw] mx-auto ' />
+        </Link>
+        <div className="basis-1/2 w-[50vh] flex flex-1 flex-col sm:gap-0 justify-center p-6 py-8 sm:py-6 lg:px-8 rounded-lg bg-gray-200 bg-opacity-60 shadow-md">
+          <h2 className="text-center text-2xl font-PoppinsBold leading-9 tracking-tight text-pallete-black">
+            Registrarse
+          </h2>
 
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setName(e.target.value)}
-                      id="user"
-                      name="user"
-                      placeholder="Usuario"
-                      type="text"
-                      required
-                      className="block w-full rounded-lg border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
+          <form className='w-full' action="#" method="POST">
+            <div className="flex flex-col gap-6 sm:gap-4 mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div>
+                <div className="flex items-center align-middle">
+                  <label htmlFor="email" className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']" >
+                    Usuario
+                  </label>
                 </div>
 
-                <div>
-                  <div className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Email
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setEmail(e.target.value)}
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Contraseña
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setPassword(e.target.value)}
-                      id="password"
-                      name="password"
-                      placeholder="Contraseña"
-                      type="password"
-                      required
-                      className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ gap: '1px', color: 'red' }} className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Repetir Contraseña
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input
-                      style={{ padding: '5px' }}
-                      id="password"
-                      name="password"
-                      placeholder="Repetir Contraseña"
-                      type="password"
-                      required
-                      className="block w-full rounded-md border-0  bg-black py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <label className="label cursor-pointer">
-                  <span className="label-text">Recuérdame</span>
-                  <input style={{ border: '1px solid' }} type="checkbox" className="checkbox" />
-                </label>
-
-                <div>
-                  <button
-                    onClick={register}
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-amber-400  px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    Aceptar
-                  </button>
-                </div>
-
-                <div>
-                  <button
-                    className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    <img
-                      src={gmail}
-                      style={{ height: "3vh", marginRight: "2vh" }}
-                    ></img>
-                    Inicia sesión con Google
-                  </button>
-                  <p className="mt-5 text-center text-sm text-gray-500">
-                    Ya estás registrado?
-                  <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px'}}>Iniciar sesión</Link>
-                  </p>
+                <div className="mt-2">
+                  <input onChange={(e) => setName(e.target.value)}
+                    id="user"
+                    name="user"
+                    placeholder="Usuario"
+                    type="text"
+                    required
+                    className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
+                  />
                 </div>
               </div>
-            </form>
+
+              <div>
+                <div className="flex items-center">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']"
+                  >
+                    Correo
+                  </label>
+                </div>
+
+                <div className="mt-2">
+                  <input onChange={(e) => setEmail(e.target.value)}
+                    id="email"
+                    name="email"
+                    placeholder="Correo"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']"
+                  >
+                    Contraseña
+                  </label>
+                </div>
+
+                <div className="mt-2">
+                  <input onChange={(e) => setPassword(e.target.value)}
+                    id="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    type="password"
+                    required
+                    className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']"
+                  >
+                    Repetir contraseña
+                  </label>
+                </div>
+
+                <div className="mt-2">
+                  <input
+                    id="password"
+                    name="password"
+                    placeholder="Repetir contraseña"
+                    type="password"
+                    required
+                    className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <label className="label cursor-pointer p-0 w-fit">
+                <input type="checkbox" className="checkbox checkbox-sm border " />
+                <span className="label-text ml-2 mr-auto font-PoppinsMedium ">Recuérdame</span>
+              </label>
+
+              <button
+                onClick={register}
+                type="submit"
+                className="btn btn-md px-10 py-1.5 mt-5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow  leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
+              >
+                Aceptar
+              </button>
+
+              <div className='flex flex-col gap-3 mt-5 mx-auto items-center justify-center'>
+                <button
+                  className="flex justify-center items-center rounded-md px-5 py-1.5 text-sm font-PoppinsSemibold leading-6 bg-pallete-white hover:bg-white text-pallete-black shadow-md border-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-black transition-colors duration-200"
+                >
+                  <img
+                    src={gmail}
+                    style={{ height: "3vh", marginRight: "2vh" }}
+                  ></img>
+                  Inicia sesión con Google
+                </button>
+                <p className=" text-center text-xs sm:text-sm font-PoppinsSemibold text-pallete-grey">
+                  ¿Ya estás registrado?
+                  <Link Link to="/login" className="px-2 font-PoppinsSemibold leading-6 text-pallete-green">Iniciar sesión</Link>
+                </p>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
-      </Section>
+      </main>
     </>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
