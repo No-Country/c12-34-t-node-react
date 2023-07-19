@@ -4,11 +4,13 @@ const UserContext = createContext({
     userId: null,  
     userNameRegistered: null,  
     userEmailRegistered: null,  
-    userTokenRegistered: null,          
+    userTokenRegistered: null, 
+    userCargoRegistered: null,              
     updateUser: () => {},
     updateUserNameRegistered: () => {},
     updateUserEmailRegistered: () => {},
-    updateUserTokenRegistered: () => {}     
+    updateUserTokenRegistered: () => {},
+    updateUserCargoRegistered: () => {}     
 });
 
 
@@ -36,6 +38,11 @@ const [userTokenRegistered, setUserTokenRegistered] = useState(() => {
     return storedUserNameRegistered !== null ? storedUserNameRegistered : null;   
 });
 
+const [userCargoRegistered, setUserCargoRegistered] = useState(() => {          
+  const storedUserCargoRegistered = sessionStorage.getItem('userCargoRegistered');
+  return storedUserCargoRegistered !== null ? storedUserCargoRegistered : null;   
+});
+
 
 
 
@@ -61,6 +68,11 @@ const updateUserTokenRegistered = (token) => {
     console.log("Cambiando Token")
     sessionStorage.setItem('userTokenRegistered', token);  
 }
+const updateUserCargoRegistered = (cargo) => { 
+  setUserCargoRegistered(cargo)
+  console.log("Cambiando Cargo")
+  sessionStorage.setItem('userCargoRegistered', cargo);  
+}
 
 useEffect(() => {
     const handleStorageChange = (event) => {     
@@ -69,6 +81,7 @@ useEffect(() => {
         setUserNameRegistered(event.newValue);
         setUserEmailRegistered(event.newValue);
         setUserTokenRegistered(event.newValue);
+        setUserCargoRegistered(event.newValue);
       }
     };
     window.addEventListener('storage', handleStorageChange); 
@@ -78,7 +91,7 @@ useEffect(() => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ userId, userNameRegistered, userEmailRegistered, userTokenRegistered,  updateUser, updateUserNameRegistered, updateUserEmailRegistered, updateUserTokenRegistered}}>
+    <UserContext.Provider value={{ userId, userNameRegistered, userCargoRegistered, userEmailRegistered, userTokenRegistered,  updateUser, updateUserCargoRegistered, updateUserNameRegistered, updateUserEmailRegistered, updateUserTokenRegistered}}>
       {children}
     </UserContext.Provider>
   );
