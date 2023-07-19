@@ -8,6 +8,8 @@ import swAlert from "@sweetalert/with-react"
 import { useContext } from "react"
 import { UserContext } from "../../store/userContext"
 import logo from "./assets/Group 409ss.png"
+import gmail from './assets/gmail.png'
+
 
 const Login = () => {
 
@@ -77,7 +79,7 @@ const Login = () => {
         ? <Navigate to='/home' />
         :
         <main
-          className='flex items-center justify-center gap-10sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-10'>
+          className='flex items-center justify-center gap-10 sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-10'>
           <Link to="/" className='basis-1/2 mx-auto hidden md:block'>
             <img src={logo} alt="Logo de Fitness Center Gym" className='basis-1/2 w-[30vw] mx-auto ' />
           </Link>
@@ -109,7 +111,7 @@ const Login = () => {
                   </div>
                 </div>
 
-                <label className="label cursor-pointer">
+                <label className="label cursor-pointer p-0 w-fit">
                   <input type="checkbox" className="checkbox checkbox-sm border " />
                   <span className="label-text ml-2 mr-auto font-PoppinsMedium ">Recuérdame</span>
                 </label>
@@ -122,11 +124,21 @@ const Login = () => {
                 </button>
               </form>
 
-              <p className="mt-10 text-center text-xs sm:text-sm font-PoppinsSemibold text-pallete-grey">
-                ¿No estás registrado?
-                <Link to="/register" className="p-3 font-PoppinsSemibold leading-6 text-pallete-green">Crear cuenta</Link>
-              </p>
-
+              <div className='flex flex-col gap-3 mt-10 mx-auto items-center justify-center'>
+                <button
+                  className="flex justify-center items-center rounded-md px-5 py-1.5 text-sm font-PoppinsSemibold leading-6 bg-pallete-white hover:bg-white text-pallete-black shadow-md border-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-black transition-colors duration-200"
+                >
+                  <img
+                    src={gmail}
+                    style={{ height: "3vh", marginRight: "2vh" }}
+                  ></img>
+                  Inicia sesión con Google
+                </button>
+                <p className="text-center text-xs sm:text-sm font-PoppinsSemibold text-pallete-grey">
+                  ¿No estás registrado?
+                  <Link to="/register" className="p-3 font-PoppinsSemibold leading-6 text-pallete-green">Crear cuenta</Link>
+                </p>
+              </div>
             </form>
           </div>
         </main>
