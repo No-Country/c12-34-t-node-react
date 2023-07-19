@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 const ChartComponent = () => {
@@ -69,7 +69,7 @@ const ChartComponent = () => {
     };
   }, []);
 
-  return <div  style={{ width: '400px', height: '400px' }}><canvas ref={chartRef}/></div> ;
+  return <div className='mt-10'  style={{ width: '320px', height: '320px' }}><canvas ref={chartRef}/></div> ;
 };
 
 export default ChartComponent;

@@ -3,6 +3,7 @@ import Elements from "./Element";
 import ClassGroup from "./ClassGroup";
 import Provider from "./Providers";
 import Expense from "./Expense";
+import Income from "./Income";
 
 // RELACION USER VS PRODUCT
 User.hasMany(Elements);
@@ -20,8 +21,12 @@ Provider.belongsTo(User);
 User.hasMany(Expense);
 Expense.belongsTo(User);
 
+// RELACION USER VS INCOME
+User.hasMany(Income);
+Income.belongsTo(User);
+
 // RELACION PROVIDER VS PRODUCTS VS ADMIN
 Provider.hasMany(Elements);
 Elements.belongsTo(Provider);
 
-export { User, Elements, Provider, ClassGroup, Expense };
+export { User, Elements, Provider, ClassGroup, Expense, Income, };

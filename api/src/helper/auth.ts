@@ -1,6 +1,7 @@
-import { Request } from 'express';
 import passport from "passport";
-import Google from '../models/Google';
+import { IUser } from '../interfaces/IUser';
+import User from '../models/User';
+import { ParamsAuth } from '../interfaces/IGoogle';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
@@ -10,10 +11,14 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.GOOGLE_CALLBACK_URL,
   passReqToCallback: true
 },
-  async function (req: Request, accessToken: any, refreshToken: any, profile: any, done: any) {
-
+  async function (
+    // { req, accessToken, refreshToken, profile, done }:
+    // ParamsAuth
+    _req: any, _accessToken:any, _refreshToken: any, profile: any, done: any
+  ) {
+    console.log("profile:", profile)
     try {
-      let user = await Google.findOne({
+      let user = await User.findOne({
         where: {
           googleId: profile.id
         }
@@ -21,14 +26,15 @@ passport.use(new GoogleStrategy({
       if (user) {
         return done(null, user);
       } else {
-        const newUser = ({
+        const newUser: IUser = {
           googleId: profile.id,
-          name: profile.displayName,
-          email: profile.emails[0].value,
-          photo: profile.photos[0].value,
-        });
-        user = await Google.create(newUser)
-        console.log(newUser)
+          user: profile.displayName,
+          email: profile.email,
+          password: "",
+          photo: profile.picture,
+        }
+        user = await User.create(newUser)
+        console.log("NEW USER:", newUser)
         return done(null, user);
       }
     }

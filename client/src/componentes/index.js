@@ -17,3 +17,4 @@ export { default as SectionClients } from "./SectionClients/index";
 export { default as SectionStaff } from "./SectionStaff/index.jsx";
 export { default as BienesElementos } from "./BienesElementos";
 export { default as BienesMobiliario } from "./BienesMobiliario";
+export {default as Gastos} from "./Gastos";
