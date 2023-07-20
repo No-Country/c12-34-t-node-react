@@ -1,22 +1,24 @@
-import { Router } from "express"
-// import { registerUser } from "../services/crudUser/register"
-// import { loginUser } from "../services/crudUser/login"
-// import { getAllUsers } from "../services/crudUser/get"
-// import { upDateUser } from "../services/crudUser/put"
 import "dotenv/config";
-import { clientUser } from "../services/postClient"
-import { clientUsers } from "../services/getClient"
+import { Router } from "express"
+import { createClient } from "../services/crudClients/postClient"
+import { getClients } from "../services/crudClients/getClient"
+import { updateClient } from "../services/crudClients/putClient";
+import { deleteClient } from "../services/crudClients/deleteClient";
 
 
 export const clientRoutes = Router()
 
 // ─── Usuario ─────────────────────────────────────────────────────────────────
 
-clientRoutes.post("/api/client", clientUser)
+clientRoutes.get("/api/clients", getClients)
 
-// clientRoutes.post("/api/login", loginUser)
+clientRoutes.post("/api/client", createClient)
 
-clientRoutes.get("/api/clients", clientUsers)
+clientRoutes.put("/api/client/:id", updateClient)
+
+clientRoutes.delete("/api/client/:id", deleteClient)
+
+
 
 // userRoutes.put("/api/update-user/:id", upDateUser)
 

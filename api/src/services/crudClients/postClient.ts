@@ -2,27 +2,27 @@ import { Request, Response } from "express";
 // import { IUser } from "../../interfaces/IUser";
 // import { User } from "../../models/relations";
 // import { passwordHashado } from "../../helper/bcrypt";
-import { IClient } from '../interfaces/IClient';
-import Client from "../models/Clientes";
+import { IClient } from '../../interfaces/IClient';
+import Client from "../../models/Clientes";
 
-export const clientUser = async (req: Request, res: Response) => {
+export const createClient = async (req: Request, res: Response) => {
   const usuario = req.body as IClient;
 
   try {
     if (!usuario.name || !usuario.password || !usuario.email)
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
 
-    const existUser = await Client.findOne({
+    const existClient = await Client.findOne({
       where: { email: usuario.email },
     });
 
-    if (existUser) {
-      return res.status(400).json({ msg: "El usuario ya existe", existUser });
+    if (existClient) {
+      return res.status(400).json({ msg: "El cliente ya existe", existClient });
     }
 
     // const encriptado = await passwordHashado(usuario.password);
 
-    const newUser = await Client.create({
+    const newClient = await Client.create({
       name: usuario.name,
       email: usuario.email,
       password: usuario.password,
@@ -33,8 +33,8 @@ export const clientUser = async (req: Request, res: Response) => {
 
     });
 
-    if (newUser) {
-      return res.status(200).json({ msg: "Usuario creado", newUser });
+    if (newClient) {
+      return res.status(200).json({ msg: "Cliente creado", newClient });
     }
   } catch (error) {
     console.log(error);
