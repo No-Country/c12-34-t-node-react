@@ -25,7 +25,7 @@ export const getAllUsers = async (_: Request, res: Response) => {
         model: Expense,
         attributes: ["name"]
       }],
-      attributes: ["id", "user", "email"],
+      attributes: ["id", "user", "email", "plan", "dateIn", "dateOut", "contact"],
     });
 
     if (!allUsers.length) {

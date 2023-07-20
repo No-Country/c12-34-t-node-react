@@ -2,7 +2,8 @@ import {MdOutlineExitToApp} from "react-icons/md"
 
 export const Footer = () => {
   return (
-    <footer className="footer fixed bottom-0 left-0 w-full p-4 bg-[#343A40] text-base-content">
+    // le saque fixed al footer
+    <footer className="footer  bottom-0 left-0 w-full p-4 bg-[#343A40] text-base-content">
       <div className="flex items-center ">
         <div>
           <button className="ml-0">
