@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 // import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
-import Client from "../models/Clientes";
+import Client from "../../models/Clientes";
 
-export const clientUsers = async (_: Request, res: Response) => {
+export const getClients = async (_: Request, res: Response) => {
   try {
-    const allUsers = await Client.findAll();
+    const allClient = await Client.findAll();
 
-    if (!allUsers.length) {
+    if (!allClient.length) {
       throw new Error("No hay Clientes registrados");
     } else {
-      return res.status(200).json(allUsers);
+      return res.status(200).json(allClient);
     }
   } catch (error) {
     if (error instanceof Error) {
