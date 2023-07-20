@@ -18,6 +18,7 @@ import { useEffect } from 'react'
 import AdminPage from '../../componentes/AdminPage'
 import GroupClasses from '../../componentes/GroupClasses'
 import Gastos from '../../componentes/Gastos';
+import NotFound from '../NotFound';
 
 
 const HomePrincipal = () => {
@@ -56,7 +57,7 @@ const HomePrincipal = () => {
           <Route path='/reservas' element={<GroupClasses />} />
           <Route path='/gastos' element={<Gastos />} />
 
-          
+          <Route path='*' element={<NotFound />} />
 
         </Routes>
       </div>

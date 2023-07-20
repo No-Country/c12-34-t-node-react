@@ -39,7 +39,7 @@ const AdminPage = () => {
 
   return (
     <div className='flex'>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <main className='flex flex-col w-full gap-2 m-5'>
         <Title title={'Perfil administrador'} />
         <section className='flex flex-col'>
