@@ -10,7 +10,7 @@ export const app: Application = express();
 app.use(
   cors({
     credentials: true,
-    origin: "*",
+    origin: "http://localhost:3001",
     methods: ["POST", "GET", "DELETE", "PUT"]
   })
 );

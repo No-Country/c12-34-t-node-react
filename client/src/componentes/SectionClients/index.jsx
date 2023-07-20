@@ -4,6 +4,10 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
+import axios from "axios"
+import { useEffect } from "react";
+const { VITE_BACKEND_URL } = import.meta.env
+//userRoutes.post("/api/auth", registerUser)
 
 const IndexTable = () => {
   const title = "Clientes";
@@ -47,17 +51,39 @@ const IndexTable = () => {
   ];
 
   const [tBody, setTBody] = useState(tableBody);
+
+  const [clients, setClients] = useState([])
+
+
+ const getClients = () => { 
+  axios.get(`${VITE_BACKEND_URL}/api/all-users`)
+       .then((res) => { 
+         console.log(res.data)
+         setClients(res.data)
+       })
+ }
+
+ useEffect(() => { 
+    getClients()
+ }, [])
+
+
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
-        <Table
+        
+        {clients.map((c) => { 
+           <Table />
+        })}
+
+        { /* <Table
           tHeader={tableHeader}
           tBody={tBody}
           setTBody={setTBody}
           type={type}
-        />
+  /> */}
         <ButtonAdd
           tBody={tBody}
           setTBody={setTBody}

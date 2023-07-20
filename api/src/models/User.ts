@@ -3,12 +3,12 @@ import { IUser, Rol } from "../interfaces/IUser";
 import { Model, DataTypes } from "sequelize";
 
 class User extends Model<IUser> implements IUser {
-  id!: string;
-  googleId!: string;
+ id!: string; /*
+  googleId!: string;*/
   user!: string;
   email!: string;
   password!: string;
-  photo!: string;
+/*  photo!: string;
   // PARA EL CLIENTE
   plan!: string;
   dateIn!: string;
@@ -18,7 +18,7 @@ class User extends Model<IUser> implements IUser {
   // PARA EL EMPLEADOR
   occupation!: string;
   // PARA EL EMPLEADOR
-  rol!: Rol;
+  rol!: Rol;*/
 }
 
 User.init(
@@ -27,11 +27,11 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-    },
+  },  /*
     googleId: {
       type: DataTypes.STRING,
       // allowNull: false
-    },
+    },*/
     user: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -41,7 +41,7 @@ User.init(
       allowNull: false,
       unique: true,
     },
-    photo: {
+   photo: {
       type: DataTypes.TEXT,
       // allowNull: false
     },

@@ -4,8 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
+import axios from "axios"
 import { useEffect } from "react";
-import axios from "axios";
+const { VITE_BACKEND_URL } = import.meta.env
+
+///api/providers
 
 const IndexTable = () => {
   const title = "Proveedores";
@@ -59,6 +62,31 @@ const IndexTable = () => {
   //     .then(res=>setTBody(res))
   //     .catch(err=>console.log(err))
   // }, [tBody])
+
+
+ 
+
+  const getProviders = () => { 
+    const authToken = "tu_token_de_autenticacion"; // Reemplaza esto con el token real
+    axios.get(`${VITE_BACKEND_URL}/api/providers`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        // Otros encabezados si es necesario
+      }
+    })
+    .then((res) => { 
+      console.log(res.data)
+    })
+    .catch((err) => { 
+      console.log(err)
+    });
+  };
+
+   useEffect(() => { 
+    
+      getProviders()
+  
+   }, [])
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">

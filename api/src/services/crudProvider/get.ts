@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { Elements, Provider, User, } from "../../models/relations"
 
 export const getProvider = async (_req: Request, res: Response) => {
+  console.log("Me llego algo")
   try {
     const proveedores = await Provider.findAll({
       include: {
