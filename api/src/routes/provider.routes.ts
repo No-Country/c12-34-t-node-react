@@ -11,7 +11,7 @@ export const providerRoutes = Router()
 
 providerRoutes.get("/api/providers", authToken, getProvider)
 
-providerRoutes.post("/api/provider", authToken, postProvider)
+providerRoutes.post("/api/provider", postProvider)
 
 providerRoutes.put("/api/provider/:id", authToken, putProvider)
 

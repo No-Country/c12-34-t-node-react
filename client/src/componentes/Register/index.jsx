@@ -7,7 +7,7 @@ import { CgAsterisk } from 'react-icons/cg';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import swAlert from "@sweetalert/with-react";
-const { VITE_BACKEND_URL } = import.meta.env
+const { VITE_BACKEND_URL } = import.meta.env;
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -27,15 +27,17 @@ const Register = () => {
 
     const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-   { if (userData.user === '' || userData.password === '') {
-      toast.error('Los campos no pueden estar vacíos');
-      return;
-    }
+    {
+      if (userData.user === '' || userData.password === '') {
+        toast.error('Los campos no pueden estar vacíos');
+        return;
+      }
 
-    if (email !== '' && !regexEmail.test(email)) {
-      toast.error('El e-mail no es válido');
-      return;
-    } }
+      if (email !== '' && !regexEmail.test(email)) {
+        toast.error('El e-mail no es válido');
+        return;
+      }
+    }
 
 
 
@@ -52,22 +54,25 @@ const Register = () => {
       });
   };
 
-  let token = sessionStorage.getItem('userToken')
-  
-    useEffect(() => {
-      token && navigate('/home') 
-    }, [token, navigate])
+  let token = sessionStorage.getItem('userToken');
 
-    const callBack = async (e) => {
-      e.preventDefault();
-      window.location.href = `${VITE_BACKEND_URL}/google`
-    }
+  useEffect(() => {
+    token && navigate('/home');
+  }, [token, navigate]);
+
+  const callBack = async (e) => {
+    e.preventDefault();
+    // window.location.href = `${VITE_BACKEND_URL}/google`;
+    window.location.href = `http://localhost:3001/google`;
+    console.log(window.location.href);
+
+  };
 
   return (
     <>
       <ToastContainer />
       <Section>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height:'calc(100vh - 72px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', height: 'calc(100vh - 72px)' }}>
 
           <Link to="/">
             <svg style={{ marginLeft: '65px' }} width="120" height="120" viewBox="0 0 484 476" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,134 +89,134 @@ const Register = () => {
                 </h2>
               </div>
               <form action="#" onSubmit={register}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
-                <div>
-                  <div className="flex items-center">
-                    <label style={{ textAlign: 'center' }}
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }} className="mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
+                  <div>
+                    <div className="flex items-center">
+                      <label style={{ textAlign: 'center' }}
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Usuario
+                      </label>
+                      <CgAsterisk color='black' />
+                    </div>
+
+                    <div className="mt-2">
+                      <input style={{ padding: '5px' }} onChange={(e) => setName(e.target.value)}
+                        id="user"
+                        name="user"
+                        placeholder="Usuario"
+                        type="text"
+                        required
+                        className="block w-full rounded-lg border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Email
+                      </label>
+                      <CgAsterisk color='black' />
+                    </div>
+
+                    <div className="mt-2">
+                      <input style={{ padding: '5px' }} onChange={(e) => setEmail(e.target.value)}
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Contraseña
+                      </label>
+                      <CgAsterisk color='black' />
+                    </div>
+
+                    <div className="mt-2">
+                      <input style={{ padding: '5px' }} onChange={(e) => setPassword(e.target.value)}
+                        id="password"
+                        name="password"
+                        placeholder="Contraseña"
+                        type="password"
+                        required
+                        className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{ gap: '1px', color: 'red' }} className="flex items-center">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Repetir Contraseña
+                      </label>
+                      <CgAsterisk color='black' />
+                    </div>
+
+                    <div className="mt-2">
+                      <input
+                        style={{ padding: '5px' }}
+                        id="password"
+                        name="password"
+                        placeholder="Repetir Contraseña"
+                        type="password"
+                        required
+                        className="block w-full rounded-md border-0  bg-black py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <label className="label cursor-pointer">
+                    <span className="label-text">Recuérdame</span>
+                    <input style={{ border: '1px solid' }} type="checkbox" className="checkbox" />
+                  </label>
+
+                  <div>
+                    <button
+                      onClick={register}
+                      type="submit"
+                      className="flex w-full justify-center rounded-md bg-amber-400  px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
-                      Usuario
-                    </label>
-                    <CgAsterisk color='black' />
+                      Aceptar
+                    </button>
                   </div>
 
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setName(e.target.value)}
-                      id="user"
-                      name="user"
-                      placeholder="Usuario"
-                      type="text"
-                      required
-                      className="block w-full rounded-lg border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                  <div>
+                    <button
+                      onClick={callBack}
+                      className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                     >
-                      Email
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setEmail(e.target.value)}
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
+                      <img
+                        src={gmail}
+                        style={{ height: "3vh", marginRight: "2vh" }}
+                      ></img>
+                      Inicia sesión con Google
+                    </button>
+                    <p className="mt-5 text-center text-sm text-gray-500">
+                      Ya estás registrado?
+                      <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px' }}>Iniciar sesión</Link>
+                    </p>
                   </div>
                 </div>
-
-                <div>
-                  <div className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Contraseña
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input style={{ padding: '5px' }} onChange={(e) => setPassword(e.target.value)}
-                      id="password"
-                      name="password"
-                      placeholder="Contraseña"
-                      type="password"
-                      required
-                      className="block w-full rounded-md border-0 py-1.5 bg-black  text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div style={{ gap: '1px', color: 'red' }} className="flex items-center">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Repetir Contraseña
-                    </label>
-                    <CgAsterisk color='black' />
-                  </div>
-
-                  <div className="mt-2">
-                    <input
-                      style={{ padding: '5px' }}
-                      id="password"
-                      name="password"
-                      placeholder="Repetir Contraseña"
-                      type="password"
-                      required
-                      className="block w-full rounded-md border-0  bg-black py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-white focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <label className="label cursor-pointer">
-                  <span className="label-text">Recuérdame</span>
-                  <input style={{ border: '1px solid' }} type="checkbox" className="checkbox" />
-                </label>
-
-                <div>
-                  <button
-                    onClick={register}
-                    type="submit"
-                    className="flex w-full justify-center rounded-md bg-amber-400  px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    Aceptar
-                  </button>
-                </div>
-
-                <div>
-                  <button
-                    onClick={callBack}
-                    className="flex w-full justify-center rounded-md px-3 border-black py-1.5 text-sm font-semibold leading-6 text-black shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                  >
-                    <img
-                      src={gmail}
-                      style={{ height: "3vh", marginRight: "2vh" }}
-                    ></img>
-                    Inicia sesión con Google
-                  </button>
-                  <p className="mt-5 text-center text-sm text-gray-500">
-                    Ya estás registrado?
-                  <Link Link to="/login" className="font-semibold leading-6 text-lime-600" style={{ padding: '5px'}}>Iniciar sesión</Link>
-                  </p>
-                </div>
-              </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>

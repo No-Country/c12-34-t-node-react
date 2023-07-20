@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 const ChartComponent = () => {
@@ -35,19 +35,19 @@ const ChartComponent = () => {
           legend: {
             position: 'top',
           },
-         
+
         },
         scales: {
-            y: {
-                display: false, // Desactivar la visualización de las etiquetas del eje Y
-              },
-            x: {
-              grid: {
-                display: false, // Ocultar las líneas de referencia del eje X
-              },
+          y: {
+            display: false, // Desactivar la visualización de las etiquetas del eje Y
+          },
+          x: {
+            grid: {
+              display: false, // Ocultar las líneas de referencia del eje X
             },
           },
         },
+      },
       actions: [
         {
           name: 'Randomize',
@@ -69,7 +69,7 @@ const ChartComponent = () => {
     };
   }, []);
 
-  return <div  style={{ width: '400px', height: '400px' }}><canvas ref={chartRef}/></div> ;
+  return <div style={{ width: '400px', height: '400px' }}><canvas ref={chartRef} /></div>;
 };
 
 export default ChartComponent;

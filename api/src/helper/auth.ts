@@ -5,6 +5,18 @@ import { ParamsAuth } from '../interfaces/IGoogle';
 
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
+
+passport.serializeUser((user: any, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id: any, done) => {
+  User.findByPk(id).then((user) => {
+    done(null, user);
+  });
+});
+
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -14,7 +26,7 @@ passport.use(new GoogleStrategy({
   async function (
     // { req, accessToken, refreshToken, profile, done }:
     // ParamsAuth
-    _req: any, _accessToken:any, _refreshToken: any, profile: any, done: any
+    _req: any, _accessToken: any, _refreshToken: any, profile: any, done: any
   ) {
     console.log("profile:", profile)
     try {
