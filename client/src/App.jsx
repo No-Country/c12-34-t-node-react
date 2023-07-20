@@ -1,14 +1,14 @@
-import './App.css'
-import './index.css'
-import { Route, Routes } from 'react-router-dom'
-import Landing from './pages/Landing'
-import { HeaderV2, Login, Register } from './componentes'
-import HomePrincipal from './pages/Home/index'
+import './App.css';
+import './index.css';
+import { Route, Routes } from 'react-router-dom';
+import Landing from './pages/Landing';
+import { HeaderV2, Login, Register } from './componentes';
+import HomePrincipal from './pages/Home/index';
 
 
-import NotFound from './pages/NotFound'
-import { UserProvider } from './store/userContext'
-import AdminPage from './componentes/AdminPage'
+import NotFound from './pages/NotFound';
+import { UserProvider } from './store/userContext';
+import AdminPage from './componentes/AdminPage';
 
 
 
@@ -22,40 +22,40 @@ function App() {
     <>
 
       <HeaderV2 />
-    
-    <UserProvider>
 
-      <div style={{
-        flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        marginTop: 70,
-      }}>
-      
-        <Routes>
-          <Route exact path='/' element={<Landing />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path="/home/*" element={<HomePrincipal />} />
-            
+      <UserProvider>
 
+        <div style={{
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: 70,
+        }}>
 
-          <Route path="/admin/:id" element={<AdminPage />} />
-
-          <Route path='*' element={<NotFound />} />
+          <Routes>
+            <Route exact path='/' element={<Landing />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path="/home/*" element={<HomePrincipal />} />
 
 
-        </Routes>
-      </div>
 
-      {/* {!isAdminPage &&
+            {/* <Route path="/admin/:id" element={<AdminPage />} /> */}
+
+            {/* <Route path='/*' element={<NotFound />} /> */}
+
+
+          </Routes>
+        </div>
+
+        {/* {!isAdminPage &&
 
       <Footer />
       } */}
-       </UserProvider>
+      </UserProvider>
     </>
 
-  )
+  );
 }
 
-export default App
+export default App;

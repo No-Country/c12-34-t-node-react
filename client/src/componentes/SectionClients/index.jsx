@@ -54,7 +54,7 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-    axios.get(`${VITE_BACKEND_URL}/api/all-users`)
+    axios.get(`${VITE_BACKEND_URL}/api/clients`)
       .then(info => {
         console.log(info.data);
         const { data } = info;
@@ -63,27 +63,28 @@ const IndexTable = () => {
       .catch(err => console.log(err));
   };
 
+
   useEffect(() => {
     getUser();
   }, []);
-  
+
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
-        
-        {clients.map((c) => { 
-           <Table />
-        })}
+        {/* 
+        {clients.map((c) => {
+          <Table />;
+        })} */}
 
-        { /* <Table
+        {<Table
           tHeader={tableHeader}
           tBody={tBody}
           setTBody={setTBody}
           type={type}
-  /> */}
+        />}
         <ButtonAdd
           tBody={tBody}
           setTBody={setTBody}
