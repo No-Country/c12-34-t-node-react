@@ -9,9 +9,6 @@ import axios from "axios";
 
 const { VITE_BACKEND_URL } = import.meta.env;
 
-const { VITE_BACKEND_URL } = import.meta.env
-
-
 const IndexTable = () => {
   const title = "Clientes";
   const type = "clientes";
@@ -53,9 +50,6 @@ const IndexTable = () => {
     },
   ];
 
-
-
-
   const [tBody, setTBody] = useState(tableBody);
 
 
@@ -72,22 +66,6 @@ const IndexTable = () => {
   useEffect(() => {
     getUser();
   }, []);
-
-
-
-  const getUser = () => {
-    axios.get(`${VITE_BACKEND_URL}/api/all-users`)
-      .then(info => {
-        console.log(info.data)
-        const { data } =  info
-        // setTBody(data)
-      })
-      .catch(err => console.log(err))
-  }
-
-  useEffect(() => {
-    getUser()
-  }, [])
   
 
   return (

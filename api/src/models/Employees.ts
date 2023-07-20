@@ -1,22 +1,17 @@
-import { IClient } from "../interfaces/IClient";
 import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
+import { IEmployees } from "../interfaces/IEmployees";
 
-class Client extends Model<IClient> implements IClient {
+export class Employees extends Model<IEmployees> implements IEmployees {
   id!: string;
-  googleId!: string;
   name!: string;
   email!: string;
   password!: string;
-  photo!: string;
-  plan!: string;
-  dateIn!: string;
-  dateOut!: string;
   contact!: string;
-  // rol!: Rol;
+  occupation!: string;
 }
 
-Client.init(
+Employees.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -35,25 +30,16 @@ Client.init(
     password: {
       type: DataTypes.STRING,
     },
-    plan: {
-      type: DataTypes.STRING,
-    },
-    dateIn: {
-      type: DataTypes.STRING,
-    },
-    dateOut: {
-      type: DataTypes.STRING,
-    },
     contact: {
+      type: DataTypes.STRING,
+    },
+    occupation: {
       type: DataTypes.STRING,
     },
   },
   {
     sequelize: db,
-    modelName: "client",
+    modelName: "employee",
     timestamps: false,
   }
 );
-
-
-export default Client;
