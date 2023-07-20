@@ -9,27 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
-const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getAllEmployees = void 0;
+const Employees_1 = require("../../models/Employees");
+const getAllEmployees = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
-        });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
+        const allEmployees = yield Employees_1.Employees.findAll();
+        if (!allEmployees.length) {
+            throw new Error("No hay empleados registrados");
         }
-        return res.status(200).json(infoElements);
+        else {
+            return res.status(200).json(allEmployees);
+        }
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        if (error instanceof Error) {
+            return res.status(404).json({ error: error.message, });
+        }
+        return res.status(400).json({ error: "Error en getAllEmployees por:" + error, });
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.getAllEmployees = getAllEmployees;

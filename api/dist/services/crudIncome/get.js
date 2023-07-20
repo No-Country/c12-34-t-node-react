@@ -9,27 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
+exports.getIncomeGym = void 0;
 const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getIncomeGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const infoElements = yield relations_1.Elements.findAll({
+        const incomes = yield relations_1.Income.findAll({
             include: {
                 model: relations_1.User,
                 attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
             },
         });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
+        if (!incomes) {
+            return res.status(400).json({ msg: "De momento no se han añadido las ganancias mensuales" });
         }
-        return res.status(200).json(infoElements);
+        return res.status(200).json(incomes);
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        return res.status(400).json({ error: "Error en getIncomeGym por:" + error, });
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.getIncomeGym = getIncomeGym;

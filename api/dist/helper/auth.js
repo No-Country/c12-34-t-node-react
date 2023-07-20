@@ -13,17 +13,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const passport_1 = __importDefault(require("passport"));
-const Google_1 = __importDefault(require("../models/Google"));
+const User_1 = __importDefault(require("../models/User"));
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+passport_1.default.serializeUser((user, done) => {
+    done(null, user.id);
+});
+passport_1.default.deserializeUser((id, done) => {
+    User_1.default.findByPk(id).then((user) => {
+        done(null, user);
+    });
+});
 passport_1.default.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL,
     passReqToCallback: true
-}, function (req, accessToken, refreshToken, profile, done) {
+}, function (
+// { req, accessToken, refreshToken, profile, done }:
+// ParamsAuth
+_req, _accessToken, _refreshToken, profile, done) {
     return __awaiter(this, void 0, void 0, function* () {
+        // console.log("profile:", profile)
         try {
-            let user = yield Google_1.default.findOne({
+            let user = yield User_1.default.findOne({
                 where: {
                     googleId: profile.id
                 }
@@ -32,13 +44,15 @@ passport_1.default.use(new GoogleStrategy({
                 return done(null, user);
             }
             else {
-                const newUser = ({
+                const newUser = {
                     googleId: profile.id,
-                    name: profile.displayName,
-                    photo: profile.photos[0].value,
-                });
-                user = yield Google_1.default.create(newUser);
-                console.log(newUser);
+                    user: profile.displayName,
+                    email: profile.email,
+                    password: "",
+                    photo: profile.picture,
+                };
+                user = yield User_1.default.create(newUser);
+                // console.log("NEW USER:", newUser)
                 return done(null, user);
             }
         }

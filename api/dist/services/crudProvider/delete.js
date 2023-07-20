@@ -9,27 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
+exports.deleteProvider = void 0;
 const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
+        const proveedor = yield relations_1.Provider.destroy({
+            where: {
+                id: id
+            }
         });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
-        }
-        return res.status(200).json(infoElements);
+        return res.status(200).json({ msg: "El Proveedor esta eliminado", proveedor });
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        console.log(error);
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.deleteProvider = deleteProvider;

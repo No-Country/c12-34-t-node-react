@@ -19,7 +19,7 @@ const getClassGroupGym = (_, res) => __awaiter(void 0, void 0, void 0, function*
                 attributes: ["user"],
             },
         });
-        if (!classGroup.length) {
+        if (!classGroup) {
             return res.status(400).json({ msg: "De momento no se han añadido clases grupales" });
         }
         return res.status(200).json(classGroup);

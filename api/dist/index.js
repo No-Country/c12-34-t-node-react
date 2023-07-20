@@ -9,27 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
-const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+const app_1 = require("./app");
+const db_1 = require("./db");
+const forceStatus = `${process.env.STATUS}` === "ACTIVE";
+const port = process.env.PORT || 3002;
+// Modificar el "force" desde la variable de entorno, ACTIVE || IN_ACTIVE
+db_1.db.sync({ force: false }).then(() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
+        app_1.app.listen(port, () => {
+            console.log(`Escuchandoo en el puerto: http://localhost:${port}`);
         });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
-        }
-        return res.status(200).json(infoElements);
+        yield db_1.db.authenticate();
+        console.log("Conexion a sequelize");
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        console.error("Unable to connect to the database:", error);
     }
-});
-exports.getElementsGym = getElementsGym;
+}));

@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const IElements_1 = require("./../interfaces/IElements");
 const db_1 = require("../db");
 const sequelize_1 = require("sequelize");
+const IElements_2 = require("./../interfaces/IElements");
 class Elements extends sequelize_1.Model {
 }
 Elements.init({
@@ -16,7 +18,8 @@ Elements.init({
     },
     // MAQUINAS OH ELEMENTOS - MOBILIARIO
     type: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ENUM(IElements_1.Types.Element, IElements_1.Types.Machine, IElements_1.Types.Office),
+        // defaultValue: "Elemento",
         allowNull: false,
     },
     description: {
@@ -32,7 +35,7 @@ Elements.init({
         allowNull: false,
     },
     state: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.ENUM(IElements_2.State.En_reparacion, IElements_2.State.Nuevo, IElements_2.State.Usado),
         allowNull: false,
     },
 }, {

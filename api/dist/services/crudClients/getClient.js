@@ -8,28 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
-const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getClients = void 0;
+// import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
+const Clientes_1 = __importDefault(require("../../models/Clientes"));
+const getClients = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
-        });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
+        const allClient = yield Clientes_1.default.findAll();
+        if (!allClient.length) {
+            throw new Error("No hay Clientes registrados");
         }
-        return res.status(200).json(infoElements);
+        else {
+            return res.status(200).json(allClient);
+        }
     }
     catch (error) {
+        if (error instanceof Error) {
+            return res.status(404).json({ error: error.message, });
+        }
         return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.getClients = getClients;

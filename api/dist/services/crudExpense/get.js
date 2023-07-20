@@ -13,16 +13,20 @@ exports.getExpensesGym = void 0;
 const relations_1 = require("../../models/relations");
 const getExpensesGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        let total = 0;
         const expenses = yield relations_1.Expense.findAll({
             include: {
                 model: relations_1.User,
                 attributes: ["user"],
             },
         });
+        expenses.map((el) => {
+            return total += Number(el.expense);
+        });
         if (!expenses.length) {
             return res.status(400).json({ msg: "De momento no se han añadido gastos mensuales" });
         }
-        return res.status(200).json(expenses);
+        return res.status(200).json({ gastos: total, expenses });
     }
     catch (error) {
         return res.status(400).json({ error: "Error en getExpensesGym por:" + error, });

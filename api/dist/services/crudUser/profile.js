@@ -9,27 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
+exports.perfil = void 0;
 const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+const perfil = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
-        });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
-        }
-        return res.status(200).json(infoElements);
+        const usuarioRegistado = yield relations_1.User.findOne(req.usuarioId);
+        if (!usuarioRegistado)
+            return res.status(404).json({ message: "No se encontro el pefil" });
+        return res.status(200).json({ message: "Perfil del usuario", usuarioRegistado });
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        console.log(error);
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.perfil = perfil;

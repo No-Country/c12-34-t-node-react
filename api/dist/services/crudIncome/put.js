@@ -9,27 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getElementsGym = void 0;
+exports.putIncomeGym = void 0;
 const relations_1 = require("../../models/relations");
-const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+const putIncomeGym = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const current = req.body;
     try {
-        const infoElements = yield relations_1.Elements.findAll({
-            include: {
-                model: relations_1.User,
-                attributes: ["user"],
-                include: [{
-                        model: relations_1.Provider,
-                        attributes: ["name"],
-                    }],
-            },
-        });
-        if (!infoElements) {
-            return res.status(400).json({ msg: "No hay nada" });
+        if (id.length < 36) {
+            throw Error(`El ingreso económico no existe`);
         }
-        return res.status(200).json(infoElements);
+        else {
+            yield relations_1.Income.update(current, {
+                where: {
+                    id,
+                }
+            });
+            return res.status(200).json({ change: "Los datos del ingreso económico se actualizaron", current });
+        }
     }
     catch (error) {
-        return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
+        if (error instanceof Error) {
+            return res.status(404).json({ error: error.message, });
+        }
+        return res.status(400).json({ error: "Error en putIncomeGym por:" + error });
     }
 });
-exports.getElementsGym = getElementsGym;
+exports.putIncomeGym = putIncomeGym;
