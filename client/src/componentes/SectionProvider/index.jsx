@@ -57,7 +57,8 @@ const IndexTable = () => {
   const [tBody, setTBody] = useState(tableBody);
 
   const getProviders = () => {
-    axios(`${VITE_BACKEND_URL}/api/providers`)
+    // axios(`${VITE_BACKEND_URL}/api/providers`)
+    axios(`https://fitness-center-gym.onrender.com/api/providers`)
       .then(info => {
         console.log(info.data)
       })

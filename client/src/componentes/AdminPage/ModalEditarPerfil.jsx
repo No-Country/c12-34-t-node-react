@@ -21,7 +21,8 @@ const ModalEditarPerfil = () => {
             cargo,
             email
         })
-        axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/update-user/${userCtx.userId}`, dataUpdated)
+        // axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/update-user/${userCtx.userId}`, dataUpdated)
+        axios.put(`https://fitness-center-gym.onrender.com/api/update-user/${userCtx.userId}`, dataUpdated)
              .then((res) => { 
                 console.log(res.data.user)
                 userCtx.updateUserEmailRegistered(res.data.user.email)

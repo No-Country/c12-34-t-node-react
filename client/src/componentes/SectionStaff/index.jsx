@@ -52,7 +52,8 @@ const IndexTable = () => {
   const [tBody, setTBody] = useState(tableBody);
 
   const getUser = () => {
-    axios(`${VITE_BACKEND_URL}/api/all-users`)
+    // axios(`${VITE_BACKEND_URL}/api/all-users`)
+    axios(`https://fitness-center-gym.onrender.com/api/all-users`)
       .then(info => {
         console.log(info.data)
       })

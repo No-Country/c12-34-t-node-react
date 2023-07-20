@@ -54,7 +54,8 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-    axios.get(`${VITE_BACKEND_URL}/api/clients`)
+    // axios.get(`${VITE_BACKEND_URL}/api/clients`)
+    axios.get(`https://fitness-center-gym.onrender.com/api/clients`)
       .then(info => {
         console.log(info.data);
         const { data } = info;

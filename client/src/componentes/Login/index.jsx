@@ -27,7 +27,8 @@ const Login = () => {
     };
 
     axios
-      .post(`${VITE_BACKEND_URL}/api/login`, userData)
+      // .post(`${VITE_BACKEND_URL}/api/login`, userData)
+      .post(`https://fitness-center-gym.onrender.com/api/login`, userData)
       .then((res) => {
         console.log(res.data)
         console.log(res.data.data.user.user)
