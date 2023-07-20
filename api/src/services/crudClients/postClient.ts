@@ -9,7 +9,7 @@ export const createClient = async (req: Request, res: Response) => {
   const usuario = req.body as IClient;
 
   try {
-    if (!usuario.name || !usuario.password || !usuario.email)
+    if (!usuario.name || !usuario.email)
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
 
     const existClient = await Client.findOne({
@@ -25,7 +25,6 @@ export const createClient = async (req: Request, res: Response) => {
     const newClient = await Client.create({
       name: usuario.name,
       email: usuario.email,
-      password: usuario.password,
       plan: usuario.plan,
       dateIn: usuario.dateIn,
       dateOut: usuario.dateOut,
