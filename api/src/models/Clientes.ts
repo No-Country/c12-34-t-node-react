@@ -7,13 +7,11 @@ class Client extends Model<IClient> implements IClient {
   googleId!: string;
   name!: string;
   email!: string;
-  password!: string;
   photo!: string;
   plan!: string;
   dateIn!: string;
   dateOut!: string;
   contact!: string;
-  // rol!: Rol;
 }
 
 Client.init(
@@ -31,9 +29,6 @@ Client.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-    },
-    password: {
-      type: DataTypes.STRING,
     },
     plan: {
       type: DataTypes.STRING,

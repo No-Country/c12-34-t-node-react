@@ -7,7 +7,7 @@ export const postEmployees = async (req: Request, res: Response) => {
 
   try {
     // if (!usuario.name || !usuario.password || !usuario.email) {
-    if (Object.values(usuario).length < 5) {
+    if (Object.values(usuario).length < 4) {
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
     }
 

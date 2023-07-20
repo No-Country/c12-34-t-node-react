@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-// import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
 import Client from "../models/Clientes";
 
 export const clientUsers = async (_: Request, res: Response) => {
