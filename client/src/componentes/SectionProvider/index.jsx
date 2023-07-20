@@ -5,10 +5,14 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import axios from "axios";
+
 import { useEffect } from "react";
 const { VITE_BACKEND_URL } = import.meta.env;
 
 
+
+
+const { VITE_BACKEND_URL } = import.meta.env
 
 
 const IndexTable = () => {
@@ -58,11 +62,17 @@ const IndexTable = () => {
   ];
   const [tBody, setTBody] = useState(tableBody);
 
-  // useEffect(() => {
-  //   axios.get("")
-  //     .then(res=>setTBody(res))
-  //     .catch(err=>console.log(err))
-  // }, [tBody])
+  const getProviders = () => {
+    axios(`${VITE_BACKEND_URL}/api/providers`)
+      .then(info => {
+        console.log(info.data)
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getProviders()
+  }, [])
 
 
   const getProviders = () => {

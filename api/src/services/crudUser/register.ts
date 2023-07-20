@@ -24,6 +24,10 @@ export const registerUser = async (req: Request, res: Response) => {
       user: usuario.user,
       email: usuario.email,
       password: encriptado,
+      plan: usuario.plan,
+      dateIn: usuario.dateIn,
+      dateOut: usuario.dateOut,
+      contact: usuario.contact
     });
 
     if (newUser) {

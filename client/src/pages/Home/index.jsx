@@ -22,7 +22,7 @@ import Gastos from '../../componentes/Gastos';
 
 const HomePrincipal = () => {
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   
   //let token = sessionStorage.getItem('userToken')
 
@@ -64,7 +64,7 @@ const HomePrincipal = () => {
       <Footer />
 
     </>
-
+    {/* } */}
     </>
   );
 };

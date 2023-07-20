@@ -6,7 +6,11 @@ import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
 import axios from "axios";
+
 const { VITE_BACKEND_URL } = import.meta.env;
+
+const { VITE_BACKEND_URL } = import.meta.env
+
 
 const IndexTable = () => {
   const title = "Clientes";
@@ -54,6 +58,7 @@ const IndexTable = () => {
 
   const [tBody, setTBody] = useState(tableBody);
 
+
   const getUser = () => {
     axios.get(`${VITE_BACKEND_URL}/api/all-users`)
       .then(info => {
@@ -68,6 +73,22 @@ const IndexTable = () => {
     getUser();
   }, []);
 
+
+
+  const getUser = () => {
+    axios.get(`${VITE_BACKEND_URL}/api/all-users`)
+      .then(info => {
+        console.log(info.data)
+        const { data } =  info
+        // setTBody(data)
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+  
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
