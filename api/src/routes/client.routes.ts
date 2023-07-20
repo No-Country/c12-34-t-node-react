@@ -1,16 +1,19 @@
-import { Router } from "express"
 import "dotenv/config";
-import { clientUser } from "../services/postClient"
-import { clientUsers } from "../services/getClient"
+import { Router } from "express"
+import { createClient } from "../services/crudClients/postClient"
+import { getClients } from "../services/crudClients/getClient"
+import { updateClient } from "../services/crudClients/putClient";
+import { deleteClient } from "../services/crudClients/deleteClient";
+
 
 export const clientRoutes = Router()
 
-// ─── Clientes ─────────────────────────────────────────────────────────────────
+// ─── Usuario ─────────────────────────────────────────────────────────────────
 
-clientRoutes.post("/api/client", clientUser)
+clientRoutes.get("/api/clients", getClients)
 
-// clientRoutes.delete("/api/login", loginUser)
+clientRoutes.post("/api/client", createClient)
 
-clientRoutes.get("/api/clients", clientUsers)
+clientRoutes.put("/api/client/:id", updateClient)
 
-// clientRoutes.put("/api/update-user/:id", upDateUser)
+clientRoutes.delete("/api/client/:id", deleteClient)
