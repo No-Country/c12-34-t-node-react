@@ -4,9 +4,16 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
-import { useEffect } from "react";
 import axios from "axios";
+
+import { useEffect } from "react";
+const { VITE_BACKEND_URL } = import.meta.env;
+
+
+
+
 const { VITE_BACKEND_URL } = import.meta.env
+
 
 const IndexTable = () => {
   const title = "Proveedores";
@@ -66,6 +73,26 @@ const IndexTable = () => {
   useEffect(() => {
     getProviders()
   }, [])
+
+
+  const getProviders = () => {
+    axios.get(`${VITE_BACKEND_URL}/api/providers`)
+      // fetch(`http://localhost:3001/api/providers`)
+      .then(resul => {
+        console.log(resul.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+
+    getProviders();
+
+  }, []);
+
+
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">

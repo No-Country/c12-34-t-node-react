@@ -26,19 +26,30 @@ userRoutes.put("/api/update-user/:id", upDateUser)
 
 // ─── Google ─────────────────────────────────────────────────────────────────
 
-userRoutes.get("/google", passport.authenticate("google", { scope: ["email", "profile"] }))
+userRoutes.get("/google",
+  passport.authenticate(
+    "google",
+    {
+      scope: ["email", "profile"]
+    }))
 
-userRoutes.get("/auth/google/callback", passport.authenticate("google", { session: false }),
+userRoutes.get("/auth/google/callback",
+  passport.authenticate(
+    "google",
+    {
+      session: false
+    }),
   (req, res) => {
-    const URL_FRONT = "http://127.0.0.1:5173";
+    const { URL_FRONT } = process.env
+
     const { id, googleId } = req.user as IUser & IGoogle
     console.log("ID-UUID:", id, "/ GOOGLE-ID:", googleId)
     Jwt.sign({ user: req.user }, "secretKey", { expiresIn: "5h" },
       (err: any, token: any) => {
         if (err) {
-          // return res.json({
-          //   token: null,
-          // });
+          return res.json({
+            token: null,
+          });
           return res.json({ error: err })
         }
         // res.cookie("tokenCookie", token, {
@@ -57,6 +68,7 @@ userRoutes.get("/auth/google/callback", passport.authenticate("google", { sessio
         // res.setHeader('Set-Cookie', `user=${req.user}`)
         // return res.redirect(`${URL_FRONT}/login?token=${token}&user=${req.user}`)
         return res.redirect(`${URL_FRONT}/admin/${id}?token=${token}&user=${req.user}`)
+
         // return res.redirect(`${URL_FRONT}/admin/${googleId}?token=${token}&user=${req.user}`)
       }
     );

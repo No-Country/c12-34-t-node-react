@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -20,8 +21,10 @@
     "jsonwebtoken": "^9.0.1",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
     "passport-google-oauth2": "^0.2.0",
     "pg": "^8.11.1",
+    "remove": "^0.1.5",
     "sequelize": "^6.32.1",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0"
