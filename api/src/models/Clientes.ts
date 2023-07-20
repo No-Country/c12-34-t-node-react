@@ -7,18 +7,11 @@ class Client extends Model<IClient> implements IClient {
   googleId!: string;
   name!: string;
   email!: string;
-  password!: string;
   photo!: string;
-  // PARA EL CLIENTE
   plan!: string;
   dateIn!: string;
   dateOut!: string;
   contact!: string;
-  // PARA EL CLIENTE
-  // PARA EL EMPLEADOR
-  occupation!: string;
-  // PARA EL EMPLEADOR
-  // rol!: Rol;
 }
 
 Client.init(
@@ -37,18 +30,6 @@ Client.init(
       allowNull: false,
       unique: true,
     },
-    // photo: {
-    //   type: DataTypes.TEXT,
-    //   // allowNull: false
-    // },
-    // rol: {
-    //   type: DataTypes.ENUM(Rol.Admin, Rol.Employees, Rol.Client),
-    //   // allowNull: false,
-    // },
-    password: {
-      type: DataTypes.STRING,
-      // unique: true
-    },
     plan: {
       type: DataTypes.STRING,
     },
@@ -61,9 +42,6 @@ Client.init(
     contact: {
       type: DataTypes.STRING,
     },
-    // occupation: {
-    //   type: DataTypes.STRING,
-    // },
   },
   {
     sequelize: db,

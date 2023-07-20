@@ -17,8 +17,3 @@ clientRoutes.post("/api/client", createClient)
 clientRoutes.put("/api/client/:id", updateClient)
 
 clientRoutes.delete("/api/client/:id", deleteClient)
-
-
-
-// userRoutes.put("/api/update-user/:id", upDateUser)
-
