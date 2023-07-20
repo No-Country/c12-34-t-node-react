@@ -5,7 +5,7 @@ const forceStatus = `${process.env.STATUS}` === "ACTIVE"
 const port = process.env.PORT || 3002;
 
 // Modificar el "force" desde la variable de entorno, ACTIVE || IN_ACTIVE
-db.sync({ force: forceStatus }).then(async () => {
+db.sync({ force: false }).then(async () => {
   try {
     app.listen(port, () => {
       console.log(`Escuchandoo en el puerto: http://localhost:${port}`);

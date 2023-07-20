@@ -1,6 +1,6 @@
-import React from "react";
-import { RiDeleteBin5Line } from "react-icons/Ri";
-import { BiEditAlt } from "react-icons/Bi";
+// import React from "react";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";

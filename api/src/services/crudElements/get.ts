@@ -13,11 +13,11 @@ export const getElementsGym = async (_: Request, res: Response) => {
         }],
       },
     });
-    if (!infoElements.length) {
+    if (!infoElements) {
       return res.status(400).json({ msg: "No hay nada" });
     }
     return res.status(200).json(infoElements);
   } catch (error) {
-    return res.status(400).json({ error: "Error en getElementsGym por:" + error, });    
+    return res.status(400).json({ error: "Error en getElementsGym por:" + error, });
   }
 }

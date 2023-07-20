@@ -9,11 +9,11 @@ export const getIncomeGym = async (_: Request, res: Response) => {
         attributes: ["user"],
       },
     });
-    if (!incomes.length) {
+    if (!incomes) {
       return res.status(400).json({ msg: "De momento no se han añadido las ganancias mensuales" });
     }
     return res.status(200).json(incomes);
   } catch (error) {
-    return res.status(400).json({ error: "Error en getIncomeGym por:" + error, });    
+    return res.status(400).json({ error: "Error en getIncomeGym por:" + error, });
   }
 }
