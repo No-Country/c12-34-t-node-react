@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import { useEffect, useRef } from 'react'
+import Chart from 'chart.js/auto'
 
 const ChartComponent = () => {
-  const chartRef = useRef(null);
+  const chartRef = useRef(null)
 
   useEffect(() => {
-    const labels = ['E', 'F', 'M', 'A', 'M', 'J', 'J'];
+    const labels = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
     const data = {
       labels: labels,
       datasets: [
@@ -24,7 +24,7 @@ const ChartComponent = () => {
           pointStyle: 'circle',
         }
       ]
-    };
+    }
 
     const config = {
       type: 'line',
@@ -35,41 +35,41 @@ const ChartComponent = () => {
           legend: {
             position: 'top',
           },
-         
+
         },
         scales: {
-            y: {
-                display: false, // Desactivar la visualización de las etiquetas del eje Y
-              },
-            x: {
-              grid: {
-                display: false, // Ocultar las líneas de referencia del eje X
-              },
+          y: {
+            display: false, // Desactivar la visualización de las etiquetas del eje Y
+          },
+          x: {
+            grid: {
+              display: false, // Ocultar las líneas de referencia del eje X
             },
           },
         },
+      },
       actions: [
         {
           name: 'Randomize',
           handler(chart) {
             chart.data.datasets.forEach(dataset => {
-              dataset.data = dataset.data.map(() => Math.random() * 100);
-            });
-            chart.update();
+              dataset.data = dataset.data.map(() => Math.random() * 100)
+            })
+            chart.update()
           }
         },
         // Resto de acciones...
       ]
-    };
+    }
 
-    const chartInstance = new Chart(chartRef.current, config);
+    const chartInstance = new Chart(chartRef.current, config)
 
     return () => {
-      chartInstance.destroy();
-    };
-  }, []);
+      chartInstance.destroy()
+    }
+  }, [])
 
-  return <div className='mt-10'  style={{ width: '320px', height: '320px' }}><canvas ref={chartRef}/></div> ;
-};
+  return <div className='w-[400px] h-[200px]'><canvas ref={chartRef} className='w-[100vw] mx-auto' /></div>
+}
 
-export default ChartComponent;
+export default ChartComponent
