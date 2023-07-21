@@ -4,11 +4,23 @@ import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import axios from "axios"
+const { VITE_BACKEND_URL } = import.meta.env;
 
 function ButtonsTable({ id, tBody, setTBody, type }) {
+
+  
   const [inputFields, setInputFields] = useState([]);
+
+
   const editItem = (_id) => {
-    let edited = [];
+    console.log(_id)
+   
+    axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+         .then((res) => console.log(res.data))
+         .catch(err => console.log(err))
+
+  let edited = [];
     const itemBody = tBody.find((item) => item.id === _id);
     let itemBody2 = [];
 
@@ -90,7 +102,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
               return (
                 <div key={i} className="grid gap-2">
                   {Object.values(data).map((item, subI) => {
-                    if (tBody[i].id === id) {
+                    if (tBody[i].id === id && subI !== 0) {
                       // No ver IDs: && subI !== 0
                       return (
                         <input

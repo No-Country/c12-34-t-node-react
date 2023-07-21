@@ -5,8 +5,12 @@ import { IClient } from "../../interfaces/IClient"
 
 export const updateClient = async (req: Request, res: Response) => {
 
-  const client = req.body as IClient
+  
+
   const { id } = req.params
+  const client = req.body as IClient
+  console.log(id)
+  console.log(req.body)
 
   try {
     const cliente = await Clientes.update(client, { where: { id } })

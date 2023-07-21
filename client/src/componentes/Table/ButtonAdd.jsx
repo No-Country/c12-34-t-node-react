@@ -4,6 +4,7 @@ const { VITE_BACKEND_URL } = import.meta.env;
 import axios from "axios";
 import { useEffect } from "react";
 
+
 const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
@@ -50,11 +51,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
 
 
 
-    axios.post(`${VITE_BACKEND_URL}/api/client`, newElement)
-         .then((res) => console.log(res))
-         .catch(err => console.log(err)) 
-
-
+  
 
 
     setTBody((items) => [...items, ...newElement]);
@@ -66,6 +63,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
     const values = [...inputField];
     values[i] = e.target.value;
     setInputField(values);
+    console.log(values)
   }
   return (
     <div className="flex justify-center">
