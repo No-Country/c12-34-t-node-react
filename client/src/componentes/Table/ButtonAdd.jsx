@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
+const { VITE_BACKEND_URL } = import.meta.env;
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
   const [inputField, setInputField] = useState([]);
@@ -44,8 +46,28 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           provider: inputField[6],
         },
       ];
+    } else if (type === "bienesElementos") {
+      console.log("inputField:", inputField)
+      newElement = {
+          id: newId,
+          name: inputField[0],
+          state: inputField[1],
+          description: inputField[2],
+          type: inputField[3],
+          price: Number(inputField[4]),
+          date: inputField[5],
+        }
+        console.log("NEW-ELEMENT:", newElement)
     }
-
+    axios.post(`${VITE_BACKEND_URL}/api/element-client`, newElement)
+      .then(res => {
+        console.log("BUTTON ADD:", res.data);
+      })
+      .catch(err => {
+        console.log(err.response.data.error);
+      });
+    
+    console.log("NEW_ELEMENT DESPUES DE AXIOS:", newElement)
     setTBody((items) => [...items, ...newElement]);
     // console.log(tBody);
     setInputField([]);

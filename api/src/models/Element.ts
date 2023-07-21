@@ -35,13 +35,14 @@ Elements.init(
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM(
-        Types.Element,
-        Types.Machine,
-        Types.Office,
-      ),
+      // type: DataTypes.ENUM(
+      //   Types.Element,
+      //   Types.Machine,
+      //   Types.Office,
+      // ),
       // defaultValue: "Elemento",
-      allowNull: false,
+      type: DataTypes.STRING,
+      // allowNull: false,
     },
     price: {
       type: DataTypes.INTEGER,

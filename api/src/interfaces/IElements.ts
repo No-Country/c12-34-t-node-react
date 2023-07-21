@@ -14,7 +14,8 @@ export enum State {
 export interface IElements {
   id?: string,
   name: string,
-  type: Types,
+  // type: Types,
+  type: string,
   description: string,
   price: number,
   date: string,
