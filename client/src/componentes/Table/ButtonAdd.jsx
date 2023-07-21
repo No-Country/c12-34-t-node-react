@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import React, { useState } from "react"
+import { toast } from "react-toastify"
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
-  const [inputField, setInputField] = useState([]);
+  const [inputField, setInputField] = useState([])
   const addElement = () => {
-    const notNull = inputField.filter((x) => x);
+    const notNull = inputField.filter((x) => x)
 
     if (notNull.length < tHeader.length) {
-      return toast.error("Debes llenar todos los campos");
+      return toast.error("Debes llenar todos los campos")
     }
-    let newId;
+    let newId
     if (tBody.length < 1) {
-      newId = 1;
+      newId = 1
     } else {
-      newId = tBody[tBody.length - 1].id + 1;
+      newId = tBody[tBody.length - 1].id + 1
     }
-    let newElement;
+    let newElement
     /* -------------------------------------------------------------------------- */
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
@@ -30,7 +30,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           inicio: inputField[4],
           vencimiento: inputField[5],
         },
-      ];
+      ]
     } else if (type === "proveedores") {
       newElement = [
         {
@@ -43,25 +43,25 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           description: inputField[5],
           provider: inputField[6],
         },
-      ];
+      ]
     }
 
-    setTBody((items) => [...items, ...newElement]);
+    setTBody((items) => [...items, ...newElement])
     // console.log(tBody);
-    setInputField([]);
-    toast.success("Nuevo elemento agregado");
-  };
+    setInputField([])
+    toast.success("Nuevo elemento agregado")
+  }
   function handleChange(i, e) {
-    const values = [...inputField];
-    values[i] = e.target.value;
-    setInputField(values);
+    const values = [...inputField]
+    values[i] = e.target.value
+    setInputField(values)
   }
   return (
     <div className="flex justify-center">
       {/* The button to open modal */}
       <label
         htmlFor="my_modal_add"
-        className="btn text-white px-10 bg-[#1A1363] hover:bg-black"
+        className="btn btn-md px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow  leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
       >
         Agregar
       </label>
@@ -87,21 +87,21 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
                       className="input input-bordered w-full"
                     />
                   </div>
-                );
+                )
                 // }
               })}
           </div>
           <div className="modal-action">
             <label
               onClick={addElement}
-              className="btn text-white px-10 bg-[#1A1363] hover:bg-black"
+              className="btn text-pallete-white px-10 bg-pallete-blue hover:bg-pallete-black"
               htmlFor="my_modal_add"
             >
               Guardar
             </label>
             <label
               htmlFor="my_modal_add"
-              className="btn border-[#1A1363] btn-outline px-10 hover:bg-black"
+              className="btn border-pallete-blue btn-outline px-10 hover:bg-pallete-black"
             >
               Cancelar
             </label>
@@ -109,7 +109,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ButtonAdd;
+export default ButtonAdd

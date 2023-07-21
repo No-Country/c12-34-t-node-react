@@ -1,17 +1,17 @@
-import React from "react";
-import { AiOutlineUser } from "react-icons/ai";
-import "react-toastify/dist/ReactToastify.css";
-import ButtonsTable from "./ButtonsTable";
+import React from "react"
+import { AiOutlineUser } from "react-icons/ai"
+import "react-toastify/dist/ReactToastify.css"
+import ButtonsTable from "./ButtonsTable"
 
 const Table = ({ tHeader, tBody, setTBody, type }) => {
   return (
     <>
-      <div className="overflow-x-auto h-56">
+      <div className="w-full overflow-x-scroll scroll-smooth h-56 rounded-lg">
         <table className="table table-pin-rows">
           <thead>
-            <tr className="bg-[#1A1363] text-white">
-              {tHeader && tHeader.map((item, i) => <th key={i}>{item}</th>)}
-              <th>Acción</th>
+            <tr className=" bg-pallete-blue text-pallete-white">
+              {tHeader && tHeader.map((item, i) => <th key={i}><p className=' font-PoppinsBold'>{item}</p></th>)}
+              <th><p className=' font-PoppinsBold'>Acción</p></th>
             </tr>
           </thead>
           <tbody>
@@ -28,10 +28,10 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
                           >
                             <div className="flex flex-row gap-2">
                               {subI === 1 && <AiOutlineUser />}
-                              {item}
+                              <p className=' font-PoppinsMedium'>{item}</p>
                             </div>
                           </td>
-                        );
+                        )
                     })}
                     <ButtonsTable
                       id={data.id}
@@ -40,7 +40,7 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
                       type={type}
                     />
                   </tr>
-                );
+                )
               })
             ) : (
               <tr>
@@ -53,7 +53,7 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
         </table>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table
