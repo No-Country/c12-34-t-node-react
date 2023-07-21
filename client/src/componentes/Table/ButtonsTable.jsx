@@ -90,7 +90,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
               return (
                 <div key={i} className="grid gap-2">
                   {Object.values(data).map((item, subI) => {
-                    if (tBody[i].id === id) {
+                    if (tBody[i].id === id && subI !== 0) {
                       // No ver IDs: && subI !== 0
                       return (
                         <input

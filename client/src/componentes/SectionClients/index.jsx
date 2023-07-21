@@ -12,6 +12,7 @@ const { VITE_BACKEND_URL } = import.meta.env;
 const IndexTable = () => {
   const title = "Clientes";
   const type = "clientes";
+  const BODY_DATA = "BODY_DATA";
   const tableHeader = [
     "Nombre completo",
     "Plan",
@@ -50,24 +51,42 @@ const IndexTable = () => {
     },
   ];
 
-  const [tBody, setTBody] = useState(tableBody);
+  const [tBody, setTBody] = useState([]);
+
+  const [error, setTError] = useState("");
 
 
   const getUser = () => {
     axios.get(`${VITE_BACKEND_URL}/api/clients`)
-    // axios.get(`https://fitness-center-gym.onrender.com/api/clients`)
       .then(info => {
         console.log(info.data);
         const { data } = info;
-        // setTBody(data)
+        setTBody(data)
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err.response.data.error)
+        setTError(err.response.data.error)
+      });
   };
 
   useEffect(() => {
+    // console.log("LOCAL:", window.localStorage.getItem(BODY_DATA))
+    // const local = window.localStorage.getItem(BODY_DATA)
+    // if (local.length < 1 || local === null) {
+    // }
     getUser();
   }, []);
   
+  useEffect(() => {
+    const data = window.localStorage.getItem(BODY_DATA);
+    setTBody(JSON.parse(data));
+    // console.log("GET:", JSON.parse(data))
+  }, []);
+  
+  useEffect(() => {
+    window.localStorage.setItem(BODY_DATA, JSON.stringify(tBody));
+    // console.log("SET:", tBody)
+  }, [tBody]);
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
@@ -84,6 +103,7 @@ const IndexTable = () => {
           tBody={tBody}
           setTBody={setTBody}
           type={type}
+          error={error}
         />
         <ButtonAdd
           tBody={tBody}

@@ -25,21 +25,21 @@ Client.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    plan: {
+      type: DataTypes.STRING,
+    },
+    contact: {
+      type: DataTypes.STRING,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    plan: {
-      type: DataTypes.STRING,
-    },
     dateIn: {
       type: DataTypes.STRING,
     },
     dateOut: {
-      type: DataTypes.STRING,
-    },
-    contact: {
       type: DataTypes.STRING,
     },
   },
