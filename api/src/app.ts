@@ -6,6 +6,7 @@ import { router } from "./routes";
 import passport from 'passport'
 import session from 'express-session';
 
+
 export const app: Application = express();
 app.use(
   cors({
@@ -35,3 +36,4 @@ app.use(session({
 }));
 
 app.use(router);
+

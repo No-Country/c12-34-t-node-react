@@ -5,9 +5,8 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-import axios from "axios";
-
 const { VITE_BACKEND_URL } = import.meta.env;
+import axios from "axios";
 
 const IndexTable = () => {
   const title = "Clientes";
@@ -52,34 +51,22 @@ const IndexTable = () => {
 
   const [tBody, setTBody] = useState(tableBody);
 
-
-  const getUser = () => {
+ /* const getClients = () => { 
     axios.get(`${VITE_BACKEND_URL}/api/clients`)
-    // axios.get(`https://fitness-center-gym.onrender.com/api/clients`)
-      .then(info => {
-        console.log(info.data);
-        const { data } = info;
-        // setTBody(data)
-      })
-      .catch(err => console.log(err));
-  };
+         .then((res) => console.log(res)) 
+         .catch(err => console.log(err))
+  }
 
-  useEffect(() => {
-    getUser();
-  }, []);
-  
+  useEffect(() => { 
+    getClients()
+  }, [])*/
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
-        
-        {/* {clients.map((c) => { 
-           <Table />
-        })} */}
-
-         <Table
+        <Table
           tHeader={tableHeader}
           tBody={tBody}
           setTBody={setTBody}
@@ -95,6 +82,5 @@ const IndexTable = () => {
     </div>
   );
 };
-
 
 export default IndexTable;

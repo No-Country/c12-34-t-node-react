@@ -16,3 +16,5 @@ providerRoutes.post("/api/provider", postProvider)
 providerRoutes.put("/api/provider/:id", authToken, putProvider)
 
 providerRoutes.delete("/api/provider/:id", authToken, deleteProvider)
+
+
