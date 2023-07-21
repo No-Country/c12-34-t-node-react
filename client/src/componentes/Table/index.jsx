@@ -17,10 +17,23 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
           <tbody>
             {tBody.length >= 1 ? (
               tBody.map((data, i) => {
+                // console.log("TABLE-DATA:", data) [{ELEMENTO}]
+                console.log("TABLE-DATA-0:", Object.values(data))
+                // console.log("TABLE-DATA-1:", data)
+                // console.log("TABLE-DATA-2:", data[2])
+                // console.log("TABLE-DATA-3:", data[3])
+                // console.log("TABLE-DATA-4:", data[4])
+                // console.log("TABLE-DATA-5:", data[5])
                 return (
                   <tr key={i}>
                     {Object.values(data).map((item, subI) => {
-                      if (subI !== 0)
+                      console.log("TABLE-ITEMS:", item, "INDEX:", subI)
+                      // console.log("TABLE-item:", item, "subI:", subI)
+                      // console.log("TABLE-tBody:", tBody) [{ELEMENTO}]
+                      if (subI !== 0 && subI!== 7 && subI !== 8 && subI !== 9)
+                      // if (subI !== 0 && subI !== 7 && subI !== 8 && subI !== 8 && tBody[i].id === id && tBody[i].adminId === "adminId" && tBody[i].providerId === "providerId")
+                      // if (subI !== 0 && subI !== 7 && subI !== 8 && subI !== 8)
+                      // if (!Object.values(data)[0] && !Object.values(data)[7] && !Object.values(data)[8] && !Object.values(data)[9])
                         return (
                           <td
                             key={subI}
@@ -29,6 +42,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
                             <div className="flex flex-row gap-2">
                               {subI === 1 && <AiOutlineUser />}
                               {item}
+                              {console.log("TABLE-ITEMS:", item)}
                             </div>
                           </td>
                         );

@@ -25,6 +25,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
     }
 
     const newState = tBody.map((item) => {
+      console.log("ELEMENTOS:", type)
       if (item.id === id) {
         if (type === "clientes") {
           return {
@@ -49,6 +50,19 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
             provider: edited[7],
           };
         }
+        // if (type === "bienesElementos") {
+        //   console.log("ELEMENTOS:", type)
+        //   return {
+        //     ...item,
+        //     name: edited[1],
+        //     state: edited[2],
+        //     description: edited[6],
+        //     type: edited[3],
+        //     price: edited[4],
+        //     date: edited[5],
+        //     // provider: edited[7],
+        //   };
+        // }
       }
       return item;
     });

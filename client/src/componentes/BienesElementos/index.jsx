@@ -3,10 +3,9 @@ import Table from "../Table";
 import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
-
 import { useEffect } from "react";
 import axios from "axios";
-
+const { VITE_BACKEND_URL } = import.meta.env;
 
 const BienesElementos = () => {
     const title = "Bienes / Elementos";
@@ -15,14 +14,13 @@ const BienesElementos = () => {
     const tableHeader = [
       "Elemento",
       "Estado",
-      "Mantenimiento",
-      "Respuestos",
-      "Valor actual",
+      "Descripcion",
+      "Tipo",
+      "Precio",
       "Fecha",
-      
     ];
+
     const tableBody = [
-  
       {
         id: 1,
         name: "mancuerna 1kg",
@@ -31,17 +29,29 @@ const BienesElementos = () => {
         respuestos: "text",
         valorActual: "text",
         fecha: "text",
-        
       },
-     
     ];
-    const [tBody, setTBody] = useState(tableBody);
+
+    // const [tBody, setTBody] = useState(tableBody);
+    const [tBody, setTBody] = useState([]);
+    const [error, setTError] = useState("");
   
-    // useEffect(() => {
-    //   axios.get("")
-    //     .then(res=>setTBody(res))
-    //     .catch(err=>console.log(err))
-    // }, [tBody])
+    const getElements = () => {
+      axios.get(`${VITE_BACKEND_URL}/api/elements`)
+        .then(info => {
+          // console.log("BIENES-ELEMENTS:", info.data);
+          const { data } = info;
+          setTBody(data)
+        })
+        .catch(err => {
+          console.log(err.response.data.error)
+          setTError(err.response.data.error)
+        });
+    };
+
+    useEffect(() => {
+      getElements();
+    }, []);
   
     return (
       <div className="flex flex-col justify-center gap-10 w-full">
@@ -60,6 +70,7 @@ const BienesElementos = () => {
             tBody={tBody}
             setTBody={setTBody}
             type={type}
+            error={error}
           />
           <ButtonAdd
             tBody={tBody}

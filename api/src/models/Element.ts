@@ -22,7 +22,18 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // MAQUINAS OH ELEMENTOS - MOBILIARIO
+    state: {
+      type: DataTypes.ENUM(
+        State.En_reparacion,
+        State.Nuevo,
+        State.Usado,
+      ),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     type: {
       type: DataTypes.ENUM(
         Types.Element,
@@ -32,24 +43,13 @@ Elements.init(
       // defaultValue: "Elemento",
       allowNull: false,
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    // MAQUINAS OH ELEMENTOS - MOBILIARIO
     date: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    state: {
-      type: DataTypes.ENUM(
-        State.En_reparacion,
-        State.Nuevo,
-        State.Usado,
-      ),
       allowNull: false,
     },
   },
