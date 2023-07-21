@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { userRoutes } from "./user.routes";
+import { adminRoutes } from "./admin.routes";
 import { elementRoutes } from "./element.routes";
 import { providerRoutes } from "./provider.routes";
 import { groupClassRoutes } from "./groupClass.routes";
@@ -10,7 +10,7 @@ import { employeeRoutes } from "./employee.routes";
 
 export const router = Router()
 
-router.use(userRoutes)
+router.use(adminRoutes)
 
 router.use(elementRoutes)
 

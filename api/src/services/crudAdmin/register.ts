@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { IUser } from "../../interfaces/IUser";
-import { User } from "../../models/relations";
+import { IAdmin } from "../../interfaces/IAdmin";
+import { Admin } from "../../models/relations";
 import { passwordHashado } from "../../helper/bcrypt";
 
 export const registerUser = async (req: Request, res: Response) => {
-  const usuario = req.body as IUser;
+  const usuario = req.body as IAdmin;
 
   try {
     if (!usuario.user || !usuario.password || !usuario.email)
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
 
-    const existUser = await User.findOne({
+    const existUser = await Admin.findOne({
       where: { email: usuario.email },
     });
 
@@ -20,14 +20,10 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const encriptado = await passwordHashado(usuario.password);
 
-    const newUser = await User.create({
+    const newUser = await Admin.create({
       user: usuario.user,
       email: usuario.email,
       password: encriptado,
-      plan: usuario.plan,
-      dateIn: usuario.dateIn,
-      dateOut: usuario.dateOut,
-      contact: usuario.contact
     });
 
     if (newUser) {

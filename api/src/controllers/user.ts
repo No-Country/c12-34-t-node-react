@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { IUser, Rol } from '../interfaces/IUser';
+import { IUser, Rol } from '../interfaces/IAdmin';
 import { passwordHashado, passwordCorrecto } from '../helper/bcrypt';
 import { generarToken } from "../helper/JWToken"
 import { ClassGroup, Elements, Provider, User, Expense } from '../models/relations';

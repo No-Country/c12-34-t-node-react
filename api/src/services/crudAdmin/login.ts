@@ -1,14 +1,14 @@
 import { Request, Response } from "express"
-import { IUser } from "../../interfaces/IUser"
-import { User } from "../../models/relations"
+import { IAdmin } from "../../interfaces/IAdmin"
+import { Admin } from "../../models/relations"
 import { passwordCorrecto } from "../../helper/bcrypt"
 import { generarToken } from "../../helper/JWToken"
 
 export const loginUser = async (req: Request, res: Response) => {
-  const usuario = req.body as IUser
+  const usuario = req.body as IAdmin
 
   try {
-    const existUser = await User.findOne({
+    const existUser = await Admin.findOne({
       where: {
         email: usuario.email
       }

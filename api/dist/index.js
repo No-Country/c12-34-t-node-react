@@ -14,7 +14,7 @@ const db_1 = require("./db");
 const forceStatus = `${process.env.STATUS}` === "ACTIVE";
 const port = process.env.PORT || 3002;
 // Modificar el "force" desde la variable de entorno, ACTIVE || IN_ACTIVE
-db_1.db.sync({ force: false }).then(() => __awaiter(void 0, void 0, void 0, function* () {
+db_1.db.sync({ force: forceStatus }).then(() => __awaiter(void 0, void 0, void 0, function* () {
     try {
         app_1.app.listen(port, () => {
             console.log(`Escuchandoo en el puerto: http://localhost:${port}`);

@@ -1,11 +1,11 @@
 import { Request, Response } from "express"
-import { Elements, Provider, User, } from "../../models/relations"
+import { Elements, Provider, Admin, } from "../../models/relations"
 
 export const getProvider = async (req: Request, res: Response) => {
   try {
     const proveedores = await Provider.findAll({
       include: {
-        model: User,
+        model: Admin,
         attributes: ["user"],
         include: [{
           model: Elements,

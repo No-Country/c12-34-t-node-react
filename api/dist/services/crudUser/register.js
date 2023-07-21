@@ -28,10 +28,6 @@ const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             user: usuario.user,
             email: usuario.email,
             password: encriptado,
-            plan: usuario.plan,
-            dateIn: usuario.dateIn,
-            dateOut: usuario.dateOut,
-            contact: usuario.contact
         });
         if (newUser) {
             return res.status(200).json({ msg: "Usuario creado", newUser });
