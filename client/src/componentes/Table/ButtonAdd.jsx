@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+const { VITE_BACKEND_URL } = import.meta.env;
+import axios from "axios";
+import { useEffect } from "react";
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
   const [inputField, setInputField] = useState([]);
@@ -20,7 +23,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
-      newElement = [
+      newElement = 
         {
           id: newId,
           nombre: inputField[0],
@@ -29,8 +32,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           mail: inputField[3],
           inicio: inputField[4],
           vencimiento: inputField[5],
-        },
-      ];
+        }
     } else if (type === "proveedores") {
       newElement = [
         {
@@ -45,6 +47,15 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
         },
       ];
     }
+
+
+
+    axios.post(`${VITE_BACKEND_URL}/api/client`, newElement)
+         .then((res) => console.log(res))
+         .catch(err => console.log(err)) 
+
+
+
 
     setTBody((items) => [...items, ...newElement]);
     // console.log(tBody);

@@ -49,17 +49,29 @@ const IndexTable = () => {
     },
   ];
 
-  const [tBody, setTBody] = useState(tableBody);
+  const [tBody, setTBody] = useState([]);
 
- /* const getClients = () => { 
+  const [error, setTError] = useState("");
+
+
+  const getUser = () => {
     axios.get(`${VITE_BACKEND_URL}/api/clients`)
-         .then((res) => console.log(res)) 
-         .catch(err => console.log(err))
-  }
+      .then(info => {
+        console.log(info.data);
+        const { data } = info;
+        setTBody(data)
+      })
+      .catch(err => {
+        console.log(err.response.data.error)
+        setTError(err.response.data.error)
+      });
+  };
 
   useEffect(() => { 
-    getClients()
-  }, [])*/
+     getUser()
+  }, [])
+
+
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
@@ -71,6 +83,7 @@ const IndexTable = () => {
           tBody={tBody}
           setTBody={setTBody}
           type={type}
+          error={error}
         />
         <ButtonAdd
           tBody={tBody}

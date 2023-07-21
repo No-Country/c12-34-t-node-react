@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import Client from "../../models/Clientes";
 
 export const getClients = async (_: Request, res: Response) => {
+  console.log("Me llego algo")
   try {
     const allClient = await Client.findAll();
 

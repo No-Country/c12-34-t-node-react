@@ -8,6 +8,10 @@ import Client from "../../models/Clientes";
 export const createClient = async (req: Request, res: Response) => {
   const usuario = req.body as IClient;
 
+  console.log(req.body)
+  console.log(req.body.name)
+  console.log(req.body.email)
+
   try {
     if (!usuario.name || !usuario.email)
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
