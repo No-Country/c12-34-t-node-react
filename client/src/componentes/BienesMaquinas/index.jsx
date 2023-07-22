@@ -26,10 +26,20 @@ const BienesMaquinas = () => {
       id: 1,
       name: "Polea",
       estado: "nueva",
-      manetenimiento: "text",
-      respuestos: "text",
-      valorActual: "text",
-      fecha: "text",
+      mantenimiento: "Text",
+      repuestos: "Text",
+      valorActual: "1999",
+      fecha: "Text",
+
+    },
+    {
+      id: 2,
+      name: "Press de Banca",
+      estado: "Nueva",
+      mantenimiento: "Text",
+      repuestos: "Text",
+      valorActual: "1999",
+      fecha: "Text",
 
     },
 

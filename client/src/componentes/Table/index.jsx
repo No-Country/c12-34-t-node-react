@@ -1,5 +1,3 @@
-import React from "react"
-import { AiOutlineUser } from "react-icons/ai"
 import "react-toastify/dist/ReactToastify.css"
 import ButtonsTable from "./ButtonsTable"
 
@@ -9,9 +7,9 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
       <div className="w-full overflow-x-scroll scroll-smooth h-56 rounded-lg">
         <table className="table table-pin-rows">
           <thead>
-            <tr className=" bg-pallete-blue text-pallete-white">
-              {tHeader && tHeader.map((item, i) => <th key={i}><p className=' font-PoppinsBold'>{item}</p></th>)}
-              <th><p className=' font-PoppinsBold'>Acción</p></th>
+            <tr className="grow bg-pallete-blue text-pallete-white">
+              {tHeader && tHeader.map((item, i) => <th key={i}><p className=' text-start font-PoppinsMedium'>{item}</p></th>)}
+              <th><p className=' pr-14 text-start font-PoppinsMedium'>Acción</p></th>
             </tr>
           </thead>
           <tbody>
@@ -24,11 +22,9 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
                         return (
                           <td
                             key={subI}
-                            className={`${subI === 2 && "badge badge-ghost"}`}
                           >
                             <div className="flex flex-row gap-2">
-                              {subI === 1 && <AiOutlineUser />}
-                              <p className=' font-PoppinsMedium'>{item}</p>
+                              <p className={`${subI === 2 && "badge badge-ghost bg-pallete-black bg-opacity-25"} font-PoppinsRegular `}>{item}</p>
                             </div>
                           </td>
                         )
@@ -45,7 +41,7 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
             ) : (
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
-                  No hay información
+                  <p className=' text-lg font-PoppinsRegular text-pallete-grey'>No hay información</p>
                 </td>
               </tr>
             )}
