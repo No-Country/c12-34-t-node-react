@@ -8,8 +8,16 @@ import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hook
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
+
+
   const editItem = (_id) => {
-    let edited = [];
+    console.log(_id)
+   
+    axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+         .then((res) => console.log(res.data))
+         .catch(err => console.log(err))
+
+  let edited = [];
     const itemBody = tBody.find((item) => item.id === _id);
     let itemBody2 = [];
 

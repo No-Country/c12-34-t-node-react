@@ -42,6 +42,7 @@ Client.init(
     dateOut: {
       type: DataTypes.STRING,
     },
+   
   },
   {
     sequelize: db,

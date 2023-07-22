@@ -50,6 +50,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
                   {error}
+                  {error}
                 </td>
               </tr>
             )}

@@ -25,7 +25,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
-      newElement = [
+      newElement = 
         {
           id: newId,
           nombre: inputField[0],
@@ -34,8 +34,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           mail: inputField[3],
           inicio: inputField[4],
           vencimiento: inputField[5],
-        },
-      ];
+        }
     } else if (type === "proveedores") {
       newElement = [
         {
@@ -97,6 +96,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     }
     values[i] = event;
     setInputField(values);
+    // console.log(values)// Se vizualizan los input
   }
   return (
     <div className="flex justify-center">
