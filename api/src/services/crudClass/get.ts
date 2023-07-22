@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { ClassGroup, User } from "../../models/relations";
+import { ClassGroup, Admin } from "../../models/relations";
 
 export const getClassGroupGym = async (_: Request, res: Response) => {
   try {
     const classGroup = await ClassGroup.findAll({
       include: {
-        model: User,
+        model: Admin,
         attributes: ["user"],
       },
     });

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { User, Elements, Provider } from "../../models/relations";
+import { Admin, Elements, Provider } from "../../models/relations";
 
 export const getElementsGym = async (_: Request, res: Response) => {
   try {
     const infoElements = await Elements.findAll({
       include: {
-        model: User,
+        model: Admin,
         attributes: ["user"],
         include: [{
           model: Provider,

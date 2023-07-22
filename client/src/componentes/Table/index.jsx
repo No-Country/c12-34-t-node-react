@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import ButtonsTable from "./ButtonsTable";
 
-const Table = ({ tHeader, tBody, setTBody, type, error }) => {
+const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
   return (
     <>
       <div className="overflow-x-auto h-56">
@@ -17,10 +17,12 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
           <tbody>
             {tBody.length >= 1 ? (
               tBody.map((data, i) => {
+                // console.log("TABLE-DATA-0:", Object.values(data))
                 return (
                   <tr key={i}>
                     {Object.values(data).map((item, subI) => {
-                      if (subI !== 0)
+                      // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
+                      if (subI !== 0 && subI!== 7 && subI !== 8 && subI !== 9)
                         return (
                           <td
                             key={subI}
@@ -29,6 +31,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
                             <div className="flex flex-row gap-2">
                               {subI === 1 && <AiOutlineUser />}
                               {item}
+                              {/* {console.log("TABLE-ITEMS:", item)} */}
                             </div>
                           </td>
                         );
@@ -38,6 +41,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
                       tBody={tBody}
                       setTBody={setTBody}
                       type={type}
+                      setTError={setTError}
                     />
                   </tr>
                 );
@@ -45,6 +49,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
             ) : (
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
+                  {error}
                   {error}
                 </td>
               </tr>

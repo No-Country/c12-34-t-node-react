@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "concurrently \"tsc --watch\" \"node ./dist/index.js\""
   },
   "keywords": [],
   "author": "",
@@ -40,6 +40,7 @@
     "@types/passport": "^1.0.12",
     "@types/sequelize": "^4.28.15",
     "@types/uuid": "^9.0.2",
+    "concurrently": "^8.2.0",
     "nodemon": "^2.0.22"
   }
 }

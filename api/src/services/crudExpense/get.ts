@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Expense, User } from "../../models/relations";
+import { Expense, Admin } from "../../models/relations";
 import { IExpense } from "interfaces/IExpense";
 
 export const getExpensesGym = async (_: Request, res: Response) => {
@@ -8,7 +8,7 @@ export const getExpensesGym = async (_: Request, res: Response) => {
 
     const expenses = await Expense.findAll({
       include: {
-        model: User,
+        model: Admin,
         attributes: ["user"],
       },
     });

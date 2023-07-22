@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import { IUser } from "../../interfaces/IUser";
-import { User } from "../../models/relations";
+import { IAdmin } from "../../interfaces/IAdmin";
+import { Admin } from "../../models/relations";
 
 export const upDateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const user: IUser = req.body;
+  const user: IAdmin = req.body;
 
   try {
     if (id.length < 36) {
       throw new Error("El usuario no existe");
     } else {
-      await User.update(user, {
+      await Admin.update(user, {
         where: { id, },
       });
 

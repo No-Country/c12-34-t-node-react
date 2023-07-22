@@ -6,6 +6,7 @@ import SectionTitle from "../Title";
 
 import { useEffect } from "react";
 import axios from "axios";
+import { axiosGetElement } from "../../hooks/axiosElement";
 
  const BienesMaquinas = () => {
   const title = "Bienes / Máquinas";
@@ -14,8 +15,8 @@ import axios from "axios";
   const tableHeader = [
     "Maquina",
     "Estado",
-    "Mantenimiento",
-    "Respuestos",
+    "Descripcion",
+    "Stock",
     "Valor actual",
     "Fecha",
     
@@ -34,13 +35,14 @@ import axios from "axios";
     },
    
   ];
-  const [tBody, setTBody] = useState(tableBody);
-
-  // useEffect(() => {
-  //   axios.get("")
-  //     .then(res=>setTBody(res))
-  //     .catch(err=>console.log(err))
-  // }, [tBody])
+  // const [tBody, setTBody] = useState(tableBody);
+  const [tBody, setTBody] = useState([]);
+  const [error, setTError] = useState("");
+    
+  axiosGetElement(setTBody, setTError)
+  useEffect(() => {
+    axiosGetElement(setTBody, setTError)
+  }, []);
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
@@ -59,12 +61,14 @@ import axios from "axios";
           tBody={tBody}
           setTBody={setTBody}
           type={type}
+          error={error}
         />
         <ButtonAdd
           tBody={tBody}
           setTBody={setTBody}
           tHeader={tableHeader}
           type={type}
+          setTError={setTError}
         />
       </div>
     </div>

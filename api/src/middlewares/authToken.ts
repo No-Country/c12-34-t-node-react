@@ -1,5 +1,5 @@
 import Jwt from "jsonwebtoken";
-import User from "../models/User";
+import { Admin } from "../models/Admin";
 import { NextFunction, Request, Response } from "express";
 import { IPayload } from "../interfaces/IPayload";
 
@@ -13,7 +13,7 @@ export const authToken = async (req: any, res: Response, next: NextFunction) => 
 
       const payload = Jwt.verify(token, process.env.TOKEN || "CL@VE") as IPayload
 
-      const usuarioid = await User.findOne({
+      const usuarioid = await Admin.findOne({
         where: { email: payload.id },
       })
       req.usuarioId = usuarioid

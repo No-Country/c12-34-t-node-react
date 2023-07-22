@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { Income, User } from "../../models/relations";
+import { Income, Admin } from "../../models/relations";
 
 export const getIncomeGym = async (_: Request, res: Response) => {
   try {
     const incomes = await Income.findAll({
       include: {
-        model: User,
+        model: Admin,
         attributes: ["user"],
       },
     });

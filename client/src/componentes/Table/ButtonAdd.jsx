@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-const { VITE_BACKEND_URL } = import.meta.env;
-import axios from "axios";
-import { useEffect } from "react";
+import { UserContext } from "../../store/userContext";
+import { axiosGetElement, axiosPostElement } from "../../hooks/axiosElement";
 
-
-const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
+const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
+  const { userId } = useContext(UserContext)
+  // console.log("USER ID:", userId)
+  
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
     const notNull = inputField.filter((x) => x);
@@ -47,23 +48,55 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           provider: inputField[6],
         },
       ];
+    } else if (type === "bienesElementos") {
+      newElement = {
+          // id: newId,
+          name: inputField[0],
+          state: inputField[1],
+          description: inputField[2],
+          type: inputField[3],// Stock
+          price: inputField[4],
+          date: inputField[5],
+          providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
+          adminId: userId,
+        }
+        axiosPostElement(newElement)
+        // axiosGetElement(setTBody, setTError);
+        // useEffect(() => {
+        //   axiosGetElement(setTBody, setTError);
+        // }, []);
+    } else if (type === "bienesMaquinas") {
+      newElement = {
+          // id: newId,
+          name: inputField[0],
+          state: inputField[1],
+          description: inputField[2],
+          type: inputField[3],// Stock
+          price: inputField[4],
+          date: inputField[5],
+          providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
+          adminId: userId,
+        }
+        axiosPostElement(newElement)
+        axiosGetElement(setTBody, setTError);
     }
-
-
-
-  
-
-
-    setTBody((items) => [...items, ...newElement]);
-    // console.log(tBody);
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
   function handleChange(i, e) {
+    let event = e.target.value;
     const values = [...inputField];
-    values[i] = e.target.value;
+    if (i === 5) {
+      if (event.length === 2) {
+        event = event + "-";
+      }
+      if (event.length === 5) {
+        event = event + "-";
+      }
+    }
+    values[i] = event;
     setInputField(values);
-    console.log(values)
+    // console.log(values)// Se vizualizan los input
   }
   return (
     <div className="flex justify-center">
@@ -92,7 +125,8 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
                       id={`input-${i}`}
                       value={inputField[i] || ""}
                       onChange={(e) => handleChange(i, e)}
-                      type="text"
+                      // type={i >= 5 ? "date" : "text"}
+                      type={"text"}
                       className="input input-bordered w-full"
                     />
                   </div>
