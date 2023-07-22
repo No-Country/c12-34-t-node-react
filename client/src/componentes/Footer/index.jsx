@@ -10,7 +10,7 @@ const Footer = () => {
     <footer id='contacto' >
       
       <div style={{display:'flex', width:'100%', height:'100%', maxWidth:'2000px', alignItems:'center', boxShadow: "0px 0px 20px rgba(78, 78, 78, 0.1)"}}>
-        <div style={{display:'flex', justifyContent:'space-between', maxHeight:'240px', width:'100%', maxWidth:'2400px', padding:'10px' }}>
+        <div style={{display:'flex', justifyContent:'space-between', maxHeight:'240px', width:'100%', maxWidth:'2400px', padding:'10px', gap:'55px' }}>
           <div style={{display:'flex', flexDirection:'column', width:'100%', maxWidth:'200px', alignItems:'center', marginBottom:'20px'}}>
             <img style={{
               width:'100%',
@@ -29,7 +29,7 @@ const Footer = () => {
 
         
 
-          <div style={{display:'flex', width:'100%', maxWidth:'180px', flexDirection:'column', gap:'28px', marginTop:'10px', marginRight:'15px'}}>
+          <div style={{display:'flex', width:'100%', maxWidth:'180px', flexDirection:'column', gap:'40px', marginTop:'20px', marginRight:'15px'}}>
 
             <div style={{ display:'flex', flexDirection:'column', gap:'5px', marginBottom:'-10px'}}>
               <span style={{color:'black', fontSize:'1rem'}} className="footer-title">Nuestras redes</span> 
@@ -42,10 +42,9 @@ const Footer = () => {
 
             <div style={{display:'flex', flexDirection:'column'}}>
               <span style={{color:'black', fontSize:'1rem'}} className="footer-title">Contacto</span> 
-                <div  className="grid grid-flow-row gap-2">
-                  <a style={{display:'flex', alignItems:'center', gap:'4px'}} ><FaLocationDot /> Cerrito 239, C.A.B.A</a>
-                  <a style={{display:'flex', alignItems:'center', gap:'4px'}} ><BsFillTelephoneFill /> 5493-4993</a>
-                  <a style={{display:'flex', alignItems:'center', gap:'4px'}} ><FaLocationDot /> Cerrito 239, C.A.B.A</a>
+                <div className="grid grid-flow-row gap-2">
+                  <p style={{display:'flex', alignItems:'center', gap:'4px'}} ><FaLocationDot /> Cerrito 239, C.A.B.A</p>
+                  <p style={{display:'flex', alignItems:'center', gap:'4px'}} ><BsFillTelephoneFill /> 5493-4993</p>
                 </div>
               </div>
 
