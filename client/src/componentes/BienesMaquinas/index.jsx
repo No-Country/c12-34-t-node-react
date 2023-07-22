@@ -14,8 +14,8 @@ import axios from "axios";
   const tableHeader = [
     "Maquina",
     "Estado",
-    "Mantenimiento",
-    "Respuestos",
+    "Descripcion",
+    "Stock",
     "Valor actual",
     "Fecha",
     
@@ -35,6 +35,12 @@ import axios from "axios";
    
   ];
   const [tBody, setTBody] = useState(tableBody);
+  const [error, setTError] = useState("");
+    
+  axiosGetElement(setTBody, setTError)
+  useEffect(() => {
+    axiosGetElement(setTBody, setTError)
+  }, []);
 
   // useEffect(() => {
   //   axios.get("")

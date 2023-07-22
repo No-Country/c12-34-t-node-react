@@ -9,7 +9,8 @@ export const postRelationElements = async (req: Request, res: Response) => {
   const errorName = typeof element.name !== "string" || element.name.length === 0
   // const errorType = typeof element.type !== "string" || !Object.values(Types).includes(element.type)
   // const errorType = typeof element.type !== "string"
-  const errorDescription = typeof element.description !== "string" || element.description.length <= 11
+  // const errorDescription = typeof element.description !== "string" || element.description.length <= 11
+  const errorDescription = typeof element.description !== "string"
   const errorPrice = typeof element.price !== "string"
   const errorDate = typeof element.date !== "string" || !Boolean(Date.parse(element.date)) || element.date.length < 10
   const errorState = typeof element.state !== "string" || !Object.values(State).includes(element.state)

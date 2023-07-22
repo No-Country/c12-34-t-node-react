@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { UserContext } from "../../store/userContext";
+import { axiosGetElement, axiosPostElement } from "../../hooks/axiosElement";
 const { VITE_BACKEND_URL } = import.meta.env;
 
-const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
+const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
   // console.log("USER ID:", userId)
   
@@ -51,32 +52,23 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
         },
       ];
     } else if (type === "bienesElementos") {
-      console.log("inputField:", inputField)
       newElement = {
           // id: newId,
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
-          type: inputField[3],
-          // price: Number(inputField[4]),
+          type: inputField[3],// Stock
           price: inputField[4],
           date: inputField[5],
           providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
           adminId: userId,
         }
-        // console.log("NEW-ELEMENT:", newElement)
+        axiosPostElement(newElement)
+        axiosGetElement(setTBody, setTError);
     }
-    axios.post(`${VITE_BACKEND_URL}/api/element-client`, newElement)
-      .then(res => {
-        console.log("BUTTON ADD:", res.data);
-      })
-      .catch(err => {
-        console.log(err.response.data.error);
-      });
-    
-    console.log("NEW_ELEMENT DESPUES DE AXIOS:", newElement)
-    setTBody((items) => [...items, ...newElement]);
-    // console.log(tBody);
+    // useEffect(() => {
+    // }, []);
+    // setTBody((items) => [...items, ...[newElement]]);
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
@@ -112,7 +104,8 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
                       id={`input-${i}`}
                       value={inputField[i] || ""}
                       onChange={(e) => handleChange(i, e)}
-                      type="text"
+                      // type={i >= 5 ? "date" : "text"}
+                      type={"text"}
                       className="input input-bordered w-full"
                     />
                   </div>

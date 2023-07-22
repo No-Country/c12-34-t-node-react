@@ -4,6 +4,9 @@ import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import axios from "axios";
+import { axiosDeleteElement, axiosPutElement } from "../../hooks/axiosElement";
+const { VITE_BACKEND_URL } = import.meta.env;
 
 function ButtonsTable({ id, tBody, setTBody, type }) {
   const [inputFields, setInputFields] = useState([]);
@@ -25,7 +28,6 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
     }
 
     const newState = tBody.map((item) => {
-      console.log("ELEMENTOS:", type)
       if (item.id === id) {
         if (type === "clientes") {
           return {
@@ -50,33 +52,39 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
             provider: edited[7],
           };
         }
-        // if (type === "bienesElementos") {
-        //   console.log("ELEMENTOS:", type)
-        //   return {
-        //     ...item,
-        //     name: edited[1],
-        //     state: edited[2],
-        //     description: edited[6],
-        //     type: edited[3],
-        //     price: edited[4],
-        //     date: edited[5],
-        //     // provider: edited[7],
-        //   };
-        // }
+        if (type === "bienesElementos") {
+          return {
+            // ...item,
+            name: edited[1],
+            state: edited[2],
+            description: edited[6],
+            type: edited[3],// Stock
+            price: edited[4],
+            date: edited[5],
+          };
+        }
       }
       return item;
     });
+    axiosPutElement(newState, _id);
 
     setTBody(newState);
 
     toast.success(`Elemento ${id} editado`);
     setInputFields([]);
   };
-  const deleteItem = () => {
-    const newBody = tBody.filter((item) => item.id !== id);
-    setTBody(newBody);
-    toast.success(`Elemento ${id} eliminado`);
-  };
+  // const deleteItem = () => {
+  //   const newBody = tBody.filter((item) => item.id !== id);
+  //   axios.delete(`${VITE_BACKEND_URL}/api/elements/${id}`)
+  //     .then(res => {
+  //       console.log("BUTTON delete:", res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err.response.data.error);
+  //     });
+  //   setTBody(newBody);
+  //   toast.success(`Elemento ${id} eliminado`);
+  // };
   function handleChange(i, event) {
     const values = [...inputFields];
     values[i] = event.target.value;
@@ -104,13 +112,15 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
               return (
                 <div key={i} className="grid gap-2">
                   {Object.values(data).map((item, subI) => {
-                    if (tBody[i].id === id && subI !== 0) {
+                    // if (tBody[i].id === id && subI !== 0) {
+                    // if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
+                    if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                       // No ver IDs: && subI !== 0
                       return (
                         <input
                           id={`input_${subI}`}
                           key={subI}
-                          type="text"
+                          type={subI >= 6 ? "date" : "text"}
                           placeholder={item}
                           value={inputFields[subI] || ""}
                           className="input input-bordered"
@@ -145,7 +155,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
         </div>
       </div>
 
-      <button onClick={deleteItem} className="hover:scale-125 transition-all">
+      <button onClick={() => axiosDeleteElement(id)} className="hover:scale-125 transition-all">
         <RiDeleteBin5Line />
       </button>
     </td>

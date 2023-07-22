@@ -5,6 +5,7 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import { useEffect } from "react";
 import axios from "axios";
+import { axiosGetElement } from "../../hooks/axiosElement";
 const { VITE_BACKEND_URL } = import.meta.env;
 
 const BienesElementos = () => {
@@ -15,42 +16,31 @@ const BienesElementos = () => {
       "Elemento",
       "Estado",
       "Descripcion",
-      "Tipo",
+      "Stock",
       "Precio",
       "Fecha",
     ];
-
-    const tableBody = [
-      {
-        id: 1,
-        name: "mancuerna 1kg",
-        estado: "usada",
-        manetenimiento: "text",
-        respuestos: "text",
-        valorActual: "text",
-        fecha: "text",
-      },
-    ];
-
-    // const [tBody, setTBody] = useState(tableBody);
     const [tBody, setTBody] = useState([]);
     const [error, setTError] = useState("");
   
-    const getElements = () => {
-      axios.get(`${VITE_BACKEND_URL}/api/elements`)
-        .then(info => {
-          // console.log("BIENES-ELEMENTS:", info.data);
-          const { data } = info;
-          setTBody(data)
-        })
-        .catch(err => {
-          console.log(err.response.data.error)
-          setTError(err.response.data.error)
-        });
-    };
-
+    // const getElements = () => {
+    //   axios.get(`${VITE_BACKEND_URL}/api/elements`)
+    //     .then(info => {
+    //       // console.log("BIENES-ELEMENTS:", info.data);
+    //       const { data } = info;
+    //       setTBody(data)
+    //     })
+    //     .catch(err => {
+    //       console.log(err.response.data.error)
+    //       setTError(err.response.data.error)
+    //     });
+    // };
+    
+    axiosGetElement(setTBody, setTError)
     useEffect(() => {
-      getElements();
+      axiosGetElement(setTBody, setTError)
+      // axiosGetElement()
+      // getElements();
     }, []);
   
     return (
@@ -77,6 +67,7 @@ const BienesElementos = () => {
             setTBody={setTBody}
             tHeader={tableHeader}
             type={type}
+            setTError={setTError}
           />
         </div>
       </div>
