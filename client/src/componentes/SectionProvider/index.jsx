@@ -6,6 +6,7 @@ import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import axios from "axios";
 import { useEffect } from "react";
+import { axiosGetProviders } from "../../hooks/axiosProvider";
 const { VITE_BACKEND_URL } = import.meta.env;
 
 
@@ -17,8 +18,8 @@ const IndexTable = () => {
     "Nombre Completo",
     "Producto",
     "Celular",
-    "Mail",
-    "Fecha",
+    "Email",
+    // "Fecha",
     "Descripción",
     "Empresa",
   ];
@@ -54,19 +55,22 @@ const IndexTable = () => {
       provider: "text",
     },
   ];
-  const [tBody, setTBody] = useState(tableBody);
+  // const [tBody, setTBody] = useState(tableBody);
+  const [tBody, setTBody] = useState([]);
+  const [error, setTError] = useState("");
 
-  const getProviders = () => {
-    axios(`${VITE_BACKEND_URL}/api/providers`)
-    // axios(`https://fitness-center-gym.onrender.com/api/providers`)
-      .then(info => {
-        console.log(info.data)
-      })
-      .catch(err => console.log(err))
-  }
+  // const getProviders = () => {
+  //   axios(`${VITE_BACKEND_URL}/api/providers`)
+  //   // axios(`https://fitness-center-gym.onrender.com/api/providers`)
+  //     .then(info => {
+  //       console.log(info.data)
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   useEffect(() => {
-    getProviders()
+    axiosGetProviders(setTBody, setTError)
+    // getProviders()
   }, [])
 
   return (
@@ -79,12 +83,15 @@ const IndexTable = () => {
           tBody={tBody}
           setTBody={setTBody}
           type={type}
+          error={error}
+          setTError={setTError}
         />
         <ButtonAdd
           tBody={tBody}
           setTBody={setTBody}
           tHeader={tableHeader}
           type={type}
+          setTError={setTError}
         />
       </div>
     </div>

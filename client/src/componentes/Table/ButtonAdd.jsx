@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
 import { axiosGetElement, axiosPostElement } from "../../hooks/axiosElement";
+import { axiosPostProvider } from "../../hooks/axiosProvider";
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
@@ -36,18 +37,20 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           vencimiento: inputField[5],
         }
     } else if (type === "proveedores") {
-      newElement = [
-        {
-          id: newId,
+      console.log("INPUT:", inputField)
+      newElement = {
+          // id: newId,
           name: inputField[0],
           product: inputField[1],
           contact: inputField[2],
-          mail: inputField[3],
-          date: inputField[4],
-          description: inputField[5],
-          provider: inputField[6],
-        },
-      ];
+          email: inputField[3],
+          // date: inputField[4],
+          description: inputField[4],
+          provider: inputField[5],
+          adminId: userId,
+      }
+      console.log("NEW PROVIDER:", newElement.provider)
+      axiosPostProvider(newElement);
     } else if (type === "bienesElementos") {
       newElement = {
           // id: newId,
@@ -86,12 +89,17 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   function handleChange(i, e) {
     let event = e.target.value;
     const values = [...inputField];
+    const number = /[0-9]/
     if (i === 5) {
-      if (event.length === 2) {
-        event = event + "-";
-      }
-      if (event.length === 5) {
-        event = event + "-";
+      if (!event.match(number)) {
+        event
+      } else {
+        if (event.length === 2 && event.match(number)) {
+          event = event + "-";
+        }
+        if (event.length === 5 && event.match(number)) {
+          event = event + "-";
+        }
       }
     }
     values[i] = event;
@@ -115,6 +123,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           <div className="grid gap-2">
             {tBody &&
               tHeader.map((item, i) => {
+                // console.log("BUTTON-ADD:", tBody, "INDEX:", i)
                 // if (i < 6) {
                 return (
                   <div key={i}>
