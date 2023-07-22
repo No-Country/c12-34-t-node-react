@@ -6,6 +6,7 @@ import SectionTitle from "../Title";
 import { useEffect } from "react";
 import axios from "axios";
 import { axiosGetElement } from "../../hooks/axiosElement";
+// import { axiosGetElement } from "../../hooks/axiosElement";
 const { VITE_BACKEND_URL } = import.meta.env;
 
 const BienesElementos = () => {
@@ -61,6 +62,7 @@ const BienesElementos = () => {
             setTBody={setTBody}
             type={type}
             error={error}
+            setTError={setTError}
           />
           <ButtonAdd
             tBody={tBody}

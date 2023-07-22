@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import ButtonsTable from "./ButtonsTable";
 
-const Table = ({ tHeader, tBody, setTBody, type, error }) => {
+const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
   return (
     <>
       <div className="overflow-x-auto h-56">
@@ -41,6 +41,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error }) => {
                       tBody={tBody}
                       setTBody={setTBody}
                       type={type}
+                      setTError={setTError}
                     />
                   </tr>
                 );

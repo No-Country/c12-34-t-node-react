@@ -65,6 +65,20 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
         }
         axiosPostElement(newElement)
         axiosGetElement(setTBody, setTError);
+    } else if (type === "bienesMaquinas") {
+      newElement = {
+          // id: newId,
+          name: inputField[0],
+          state: inputField[1],
+          description: inputField[2],
+          type: inputField[3],// Stock
+          price: inputField[4],
+          date: inputField[5],
+          providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
+          adminId: userId,
+        }
+        axiosPostElement(newElement)
+        axiosGetElement(setTBody, setTError);
     }
     // useEffect(() => {
     // }, []);
@@ -73,8 +87,17 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     toast.success("Nuevo elemento agregado");
   };
   function handleChange(i, e) {
+    let event = e.target.value;
     const values = [...inputField];
-    values[i] = e.target.value;
+    if (i === 5) {
+      if (event.length === 2) {
+        event = event + "-";
+      }
+      if (event.length === 5) {
+        event = event + "-";
+      }
+    }
+    values[i] = event;
     setInputField(values);
   }
   return (

@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import axios from "axios";
-import { axiosDeleteElement, axiosPutElement } from "../../hooks/axiosElement";
+import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
 const { VITE_BACKEND_URL } = import.meta.env;
 
-function ButtonsTable({ id, tBody, setTBody, type }) {
+function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
   const editItem = (_id) => {
     let edited = [];
@@ -67,8 +67,9 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
       return item;
     });
     axiosPutElement(newState, _id);
+    axiosGetElement(setTBody, setTError);
 
-    setTBody(newState);
+    setTBody(tBody);
 
     toast.success(`Elemento ${id} editado`);
     setInputFields([]);
@@ -85,9 +86,18 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
   //   setTBody(newBody);
   //   toast.success(`Elemento ${id} eliminado`);
   // };
-  function handleChange(i, event) {
+  function handleChange(i, e) {
+    let event = e.target.value;
     const values = [...inputFields];
-    values[i] = event.target.value;
+    if (i === 6) {
+      if (event.length === 2) {
+        event = event + "-";
+      }
+      if (event.length === 5) {
+        event = event + "-";
+      }
+    }
+    values[i] = event;
     setInputFields(values);
   }
   return (
@@ -120,7 +130,9 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
                         <input
                           id={`input_${subI}`}
                           key={subI}
-                          type={subI >= 6 ? "date" : "text"}
+                          type="text"
+                          // type={subI >= 6 ? "date" : "text"}
+                          maxLength={subI >= 6 ? 10 : 100}
                           placeholder={item}
                           value={inputFields[subI] || ""}
                           className="input input-bordered"

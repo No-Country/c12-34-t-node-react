@@ -7,7 +7,10 @@ export const putElemetsGym = async (req: Request, res: Response) => {
   const current = req.body as IElements;
 
   try {
-    if (id.length < 36) {
+    const elements = await Elements.findAll();
+    let elementId = elements.find((el: IElements) => el.id === id)
+    // if (id.length < 36) {
+    if (elementId?.id !== id) {
       throw Error(`El elemento no existe`);
     } else {
       await Elements.update(current, {
@@ -16,7 +19,7 @@ export const putElemetsGym = async (req: Request, res: Response) => {
         }
       });
     
-      return res.status(200).json({ change: "Los datos del elemento se actualizaron", current });
+      return res.status(200).json({ change: "Los datos del elemento se actualizaron", elementId });
     }
   } catch (error) {
     if (error instanceof Error) {
