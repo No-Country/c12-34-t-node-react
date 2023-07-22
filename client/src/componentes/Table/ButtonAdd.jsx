@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { UserContext } from "../../store/userContext";
 const { VITE_BACKEND_URL } = import.meta.env;
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
+  const { userId } = useContext(UserContext)
+  // console.log("USER ID:", userId)
+  
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
     const notNull = inputField.filter((x) => x);
@@ -49,15 +53,18 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
     } else if (type === "bienesElementos") {
       console.log("inputField:", inputField)
       newElement = {
-          id: newId,
+          // id: newId,
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
           type: inputField[3],
-          price: Number(inputField[4]),
+          // price: Number(inputField[4]),
+          price: inputField[4],
           date: inputField[5],
+          providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
+          adminId: userId,
         }
-        console.log("NEW-ELEMENT:", newElement)
+        // console.log("NEW-ELEMENT:", newElement)
     }
     axios.post(`${VITE_BACKEND_URL}/api/element-client`, newElement)
       .then(res => {

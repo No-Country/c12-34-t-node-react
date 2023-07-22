@@ -5,7 +5,7 @@ import { State } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
   id!: string;
   name!: string;
-  type!: Types;
+  type!: string;
   description!: string;
   price!: number;
   date!: string;
@@ -45,7 +45,7 @@ Elements.init(
       // allowNull: false,
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     // MAQUINAS OH ELEMENTOS - MOBILIARIO

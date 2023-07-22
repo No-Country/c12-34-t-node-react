@@ -10,7 +10,7 @@ export const postRelationElements = async (req: Request, res: Response) => {
   // const errorType = typeof element.type !== "string" || !Object.values(Types).includes(element.type)
   // const errorType = typeof element.type !== "string"
   const errorDescription = typeof element.description !== "string" || element.description.length <= 11
-  const errorPrice = typeof element.price !== "number"
+  const errorPrice = typeof element.price !== "string"
   const errorDate = typeof element.date !== "string" || !Boolean(Date.parse(element.date)) || element.date.length < 10
   const errorState = typeof element.state !== "string" || !Object.values(State).includes(element.state)
   
@@ -21,7 +21,7 @@ export const postRelationElements = async (req: Request, res: Response) => {
     }
     if (errorName) throw new Error(`Incorrecto o falta el nombre`);
     // if (errorType) throw new Error(`Incorrecto o falta el tipo`);
-    if (errorDescription) throw new Error(`Incorrecto o falta el tipo`);
+    if (errorDescription) throw new Error(`Incorrecto o falta la description`);
     if (errorPrice) throw new Error(`Incorrecto o falta el precio`);
     if (errorDate) throw new Error(`Incorrecto o falta la fecha`);
     if (errorState) throw new Error(`Incorrecto o falta el estado`);
