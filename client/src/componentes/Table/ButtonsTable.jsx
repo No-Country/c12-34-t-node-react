@@ -75,7 +75,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
     <td className="grow flex flex-nowrap my-2 items-center gap-3 px-1 ">
       {/* The button to open modal */}
       <label htmlFor={`my_modal_${id}`} className=' shrink-0'>
-        <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-white' />
+        <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-green' />
       </label>
       <input type="checkbox" id={`my_modal_${id}`} className="modal-toggle" />
 
@@ -89,7 +89,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
           {tBody.length >= 1 &&
             tBody.map((data, i) => {
               return (
-                <div key={i} className="grid gap-2">
+                <div key={i} className="grid gap-4">
                   {Object.values(data).map((item, subI) => {
                     if (tBody[i].id === id) {
                       // No ver IDs: && subI !== 0
@@ -100,7 +100,7 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
                           type="text"
                           placeholder={item}
                           value={inputFields[subI] || ""}
-                          className="input input-bordered"
+                          className="input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
                           onChange={(e) => handleChange(subI, e)}
                         />
                       )
@@ -111,29 +111,29 @@ function ButtonsTable({ id, tBody, setTBody, type }) {
             })}
 
           <div className="modal-action">
+            <label
+              htmlFor={`my_modal_${id}`}
+              className="btn btn-sm px-10 shadow-sm font-PoppinsSemibold text-pallete-grey bg-inherit border-pallete-grey hover:shadow-xl hover:bg-inherit "
+            >
+              Cancelar
+            </label>
             <button
               //   type="submit"
               onClick={() => editItem(id)}
             >
               <label
-                className="btn text-pallete-white px-10 bg-pallete-blue hover:bg-pallete-black"
+                className="btn btn-sm px-10 rounded-xl flex justify-center items-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow hover:border-amber-400 leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
                 htmlFor={`my_modal_${id}`}
               >
                 Guardar
               </label>
             </button>
-            <label
-              htmlFor={`my_modal_${id}`}
-              className="btn text-pallete-white px-10 bg-pallete-blue hover:bg-pallete-black"
-            >
-              Cancelar
-            </label>
           </div>
         </div>
       </div>
 
-      <button onClick={deleteItem} className='btn p-0.5 bg-pallete-white hover:bg-pallete-white hover:border-pallete-yellow'>
-        <img src={trashIcon} alt="trashIcon" />
+      <button onClick={deleteItem} >
+        <img src={trashIcon} alt="trashIcon" className='btn p-0.5 bg-pallete-white hover:bg-pallete-yellow' />
       </button>
     </td>
   )

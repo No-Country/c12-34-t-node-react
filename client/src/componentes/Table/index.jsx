@@ -4,7 +4,7 @@ import ButtonsTable from "./ButtonsTable"
 const Table = ({ tHeader, tBody, setTBody, type }) => {
   return (
     <>
-      <div className="w-full overflow-x-scroll scroll-smooth h-56 rounded-lg">
+      <div className="w-full overflow-x-scroll scroll-smooth h-full rounded-lg">
         <table className="table table-pin-rows">
           <thead>
             <tr className="grow bg-pallete-blue text-pallete-white">
@@ -24,7 +24,7 @@ const Table = ({ tHeader, tBody, setTBody, type }) => {
                             key={subI}
                           >
                             <div className="flex flex-row gap-2">
-                              <p className={`${subI === 2 && "badge badge-ghost bg-pallete-black bg-opacity-25"} font-PoppinsRegular `}>{item}</p>
+                              <p className={`${subI === 2 && "badge badge-ghost bg-pallete-black bg-opacity-25"} font-PoppinsRegular whitespace-nowrap `}>{item}</p>
                             </div>
                           </td>
                         )

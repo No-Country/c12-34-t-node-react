@@ -34,11 +34,30 @@ const BienesMaquinas = () => {
     },
     {
       id: 2,
-      name: "Press de Banca",
+      name: "Banco Olímpico",
       estado: "Nueva",
       mantenimiento: "Text",
       repuestos: "Text",
       valorActual: "1999",
+      fecha: "Text",
+
+    }, {
+      id: 3,
+      name: "Elíptica",
+      estado: "nueva",
+      mantenimiento: "Text",
+      repuestos: "Text",
+      valorActual: "1999",
+      fecha: "Text",
+
+    },
+    {
+      id: 4,
+      name: "Prensa de Piernas",
+      estado: "Usada",
+      mantenimiento: "Los Martes",
+      repuestos: "No",
+      valorActual: "200000",
       fecha: "Text",
 
     },
@@ -53,7 +72,7 @@ const BienesMaquinas = () => {
   // }, [tBody])
 
   return (
-    <main className="flex flex-col w-full gap-2 m-5">
+    <main className="flex flex-col w-full gap-2 m-2 sm:m-5">
       <ToastContainer autoClose={1000} />
       <Title title={title} />
       <div className="w-[80vw] flex flex-col gap-10 mt-5 mx-auto">

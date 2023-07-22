@@ -61,7 +61,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
       {/* The button to open modal */}
       <label
         htmlFor="my_modal_add"
-        className="btn btn-md px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow  leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
+        className="btn btn-md px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow hover:shadow-md leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
       >
         Agregar
       </label>
@@ -70,7 +70,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
       <div className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">Agregar</h3>
-          <div className="grid gap-2">
+          <div className="grid gap-4">
             {tBody &&
               tHeader.map((item, i) => {
                 // if (i < 6) {
@@ -84,7 +84,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
                       value={inputField[i] || ""}
                       onChange={(e) => handleChange(i, e)}
                       type="text"
-                      className="input input-bordered w-full"
+                      className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
                     />
                   </div>
                 )
@@ -93,17 +93,17 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type }) => {
           </div>
           <div className="modal-action">
             <label
+              htmlFor="my_modal_add"
+              className="btn btn-sm px-10 shadow-sm font-PoppinsSemibold text-pallete-grey bg-inherit border-pallete-grey hover:shadow-xl hover:bg-inherit "
+            >
+              Cancelar
+            </label>
+            <label
               onClick={addElement}
-              className="btn text-pallete-white px-10 bg-pallete-blue hover:bg-pallete-black"
+              className="btn btn-sm px-10 rounded-xl flex justify-center items-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow hover:border-amber-400 leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue"
               htmlFor="my_modal_add"
             >
               Guardar
-            </label>
-            <label
-              htmlFor="my_modal_add"
-              className="btn border-pallete-blue btn-outline px-10 hover:bg-pallete-black"
-            >
-              Cancelar
             </label>
           </div>
         </div>
