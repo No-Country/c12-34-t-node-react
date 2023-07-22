@@ -4,9 +4,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import axios from "axios";
 import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
-const { VITE_BACKEND_URL } = import.meta.env;
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
@@ -67,25 +65,16 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
       return item;
     });
     axiosPutElement(newState, _id);
-    axiosGetElement(setTBody, setTError);
 
     setTBody(tBody);
 
     toast.success(`Elemento ${id} editado`);
     setInputFields([]);
   };
-  // const deleteItem = () => {
-  //   const newBody = tBody.filter((item) => item.id !== id);
-  //   axios.delete(`${VITE_BACKEND_URL}/api/elements/${id}`)
-  //     .then(res => {
-  //       console.log("BUTTON delete:", res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err.response.data.error);
-  //     });
-  //   setTBody(newBody);
-  //   toast.success(`Elemento ${id} eliminado`);
-  // };
+  const handleDelete = (id) => {
+    axiosDeleteElement(id);
+    axiosGetElement(setTBody, setTError);
+  }
   function handleChange(i, e) {
     let event = e.target.value;
     const values = [...inputFields];
@@ -167,7 +156,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         </div>
       </div>
 
-      <button onClick={() => axiosDeleteElement(id)} className="hover:scale-125 transition-all">
+      <button onClick={() => handleDelete(id)} className="hover:scale-125 transition-all">
         <RiDeleteBin5Line />
       </button>
     </td>

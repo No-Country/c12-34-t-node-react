@@ -1,9 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { UserContext } from "../../store/userContext";
 import { axiosGetElement, axiosPostElement } from "../../hooks/axiosElement";
-const { VITE_BACKEND_URL } = import.meta.env;
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
@@ -64,7 +62,10 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           adminId: userId,
         }
         axiosPostElement(newElement)
-        axiosGetElement(setTBody, setTError);
+        // axiosGetElement(setTBody, setTError);
+        // useEffect(() => {
+        //   axiosGetElement(setTBody, setTError);
+        // }, []);
     } else if (type === "bienesMaquinas") {
       newElement = {
           // id: newId,
@@ -80,9 +81,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
         axiosPostElement(newElement)
         axiosGetElement(setTBody, setTError);
     }
-    // useEffect(() => {
-    // }, []);
-    // setTBody((items) => [...items, ...[newElement]]);
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };

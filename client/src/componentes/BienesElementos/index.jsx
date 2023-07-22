@@ -4,10 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import { useEffect } from "react";
-import axios from "axios";
 import { axiosGetElement } from "../../hooks/axiosElement";
-// import { axiosGetElement } from "../../hooks/axiosElement";
-const { VITE_BACKEND_URL } = import.meta.env;
 
 const BienesElementos = () => {
     const title = "Bienes / Elementos";
@@ -23,25 +20,9 @@ const BienesElementos = () => {
     ];
     const [tBody, setTBody] = useState([]);
     const [error, setTError] = useState("");
-  
-    // const getElements = () => {
-    //   axios.get(`${VITE_BACKEND_URL}/api/elements`)
-    //     .then(info => {
-    //       // console.log("BIENES-ELEMENTS:", info.data);
-    //       const { data } = info;
-    //       setTBody(data)
-    //     })
-    //     .catch(err => {
-    //       console.log(err.response.data.error)
-    //       setTError(err.response.data.error)
-    //     });
-    // };
-    
-    axiosGetElement(setTBody, setTError)
+
     useEffect(() => {
       axiosGetElement(setTBody, setTError)
-      // axiosGetElement()
-      // getElements();
     }, []);
   
     return (
