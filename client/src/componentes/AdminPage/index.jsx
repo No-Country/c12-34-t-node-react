@@ -64,7 +64,7 @@ const AdminPage = () => {
                 <label htmlFor=""> <b>Cargo</b></label>
                 <p>{userCtx.userCargoRegistered}</p>
               </div>
-              <button className="btn btn-warning mt-3" onClick={() => getUsers()}>Editar Perfil</button>
+              <ModalEditarPerfil/>
             </div>
           </div>
         </section>
