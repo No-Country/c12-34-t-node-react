@@ -16,17 +16,15 @@ export const axiosGet = async (setTBody, setTError, type) => {
 
 export const axiosPost = async (newElement, type) => {
   // await axios.post(`${VITE_BACKEND_URL}/api/${type}`, newElement)
-  await axios.post(`/api/${type}`, newElement)
-    .then((res) => {
-      console.log("BUTTON ADD:", res.data);
-      setTimeout(() => {
-        // window.location.reload();
-        window.location.reload(true);
-      }, 1000);
-    })
-    .catch((err) => {
-      console.log(err.response.data);
-    });
+  setTimeout(async() => {
+    await axios.post(`/api/${type}`, newElement)
+      .then((res) => {
+        console.log("BUTTON ADD:", res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  }, 1000);
 };
 
 export const axiosDelete = async (id, type) => {

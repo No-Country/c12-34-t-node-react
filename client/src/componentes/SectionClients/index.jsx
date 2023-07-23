@@ -94,19 +94,19 @@ const IndexTable = () => {
     })
 
 
-    // axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
-    axios.post(`/api/client`, newClient)
-    .then((res) => {
-      console.log(res.data)
-      setTimeout(() => { 
-        // window.location.reload()
-        window.location.reload(true)
-      }, 500)
-    })
-    .catch(err => console.log(err)) 
+    setTimeout(() => { 
+      // axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
+      axios.post(`/api/client`, newClient)
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch(err => console.log(err)) 
+    }, 500)
   }
-
-
+  
+  // window.location.reload()
+  // window.location.reload(true)
+  
 
 
 
