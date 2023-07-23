@@ -18,7 +18,10 @@ const putElemetsGym = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     const { id } = req.params;
     const current = req.body;
     try {
-        if (id.length < 36) {
+        const elements = yield Element_1.default.findAll();
+        let elementId = elements.find((el) => el.id === id);
+        // if (id.length < 36) {
+        if ((elementId === null || elementId === void 0 ? void 0 : elementId.id) !== id) {
             throw Error(`El elemento no existe`);
         }
         else {
@@ -27,7 +30,7 @@ const putElemetsGym = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                     id,
                 }
             });
-            return res.status(200).json({ change: "Los datos del elemento se actualizaron", current });
+            return res.status(200).json({ change: "Los datos del elemento se actualizaron", elementId });
         }
     }
     catch (error) {

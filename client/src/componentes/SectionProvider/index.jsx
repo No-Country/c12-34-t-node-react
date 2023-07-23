@@ -5,7 +5,7 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-import { axiosGetProviders } from "../../hooks/axiosProvider";
+import {axiosGet} from "../../hooks/axiosGeneral"
 
 const IndexTable = () => {
   const title = "Proveedores";
@@ -16,7 +16,6 @@ const IndexTable = () => {
     "Producto",
     "Celular",
     "Email",
-    // "Fecha",
     "Descripción",
     "Empresa",
   ];
@@ -24,7 +23,7 @@ const IndexTable = () => {
   const [error, setTError] = useState("");
 
   useEffect(() => {
-    axiosGetProviders(setTBody, setTError)
+    axiosGet(setTBody, setTError, "providers")
   }, [])
 
   return (

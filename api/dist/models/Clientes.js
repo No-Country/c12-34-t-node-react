@@ -14,21 +14,21 @@ Client.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
+    plan: {
+        type: sequelize_1.DataTypes.STRING,
+    },
+    contact: {
+        type: sequelize_1.DataTypes.STRING,
+    },
     email: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
         unique: true,
     },
-    plan: {
-        type: sequelize_1.DataTypes.STRING,
-    },
     dateIn: {
         type: sequelize_1.DataTypes.STRING,
     },
     dateOut: {
-        type: sequelize_1.DataTypes.STRING,
-    },
-    contact: {
         type: sequelize_1.DataTypes.STRING,
     },
 }, {

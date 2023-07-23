@@ -15,7 +15,7 @@ const getProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const proveedores = yield relations_1.Provider.findAll({
             include: {
-                model: relations_1.User,
+                model: relations_1.Admin,
                 attributes: ["user"],
                 include: [{
                         model: relations_1.Elements,

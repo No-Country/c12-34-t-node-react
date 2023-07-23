@@ -1,12 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
-import { axiosGetElement, axiosPostElement } from "../../hooks/axiosElement";
-import { axiosPostProvider } from "../../hooks/axiosProvider";
+import {axiosPost} from "../../hooks/axiosGeneral"
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
-  // console.log("USER ID:", userId)
   
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
@@ -38,20 +36,17 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
         }
     } else if (type === "provider") {
       newElement = {
-          // id: newId,
           name: inputField[0],
           product: inputField[1],
           contact: inputField[2],
           email: inputField[3],
-          // date: inputField[4],
           description: inputField[4],
           provider: inputField[5],
           adminId: userId,
       }
-      axiosPostProvider(newElement);
-    } else if (type === "elements") {
+      axiosPost(newElement, "provider")
+    } else if (type === "element-client") {
       newElement = {
-          // id: newId,
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
@@ -61,7 +56,15 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
           adminId: userId,
       }
-      axiosPostElement(newElement)
+      axiosPost(newElement, "element-client")
+    } else if (type === "employee") {
+      newElement = {
+          name: inputField[0],
+          email: inputField[1],
+          contact: inputField[2],
+          occupation: inputField[3],// Stock
+      }
+      axiosPost(newElement, "employee")
     } 
     setInputField([]);
     toast.success("Nuevo elemento agregado");

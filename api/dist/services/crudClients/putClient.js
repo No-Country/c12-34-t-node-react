@@ -15,8 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateClient = void 0;
 const Clientes_1 = __importDefault(require("../../models/Clientes"));
 const updateClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = req.body;
     const { id } = req.params;
+    const client = req.body;
+    console.log(id);
+    console.log(req.body);
     try {
         const cliente = yield Clientes_1.default.update(client, { where: { id } });
         return res.status(200).json({ msg: "Cliente actualizado", cliente });

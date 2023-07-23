@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
 import { axiosDeleteProvider, axiosGetProviders } from "../../hooks/axiosProvider";
+import {axiosGet, axiosDelete} from "../../hooks/axiosGeneral"
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
@@ -78,14 +79,22 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     toast.success(`Elemento ${id} editado`);
     setInputFields([]);
   };
-  const handleDelete = (id, type) => {
+  const handleDelete = async (id, type) => {
     if (type === "provider") {
-      axiosDeleteProvider(id, type);
-      axiosGetProviders(setTBody, setTError);
+      await axiosDelete(id, "provider");
+      await axiosGet(setTBody, setTError,"providers");
     }
-    if (type === "elements") {
-      axiosDeleteElement(id);
-      axiosGetElement(setTBody, setTError);
+    if (type === "employee") {
+      await axiosDelete(id, "employee");
+      await axiosGet(setTBody, setTError,"employees");
+    }
+    if (type === "element-client") {
+      await axiosDelete(id, "elements");
+      await axiosGet(setTBody, setTError, "elements");
+    }
+    if(type === "clients"){
+      await axiosDelete(id, "client");
+      await axiosGet(setTBody, setTError, "clients");
     }
   }
   function handleChange(i, e) {

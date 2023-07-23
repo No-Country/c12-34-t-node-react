@@ -16,6 +16,9 @@ exports.createClient = void 0;
 const Clientes_1 = __importDefault(require("../../models/Clientes"));
 const createClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const usuario = req.body;
+    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.email);
     try {
         if (!usuario.name || !usuario.email)
             return res.status(400).json({ msg: "Todos los campos son requeridos" });

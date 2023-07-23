@@ -26,14 +26,12 @@ const Login = () => {
       password: password
     };
 
-    axios
-      .post(`${VITE_BACKEND_URL}/api/login`, userData)
-      // .post(`https://fitness-center-gym.onrender.com/api/login`, userData)
+    axios.post(`${VITE_BACKEND_URL}/api/login`, userData)
       .then((res) => {
-        console.log(res.data)
-        console.log(res.data.data.user.user)
-        console.log(res.data.data.user.email)
-        console.log(res.data.data.token)
+        // console.log(res.data)
+        // console.log(res.data.data.user.user)
+        // console.log(res.data.data.user.email)
+        // console.log(res.data.data.token)
         
          userCtx.updateUser(res.data.data.user.id)
          userCtx.updateUserNameRegistered(res.data.data.user.user)

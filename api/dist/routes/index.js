@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = require("express");
-const user_routes_1 = require("./user.routes");
+const admin_routes_1 = require("./admin.routes");
 const element_routes_1 = require("./element.routes");
 const provider_routes_1 = require("./provider.routes");
 const groupClass_routes_1 = require("./groupClass.routes");
@@ -11,7 +11,7 @@ const income_routes_1 = require("./income.routes");
 const client_routes_1 = require("./client.routes");
 const employee_routes_1 = require("./employee.routes");
 exports.router = (0, express_1.Router)();
-exports.router.use(user_routes_1.userRoutes);
+exports.router.use(admin_routes_1.adminRoutes);
 exports.router.use(element_routes_1.elementRoutes);
 exports.router.use(provider_routes_1.providerRoutes);
 exports.router.use(groupClass_routes_1.groupClassRoutes);
