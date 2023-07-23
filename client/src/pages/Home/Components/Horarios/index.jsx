@@ -1,164 +1,182 @@
+import styles from './styles.module.css'
 import LOGO from '../../../../assets/imgs/logoBlackTypo.png'
+import Draggable, {DraggableCore} from "react-draggable";
 
 
 const Horarios = () => {
   return (
-    <div style={{backgroundColor:'white', width:'100%', display:'flex'}}>
-
-      
-    <div style={{  marginTop:'25px'}} className="flex w-full flex-col gap-3 bg-white">
-      
+    <div className={styles.container}>
       <div style={{
-        display:'flex',
-        width:'100%',
-        maxWidth:'1600px',
-        gap:'550px',
-        alignItems:'center',
-        // border:'3px solid orange',
-        margin:'0 auto'
-      }}>
-        <h2 
-          className='text-4xl text-black font-bold'
-          style={{borderBottom:'2px solid',borderColor:'#5FCA56', paddingBottom:'10px', marginTop:'80px'}}>
-          Horarios
-        </h2>
-
-        <span style={{maxHeight:'240px', maxWidth:'200px', alignSelf:'center'}}>
-          <img style={{height:'100%', width:'100%'}} src={LOGO} alt="logotipo del gym" />
-        </span>
-
-      </div>
-
-        <div 
-          style={{
-          borderRight: '10px solid #1A1363',
-          borderBottom:'10px solid #1A1363',
-          margin:'0 auto',
+          display:'flex',
           width:'100%',
-          maxWidth:'800px'}}
-          className="overflow-x-auto"
-        >
-      <table className="table table-xl table-pin-rows table-pin-cols gap-x-10">
-        <thead>
-          <tr style={{backgroundColor:'#1A1363', height:'80px', color:'white', fontSize:'1.3rem', fontWeight:'400'}} >
-            <th style={{backgroundColor:'#1A1363'}}></th> 
-            <td>Lunes</td> 
-            <td>Martes</td> 
-            <td>Miércoles</td> 
-            <td>Jueves</td> 
-            <td>Viernes</td> 
-            <td>Sábado</td>
-            <td>Domingo</td>
-          </tr>
-        </thead> 
+          maxWidth:'1600px',
+          gap:'550px',
+          alignItems:'center',
+          // border:'3px solid orange',
+          margin:'0 auto'
+        }}>
+          <h2 
+            className='text-4xl text-black font-bold'
+            style={{borderBottom:'2px solid',borderColor:'#5FCA56', paddingBottom:'10px', marginTop:'80px'}}>
+            Horarios
+          </h2>
 
-        <tbody >
+          <span style={{maxHeight:'240px', maxWidth:'200px', alignSelf:'center'}}>
+            <img style={{height:'100%', width:'100%'}} src={LOGO} alt="logotipo del gym" />
+          </span>
+        </div>
 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', height:'35px'}}>10:00</th> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María</td>
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María</td>  
-            <td></td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María</td> 
-            <td></td>
-          </tr>
 
-          {/* <tr>
-            <th style={{backgroundColor:'#1A1363', height:'80px'}}>11:00</th> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td>
-          </tr> */}
+      <div className={styles.content}>
+        <div className={styles.sidebar}>
+          <div className={styles.hours}>
+            <p>10:00</p>
+            <p>11:00</p>
+            <p>14:00</p>
+            <p>15:00</p>
+            <p>16:00</p>
+            <p>17:00</p>
+            <p>18:00</p>
+            <p>19:00</p>
+            <p>20:00</p>
+          </div>
+        </div>
 
-          
-        <tr>
-            <th style={{backgroundColor:'#1A1363', height:'35px'}}>14:00</th> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María</td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Spinning #Profe Ro</td>  
-            <td style={{backgroundColor:'#929199', width:'35 px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Spinning #Profe Ro</td>  
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María</td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Zumba #profe María
-                </td>  
-          </tr>
-        
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <p>Lunes</p>
+            <p>Martes</p>
+            <p>Miércoles</p>
+            <p>Jueves</p>
+            <p>Viernes</p>
+            <p>Sábado</p>
+            <p>Domingo</p>
+          </div>
 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', height:'35px'}}>15:00</th> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Yoga #Profe Noe</td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Yoga #Profe Noe</td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', color:'#343a40', width:'35px', fontWeight:'bold', border:'1px solid #343a40'}}>suspendida del 7/4 al 19</td>
-          </tr>
 
-  {/* 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', height:'80px'}}>16:00</th> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td>
-          </tr> */}
+          <div className={styles.classTimes}>
+            <div className={styles.tenAM}>
+              <Draggable>
+              <div className={styles.box}>
+                  Zumba
+                  #Profe María
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Zumba</p>
+                  <p>#Profe María</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Zumba</p>
+                  <p>#Profe María</p>
+              </div>
+              </Draggable>
+            </div>
 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', height:'30px'}}>17:00</th> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Yoga #Profe Noe</td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Yoga #Profe Noe</td>  
-            <td></td> 
-            <td></td> 
-            <td></td>
-          </tr>
+            <div className={styles.twoPM}>
 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', height:'30px'}}>18:00</th> 
-            <td></td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Crossfit #Profe Ale</td> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'35px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Crossfit #Profe Ale</td> 
-            <td></td>
-          </tr>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Spinning</p>
+                  <p>#Profe Ro</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Spinning</p>
+                  <p>#Profe Ro</p>
+              </div>
+              </Draggable>
 
-          {/* <tr>
-            <th style={{backgroundColor:'#1A1363', height:'80px'}}>19:00</th> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td>
-          </tr> */}
+              
+              <Draggable>
+              <div className={styles.customBox}>
+                  <p>Zumba</p>
+                  <span style={{color:'#F96B6B', fontSize:'.7rem', wordWrap:'break-word'}}>Suspendida del 7/4 al 19/4</span>
+                  <p>#Profe María</p>
+                  <span style={{position:'absolute', height:'12px', width:'12px', backgroundColor:'#F96B6B', borderRadius:'50%', top:'0', right:'0'}}></span>
+              </div>
+              </Draggable>
+           
+            </div>
 
-          <tr>
-            <th style={{backgroundColor:'#1A1363', border:'1px solid #1A1363'}}>20:00</th> 
-            <td></td> 
-            <td style={{backgroundColor:'#929199', width:'40px', color:'#343a40', fontWeight:'bold', border:'1px solid #343a40'}}>Aerobox #Profe Carla</td> 
-            <td></td> 
-            <td></td> 
-            <td></td> 
-            <td></td>
-          </tr>
-          
-        </tbody> 
+            <div className={styles.threePM}>
 
-      </table>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Yoga</p>
+                  <p>#Profe Noe</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Yoga</p>
+                  <p>#Profe Noe</p>
+              </div>
+              </Draggable>
+           
+            </div>
+
+            <div className={styles.twoPM}>
+
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Yoga</p>
+                  <p>#Profe Noe</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Yoga</p>
+                  <p>#Profe Noe</p>
+              </div>
+              </Draggable>
+
+            </div>
+
+            <div className={styles.sixPM}>
+
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Crossfit</p>
+                  <p>#Profe Ale</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Crossfit</p>
+                  <p>#Profe Ale</p>
+              </div>
+              </Draggable>
+
+            </div>
+
+            <div className={styles.threePM}>
+
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Aerobox</p>
+                  <p>#Profe Carla</p>
+              </div>
+              </Draggable>
+              <Draggable>
+              <div className={styles.box}>
+                  <p>Aerobox</p>
+                  <p>#Profe Carla</p>
+              </div>
+              </Draggable>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     </div>
-
-    </div>
-  </div>
-
-
-)
+  )
 }
 
 export default Horarios
-
