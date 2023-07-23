@@ -8,23 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateClient = void 0;
-const Clientes_1 = __importDefault(require("../../models/Clientes"));
-const updateClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id } = req.params;
-    const client = req.body;
-    console.log(id);
-    console.log(req.body);
+exports.perfil = void 0;
+const relations_1 = require("../../models/relations");
+const perfil = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const cliente = yield Clientes_1.default.update(client, { where: { id } });
-        return res.status(200).json({ msg: "Cliente actualizado", cliente });
+        const usuarioRegistado = yield relations_1.User.findOne(req.usuarioId);
+        if (!usuarioRegistado)
+            return res.status(404).json({ message: "No se encontro el pefil" });
+        return res.status(200).json({ message: "Perfil del usuario", usuarioRegistado });
     }
     catch (error) {
         console.log(error);
     }
 });
-exports.updateClient = updateClient;
+exports.perfil = perfil;
