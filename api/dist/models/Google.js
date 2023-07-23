@@ -13,8 +13,12 @@ Google.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
     },
-    photo: {
+    email: {
         type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    photo: {
+        type: sequelize_1.DataTypes.TEXT,
         allowNull: false
     },
 }, {

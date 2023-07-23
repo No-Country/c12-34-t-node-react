@@ -4,6 +4,9 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
+import { useEffect } from "react";
+import axios from "axios";
+const { VITE_BACKEND_URL } = import.meta.env
 
 const IndexTable = () => {
   const title = "Staff";
@@ -47,17 +50,24 @@ const IndexTable = () => {
   ];
 
   const [tBody, setTBody] = useState(tableBody);
+
+  const getUser = () => {
+    axios(`${VITE_BACKEND_URL}/api/all-users`)
+    // axios(`https://fitness-center-gym.onrender.com/api/all-users`)
+      .then(info => {
+        console.log(info.data)
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
-      <div className="flex flex-col mb-10">
-        <div className="flex justify-center">
-          <div className="md:w-36 w-32">
-            <img src={Logo} alt="logo" />
-          </div>
-        </div>
-        <SectionTitle title={title} />
-      </div>
+      <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
         <Table
           tHeader={tableHeader}

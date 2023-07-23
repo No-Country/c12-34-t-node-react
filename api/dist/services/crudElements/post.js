@@ -16,7 +16,7 @@ const relations_1 = require("../../models/relations");
 const postRelationElements = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const element = req.body;
     const errorName = typeof element.name !== "string" || element.name.length === 0;
-    const errorType = typeof element.type !== "string" || element.type.length === 0;
+    const errorType = typeof element.type !== "string" || !Object.values(IElements_1.Types).includes(element.type);
     const errorDescription = typeof element.description !== "string" || element.description.length <= 11;
     const errorPrice = typeof element.price !== "number";
     const errorDate = typeof element.date !== "string" || !Boolean(Date.parse(element.date)) || element.date.length < 10;

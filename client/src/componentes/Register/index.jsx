@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import swAlert from "@sweetalert/with-react"
 import logo from "./assets/Group 409ss.png"
+const { VITE_BACKEND_URL } = import.meta.env;
 
 
 const Register = () => {
@@ -17,7 +18,8 @@ const Register = () => {
 
   const navigate = useNavigate()
 
-  const register = () => {
+  const register = (e) => {
+    e.preventDefault();
 
     const userData = {
       user: name,
@@ -29,19 +31,18 @@ const Register = () => {
 
     {
       if (userData.user === '' || userData.password === '') {
-        toast.error('Los campos no pueden estar vacíos')
-        return
+        toast.error('Los campos no pueden estar vacíos');
+        return;
       }
 
       if (email !== '' && !regexEmail.test(email)) {
-        toast.error('El e-mail no es válido')
-        return
+        toast.error('El e-mail no es válido');
+        return;
       }
     }
 
-
-
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth`, userData)
+    axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
+    // axios.post(`https://fitness-center-gym.onrender.com/api/auth`, userData)
       .then(res => {
         localStorage.setItem('user', userData.user)
         swAlert(<h2> {name},  Te has registrado correctamente</h2>)
@@ -54,11 +55,19 @@ const Register = () => {
       })
   }
 
-  let token = sessionStorage.getItem('userToken')
+  let token = sessionStorage.getItem('userToken');
 
   useEffect(() => {
-    token && navigate('/home')
-  }, [token, navigate])
+    token && navigate('/home');
+  }, [token, navigate]);
+
+  const callBack = async (e) => {
+    e.preventDefault();
+    // window.location.href = `${VITE_BACKEND_URL}/google`;
+    window.location.href = `http://localhost:3001/google`;
+    console.log(window.location.href);
+  };
+
 
   return (
     <>
@@ -73,7 +82,7 @@ const Register = () => {
             Registrarse
           </h2>
 
-          <form className='w-full' action="#" method="POST">
+          <form className='w-full' action="#" onSubmit={register}>
             <div className="flex flex-col gap-6 sm:gap-4 mt-9 sm:mx-auto sm:w-full sm:max-w-sm">
               <div>
                 <div className="flex items-center align-middle">
@@ -176,6 +185,7 @@ const Register = () => {
 
               <div className='flex flex-col gap-3 mt-5 mx-auto items-center justify-center'>
                 <button
+                  onClick={callBack}
                   className="flex justify-center items-center rounded-md px-5 py-1.5 text-sm font-PoppinsSemibold leading-6 bg-pallete-white hover:bg-white text-pallete-black shadow-md border-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-black transition-colors duration-200"
                 >
                   <img

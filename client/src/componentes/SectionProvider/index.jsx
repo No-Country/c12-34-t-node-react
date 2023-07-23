@@ -4,8 +4,10 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
-import { useEffect } from "react";
 import axios from "axios";
+import { useEffect } from "react";
+const { VITE_BACKEND_URL } = import.meta.env;
+
 
 const IndexTable = () => {
   const title = "Proveedores";
@@ -54,23 +56,23 @@ const IndexTable = () => {
   ];
   const [tBody, setTBody] = useState(tableBody);
 
-  // useEffect(() => {
-  //   axios.get("")
-  //     .then(res=>setTBody(res))
-  //     .catch(err=>console.log(err))
-  // }, [tBody])
+  const getProviders = () => {
+    axios(`${VITE_BACKEND_URL}/api/providers`)
+    // axios(`https://fitness-center-gym.onrender.com/api/providers`)
+      .then(info => {
+        console.log(info.data)
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    getProviders()
+  }, [])
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
       <ToastContainer autoClose={1000} />
-      <div className="flex flex-col mb-10">
-        <div className="flex justify-center">
-          <div className="md:w-36 w-32">
-            <img src={Logo} alt="logo" />
-          </div>
-        </div>
-        <SectionTitle title={title} />
-      </div>
+      <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
         <Table
           tHeader={tableHeader}

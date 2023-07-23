@@ -9,7 +9,7 @@ import { useContext } from "react"
 import { UserContext } from "../../store/userContext"
 import logo from "./assets/Group 409ss.png"
 import gmail from './assets/gmail.png'
-
+const { VITE_BACKEND_URL } = import.meta.env
 
 const Login = () => {
 
@@ -29,7 +29,8 @@ const Login = () => {
     }
 
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, userData)
+      .post(`${VITE_BACKEND_URL}/api/login`, userData)
+      // .post(`https://fitness-center-gym.onrender.com/api/login`, userData)
       .then((res) => {
         console.log(res.data)
         console.log(res.data.data.user.user)

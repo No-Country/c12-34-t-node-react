@@ -14,16 +14,28 @@ const relations_1 = require("../../models/relations");
 const deleteExpensesGym = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
+        let resta = 0;
         if (id.length < 36) {
             throw Error(`El gastos no existe`);
         }
         else {
+            const info = yield relations_1.Expense.findAll();
+            const menos = yield relations_1.Expense.findByPk(id);
+            console.log("MENOS:", menos === null || menos === void 0 ? void 0 : menos.expense);
+            info.map((el) => {
+                return resta += Number(el.expense);
+            });
+            resta -= Number(menos === null || menos === void 0 ? void 0 : menos.expense);
             yield relations_1.Expense.destroy({
                 where: {
                     id
                 }
             });
-            return res.status(200).json({ message: "El gasto ha sido eliminado", });
+            return res.status(200).json({
+                message: `El gasto: ${menos === null || menos === void 0 ? void 0 : menos.name.toUpperCase()}, ha sido eliminado`,
+                deleteValue: Number(menos === null || menos === void 0 ? void 0 : menos.expense),
+                currentValue: resta,
+            });
         }
     }
     catch (error) {

@@ -5,7 +5,7 @@ import { State } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
   id!: string;
   name!: string;
-  type!: Types;
+  type!: string;
   description!: string;
   price!: number;
   date!: string;
@@ -22,34 +22,35 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // MAQUINAS OH ELEMENTOS - MOBILIARIO
-    type: {
-      type: DataTypes.ENUM(
-        Types.Element,
-        Types.Machine,
-        Types.Office,
-      ),
-      // defaultValue: "Elemento",
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    date: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     state: {
       type: DataTypes.ENUM(
         State.En_reparacion,
         State.Nuevo,
         State.Usado,
       ),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    type: {
+      // type: DataTypes.ENUM(
+      //   Types.Element,
+      //   Types.Machine,
+      //   Types.Office,
+      // ),
+      // defaultValue: "Elemento",
+      type: DataTypes.STRING,
+      // allowNull: false,
+    },
+    price: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    // MAQUINAS OH ELEMENTOS - MOBILIARIO
+    date: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

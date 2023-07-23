@@ -1,42 +1,36 @@
 import { Link } from "react-router-dom";
 import { Footer } from "../../componentes";
+import "./NotFound.css";
 
 const NotFound = () => {
-
   return (
-    <div style={{backgroundColor:'white'}}>
-    <div style={{
-      display: 'flex',
-      width: '100%',
-      height:'calc(100vh - 310px)',
-      flexGrow: 1,
-      justifyContent:'center',
-      alignItems: 'center',
-      backgroundColor:'white'
-    }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifySelf: 'center',
-        alignItems: 'center',
-        rowGap: 20,
-      }}>
-        <p style={{fontSize:'2.8rem'}}>
-          {'No se puede encontrar esa página'}
-        </p>
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-[#211D1D] to-[#1A1363]">
 
-        <p style={{fontSize:'1.25rem', color:'#777'}} >
-          {'No pudimos encontrar la página que estas buscando.'}
-        </p>
+        <div className="text-center">
 
-        <Link to='/'>
-          Ir al inicio
-        </Link>
+          <h2 className="error mb-[5rem] text-9xl md:text-[480px] text-white mt-12 font-bold">404</h2>
+
+          <h2 className="text-2xl md:text-5xl text-white mt-8">
+            Ha ocurrido un error inesperado
+          </h2>
+
+          <p className="text-xl md:text-2xl text-white mt-6">
+            Por favor, inténtalo de nuevo más tarde
+          </p>
+
+          <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-[#5FCA56] text-black hover:bg-[#aceca6] mt-6">
+            <Link to="/">Volver a inicio</Link>
+          </button>
+
+        </div>
+        
       </div>
-      
-    </div>
-    <Footer />
-    </div>
+
+      <div className="bg-white">
+        <Footer />
+      </div>
+    </>
   );
 };
 

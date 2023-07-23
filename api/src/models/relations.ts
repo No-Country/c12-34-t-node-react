@@ -1,27 +1,32 @@
-import User from "./User";
+import { Admin } from "./Admin";
 import Elements from "./Element";
 import ClassGroup from "./ClassGroup";
 import Provider from "./Providers";
 import Expense from "./Expense";
+import Income from "./Income";
 
 // RELACION USER VS PRODUCT
-User.hasMany(Elements);
-Elements.belongsTo(User);
+Admin.hasMany(Elements);
+Elements.belongsTo(Admin);
 
 // RELACION USER VS GROUP_CLASS
-User.hasMany(ClassGroup);
-ClassGroup.belongsTo(User);
+Admin.hasMany(ClassGroup);
+ClassGroup.belongsTo(Admin);
 
 // RELACION USER VS PROVIDER
-User.hasMany(Provider);
-Provider.belongsTo(User);
+Admin.hasMany(Provider);
+Provider.belongsTo(Admin);
 
 // RELACION USER VS EXPENSE
-User.hasMany(Expense);
-Expense.belongsTo(User);
+Admin.hasMany(Expense);
+Expense.belongsTo(Admin);
+
+// RELACION USER VS INCOME
+Admin.hasMany(Income);
+Income.belongsTo(Admin);
 
 // RELACION PROVIDER VS PRODUCTS VS ADMIN
 Provider.hasMany(Elements);
 Elements.belongsTo(Provider);
 
-export { User, Elements, Provider, ClassGroup, Expense };
+export { Admin, Elements, Provider, ClassGroup, Expense, Income, };

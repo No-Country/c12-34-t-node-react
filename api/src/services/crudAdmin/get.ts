@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
+import { ClassGroup, Elements, Expense, Provider, Admin } from "../../models/relations";
 
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
-    const allUsers = await User.findAll({
+    const allUsers = await Admin.findAll({
       include: [{
         model: Elements,
         attributes: ["name"],

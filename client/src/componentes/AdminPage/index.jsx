@@ -5,12 +5,14 @@ import { UserContext } from "../../store/userContext"
 import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
+import ModalEditarPerfil from "./ModalEditarPerfil"
+const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
 
-
   const getUsers = () => {
-    axios.get("http://localhost:3001/api/all-users")
+    // axios.get(`${VITE_BACKEND_URL}/api/all-users`)
+    axios.get(`https://fitness-center-gym.onrender.com/api/all-users`)
       .then((res) => {
         console.log(res.data)
       })
@@ -36,10 +38,9 @@ const AdminPage = () => {
 
 
 
-
   return (
     <div className='flex'>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <main className='flex flex-col w-full gap-2 m-5'>
         <Title title={'Perfil administrador'} />
         <section className='flex flex-col'>
@@ -62,9 +63,9 @@ const AdminPage = () => {
               </div>
               <div>
                 <label htmlFor=""> <b>Cargo</b></label>
-                <p>Administrador</p>
+                <p>{userCtx.userCargoRegistered}</p>
               </div>
-              <button className="btn btn-warning mt-3" onClick={() => getUsers()}>Editar Perfil</button>
+              <ModalEditarPerfil/>
             </div>
           </div>
         </section>
