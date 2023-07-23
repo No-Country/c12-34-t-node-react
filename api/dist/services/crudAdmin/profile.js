@@ -13,7 +13,7 @@ exports.perfil = void 0;
 const relations_1 = require("../../models/relations");
 const perfil = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const usuarioRegistado = yield relations_1.User.findOne(req.usuarioId);
+        const usuarioRegistado = yield relations_1.Admin.findOne(req.usuarioId);
         if (!usuarioRegistado)
             return res.status(404).json({ message: "No se encontro el pefil" });
         return res.status(200).json({ message: "Perfil del usuario", usuarioRegistado });

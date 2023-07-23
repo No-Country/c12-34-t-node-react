@@ -13,7 +13,7 @@ exports.getAllUsers = void 0;
 const relations_1 = require("../../models/relations");
 const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = yield relations_1.User.findAll({
+        const allUsers = yield relations_1.Admin.findAll({
             include: [{
                     model: relations_1.Elements,
                     attributes: ["name"],
@@ -35,7 +35,7 @@ const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
                     model: relations_1.Expense,
                     attributes: ["name"]
                 }],
-            attributes: ["id", "user", "email", "plan", "dateIn", "dateOut", "contact"],
+            attributes: ["id", "user", "email"],
         });
         if (!allUsers.length) {
             throw new Error("No hay usuarios registrados");

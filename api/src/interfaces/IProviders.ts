@@ -1,5 +1,5 @@
 export interface IProvider {
-  id: string;
+  id?: string;
   name: string;
   product: string;
   contact: string;

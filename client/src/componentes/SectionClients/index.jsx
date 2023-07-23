@@ -19,7 +19,7 @@ const IndexTable = () => {
 
 
   const title = "Clientes";
-  const type = "clientes";
+  const type = "clients";
   const BODY_DATA = "BODY_DATA";
   const tableHeader = [
     "Nombre completo",

@@ -17,7 +17,9 @@ const Element_1 = __importDefault(require("../../models/Element"));
 const deleteElementsGym = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        if (id.length < 36) {
+        const elements = yield Element_1.default.findAll();
+        let elementId = elements.find((el) => el.id === id);
+        if ((elementId === null || elementId === void 0 ? void 0 : elementId.id) !== id) {
             throw Error(`El elemento no existe`);
         }
         else {
@@ -26,7 +28,7 @@ const deleteElementsGym = (req, res) => __awaiter(void 0, void 0, void 0, functi
                     id
                 }
             });
-            return res.status(200).json({ message: "El elemento ha sido eliminado", });
+            return res.status(200).json({ message: "El elemento ha sido eliminado", elementId });
         }
     }
     catch (error) {

@@ -15,7 +15,7 @@ const getIncomeGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const incomes = yield relations_1.Income.findAll({
             include: {
-                model: relations_1.User,
+                model: relations_1.Admin,
                 attributes: ["user"],
             },
         });

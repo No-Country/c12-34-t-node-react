@@ -11,7 +11,7 @@ class Provider extends Model<IProvider> implements IProvider {
   email!: string;
   description!: string;
   provider!: string;
-  date!: string;
+  // date!: string;
 }
 
 Provider.init(
@@ -44,11 +44,10 @@ Provider.init(
     provider: {
       type: DataTypes.STRING,
     },
-    date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-
-    },
+    // date: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: false,
+    // },
   },
   {
     sequelize: db,

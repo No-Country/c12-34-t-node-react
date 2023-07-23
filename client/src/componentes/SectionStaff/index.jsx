@@ -5,64 +5,23 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-import axios from "axios";
-const { VITE_BACKEND_URL } = import.meta.env
+import { axiosGet } from "../../hooks/axiosGeneral";
 
 const IndexTable = () => {
   const title = "Staff";
-  const type = "clientes";
+  const type = "employee";
   const tableHeader = [
     "Nombre completo",
     "Ocupación",
     "Celular",
-    "Mail",
-    "Inicio",
-    "Horarios",
+    "Email",
   ];
-  const tableBody = [
-    {
-      id: 1,
-      nombre: "Kristin Watson",
-      plan: "full",
-      celular: "123456789",
-      mail: "kristin@mail.com",
-      inicio: "Text",
-      horario: "8am - 12am",
-    },
-    {
-      id: 2,
-      nombre: "Floyd Miles",
-      plan: "free pass",
-      celular: "456789123",
-      mail: "floyd@mail.com",
-      inicio: "Text",
-      horario: "12am - 16pm",
-    },
-    {
-      id: 3,
-      nombre: "Brooklyn Simmons",
-      plan: "2 weeks",
-      celular: "789123456",
-      mail: "brooklyn@mail.com",
-      inicio: "Text",
-      horario: "16pm - 20pm",
-    },
-  ];
-
-  const [tBody, setTBody] = useState(tableBody);
-
-  const getUser = () => {
-    axios(`${VITE_BACKEND_URL}/api/all-users`)
-    // axios(`https://fitness-center-gym.onrender.com/api/all-users`)
-      .then(info => {
-        console.log(info.data)
-      })
-      .catch(err => console.log(err))
-  }
+  const [tBody, setTBody] = useState([]);
+  const [error, setTError] = useState("");
 
   useEffect(() => {
-    getUser()
-  }, [])
+    axiosGet(setTBody, setTError, "employees")
+  }, []);
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
@@ -74,12 +33,15 @@ const IndexTable = () => {
           tBody={tBody}
           setTBody={setTBody}
           type={type}
+          error={error}
+          setTError={setTError}
         />
         <ButtonAdd
           tBody={tBody}
           setTBody={setTBody}
           tHeader={tableHeader}
           type={type}
+          setTError={setTError}
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ const getClassGroupGym = (_, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const classGroup = yield relations_1.ClassGroup.findAll({
             include: {
-                model: relations_1.User,
+                model: relations_1.Admin,
                 attributes: ["user"],
             },
         });
