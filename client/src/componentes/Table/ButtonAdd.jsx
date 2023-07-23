@@ -36,8 +36,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           inicio: inputField[4],
           vencimiento: inputField[5],
         }
-    } else if (type === "proveedores") {
-      console.log("INPUT:", inputField)
+    } else if (type === "provider") {
       newElement = {
           // id: newId,
           name: inputField[0],
@@ -49,9 +48,8 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           provider: inputField[5],
           adminId: userId,
       }
-      console.log("NEW PROVIDER:", newElement.provider)
       axiosPostProvider(newElement);
-    } else if (type === "bienesElementos") {
+    } else if (type === "elements") {
       newElement = {
           // id: newId,
           name: inputField[0],
@@ -62,27 +60,9 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           date: inputField[5],
           providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
           adminId: userId,
-        }
-        axiosPostElement(newElement)
-        // axiosGetElement(setTBody, setTError);
-        // useEffect(() => {
-        //   axiosGetElement(setTBody, setTError);
-        // }, []);
-    } else if (type === "bienesMaquinas") {
-      newElement = {
-          // id: newId,
-          name: inputField[0],
-          state: inputField[1],
-          description: inputField[2],
-          type: inputField[3],// Stock
-          price: inputField[4],
-          date: inputField[5],
-          providerId: "ecabfd84-251c-4394-8fc0-43a335aac5d1",
-          adminId: userId,
-        }
-        axiosPostElement(newElement)
-        axiosGetElement(setTBody, setTError);
-    }
+      }
+      axiosPostElement(newElement)
+    } 
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };

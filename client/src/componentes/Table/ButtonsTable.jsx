@@ -5,14 +5,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
+import { axiosDeleteProvider, axiosGetProviders } from "../../hooks/axiosProvider";
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
 
 
   const editItem = (_id) => {
-    console.log(_id)
-   
     axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
          .then((res) => console.log(res.data))
          .catch(err => console.log(err))
@@ -46,19 +45,19 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             vencimiento: edited[6],
           };
         }
-        if (type === "proveedores") {
+        if (type === "provider") {
           return {
-            ...item,
+            // ...item,
             name: edited[1],
             product: edited[2],
             contact: edited[3],
-            mail: edited[4],
-            date: edited[5],
-            description: edited[6],
-            provider: edited[7],
+            email: edited[4],
+            // date: edited[5],
+            description: edited[5],
+            provider: edited[6],
           };
         }
-        if (type === "bienesElementos") {
+        if (type === "elements") {
           return {
             // ...item,
             name: edited[1],
@@ -79,9 +78,15 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     toast.success(`Elemento ${id} editado`);
     setInputFields([]);
   };
-  const handleDelete = (id) => {
-    axiosDeleteElement(id);
-    axiosGetElement(setTBody, setTError);
+  const handleDelete = (id, type) => {
+    if (type === "provider") {
+      axiosDeleteProvider(id, type);
+      axiosGetProviders(setTBody, setTError);
+    }
+    if (type === "elements") {
+      axiosDeleteElement(id);
+      axiosGetElement(setTBody, setTError);
+    }
   }
   function handleChange(i, e) {
     let event = e.target.value;
@@ -119,8 +124,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
               return (
                 <div key={i} className="grid gap-2">
                   {Object.values(data).map((item, subI) => {
-                    // if (tBody[i].id === id && subI !== 0) {
-                    // if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                     if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                       // No ver IDs: && subI !== 0
                       return (
@@ -164,7 +167,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         </div>
       </div>
 
-      <button onClick={() => handleDelete(id)} className="hover:scale-125 transition-all">
+      <button onClick={() => handleDelete(id, type)} className="hover:scale-125 transition-all">
         <RiDeleteBin5Line />
       </button>
     </td>

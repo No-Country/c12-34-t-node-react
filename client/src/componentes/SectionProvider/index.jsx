@@ -4,15 +4,12 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
-import axios from "axios";
 import { useEffect } from "react";
 import { axiosGetProviders } from "../../hooks/axiosProvider";
-const { VITE_BACKEND_URL } = import.meta.env;
-
 
 const IndexTable = () => {
   const title = "Proveedores";
-  const type = "proveedores";
+  const type = "provider";
 
   const tableHeader = [
     "Nombre Completo",
@@ -23,54 +20,11 @@ const IndexTable = () => {
     "Descripción",
     "Empresa",
   ];
-  const tableBody = [
-    {
-      id: 1,
-      name: "Cristina Watson",
-      product: "Agua",
-      contact: 123456789,
-      mail: "text",
-      date: "text",
-      description: "text",
-      provider: "text",
-    },
-    {
-      id: 2,
-      name: "Cristina Watson",
-      product: "Agua",
-      contact: 123456789,
-      mail: "text",
-      date: "text",
-      description: "text",
-      provider: "text",
-    },
-    {
-      id: 3,
-      name: "Cristina Watson",
-      product: "Agua",
-      contact: 123456789,
-      mail: "text",
-      date: "text",
-      description: "text",
-      provider: "text",
-    },
-  ];
-  // const [tBody, setTBody] = useState(tableBody);
   const [tBody, setTBody] = useState([]);
   const [error, setTError] = useState("");
 
-  // const getProviders = () => {
-  //   axios(`${VITE_BACKEND_URL}/api/providers`)
-  //   // axios(`https://fitness-center-gym.onrender.com/api/providers`)
-  //     .then(info => {
-  //       console.log(info.data)
-  //     })
-  //     .catch(err => console.log(err))
-  // }
-
   useEffect(() => {
     axiosGetProviders(setTBody, setTError)
-    // getProviders()
   }, [])
 
   return (
