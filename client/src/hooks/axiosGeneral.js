@@ -20,7 +20,8 @@ export const axiosPost = async (newElement, type) => {
     .then((res) => {
       console.log("BUTTON ADD:", res.data);
       setTimeout(() => {
-        window.location.reload();
+        // window.location.reload();
+        window.location.reload(true);
       }, 1000);
     })
     .catch((err) => {
@@ -33,9 +34,10 @@ export const axiosDelete = async (id, type) => {
   await axios.delete(`/api/${type}/${id}`)
     .then((res) => {
       console.log("BUTTON delete:", res.data);
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(() => {
+      //   // window.location.reload();
+      //   window.location.reload(true);
+      // }, 1000);
     })
     .catch((err) => {
       console.log(err.response.data.error);

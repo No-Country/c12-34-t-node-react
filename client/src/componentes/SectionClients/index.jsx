@@ -99,7 +99,8 @@ const IndexTable = () => {
     .then((res) => {
       console.log(res.data)
       setTimeout(() => { 
-        window.location.reload()
+        // window.location.reload()
+        window.location.reload(true)
       }, 500)
     })
     .catch(err => console.log(err)) 
