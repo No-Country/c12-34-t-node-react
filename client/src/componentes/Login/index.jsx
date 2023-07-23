@@ -26,7 +26,8 @@ const Login = () => {
       password: password
     };
 
-    axios.post(`${VITE_BACKEND_URL}/api/login`, userData)
+    // axios.post(`${VITE_BACKEND_URL}/api/login`, userData)
+    axios.post(`/api/login`, userData)
       .then((res) => {
         // console.log(res.data)
         // console.log(res.data.data.user.user)

@@ -13,7 +13,8 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
 
 
   const editItem = (_id) => {
-    axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+    // axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+    axios.put(`/api/client/${_id}`, inputFields)
       .then((res) => console.log(res.data))
       .catch(err => console.log(err))
 

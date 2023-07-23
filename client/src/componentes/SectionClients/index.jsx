@@ -65,8 +65,9 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-    axios.get(`${VITE_BACKEND_URL}/api/clients`)
-      .then(info => {
+    // axios.get(`${VITE_BACKEND_URL}/api/clients`)
+    axios.get(`/api/clients`)
+    .then(info => {
         console.log(info.data);
         const { data } = info;
         setTBody(data)
@@ -93,7 +94,8 @@ const IndexTable = () => {
     })
 
 
-    axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
+    // axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
+    axios.post(`/api/client`, newClient)
     .then((res) => {
       console.log(res.data)
       setTimeout(() => { 

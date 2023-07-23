@@ -4,6 +4,7 @@ import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from 'react';
 import { UserContext } from '../../store/userContext';
+const { VITE_BACKEND_URL } = import.meta.env
 
 const ModalEditarPerfil = () => {
 
@@ -21,8 +22,9 @@ const ModalEditarPerfil = () => {
             cargo,
             email
         })
-        // axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/update-user/${userCtx.userId}`, dataUpdated)
-        axios.put(`https://fitness-center-gym.onrender.com/api/update-user/${userCtx.userId}`, dataUpdated)
+        // axios.put(`${VITE_BACKEND_URL}/api/update-user/${userCtx.userId}`, dataUpdated)
+        // axios.put(`https://fitness-center-gym.onrender.com/api/update-user/${userCtx.userId}`, dataUpdated)
+        axios.put(`/api/update-user/${userCtx.userId}`, dataUpdated)
              .then((res) => { 
                 console.log(res.data.user)
                 userCtx.updateUserEmailRegistered(res.data.user.email)
