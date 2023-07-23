@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        PoppinsRegular: ["Poppins-Regular", "sans-serif"],
+        PoppinsRegular: ["Poppins", "sans-serif"],
         PoppinsMedium: ["Poppins-Medium", "sans-serif"],
         PoppinsSemibold: ["Poppins-Semibold", "sans-serif"],
         PoppinsBold: ["Poppins-Bold", "sans-serif"],
@@ -28,7 +28,7 @@ export default {
       },
     },
     screens: {
-      xxxxl:"1920px",
+      xxxxl: "1920px",
       xxxl: "1580px",
       xxl: "1400px",
       xl: "1280px",
@@ -37,7 +37,7 @@ export default {
       sm: "640px",
       xxs: "480px",
       xxxs: "390px",
-      xxxxs: "1px"
+      xxxxs: "1px",
     },
   },
   plugins: [
