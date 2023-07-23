@@ -41,8 +41,9 @@ const Register = () => {
 
 
 
-    axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
+    // axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
     // axios.post(`https://fitness-center-gym.onrender.com/api/auth`, userData)
+    axios.post(`https://fitness-center-gym.onrender.com/api/auth`, userData)
       .then(res => {
         localStorage.setItem('user', userData.user);
         swAlert(<h2> {name},  Te has registrado correctamente</h2>);
