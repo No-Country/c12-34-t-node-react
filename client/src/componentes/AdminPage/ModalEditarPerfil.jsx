@@ -36,7 +36,7 @@ const ModalEditarPerfil = () => {
 
   return (
     <div>
-       <button className="btn btn-active btn-warning" onClick={()=>window.my_modal_3.showModal()}>Editar Perfil</button>
+       <button className="btn btn-active btn-warning mt-[4rem] px-10" onClick={()=>window.my_modal_3.showModal()}>Editar Perfil</button>
                 <dialog id="my_modal_3" className="modal">
                    <form method="dialog" className="modal-box bg-slate-400">
                    <div >

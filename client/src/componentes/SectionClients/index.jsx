@@ -107,7 +107,7 @@ const IndexTable = () => {
 
 
   return (
-    <div className="flex flex-col justify-center gap-10 w-full">
+    <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">

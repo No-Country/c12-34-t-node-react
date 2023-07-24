@@ -37,33 +37,40 @@ const AdminPage = () => {
 
 
   return (
-    <div className='flex'>
+    <div className='flex w-full'>
       {/* <Sidebar /> */}
-      <main className='flex flex-col w-full gap-2 m-5'>
+      <main className='flex flex-col w-full gap-2 m-5 mt-10'>
         <Title title={'Perfil administrador'} />
         <section className='flex flex-col'>
-          <button className="btn btn-warning self-start px-5 py-4 mt-4 ">Mi Cuenta</button>
-          <div className=" self-center flex gap-7 hero-content">
+
+          <button className="btn btn-warning self-start px-10 py-4 mt-4 md:ml-10 ">Mi Cuenta</button>
+
+          <div className=" w-full h-auto flex flex-col md:flex-row gap-7 hero-content mt-10 md:ml-[10rem]">
             <span className="avatar">
-              <div className="w-[min(300px,20vw)] rounded-full">
+              <div className="md:w-[min(500px,40vw)] rounded-full">
                 <img src={profesor} />
               </div>
             </span>
-            <div className='ml-10 '>
-              <div>
+
+            <div className='ml-10 text-xl text-black md:ml-[8rem] '>
+
+              <div className="mb-2">
                 <label htmlFor=""> <b>Nombre y Apellido</b></label>
                 <p>{userCtx.userNameRegistered}</p>
               </div>
 
-              <div>
+              <div className="mb-2">
                 <label htmlFor=""> <b>Correo</b></label>
                 <p>{userCtx.userEmailRegistered}</p>
               </div>
-              <div>
+
+              <div className="mb-2">
                 <label htmlFor=""> <b>Cargo</b></label>
                 <p>{userCtx.userCargoRegistered}</p>
               </div>
+            
               <ModalEditarPerfil/>
+
             </div>
           </div>
         </section>
