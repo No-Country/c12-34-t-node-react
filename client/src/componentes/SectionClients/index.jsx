@@ -5,7 +5,6 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-const { VITE_BACKEND_URL } = import.meta.env;
 import axios from "axios";
 
 const IndexTable = () => {
@@ -65,7 +64,6 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-    // axios.get(`${VITE_BACKEND_URL}/api/clients`)
     axios.get(`/api/clients`)
     .then(info => {
         console.log(info.data);
@@ -94,18 +92,15 @@ const IndexTable = () => {
     })
 
 
-    setTimeout(() => { 
-      // axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
+    setTimeout(() => {
       axios.post(`/api/client`, newClient)
       .then((res) => {
         console.log(res.data)
+        window.location.reload()
       })
       .catch(err => console.log(err)) 
     }, 500)
   }
-  
-  // window.location.reload()
-  // window.location.reload(true)
   
 
 

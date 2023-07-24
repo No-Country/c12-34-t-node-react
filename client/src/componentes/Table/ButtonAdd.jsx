@@ -5,11 +5,6 @@ import {axiosGet, axiosPost} from "../../hooks/axiosGeneral"
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
-
-  useEffect(() => {
-    axiosGet();
-    // axiosGet(setTBody, setTError, type);
-  }, []);
   
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
@@ -29,8 +24,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
-      newElement = 
-        {
+      newElement = {
           id: newId,
           nombre: inputField[0],
           plan: inputField[1],
@@ -38,7 +32,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           mail: inputField[3],
           inicio: inputField[4],
           vencimiento: inputField[5],
-        }
+      }
     } else if (type === "provider") {
       newElement = {
           name: inputField[0],
@@ -58,7 +52,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           type: inputField[3],// Stock
           price: inputField[4],
           date: inputField[5],
-          providerId: "98420857-3d64-4559-9b94-366e5cc7afc0",
+          providerId: "c3d22dde-d53d-479f-80d3-407db1eb7d18",
           adminId: userId,
       }
       axiosPost(newElement, "element-client")

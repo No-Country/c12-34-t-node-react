@@ -6,13 +6,10 @@ import Sidebar from '../../pages/Home/Components/Sidebar'
 import Title from '../Title'
 import profesor from "../../img/profesor.jpg"
 import ModalEditarPerfil from "./ModalEditarPerfil"
-const { VITE_BACKEND_URL } = import.meta.env
 
 const AdminPage = () => {
 
   const getUsers = () => {
-    // axios.get(`${VITE_BACKEND_URL}/api/all-users`)
-    // axios.get(`https://fitness-center-gym.onrender.com/api/all-users`)
     axios.get(`/api/all-users`)
       .then((res) => {
         console.log(res.data)
