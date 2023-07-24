@@ -1,10 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
-import {axiosPost} from "../../hooks/axiosGeneral"
+import {axiosGet, axiosPost} from "../../hooks/axiosGeneral"
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
   const { userId } = useContext(UserContext)
+
+  useEffect(() => {
+    axiosGet();
+    // axiosGet(setTBody, setTError, type);
+  }, []);
   
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
