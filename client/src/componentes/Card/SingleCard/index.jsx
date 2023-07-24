@@ -1,8 +1,7 @@
-import { BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs";
-
-
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { BiLogoBehance } from "react-icons/bi";
 const ItemCard = ({ data }) => {
-  const { name, position, logo } = data;
+  const { id, name, position, logo, link1, link2 } = data;
 
   return (
     <div className="card w-80 bg-slate-100 hover:scale-105  transition-all">
@@ -14,34 +13,32 @@ const ItemCard = ({ data }) => {
         </div>
         <h2 className="card-title block text-black">{name}</h2>
         <h3 className="block text-xl text-gray-600">{position}</h3>
-        <p className="text-black">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam sint
-          rem sunt sequi voluptatibus veritatis voluptatum ad
-        </p>
-        <div style={{marginTop:'8px'}} className="card-actions justify-between">
+
+        <div
+          style={{ marginTop: "8px" }}
+          className="card-actions justify-center"
+        >
+          {id !== 2 && (
+            <a
+              style={{ textDecoration: "none", color: "black" }}
+              target="_blank"
+              href={link1}
+              className="btn btn-outline btn-circle hover:bg-pallete-green"
+            >
+              {id === 3 ? (
+                <BiLogoBehance size={28} />
+              ) : (
+                <AiFillGithub size={28} />
+              )}
+            </a>
+          )}
           <a
-            style={{color:'black'}}
+            style={{ color: "black" }}
             target="_blank"
-            href=""
-            className="btn btn-outline btn-circle btn-primary"
+            href={link2}
+            className="btn btn-outline btn-circle hover:bg-pallete-green"
           >
-            {<BsFacebook size={28} color='black' />}
-          </a>
-          <a
-            style={{color:'black'}}
-            target="_blank"
-            href=""
-            className="btn btn-outline btn-circle btn-primary"
-          >
-            <BsTwitter size={28} color='black'/>
-          </a>
-          <a
-            style={{color:'black'}}
-            target="_blank"
-            href=""
-            className="btn btn-outline btn-circle btn-primary"
-          >
-            <BsInstagram size={28} color='black'/>
+            <AiFillLinkedin size={28} />
           </a>
         </div>
       </div>
