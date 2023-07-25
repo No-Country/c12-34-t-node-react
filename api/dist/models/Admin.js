@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Admin = void 0;
 const db_1 = require("../db");
 const sequelize_1 = require("sequelize");
-class User extends sequelize_1.Model {
+class Admin extends sequelize_1.Model {
 }
-User.init({
+exports.Admin = Admin;
+Admin.init({
     id: {
         type: sequelize_1.DataTypes.UUID,
         defaultValue: sequelize_1.DataTypes.UUIDV4,
@@ -25,7 +27,6 @@ User.init({
     },
 }, {
     sequelize: db_1.db,
-    modelName: "user",
+    modelName: "admin",
     timestamps: false,
 });
-exports.default = User;

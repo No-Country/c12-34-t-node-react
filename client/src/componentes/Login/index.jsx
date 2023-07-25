@@ -11,6 +11,7 @@ import logo from "./assets/Group 409ss.png"
 import gmail from './assets/gmail.png'
 const { VITE_BACKEND_URL } = import.meta.env
 
+
 const Login = () => {
 
   const navigate = useNavigate()
@@ -26,31 +27,25 @@ const Login = () => {
     const userData = {
       email: name,
       password: password
-    }
 
-    axios
-      .post(`${VITE_BACKEND_URL}/api/login`, userData)
-      // .post(`https://fitness-center-gym.onrender.com/api/login`, userData)
+    };
+    axios.post(`/api/login`, userData)
       .then((res) => {
-        console.log(res.data)
-        console.log(res.data.data.user.user)
-        console.log(res.data.data.user.email)
-        console.log(res.data.data.token)
-
-        userCtx.updateUser(res.data.data.user.id)
-        userCtx.updateUserNameRegistered(res.data.data.user.user)
-        userCtx.updateUserEmailRegistered(res.data.data.user.email)
-        userCtx.updateUserTokenRegistered(res.data.data.token)
+        
+         userCtx.updateUser(res.data.data.user.id)
+         userCtx.updateUserNameRegistered(res.data.data.user.user)
+         userCtx.updateUserEmailRegistered(res.data.data.user.email)
+         userCtx.updateUserTokenRegistered(res.data.data.token)
 
 
-        //estas 3 líneas son necesarias para loguear hasta que actualicemos todo lo que utiliza el token del sessionStorage
-        const user = res.data
-        const newToken = user.data.token
-        sessionStorage.setItem('userToken', newToken)
-
-        swAlert(<h2> Bienvenido {user.data.user.user} </h2>)
-        setTimeout(() => {
-          navigate('/home/admin')
+         //estas 3 líneas son necesarias para loguear hasta que actualicemos todo lo que utiliza el token del sessionStorage
+         const user = res.data;
+         const newToken = user.data.token
+         sessionStorage.setItem('userToken', newToken);
+        
+        swAlert(<h2> Bienvenido {user.data.user.user} </h2>);
+        setTimeout(() => { 
+          navigate('/home/admin');
         }, 500)
 
         if (name.length === 0) {
@@ -115,7 +110,7 @@ const Login = () => {
                 <label className="label cursor-pointer p-0 w-fit">
                   <input type="checkbox" className="checkbox checkbox-sm border " />
                   <span className="label-text ml-2 mr-auto font-PoppinsMedium ">Recuérdame</span>
-                </label>
+                </label> 
 
                 <button
                   onClick={logUser}
@@ -126,15 +121,6 @@ const Login = () => {
               </form>
 
               <div className='flex flex-col gap-3 mt-10 mx-auto items-center justify-center'>
-                <button
-                  className="flex justify-center items-center rounded-md px-5 py-1.5 text-sm font-PoppinsSemibold leading-6 bg-pallete-white hover:bg-white text-pallete-black shadow-md border-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-black transition-colors duration-200"
-                >
-                  <img
-                    src={gmail}
-                    style={{ height: "3vh", marginRight: "2vh" }}
-                  ></img>
-                  Inicia sesión con Google
-                </button>
                 <p className="text-center text-xs sm:text-sm font-PoppinsSemibold text-pallete-grey">
                   ¿No estás registrado?
                   <Link to="/register" className="p-3 font-PoppinsSemibold leading-6 text-pallete-green">Crear cuenta</Link>

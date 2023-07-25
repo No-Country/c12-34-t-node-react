@@ -41,8 +41,8 @@ const Register = () => {
       }
     }
 
-    axios.post(`${VITE_BACKEND_URL}/api/auth`, userData)
-    // axios.post(`https://fitness-center-gym.onrender.com/api/auth`, userData)
+    axios.post(`/api/auth`, userData)
+
       .then(res => {
         localStorage.setItem('user', userData.user)
         swAlert(<h2> {name},  Te has registrado correctamente</h2>)
@@ -63,8 +63,7 @@ const Register = () => {
 
   const callBack = async (e) => {
     e.preventDefault();
-    // window.location.href = `${VITE_BACKEND_URL}/google`;
-    window.location.href = `http://localhost:3001/google`;
+    window.location.href = `${VITE_BACKEND_URL}/google`;
     console.log(window.location.href);
   };
 
@@ -76,7 +75,7 @@ const Register = () => {
 
         <Link to="/" className='basis-1/2 mx-auto hidden md:block'>
           <img src={logo} alt="Logo de Fitness Center Gym" className='basis-1/2 w-[30vw] mx-auto ' />
-        </Link>
+        </Link> 
         <div className="basis-1/2 w-[50vh] flex flex-1 flex-col sm:gap-0 justify-center p-6 py-8 sm:py-6 lg:px-8 rounded-lg bg-gray-200 bg-opacity-60 shadow-md">
           <h2 className="text-center text-2xl font-PoppinsBold leading-9 tracking-tight text-pallete-black">
             Registrarse
@@ -183,17 +182,7 @@ const Register = () => {
                 Aceptar
               </button>
 
-              <div className='flex flex-col gap-3 mt-5 mx-auto items-center justify-center'>
-                <button
-                  onClick={callBack}
-                  className="flex justify-center items-center rounded-md px-5 py-1.5 text-sm font-PoppinsSemibold leading-6 bg-pallete-white hover:bg-white text-pallete-black shadow-md border-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-black transition-colors duration-200"
-                >
-                  <img
-                    src={gmail}
-                    style={{ height: "3vh", marginRight: "2vh" }}
-                  ></img>
-                  Inicia sesión con Google
-                </button>
+              <div className='flex flex-col gap-3 mt-5 mx-auto items-center justify-center'>              
                 <p className=" text-center text-xs sm:text-sm font-PoppinsSemibold text-pallete-grey">
                   ¿Ya estás registrado?
                   <Link Link to="/login" className="px-2 font-PoppinsSemibold leading-6 text-pallete-green">Iniciar sesión</Link>

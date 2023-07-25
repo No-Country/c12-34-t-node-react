@@ -12,8 +12,7 @@ export const postProvider = async (req: Request, res: Response) => {
       !proveedor.contact ||
       !proveedor.description ||
       !proveedor.email ||
-      !proveedor.provider ||
-      !proveedor.date
+      !proveedor.provider
     )
       return res.status(400).json({ msg: "Todos los campos son requeridos" });
 

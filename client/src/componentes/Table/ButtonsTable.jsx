@@ -1,19 +1,20 @@
 // import React from "react";
-import { RiDeleteBin5Line } from "react-icons/ri"
-import { BiEditAlt } from "react-icons/bi"
-import { toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import { useState } from "react"
-import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement"
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { BiEditAlt } from "react-icons/bi";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
+import { axiosDeleteProvider, axiosGetProviders } from "../../hooks/axiosProvider";
+import {axiosGet, axiosDelete} from "../../hooks/axiosGeneral"
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([])
 
 
   const editItem = (_id) => {
-    console.log(_id)
-
-    axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+    // axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
+    axios.put(`/api/client/${_id}`, inputFields)
       .then((res) => console.log(res.data))
       .catch(err => console.log(err))
 
@@ -46,19 +47,19 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             vencimiento: edited[6],
           }
         }
-        if (type === "proveedores") {
+        if (type === "provider") {
           return {
-            ...item,
+            // ...item,
             name: edited[1],
             product: edited[2],
             contact: edited[3],
-            mail: edited[4],
-            date: edited[5],
-            description: edited[6],
-            provider: edited[7],
-          }
+            email: edited[4],
+            // date: edited[5],
+            description: edited[5],
+            provider: edited[6],
+          };
         }
-        if (type === "bienesElementos") {
+        if (type === "elements") {
           return {
             // ...item,
             name: edited[1],
@@ -76,22 +77,41 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
 
     setTBody(tBody)
 
-    toast.success(`Elemento ${id} editado`)
-    setInputFields([])
-  }
-  const handleDelete = (id) => {
-    axiosDeleteElement(id)
-    axiosGetElement(setTBody, setTError)
+    toast.success(`Elemento ${id} editado`);
+    setInputFields([]);
+  };
+  const handleDelete = async (id, type) => {
+    if (type === "provider") {
+      await axiosDelete(id, "provider");
+      await axiosGet(setTBody, setTError,"providers");
+    }
+    if (type === "employee") {
+      await axiosDelete(id, "employee");
+      await axiosGet(setTBody, setTError,"employees");
+    }
+    if (type === "element-client") {
+      await axiosDelete(id, "elements");
+      await axiosGet(setTBody, setTError, "elements");
+    }
+    if(type === "clients"){
+      await axiosDelete(id, "client");
+      await axiosGet(setTBody, setTError, "clients");
+    }
   }
   function handleChange(i, e) {
     let event = e.target.value
     const values = [...inputFields]
+    const number = /[0-9]/
     if (i === 6) {
-      if (event.length === 2) {
-        event = event + "-"
-      }
-      if (event.length === 5) {
-        event = event + "-"
+      if (!event.match(number)) {
+        event
+      } else {
+        if (event.length === 2 && event.match(number)) {
+          event = event + "-"
+        }
+        if (event.length === 5 && event.match(number)) {
+          event = event + "-"
+        }
       }
     }
     values[i] = event
@@ -112,7 +132,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     <td className="grow flex flex-nowrap my-2 items-center gap-3 px-1 ">
       {/* The button to open modal */}
       <label htmlFor={`my_modal_${id}`} className=' shrink-0'>
-        <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-green' />
+        {/* <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-green' /> */}
       </label>
       <input type="checkbox" id={`my_modal_${id}`} className="modal-toggle" />
 
@@ -128,8 +148,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
               return (
                 <div key={i} className="grid gap-4">
                   {Object.values(data).map((item, subI) => {
-                    // if (tBody[i].id === id && subI !== 0) {
-                    // if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                     if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                       // No ver IDs: && subI !== 0
                       return (
@@ -173,8 +191,8 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         </div>
       </div>
 
-      <button onClick={() => handleDelete(id)} >
-        <img src={trashIcon} alt="trashIcon" className='btn p-0.5 bg-pallete-white hover:bg-pallete-yellow' />
+      <button onClick={() => handleDelete(id, type)} className="hover:scale-125 transition-all">
+        <RiDeleteBin5Line />
       </button>
     </td>
   )

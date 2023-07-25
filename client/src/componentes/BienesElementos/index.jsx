@@ -4,11 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import { useEffect } from "react";
-import { axiosGetElement } from "../../hooks/axiosElement";
+import { axiosGet } from "../../hooks/axiosGeneral";
 
 const BienesElementos = () => {
     const title = "Bienes / Elementos";
-    const type = "bienesElementos";
+    const type = "element-client";
   
     const tableHeader = [
       "Elemento",
@@ -22,7 +22,7 @@ const BienesElementos = () => {
     const [error, setTError] = useState("");
 
     useEffect(() => {
-      axiosGetElement(setTBody, setTError)
+      axiosGet(setTBody, setTError, "elements")
     }, []);
   
     return (

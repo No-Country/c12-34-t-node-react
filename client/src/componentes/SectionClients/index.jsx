@@ -5,8 +5,8 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-const { VITE_BACKEND_URL } = import.meta.env;
 import axios from "axios";
+import ModalClientes from "./ModalClientes";
 
 const IndexTable = () => {
 
@@ -16,10 +16,11 @@ const IndexTable = () => {
    const [contact, setContact] = useState("")
    const [dateIn, setDateIn] = useState("")
    const [dateOut, setDateOut] = useState("")
+   const [showTable, setShowTable] = useState(true)
 
 
   const title = "Clientes";
-  const type = "clientes";
+  const type = "clients";
   const BODY_DATA = "BODY_DATA";
   const tableHeader = [
     "Nombre completo",
@@ -65,8 +66,8 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-    axios.get(`${VITE_BACKEND_URL}/api/clients`)
-      .then(info => {
+    axios.get(`/api/clients`)
+    .then(info => {
         console.log(info.data);
         const { data } = info;
         setTBody(data)
@@ -80,7 +81,11 @@ const IndexTable = () => {
   useEffect(() => { 
      getUser()
   }, [])
-
+  
+  const resetClients = (newClient) => { 
+    setTBody((prev) => [...prev, newClient]);
+  }
+  
   const createNewClient = () => { 
     
     const newClient = ({ 
@@ -93,26 +98,23 @@ const IndexTable = () => {
     })
 
 
-    axios.post(`${VITE_BACKEND_URL}/api/client`, newClient)
-    .then((res) => {
-      console.log(res.data)
-      setTimeout(() => { 
+    setTimeout(() => {
+      axios.post(`/api/client`, newClient)
+      .then((res) => {
+        console.log(res.data)
         window.location.reload()
-      }, 500)
-    })
-    .catch(err => console.log(err)) 
+      })
+      .catch(err => console.log(err)) 
+    }, 500)
   }
 
 
-
-
-
-
   return (
-    <div className="flex flex-col justify-center gap-10 w-full">
+    <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
+
         <Table
           tHeader={tableHeader}
           tBody={tBody}
@@ -120,7 +122,10 @@ const IndexTable = () => {
           type={type}
           error={error}
         />
-        <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
+
+        <ModalClientes reset={resetClients}/>
+       
+        { /* <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
           <dialog id="my_modal_1" className="modal">
           <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
@@ -131,10 +136,9 @@ const IndexTable = () => {
           <input type="date" placeholder="dateOut" onChange={(e) => setDateOut(e.target.value)}></input>
           <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
           <button className="btn">Close</button>
-          <button onClick={() => createNewClient()}> Enviar cliente nuevo</button>
-
+         <button onClick={() => createNewClient()}> Enviar cliente nuevo</button>
   </form>
-</dialog>
+</dialog>*/}
       </div>
     </div>
   );

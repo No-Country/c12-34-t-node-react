@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { Footer } from "../../componentes";
+// import { Footer } from "../../componentes";
 import "./NotFound.css";
 
 const NotFound = () => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-[#211D1D] to-[#1A1363]">
+    
+      <div className="w-full flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-[#211D1D] to-[#1A1363]">
 
         <div className="text-center">
 
@@ -27,9 +28,7 @@ const NotFound = () => {
         
       </div>
 
-      <div className="bg-white">
-        <Footer />
-      </div>
+
     </>
   );
 };

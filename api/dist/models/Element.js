@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const IElements_1 = require("./../interfaces/IElements");
 const db_1 = require("../db");
 const sequelize_1 = require("sequelize");
-const IElements_2 = require("./../interfaces/IElements");
+const IElements_1 = require("./../interfaces/IElements");
 class Elements extends sequelize_1.Model {
 }
 Elements.init({
@@ -16,26 +15,31 @@ Elements.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    // MAQUINAS OH ELEMENTOS - MOBILIARIO
-    type: {
-        type: sequelize_1.DataTypes.ENUM(IElements_1.Types.Element, IElements_1.Types.Machine, IElements_1.Types.Office),
-        // defaultValue: "Elemento",
+    state: {
+        type: sequelize_1.DataTypes.ENUM(IElements_1.State.En_reparacion, IElements_1.State.Nuevo, IElements_1.State.Usado),
         allowNull: false,
     },
     description: {
-        type: sequelize_1.DataTypes.TEXT,
-        allowNull: false,
-    },
-    price: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-    },
-    date: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    state: {
-        type: sequelize_1.DataTypes.ENUM(IElements_2.State.En_reparacion, IElements_2.State.Nuevo, IElements_2.State.Usado),
+    type: {
+        // type: DataTypes.ENUM(
+        //   Types.Element,
+        //   Types.Machine,
+        //   Types.Office,
+        // ),
+        // defaultValue: "Elemento",
+        type: sequelize_1.DataTypes.STRING,
+        // allowNull: false,
+    },
+    price: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
+    // MAQUINAS OH ELEMENTOS - MOBILIARIO
+    date: {
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
 }, {

@@ -19,7 +19,7 @@ const upDateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             throw new Error("El usuario no existe");
         }
         else {
-            yield relations_1.User.update(user, {
+            yield relations_1.Admin.update(user, {
                 where: { id, },
             });
             return res.status(200).json({ change: "Actualización del usuario completa", user, });

@@ -33,10 +33,10 @@ Provider.init({
     provider: {
         type: sequelize_1.DataTypes.STRING,
     },
-    date: {
-        type: sequelize_1.DataTypes.DATEONLY,
-        allowNull: false,
-    },
+    // date: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: false,
+    // },
 }, {
     sequelize: db_1.db,
     modelName: "provider",

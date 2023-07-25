@@ -19,8 +19,7 @@ const postProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             !proveedor.contact ||
             !proveedor.description ||
             !proveedor.email ||
-            !proveedor.provider ||
-            !proveedor.date)
+            !proveedor.provider)
             return res.status(400).json({ msg: "Todos los campos son requeridos" });
         const existProveedor = yield relations_1.Provider.findOne({
             where: { email: proveedor.email },
