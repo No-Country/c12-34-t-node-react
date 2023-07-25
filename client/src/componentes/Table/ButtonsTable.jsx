@@ -8,7 +8,6 @@ import {axiosGet, axiosDelete, axiosPut} from "../../hooks/axiosGeneral"
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([])
 
-
   const editItem = (_id) => {
     let edited = []
     const itemBody = tBody.find((item) => item.id === _id)
@@ -31,7 +30,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
       if (item.id === id) {
         if (type === "clients") {
           newElementEdited = {
-            // ...item,
             name: edited[1],
             plan: edited[2],
             contact: edited[3],
@@ -44,12 +42,10 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         }
         if (type === "provider") {
           newElementEdited = {
-            // ...item,
             name: edited[1],
             product: edited[2],
             contact: edited[3],
             email: edited[4],
-            // date: edited[5],
             description: edited[5],
             provider: edited[6],
           };
@@ -58,7 +54,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         }
         if (type === "elements") {
           newElementEdited = {
-            // ...item,
             name: edited[1],
             state: edited[2],
             description: edited[6],
@@ -71,7 +66,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         }
         if (type === "employee") {
           newElementEdited = {
-            // ...item,
             name: edited[1],
             email: edited[2],
             contact: edited[6],

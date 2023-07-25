@@ -13,19 +13,12 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     if (notNull.length < tHeader.length) {
       return toast.error("Debes llenar todos los campos")
     }
-    let newId
-    if (tBody.length < 1) {
-      newId = 1
-    } else {
-      newId = tBody[tBody.length - 1].id + 1
-    }
     let newElement
     /* -------------------------------------------------------------------------- */
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
       newElement = {
-          id: newId,
           nombre: inputField[0],
           plan: inputField[1],
           celular: inputField[2],
