@@ -85,7 +85,7 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 ![image 47 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/c6c5e63e-630f-4760-997a-733776e37e11)
 `Frontend`
-|Franco Sa.
+|Franco S.
 ![image 50 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/6732f9e9-4a1b-45c9-acb5-9cc8c88edfbf)
 `Frontend`
 |Joaquin R.
