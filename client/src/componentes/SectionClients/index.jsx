@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Table from "../Table";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
-import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -19,43 +18,13 @@ const IndexTable = () => {
 
   const title = "Clientes";
   const type = "clients";
-  const BODY_DATA = "BODY_DATA";
   const tableHeader = [
     "Nombre completo",
     "Plan",
     "Celular",
-    "Mail",
+    "Email",
     "Inicio",
     "Vencimiento",
-  ];
-  const tableBody = [
-    {
-      id: 1,
-      nombre: "Kristin Watson",
-      plan: "full",
-      celular: "123456789",
-      mail: "kristin@mail.com",
-      inicio: "Text",
-      vencimiento: "08/08/2023",
-    },
-    {
-      id: 2,
-      nombre: "Floyd Miles",
-      plan: "free pass",
-      celular: "456789123",
-      mail: "floyd@mail.com",
-      inicio: "Text",
-      vencimiento: "08/08/2023",
-    },
-    {
-      id: 3,
-      nombre: "Brooklyn Simmons",
-      plan: "2 weeks",
-      celular: "789123456",
-      mail: "brooklyn@mail.com",
-      inicio: "Text",
-      vencimiento: "08/08/2023",
-    },
   ];
 
   const [tBody, setTBody] = useState([]);
@@ -66,7 +35,7 @@ const IndexTable = () => {
   const getUser = () => {
     axios.get(`/api/clients`)
     .then(info => {
-        console.log(info.data);
+        // console.log(info.data);
         const { data } = info;
         setTBody(data)
       })
@@ -91,7 +60,6 @@ const IndexTable = () => {
       dateOut: dateOut
     })
 
-
     setTimeout(() => {
       axios.post(`/api/client`, newClient)
       .then((res) => {
@@ -101,10 +69,6 @@ const IndexTable = () => {
       .catch(err => console.log(err)) 
     }, 500)
   }
-  
-
-
-
 
   return (
     <div className="flex flex-col justify-center gap-10 w-full">
@@ -118,6 +82,7 @@ const IndexTable = () => {
           type={type}
           error={error}
         />
+        
         <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
           <dialog id="my_modal_1" className="modal">
           <form method="dialog" className="modal-box">

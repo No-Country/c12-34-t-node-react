@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Table from "../Table";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
-import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
 import {axiosGet} from "../../hooks/axiosGeneral"
 

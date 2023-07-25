@@ -1,23 +1,15 @@
-// import React from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
-import { axiosDeleteProvider, axiosGetProviders } from "../../hooks/axiosProvider";
-import {axiosGet, axiosDelete} from "../../hooks/axiosGeneral"
+import {axiosGet, axiosDelete, axiosPut} from "../../hooks/axiosGeneral"
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([])
 
 
   const editItem = (_id) => {
-    // axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
-    axios.put(`/api/client/${_id}`, inputFields)
-      .then((res) => console.log(res.data))
-      .catch(err => console.log(err))
-
     let edited = []
     const itemBody = tBody.find((item) => item.id === _id)
     let itemBody2 = []
@@ -33,22 +25,25 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         }
       }
     }
-
-    const newState = tBody.map((item) => {
+    let newElementEdited;
+    //const newState = 
+    tBody.map((item) => {
       if (item.id === id) {
-        if (type === "clientes") {
-          return {
-            ...item,
-            nombre: edited[1],
+        if (type === "clients") {
+          newElementEdited = {
+            // ...item,
+            name: edited[1],
             plan: edited[2],
-            celular: edited[3],
-            mail: edited[4],
-            inicio: edited[5],
-            vencimiento: edited[6],
+            contact: edited[3],
+            email: edited[4],
+            dateIn: edited[5],
+            dateOut: edited[6],
           }
+          axiosPut(newElementEdited, _id, "client")
+          axiosGet(setTBody, setTError, "clients")
         }
         if (type === "provider") {
-          return {
+          newElementEdited = {
             // ...item,
             name: edited[1],
             product: edited[2],
@@ -58,9 +53,11 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             description: edited[5],
             provider: edited[6],
           };
+          axiosPut(newElementEdited, _id, "provider")
+          axiosGet(setTBody, setTError, "providers")
         }
         if (type === "elements") {
-          return {
+          newElementEdited = {
             // ...item,
             name: edited[1],
             state: edited[2],
@@ -69,15 +66,24 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             price: edited[4],
             date: edited[5],
           }
+          axiosPut(newElementEdited, _id, "elements")
+          axiosGet(setTBody, setTError, "elements")
+        }
+        if (type === "employee") {
+          newElementEdited = {
+            // ...item,
+            name: edited[1],
+            email: edited[2],
+            contact: edited[6],
+            occupation: edited[3],
+          }
+          axiosPut(newElementEdited, _id, "employee")
+          axiosGet(setTBody, setTError, "employees")
         }
       }
       return item
     })
-    axiosPutElement(newState, _id)
-
-    setTBody(tBody)
-
-    toast.success(`Elemento ${id} editado`);
+    toast.success(`Elemento: ${itemBody.name.toUpperCase()}, editado`);
     setInputFields([]);
   };
   const handleDelete = async (id, type) => {
@@ -117,22 +123,13 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     values[i] = event
     setInputFields(values)
   }
-  const deleteItem = () => {
-    const newBody = tBody.filter((item) => item.id !== id)
-    setTBody(newBody)
-    toast.success(`Elemento ${id} eliminado`)
-  }
-  function handleChange(i, event) {
-    const values = [...inputFields]
-    values[i] = event.target.value
-    setInputFields(values)
-  }
 
   return (
     <td className="grow flex flex-nowrap my-2 items-center gap-3 px-1 ">
       {/* The button to open modal */}
       <label htmlFor={`my_modal_${id}`} className=' shrink-0'>
         {/* <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-green' /> */}
+        <BiEditAlt/>
       </label>
       <input type="checkbox" id={`my_modal_${id}`} className="modal-toggle" />
 

@@ -1,21 +1,20 @@
 import { Request, Response } from "express"
-import { IProvider } from "../../interfaces/IProviders"
 import Clientes from "../../models/Clientes"
 import { IClient } from "../../interfaces/IClient"
 
 export const updateClient = async (req: Request, res: Response) => {
-
-  
-
   const { id } = req.params
-  const client = req.body as IClient
-  console.log(id)
-  console.log(req.body)
+  const cliente = req.body as IClient
 
   try {
-    const cliente = await Clientes.update(client, { where: { id } })
-    return res.status(200).json({ msg: "Cliente actualizado", cliente })
-
+    const info = await Clientes.findAll();
+    const client = info.find((el: IClient) => el.id === id)
+    if (!client) {
+      return res.json({ msg: "El cliente no existe" })
+    } else {
+      await Clientes.update(cliente, { where: { id } })
+      return res.status(200).json({ msg: "Cliente actualizado", client })
+    }
   } catch (error) {
     console.log(error)
   }
