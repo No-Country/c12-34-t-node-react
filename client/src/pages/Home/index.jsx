@@ -3,8 +3,9 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import {
   Bienes,
   BienesElementos,
-  BienesMaquinas,
+  // BienesMaquinas,
   BienesMobiliario,
+  ConstructionPage,
   SectionClients,
   SectionProvider,
   SectionStaff,
@@ -32,6 +33,7 @@ const HomePrincipal = () => {
   }, [token, navigate])
 */
   return (
+
 <>
     {/*{token === "" 
     ? <Navigate to='/' />
@@ -42,12 +44,12 @@ const HomePrincipal = () => {
         <div>
           <Sidebar />
         </div>
-     
+        
       <Routes>
-
+      
           <Route path='/admin' element={<AdminPage />} />
-          <Route path='/bienes' element={<Bienes />} />
-          <Route path='/bienes/maquinas' element={<BienesMaquinas/>} />
+          <Route path='/bienes' element={<Bienes/>} />
+          <Route path='/bienes/maquinas' element={<ConstructionPage/>} />
           <Route path='/bienes/elementos' element={<BienesElementos/>} />
           <Route path='/bienes/mobiliario' element={<BienesMobiliario/>} />
           <Route path="/staff" element={<SectionStaff />} />
