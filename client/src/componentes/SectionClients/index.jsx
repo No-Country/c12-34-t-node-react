@@ -6,6 +6,7 @@ import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
 import axios from "axios";
+import ModalClientes from "./ModalClientes";
 
 const IndexTable = () => {
 
@@ -15,6 +16,7 @@ const IndexTable = () => {
    const [contact, setContact] = useState("")
    const [dateIn, setDateIn] = useState("")
    const [dateOut, setDateOut] = useState("")
+   const [showTable, setShowTable] = useState(true)
 
 
   const title = "Clientes";
@@ -79,7 +81,11 @@ const IndexTable = () => {
   useEffect(() => { 
      getUser()
   }, [])
-
+  
+  const resetClients = (newClient) => { 
+    setTBody((prev) => [...prev, newClient]);
+  }
+  
   const createNewClient = () => { 
     
     const newClient = ({ 
@@ -101,9 +107,6 @@ const IndexTable = () => {
       .catch(err => console.log(err)) 
     }, 500)
   }
-  
-
-
 
 
   return (
@@ -111,6 +114,7 @@ const IndexTable = () => {
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
+
         <Table
           tHeader={tableHeader}
           tBody={tBody}
@@ -118,7 +122,10 @@ const IndexTable = () => {
           type={type}
           error={error}
         />
-        <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
+
+        <ModalClientes reset={resetClients}/>
+       
+        { /* <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
           <dialog id="my_modal_1" className="modal">
           <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
@@ -129,10 +136,9 @@ const IndexTable = () => {
           <input type="date" placeholder="dateOut" onChange={(e) => setDateOut(e.target.value)}></input>
           <input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)}></input>
           <button className="btn">Close</button>
-          <button onClick={() => createNewClient()}> Enviar cliente nuevo</button>
-
+         <button onClick={() => createNewClient()}> Enviar cliente nuevo</button>
   </form>
-</dialog>
+</dialog>*/}
       </div>
     </div>
   );

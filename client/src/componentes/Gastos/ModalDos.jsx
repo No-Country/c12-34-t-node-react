@@ -1,6 +1,36 @@
 import React from 'react'
+import axios from "axios"
+const { VITE_BACKEND_URL } = import.meta.env
+import { useEffect, useState } from 'react';
+import { useContext } from "react";
+import { UserContext } from "../../store/userContext";
 
-const ModalDos = () => {
+const ModalDos = ({setIncomeNuevo}) => {
+
+  const userCtx = useContext(UserContext)
+
+  const [name, setName] = useState("")
+  const [income, setIncome] = useState("")
+  //const [date, setDate] = useState("")
+  
+
+   const sendNewIncome = () => {
+    const newIncome = ( { 
+      name: name,
+      income: income,
+      userId: userCtx.userId
+    })
+    axios.post(`${VITE_BACKEND_URL}/api/income`, newIncome) 
+         .then((res) => { 
+          console.log(res.data)
+          setIncomeNuevo(newIncome)
+         })
+         .catch((err) => { 
+          console.log(err)
+         })
+    }
+
+
   return (
     <div className='text-black'>
   <button className="btn btn-active btn-primary mb-5" onClick={() => window.my_modal_3.showModal()}>Agregar</button>
@@ -15,21 +45,21 @@ const ModalDos = () => {
         <div className='bg-white rounded-xl mt-4 p-4'>
           <div className='mb-4'>
             <p className='text-base font-semibold'><b>Nombre</b></p>
-            <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3'></input>
+            <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setName(e.target.value)}></input>
           </div>
 
-          <div className='mb-4'>
+         {/* <div className='mb-4'>
             <p className='text-base font-semibold'><b>Fecha</b></p>
-            <input type='date' className='w-full bg-slate-300 rounded-lg py-2 px-3'></input>
-          </div>
+            <input type='date' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setDate(e.target.value)}></input>
+          </div> */}
 
           <div className='mb-4'>
             <p className='text-base font-semibold'><b>Importe</b></p>
-            <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3'></input>
+            <input type='number' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setIncome(e.target.value)}></input>
           </div>
 
           <div className='flex justify-center'>
-            <button className='text-white btn btn-active btn-primary rounded-xxl w-[100px] mr-4'>Agregar</button>
+            <button className='text-white btn btn-active btn-primary rounded-xxl w-[100px] mr-4' onClick={() => sendNewIncome()}>Agregar</button>
             <button className='text-white btn btn-active btn-primary rounded-xxl w-[100px]'>Cancelar</button>
           </div>
         </div>

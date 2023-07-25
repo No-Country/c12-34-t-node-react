@@ -7,15 +7,21 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
 import ChartComponent from './Grafico';
 import ModalGastos from './Modal';
 import ModalDos from './ModalDos';
 import { Grid } from '@mui/material';
+import axios from "axios"
+const { VITE_BACKEND_URL } = import.meta.env
+import { useEffect, useState } from 'react';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
+
+
+
+
 
 const rows = [
   createData('Alquiler', "$43.000", ),
@@ -34,9 +40,50 @@ const ingresos = [
   createData('Cuota', "$400.000", ),
   createData('Cuota', "$400.000", ),
 ]
+          
+
+
+
 
 const Gastos = () => {
+
+  const [gastos, setGastos] = useState([])
+  const [totalGastado, setTotalGastado] = useState([])
+  const [ingresos, setIngresos] = useState([])
+
+  const incorporateExpense = (x) => { 
+    setGastos((prevGastos) => [...prevGastos, x]);
+  }
+
+  const incorporateIncome = (x) => { 
+    setIngresos((prevIncomes) => [...prevIncomes, x]);
+  }
   
+     
+  useEffect(() => { 
+   axios.get(`${VITE_BACKEND_URL}/api/expenses`) 
+        .then((res) => { 
+          console.log(res.data.expenses)
+          setGastos(res.data.expenses)
+          console.log(res.data.gastos)
+          setTotalGastado(res.data.gastos)
+        })
+        .catch((err) => console.log(err))
+ }, [])
+
+ useEffect(() => { 
+  axios.get(`${VITE_BACKEND_URL}/api/income`) 
+       .then((res) => { 
+         setIngresos(res.data)   
+       })
+       .catch((err) => console.log(err))
+}, [])
+
+const getTotalIncome = () => {
+  return ingresos.reduce((total, row) => total + parseInt(row.income), 0);
+};
+ 
+ 
   return (
     <div className='mx-auto h-full'>
       <div className='mt-[20px]'>
@@ -61,23 +108,39 @@ const Gastos = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+          {gastos.map((gasto) => (
+            <TableRow key={gasto.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component='th' scope='row'>
-                {row.name}
+                {gasto.name}
               </TableCell>
-              <TableCell align='right'> <b>{row.calories}</b>  </TableCell>
+
+              <TableCell align='right'> <b>{gasto.expense}</b>  </TableCell>
               <TableCell className='text-right'><img src={iconEdit} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
               <TableCell className='text-right'><img src={iconDelete} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
             </TableRow>
+         
           ))}
+        </TableBody>
+        <TableBody>
+        <TableRow>
+    <TableCell component='th' scope='row'>
+      <b>Total</b>
+    </TableCell>
+    <TableCell align='right'>
+      <b>{totalGastado}</b>
+    </TableCell>
+    <TableCell className='text-right'></TableCell>
+    <TableCell className='text-right'></TableCell>
+  </TableRow>
         </TableBody>
       </Table>
       <div className='text-center mt-[20px]'>
-        <ModalGastos title={'Agregar Gastos Mensuales'} />
+        <ModalGastos title={'Agregar Gastos Mensuales'} setGastoNuevo={incorporateExpense} />
       </div>
     </TableContainer>
   </Grid>
+   
+  
 
   <Grid item xs={12} md={6}>
     <TableContainer className='mb-5'>
@@ -93,19 +156,33 @@ const Gastos = () => {
               <TableCell component='th' scope='row'>
                 {row.name}
               </TableCell>
-              <TableCell align='right'> <b className='text-teal-400'>{row.calories}</b> </TableCell>
+              <TableCell align='right'> <b className='text-teal-400'>{row.income}</b> </TableCell>
               <TableCell className='text-right'><img src={iconEdit} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
               <TableCell className='text-right'><img src={iconDelete} className='w-[15px] h-[15px] cursor-pointer'></img></TableCell>
             </TableRow>
           ))}
         </TableBody>
+        <TableBody>
+        <TableRow>
+    <TableCell component='th' scope='row'>
+      <b>Total</b>
+    </TableCell>
+    <TableCell align='right'>
+     <b>{getTotalIncome()}</b> 
+    </TableCell>
+    <TableCell className='text-right'></TableCell>
+    <TableCell className='text-right'></TableCell>
+  </TableRow>
+        </TableBody>
       </Table>
       <div className='text-center mt-[20px]'>
-        <ModalDos />
+        <ModalDos setIncomeNuevo={incorporateIncome}/>
       </div>
     </TableContainer>
   </Grid>
 </Grid>
+
+
     </div>
   )
 }
