@@ -101,12 +101,17 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   function handleChange(i, e) {
     let event = e.target.value
     const values = [...inputFields]
+    const number = /[0-9]/
     if (i === 6) {
-      if (event.length === 2) {
-        event = event + "-"
-      }
-      if (event.length === 5) {
-        event = event + "-"
+      if (!event.match(number)) {
+        event
+      } else {
+        if (event.length === 2 && event.match(number)) {
+          event = event + "-"
+        }
+        if (event.length === 5 && event.match(number)) {
+          event = event + "-"
+        }
       }
     }
     values[i] = event

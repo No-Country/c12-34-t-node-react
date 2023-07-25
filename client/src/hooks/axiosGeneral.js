@@ -1,45 +1,36 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-const { VITE_BACKEND_URL } = import.meta.env;
 
 export const axiosGet = async (setTBody, setTError, type) => {
-  // await axios(`${VITE_BACKEND_URL}/api/${type}`)
-  await axios(`/api/${type}`)
-    .then(info => {
-      setTBody(info.data)
-    })
-    .catch(err => {
-      console.log(err.response.data.error);
-      setTError(err.response.data.error)
-    });
+  try {
+    const { data } = (await axios(`/api/${type}`))
+    console.log("GET:", data)
+    setTBody(data)
+  } catch (error) {
+    // console.log(error.response.data);
+    console.log(error);
+    // setTError(error.response.data.error);
+    setTError(error);
+  }
 }
 
 export const axiosPost = async (newElement, type) => {
-  // await axios.post(`${VITE_BACKEND_URL}/api/${type}`, newElement)
-  setTimeout(async() => {
-    await axios.post(`/api/${type}`, newElement)
-      .then((res) => {
-        console.log("BUTTON ADD:", res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  }, 1000);
+  await axios.post(`/api/${type}`, newElement)
+  .then(res => {
+    console.log("POST:", res.data)
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }).catch(error => console.log(error.response.data.error))
 };
 
 export const axiosDelete = async (id, type) => {
-  // await axios.delete(`${VITE_BACKEND_URL}/api/${type}/${id}`)
-  await axios.delete(`/api/${type}/${id}`)
-    .then((res) => {
-      console.log("BUTTON delete:", res.data);
-      // setTimeout(() => {
-      //   // window.location.reload();
-      //   window.location.reload(true);
-      // }, 1000);
-    })
-    .catch((err) => {
-      console.log(err.response.data.error);
-    });
-  // axiosGet();
-  toast.success(`Proveedor ${id} eliminado`);
+  try {
+    const { data } = (await axios.delete(`/api/${type}/${id}`))
+    console.log("DELETE:", data)
+    toast.success(`Proveedor ${id} eliminado`);
+  } catch (error) {
+    // console.log(error.response.data.error);
+    console.log(error);
+  }
 };

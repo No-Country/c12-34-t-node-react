@@ -5,7 +5,6 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-const { VITE_BACKEND_URL } = import.meta.env;
 import axios from "axios";
 import ModalClientes from "./ModalClientes";
 
@@ -67,7 +66,7 @@ const IndexTable = () => {
 
 
   const getUser = () => {
-     axios.get(`${VITE_BACKEND_URL}/api/clients`)
+    axios.get(`/api/clients`)
     .then(info => {
         console.log(info.data);
         const { data } = info;
@@ -82,24 +81,36 @@ const IndexTable = () => {
   useEffect(() => { 
      getUser()
   }, [])
-
- 
+  
   const resetClients = (newClient) => { 
     setTBody((prev) => [...prev, newClient]);
   }
-
   
-  // window.location.reload()
-  // window.location.reload(true)
+  const createNewClient = () => { 
+    
+    const newClient = ({ 
+      name: name, 
+      email: email,
+      contact: contact,
+      plan: plan,
+      dateIn: dateIn,
+      dateOut: dateOut
+    })
 
 
-  
-
-
+    setTimeout(() => {
+      axios.post(`/api/client`, newClient)
+      .then((res) => {
+        console.log(res.data)
+        window.location.reload()
+      })
+      .catch(err => console.log(err)) 
+    }, 500)
+  }
 
 
   return (
-    <div className="flex flex-col justify-center gap-10 w-full">
+    <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
       <div className="flex flex-col gap-10 mx-5">
