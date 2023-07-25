@@ -97,10 +97,10 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 
 ![image 42](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/af59607a-0d8c-475b-bc40-73c09adc3bb2)
-`Team Backend`
+`Backend`
 |Jerlib G.
 ![image 49 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/055f6245-0204-4724-9bdb-9d0d44642413)
-`Team Backend`
+`Backend`
 |Carlos M.
 
 
