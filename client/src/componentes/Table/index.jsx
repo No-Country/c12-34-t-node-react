@@ -21,6 +21,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                     {Object.values(data).map((item, subI) => {
                       // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
                       if (subI !== 0 && subI !== 7 && subI !== 8) {
+                      // if (subI !== 0 && subI !== 6 && subI !== 7 && subI !== 8) {
                         return (
                           <td key={subI} >
                             <div className="flex flex-row gap-2">
@@ -45,7 +46,9 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
             ) : (
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
-                  <p className=' text-lg font-PoppinsRegular text-pallete-grey'>{error}</p>
+                  <p className=' text-lg font-PoppinsRegular text-pallete-grey'>
+                    {error ? error : "No hay información disponible"}
+                  </p>
                 </td >
               </tr >
             )}

@@ -43,6 +43,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           provider: inputField[5],
           adminId: userId,
       }
+      console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "provider")
     } else if (type === "element-client") {
       const selectedProvider = inputField[6]// Nombre del Elemento
