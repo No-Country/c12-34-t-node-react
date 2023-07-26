@@ -53,12 +53,13 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
-          type: inputField[3],
+          stock: inputField[3],
           price: inputField[4],
           date: inputField[5],
           providerId: providerId.id,
           adminId: userId,
       }
+      // console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "element-client")
     } else if (type === "employee") {
       newElement = {
@@ -70,10 +71,10 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
       // console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "employee")
     }
-    setTBody((items) => {
-      console.log("ITEMS:", items)
-      return [...items, newElement]
-    })
+    // setTBody((items) => {
+    //   console.log("ITEMS:", items)
+    //   return [...items, newElement]
+    // })
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };

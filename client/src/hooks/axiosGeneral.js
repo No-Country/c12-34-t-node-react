@@ -16,9 +16,9 @@ export const axiosPost = async (newElement, type) => {
   try {
     const { data } = (await axios.post(`/api/${type}`, newElement))
     console.log("POST:", data)
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 1000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   } catch (error) {
     console.log(error)
   }
@@ -28,9 +28,9 @@ export const axiosPut = async (newElementEdited, _id, type) => {
   try {
     const { data } = (await axios.put(`/api/${type}/${_id}`, newElementEdited))
     console.log("EDIT:", data)
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 1000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   } catch (error) {
     console.log(error)
   }

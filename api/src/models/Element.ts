@@ -5,11 +5,12 @@ import { State } from "./../interfaces/IElements";
 class Elements extends Model<IElements> implements IElements {
   id!: string;
   name!: string;
-  type!: string;
+  stock!: string;
   description!: string;
   price!: number;
   date!: string;
-  state!: State;
+  // state!: State;
+  state!: string;
 }
 Elements.init(
   {
@@ -23,18 +24,19 @@ Elements.init(
       allowNull: false,
     },
     state: {
-      type: DataTypes.ENUM(
-        State.En_reparacion,
-        State.Nuevo,
-        State.Usado,
-      ),
+      // type: DataTypes.ENUM(
+      //   State.En_reparacion,
+      //   State.Nuevo,
+      //   State.Usado,
+      // ),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    type: {
+    stock: {
       // type: DataTypes.ENUM(
       //   Types.Element,
       //   Types.Machine,

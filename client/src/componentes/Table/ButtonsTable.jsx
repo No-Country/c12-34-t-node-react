@@ -37,8 +37,8 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             dateIn: edited[5],
             dateOut: edited[6],
           }
+          // console.log("EDIT-ELEMENT:", newElementEdited)
           axiosPut(newElementEdited, _id, "client")
-          axiosGet(setTBody, setTError, "clients")
         }
         if (type === "provider") {
           newElementEdited = {
@@ -50,19 +50,18 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             provider: edited[6],
           };
           axiosPut(newElementEdited, _id, "provider")
-          axiosGet(setTBody, setTError, "providers")
         }
-        if (type === "elements") {
+        // if (type === "elements") {
+        if (type === "element-client") {
           newElementEdited = {
             name: edited[1],
             state: edited[2],
-            description: edited[6],
-            type: edited[3],// Stock
-            price: edited[4],
-            date: edited[5],
+            description: edited[3],
+            stock: edited[4],// Stock
+            price: edited[5],
+            date: edited[6],
           }
           axiosPut(newElementEdited, _id, "elements")
-          axiosGet(setTBody, setTError, "elements")
         }
         if (type === "employee") {
           newElementEdited = {
@@ -99,17 +98,36 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   }
   function handleChange(i, e) {
     let event = e.target.value
+    // console.log("EVENT:", event)
     const values = [...inputFields]
     const number = /[0-9]/
-    if (i === 6) {
-      if (!event.match(number)) {
-        event
-      } else {
-        if (event.length === 2 && event.match(number)) {
-          event = event + "-"
+    if (type === "element-client") {
+      // Fecha elementos
+      if (i === 6) {
+        if (!event.match(number)) {
+          event
+        } else {
+          if (event.length === 2 && event.match(number)) {
+            event = event + "-"
+          }
+          if (event.length === 5 && event.match(number)) {
+            event = event + "-"
+          }
         }
-        if (event.length === 5 && event.match(number)) {
-          event = event + "-"
+      }
+    }
+    if (type === "clients") {
+      // Fecha cliente
+      if (i >= 5) {
+        if (!event.match(number)) {
+          event
+        } else {
+          if (event.length === 2 && event.match(number)) {
+            event = event + "-"
+          }
+          if (event.length === 5 && event.match(number)) {
+            event = event + "-"
+          }
         }
       }
     }
