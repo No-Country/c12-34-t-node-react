@@ -5,7 +5,7 @@ import "./NotFound.css";
 const NotFound = () => {
   return (
     <>
-    {/* fix vista grande */}
+    
       <div className="w-full flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-[#211D1D] to-[#1A1363]">
 
         <div className="text-center">
