@@ -56,10 +56,10 @@ const HomePrincipal = () => {
           <Route path="/clientes" element={<SectionClients />} />
           <Route path="/proovedores" element={<SectionProvider />} />
           <Route path='/horarios' element={<Horarios />} />
-          <Route path='/reservas' element={<GroupClasses />} />
+          <Route path='/clasesgrupales' element={<GroupClasses />} />
           <Route path='/gastos' element={<Gastos />} />
 
-          <Route path='*' element={<NotFound />} />
+          <Route path='/*' element={<NotFound />} />
 
         </Routes>
       </div>
