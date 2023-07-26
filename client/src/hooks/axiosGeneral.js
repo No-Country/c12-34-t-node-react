@@ -22,27 +22,18 @@ export const axiosPost = async (newElement, type) => {
   } catch (error) {
     console.log(error)
   }
-  // await axios.post(`/api/${type}`, newElement)
-  // .then(res => {
-  //   console.log("POST:", res.data)
-  //   // setTimeout(() => {
-  //   //   window.location.reload();
-  //   // }, 1000);
-  // })
-  // .catch(error => console.log(error.response.data.error))
 };
 
-export const axiosPut = (newElementEdited, _id, type) => {
-  axios.put(`/api/${type}/${_id}`, newElementEdited)
-    .then((res) => {
-      // console.log("BUTTON edit:", res.data);
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
-    })
-    .catch((err) => {
-      console.log(err.response.data.error);
-    });
+export const axiosPut = async (newElementEdited, _id, type) => {
+  try {
+    const { data } = (await axios.put(`/api/${type}/${_id}`, newElementEdited))
+    console.log("EDIT:", data)
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1000);
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const axiosDelete = async (id, type) => {
