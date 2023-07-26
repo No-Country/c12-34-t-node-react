@@ -59,7 +59,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           providerId: providerId.id,
           adminId: userId,
       }
-      // console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "element-client")
     } else if (type === "employee") {
       newElement = {
@@ -68,7 +67,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           contact: inputField[2],
           occupation: inputField[3],
       }
-      // console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "employee")
     }
     // setTBody((items) => {
