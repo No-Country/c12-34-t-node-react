@@ -9,15 +9,13 @@ import axios from "axios";
 import ModalClientes from "./ModalClientes";
 
 const IndexTable = () => {
-
-   const [name, setName] = useState("")
-   const [email, setEmail] = useState("")
-   const [plan, setPlan] = useState("")
-   const [contact, setContact] = useState("")
-   const [dateIn, setDateIn] = useState("")
-   const [dateOut, setDateOut] = useState("")
-   const [showTable, setShowTable] = useState(true)
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [plan, setPlan] = useState("");
+  const [contact, setContact] = useState("");
+  const [dateIn, setDateIn] = useState("");
+  const [dateOut, setDateOut] = useState("");
+  const [showTable, setShowTable] = useState(true);
 
   const title = "Clientes";
   const type = "clients";
@@ -64,57 +62,54 @@ const IndexTable = () => {
 
   const [error, setTError] = useState("");
 
-
   const getUser = () => {
-    axios.get(`/api/clients`)
-    .then(info => {
+    axios
+      .get(`/api/clients`)
+      .then((info) => {
         console.log(info.data);
         const { data } = info;
-        setTBody(data)
+        setTBody(data);
       })
-      .catch(err => {
-        console.log(err.response.data.error)
-        setTError(err.response.data.error)
+      .catch((err) => {
+        console.log(err.response.data.error);
+        setTError(err.response.data.error);
       });
   };
 
-  useEffect(() => { 
-     getUser()
-  }, [])
-  
-  const resetClients = (newClient) => { 
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const resetClients = (newClient) => {
     setTBody((prev) => [...prev, newClient]);
-  }
-  
-  const createNewClient = () => { 
-    
-    const newClient = ({ 
-      name: name, 
+  };
+
+  const createNewClient = () => {
+    const newClient = {
+      name: name,
       email: email,
       contact: contact,
       plan: plan,
       dateIn: dateIn,
-      dateOut: dateOut
-    })
-
+      dateOut: dateOut,
+    };
 
     setTimeout(() => {
-      axios.post(`/api/client`, newClient)
-      .then((res) => {
-        console.log(res.data)
-        window.location.reload()
-      })
-      .catch(err => console.log(err)) 
-    }, 500)
-  }
-
+      axios
+        .post(`/api/client`, newClient)
+        .then((res) => {
+          console.log(res.data);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }, 500);
+  };
 
   return (
-    <div className="flex flex-col  gap-10 w-full">
+    <div className="flex flex-col w-full gap-2 m-2 sm:m-5">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
-      <div className="flex flex-col gap-10 mx-5">
-
+      <div className="w-[80vw] flex flex-col gap-10 mt-5 mx-auto">
         <Table
           tHeader={tableHeader}
           tBody={tBody}
@@ -123,9 +118,9 @@ const IndexTable = () => {
           error={error}
         />
 
-        <ModalClientes reset={resetClients}/>
-       
-        { /* <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
+        <ModalClientes reset={resetClients} />
+
+        {/* <button className="btn" onClick={()=>window.my_modal_1.showModal()}>open modal</button>
           <dialog id="my_modal_1" className="modal">
           <form method="dialog" className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>

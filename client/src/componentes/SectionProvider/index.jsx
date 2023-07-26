@@ -5,7 +5,7 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
-import {axiosGet} from "../../hooks/axiosGeneral"
+import { axiosGet } from "../../hooks/axiosGeneral";
 
 const IndexTable = () => {
   const title = "Proveedores";
@@ -23,14 +23,14 @@ const IndexTable = () => {
   const [error, setTError] = useState("");
 
   useEffect(() => {
-    axiosGet(setTBody, setTError, "providers")
-  }, [])
+    axiosGet(setTBody, setTError, "providers");
+  }, []);
 
   return (
-    <div className="flex flex-col  gap-10 w-full">
+    <div className="flex flex-col w-full gap-2 m-2 sm:m-5">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
-      <div className="flex flex-col gap-10 mx-5">
+      <div className="w-[80vw] flex flex-col gap-10 mt-5 mx-auto">
         <Table
           tHeader={tableHeader}
           tBody={tBody}

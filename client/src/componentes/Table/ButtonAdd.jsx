@@ -1,80 +1,80 @@
 import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
-import {axiosGet, axiosPost} from "../../hooks/axiosGeneral"
+import { axiosGet, axiosPost } from "../../hooks/axiosGeneral";
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
-  const { userId } = useContext(UserContext)
-  
+  const { userId } = useContext(UserContext);
+
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
-    const notNull = inputField.filter((x) => x)
+    const notNull = inputField.filter((x) => x);
 
     if (notNull.length < tHeader.length) {
-      return toast.error("Debes llenar todos los campos")
+      return toast.error("Debes llenar todos los campos");
     }
-    let newId
+    let newId;
     if (tBody.length < 1) {
-      newId = 1
+      newId = 1;
     } else {
-      newId = tBody[tBody.length - 1].id + 1
+      newId = tBody[tBody.length - 1].id + 1;
     }
-    let newElement
+    let newElement;
     /* -------------------------------------------------------------------------- */
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
       newElement = {
-          id: newId,
-          nombre: inputField[0],
-          plan: inputField[1],
-          celular: inputField[2],
-          mail: inputField[3],
-          inicio: inputField[4],
-          vencimiento: inputField[5],
-      }
+        id: newId,
+        nombre: inputField[0],
+        plan: inputField[1],
+        celular: inputField[2],
+        mail: inputField[3],
+        inicio: inputField[4],
+        vencimiento: inputField[5],
+      };
     } else if (type === "provider") {
       newElement = {
-          name: inputField[0],
-          product: inputField[1],
-          contact: inputField[2],
-          email: inputField[3],
-          description: inputField[4],
-          provider: inputField[5],
-          adminId: userId,
-      }
-      axiosPost(newElement, "provider")
+        name: inputField[0],
+        product: inputField[1],
+        contact: inputField[2],
+        email: inputField[3],
+        description: inputField[4],
+        provider: inputField[5],
+        adminId: userId,
+      };
+      axiosPost(newElement, "provider");
     } else if (type === "element-client") {
       newElement = {
-          name: inputField[0],
-          state: inputField[1],
-          description: inputField[2],
-          type: inputField[3],// Stock
-          price: inputField[4],
-          date: inputField[5],
-          providerId: "c3d22dde-d53d-479f-80d3-407db1eb7d18",
-          adminId: userId,
-      }
-      axiosPost(newElement, "element-client")
+        name: inputField[0],
+        state: inputField[1],
+        description: inputField[2],
+        type: inputField[3], // Stock
+        price: inputField[4],
+        date: inputField[5],
+        providerId: "c3d22dde-d53d-479f-80d3-407db1eb7d18",
+        adminId: userId,
+      };
+      axiosPost(newElement, "element-client");
     } else if (type === "employee") {
       newElement = {
-          name: inputField[0],
-          email: inputField[1],
-          contact: inputField[2],
-          occupation: inputField[3],// Stock
-      }
-      axiosPost(newElement, "employee")
-    } 
+        name: inputField[0],
+        email: inputField[1],
+        contact: inputField[2],
+        occupation: inputField[3], // Stock
+      };
+      axiosPost(newElement, "employee");
+    }
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
   function handleChange(i, e) {
     let event = e.target.value;
     const values = [...inputField];
-    const number = /[0-9]/
+    const number = /[0-9]/;
     if (i === 5) {
       if (!event.match(number)) {
-        event
+        event;
       } else {
         if (event.length === 2 && event.match(number)) {
           event = event + "-";
@@ -85,8 +85,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
       }
     }
     values[i] = event;
-    setInputField(values);
-    // console.log(values)// Se vizualizan los input
   }
   return (
     <div className="flex justify-center">
@@ -120,7 +118,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
                       className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
                     />
                   </div>
-                )
+                );
                 // }
               })}
           </div>
@@ -142,7 +140,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonAdd
+export default ButtonAdd;
