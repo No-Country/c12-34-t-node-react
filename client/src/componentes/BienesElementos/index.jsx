@@ -33,8 +33,19 @@ const BienesElementos = () => {
     }, []);
 
     useEffect(() => {
-      // console.log(allProviders)
-    }, [allProviders])
+      axiosGet(setTBody, setTError, "elements")
+      
+      //Setear proveedores
+      axios.get(`/api/providers`)
+        .then((res)  => {
+          setAllProviders(res.data)
+        })
+        .catch(error => console.log(error))
+    }, []);
+
+    // useEffect(() => {
+    //   axiosGet(setTBody, setTError, "elements")
+    // }, [allProviders])
   
     return (
       <div className="flex flex-col justify-center gap-10 w-full">

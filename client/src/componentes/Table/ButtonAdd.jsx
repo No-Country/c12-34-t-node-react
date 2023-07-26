@@ -11,7 +11,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
     providers = allProviders?.map(({ id, name }) => {
       return {id, name}
     });
-    // console.log("providers in add:", providers)
   }
     
   const [inputField, setInputField] = useState([]);
@@ -47,9 +46,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
       axiosPost(newElement, "provider")
     } else if (type === "element-client") {
       const selectedProvider = inputField[6]// Nombre del Elemento
-      console.log("ID:", selectedProvider)
       const providerId = providers.find((item)=> selectedProvider === item.name)
-      // console.log("ID:", providerId)
       
       newElement = {
           name: inputField[0],
@@ -70,7 +67,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           occupation: inputField[3],// Stock
       }
       axiosPost(newElement, "employee")
-      axiosGet(setTBody, setTError, "employees")
     }
     // setTBody((items) => [...items, newElement])
     setInputField([]);

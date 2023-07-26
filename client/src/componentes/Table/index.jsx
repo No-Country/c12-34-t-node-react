@@ -1,7 +1,8 @@
 import "react-toastify/dist/ReactToastify.css"
 import ButtonsTable from "./ButtonsTable"
 
-const Table = ({ tHeader, tBody, setTBody, type, error, setTError, allProviders }) => {
+const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
+  const providersName = tBody?.map(({ provider }) => provider?.name);
   return (
     <>
       <div className="w-full overflow-x-scroll scroll-smooth h-full rounded-lg">
@@ -19,13 +20,12 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError, allProviders 
                   <tr key={i}>
                     {Object.values(data).map((item, subI) => {
                       // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
-                      const providerName = item?.providers?.map(el => el.name)
                       if (subI !== 0 && subI !== 7 && subI !== 8) {
                         return (
                           <td key={subI} >
                             <div className="flex flex-row gap-2">
                               <p className={`${subI === 1 && "badge badge-ghost bg-pallete-black bg-opacity-25"} font-PoppinsRegular whitespace-nowrap `}>
-                                {subI !== 9 ? item : providerName[i]}
+                                {subI !== 9 ? item : providersName[i]}
                               </p>
                             </div>
                           </td>

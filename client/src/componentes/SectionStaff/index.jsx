@@ -18,13 +18,19 @@ const IndexTable = () => {
   const [tBody, setTBody] = useState([]);
   const [error, setTError] = useState("");
 
-  useEffect(() => {
-    axiosGet(setTBody, setTError, "employees")
-  }, []);
+  // const current = (newStaff) => {
+  //   console.log("CURRENT:", newStaff)
+  //   setTBody((prev) => [...prev, newStaff]);
+  // }
 
   useEffect(() => {
     axiosGet(setTBody, setTError, "employees")
-  }, [tBody]);
+  }, []);
+  
+
+  // useEffect(() => {
+  //   axiosGet(setTBody, setTError, "employees")
+  // }, [tBody]);
 
   return (
     <div className="flex flex-col  gap-10 w-full">

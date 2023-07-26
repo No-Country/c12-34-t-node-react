@@ -25,6 +25,10 @@ const IndexTable = () => {
     axiosGet(setTBody, setTError, "providers")
   }, [])
 
+  // useEffect(() => {
+  //   axiosGet(setTBody, setTError, "providers")
+  // }, [tBody]);
+
   return (
     <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />

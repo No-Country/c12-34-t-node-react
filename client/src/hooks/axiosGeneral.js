@@ -20,8 +20,7 @@ export const axiosPost = async (newElement, type) => {
     //   window.location.reload();
     // }, 1000);
   })
-  .catch(error => console.log(error.response.data))
-  // .catch(error => console.log(error.response.data.error))
+  .catch(error => console.log(error.response.data.error))
 };
 
 export const axiosPut = (newElementEdited, _id, type) => {
