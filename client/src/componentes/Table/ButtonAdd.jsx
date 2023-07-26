@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
-import {axiosGet, axiosPost} from "../../hooks/axiosGeneral"
+import { axiosGet, axiosPost } from "../../hooks/axiosGeneral";
+
 
 const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) => {
   const { userId } = useContext(UserContext)
@@ -15,17 +16,19 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
     
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
-    const notNull = inputField.filter((x) => x)
+    const notNull = inputField.filter((x) => x);
 
     if (notNull.length < tHeader.length) {
-      return toast.error("Debes llenar todos los campos")
+      return toast.error("Debes llenar todos los campos");
     }
+
     let newElement
     /* -------------------------------------------------------------------------- */
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
       newElement = {
+
           nombre: inputField[0],
           plan: inputField[1],
           celular: inputField[2],
@@ -50,6 +53,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
       const providerId = providers.find((item)=> selectedProvider === item.name)
       
       newElement = {
+
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
@@ -79,10 +83,10 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
   function handleChange(i, e) {
     let event = e.target.value;
     const values = [...inputField];
-    const number = /[0-9]/
+    const number = /[0-9]/;
     if (i === 5) {
       if (!event.match(number)) {
-        event
+        event;
       } else {
         if (event.length === 2 && event.match(number)) {
           event = event + "-";
@@ -93,8 +97,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
       }
     }
     values[i] = event;
-    setInputField(values);
-    // console.log(values)// Se vizualizan los input
   }
   return (
     <div className="flex justify-center">
@@ -138,6 +140,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
                     )}
                   </div>
                 );
+
               })}
           </div>
           <div className="modal-action">
@@ -158,7 +161,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonAdd
+export default ButtonAdd;

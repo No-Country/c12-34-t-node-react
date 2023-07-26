@@ -9,19 +9,13 @@ import { axiosGet } from "../../hooks/axiosGeneral";
 const IndexTable = () => {
   const title = "Staff";
   const type = "employee";
-  
-  const tableHeader = [
-    "Nombre completo",
-    "Email",
-    "Celular",
-    "Ocupación",
-  ];
+  const tableHeader = ["Nombre completo", "Ocupación", "Celular", "Email"];
 
   const [tBody, setTBody] = useState([]);
   const [error, setTError] = useState("");
 
   useEffect(() => {
-    axiosGet(setTBody, setTError, "employees")
+    axiosGet(setTBody, setTError, "employees");
   }, []);
 
   // useEffect(() => {
@@ -32,7 +26,7 @@ const IndexTable = () => {
     <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
-      <div className="flex flex-col gap-10 mx-5">
+      <div className="w-[80vw] flex flex-col gap-10 mt-5 mx-auto">
         <Table
           tHeader={tableHeader}
           tBody={tBody}

@@ -1,37 +1,41 @@
-
-import axios from "axios"
-import { useEffect, useContext } from 'react'
-import { UserContext } from "../../store/userContext"
-import Title from '../Title'
-import profesor from "../../img/profesor.jpg"
-import ModalEditarPerfil from "./ModalEditarPerfil"
+import axios from "axios";
+import { useEffect, useContext } from "react";
+import { UserContext } from "../../store/userContext";
+import Title from "../Title";
+import profesor from "../../assets/imgs/profesor.jpg";
+import ModalEditarPerfil from "./ModalEditarPerfil";
 
 const AdminPage = () => {
-
   const getUsers = () => {
-    axios.get(`/api/all-users`)
+    axios
+      .get(`/api/all-users`)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
+        console.log(err);
+      });
+  };
 
-  const userCtx = useContext(UserContext)
+  const userCtx = useContext(UserContext);
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("EL ID DEL CONTEXTO FUE SETEADO A" + userCtx.userId)
-      console.log("EL NOMBRE DEL CONTEXTO FUE SETEADO A" + userCtx.userNameRegistered)
-      console.log("EL EMAIL DEL CONTEXTO FUE SETEADO A" + userCtx.userEmailRegistered)
-      console.log("EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered)
-    }, 2500)
-  }, [userCtx.length])
-
-
+      console.log("EL ID DEL CONTEXTO FUE SETEADO A" + userCtx.userId);
+      console.log(
+        "EL NOMBRE DEL CONTEXTO FUE SETEADO A" + userCtx.userNameRegistered
+      );
+      console.log(
+        "EL EMAIL DEL CONTEXTO FUE SETEADO A" + userCtx.userEmailRegistered
+      );
+      console.log(
+        "EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered
+      );
+    }, 2500);
+  }, [userCtx.length]);
 
   return (
+
     <main className='grow flex flex-col w-full gap-2 p-5 ml-auto bg-pallete-white dark:bg-pallete-lightgrey'>
 
       <Title title={'Perfil administrador'} />
@@ -69,3 +73,4 @@ const AdminPage = () => {
 }
 
 export default AdminPage
+

@@ -18,6 +18,7 @@ const IndexTable = () => {
    const [showTable, setShowTable] = useState(true)
 
 
+
   const title = "Clientes";
   const type = "clients";
   const tableHeader = [
@@ -33,34 +34,33 @@ const IndexTable = () => {
 
   const [error, setTError] = useState("");
 
-
   const getUser = () => {
+
     axios.get(`/api/clients`)
     .then(info => {
         // console.log(info.data);
         const { data } = info;
-        setTBody(data)
+        setTBody(data);
       })
-      .catch(err => {
-        console.log(err.response.data.error)
-        setTError(err.response.data.error)
+      .catch((err) => {
+        console.log(err.response.data.error);
+        setTError(err.response.data.error);
       });
   };
 
-  useEffect(() => { 
-     getUser()
-  }, [])
-  
-  const resetClients = (newClient) => { 
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const resetClients = (newClient) => {
     setTBody((prev) => [...prev, newClient]);
   }
-  
+
   return (
-    <div className="flex flex-col  gap-10 w-full">
+    <div className="flex flex-col w-full gap-2 m-2 sm:m-5">
       <ToastContainer autoClose={1000} />
       <SectionTitle title={title} />
-      <div className="flex flex-col gap-10 mx-5">
-
+      <div className="w-[80vw] flex flex-col gap-10 mt-5 mx-auto">
         <Table
           tHeader={tableHeader}
           tBody={tBody}
@@ -69,7 +69,9 @@ const IndexTable = () => {
           error={error}
         />
 
+
         <ModalClientes reset={resetClients}/>
+
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import "react-toastify/dist/ReactToastify.css"
-import ButtonsTable from "./ButtonsTable"
+import "react-toastify/dist/ReactToastify.css";
+import ButtonsTable from "./ButtonsTable";
 
 const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
   const providersName = tBody?.map(({ provider }) => provider?.name);
@@ -9,8 +9,15 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
         <table className="table table-pin-rows">
           <thead>
             <tr className="grow bg-pallete-blue text-pallete-white">
-              {tHeader && tHeader.map((item, i) => <th key={i}><p className=' text-start font-PoppinsMedium'>{item}</p></th>)}
-              <th><p className=' pr-14 text-start font-PoppinsMedium'>Acción</p></th>
+              {tHeader &&
+                tHeader.map((item, i) => (
+                  <th key={i}>
+                    <p className="font-PoppinsMedium">{item}</p>
+                  </th>
+                ))}
+              <th>
+                <p className="pr-14 text-start font-PoppinsMedium">Acción</p>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -22,15 +29,17 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                       // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
                       if (subI !== 0 && subI !== 7 && subI !== 8) {
                         return (
-                          <td key={subI} >
+
+                          <td key={subI}>
                             <div className="flex flex-row gap-2">
-                              <p className={`${subI === 1 && "badge badge-ghost bg-pallete-black bg-opacity-25"} font-PoppinsRegular whitespace-nowrap `}>
-                                {subI !== 9 ? item : providersName[i]}
+                              <p className="font-PoppinsRegular whitespace-nowrap">
+                                {item}
+
                               </p>
                             </div>
                           </td>
                         );
-                      }
+
                     })}
                     <ButtonsTable
                       id={data.id}
@@ -40,22 +49,24 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                       setTError={setTError}
                     />
                   </tr>
-                )
+                );
               })
             ) : (
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
+
                   <p className=' text-lg font-PoppinsRegular text-pallete-grey'>
                     {error ? error : "No hay información disponible"}
                   </p>
                 </td >
               </tr >
-            )}
-          </tbody >
-        </table >
-      </div >
-    </>
-  )
-}
 
-export default Table
+            )}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
+
+export default Table;
