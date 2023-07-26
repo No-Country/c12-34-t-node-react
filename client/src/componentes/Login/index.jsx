@@ -70,12 +70,12 @@ const Login = () => {
 
 
   return (
-    <>
+    <div className="bg-white h-screen">
       {token !== null
         ? <Navigate to='/home' />
         :
         <main
-          className='flex items-center justify-center gap-10 sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-10'>
+          className='flex items-center justify-center gap-10 sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-20 mt-10'>
           <Link to="/" className='basis-1/2 mx-auto hidden md:block'>
             <img src={logo} alt="Logo de Fitness Center Gym" className='basis-1/2 w-[30vw] mx-auto ' />
           </Link>
@@ -130,7 +130,7 @@ const Login = () => {
           </div>
         </main>
       }
-    </>
+    </div>
 
   )
 }

@@ -41,7 +41,6 @@ const HomePrincipal = () => {
       <>
         <div className="flex gap-1 bg-pallete-white">
           <Sidebar />
-
           <Routes>
 
             <Route path='/admin' element={<AdminPage />} />
@@ -51,7 +50,7 @@ const HomePrincipal = () => {
             <Route path='/bienes/mobiliario' element={<BienesMobiliario />} />
             <Route path="/staff" element={<SectionStaff />} />
             <Route path="/clientes" element={<SectionClients />} />
-            <Route path="/proovedores" element={<SectionProvider />} />
+            <Route path="/proveedores" element={<SectionProvider />} />
             <Route path='/horarios' element={<Horarios />} />
             <Route path='/reservas' element={<GroupClasses />} />
             <Route path='/gastos' element={<Gastos />} />

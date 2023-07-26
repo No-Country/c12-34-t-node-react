@@ -15,9 +15,10 @@ export interface IElements {
   id?: string,
   name: string,
   // type: Types,
-  type: string,
+  stock: string,
   description: string,
   price: number,
   date: string,
-  state: State,
+  // state: State,
+  state: string,
 }

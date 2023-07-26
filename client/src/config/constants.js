@@ -15,6 +15,6 @@ export const menus = [
   { name: "Clientes", link: "/home/clientes", icon: FiFolder,description:"Datos clientes" },
   { name: "Proveedores", link: "/home/proovedores", icon: FiShoppingCart,description:"Datos y pedidos" },
   { name: "Horarios", link: "/home/horarios", icon: MdOutlineBrowseGallery,description:"Horarios semanales" },
-  { name: "Reservas", link: "/home/reservas", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
+  { name: "Clases grupales", link: "/home/clasesgrupales", icon: MdOutlineCalendarMonth,description:"Reservas del día" },
   { name: "Gastos", link: "/home/gastos", icon: MdOutlineCurrencyExchange,description:"Ingresos, egresos, gastos fijos" },
 ];

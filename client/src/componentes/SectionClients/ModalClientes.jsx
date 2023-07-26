@@ -7,9 +7,9 @@ import axios from "axios";
 const ModalClientes = ({reset}) => {
 
     const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
     const [plan, setPlan] = useState("")
     const [contact, setContact] = useState("")
+    const [email, setEmail] = useState("")
     const [dateIn, setDateIn] = useState("")
     const [dateOut, setDateOut] = useState("")
 
@@ -18,9 +18,9 @@ const ModalClientes = ({reset}) => {
     
      const newUserToBeSaved = ({  
         name: name,
-        email: email,
-        contact: contact,
         plan: plan,
+        contact: contact,
+        email: email,
         dateIn: dateIn,
         dateOut: dateOut
       })
@@ -57,14 +57,14 @@ const ModalClientes = ({reset}) => {
             </div>
   
             <div className='mb-4'>
+              <p className='text-base font-semibold'><b>Plan</b></p>
+              <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setPlan(e.target.value)}></input>
+            </div>
+            <div className='mb-4'>
               <p className='text-base font-semibold'><b>Contacto</b></p>
               <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setContact(e.target.value)}></input>
             </div>
 
-            <div className='mb-4'>
-              <p className='text-base font-semibold'><b>Plan</b></p>
-              <input type='text' className='w-full bg-slate-300 rounded-lg py-2 px-3' onChange={(e) => setPlan(e.target.value)}></input>
-            </div>
 
             <div className='mb-4'>
               <p className='text-base font-semibold'><b>Email</b></p>

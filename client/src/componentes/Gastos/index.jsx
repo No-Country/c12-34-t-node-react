@@ -15,36 +15,6 @@ import axios from "axios"
 const { VITE_BACKEND_URL } = import.meta.env
 import { useEffect, useState } from 'react';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-
-
-
-
-const rows = [
-  createData('Alquiler', "$43.000", ),
-  createData('Luz', "$400.000", ),
-  createData('Gas', "$400.000", ),
-  createData('Agua', "$400.000", ),
-  createData('Tasa', "$400.000", ),
-  createData('Habilitacion', "$400.000"),
-];
-
-const ingresos = [ 
-  createData('Cuotas' ),
-  createData('Cuota', "$400.000", ),
-  createData('Cuota', "$400.000", ),
-  createData('Cuota', "$400.000", ),
-  createData('Cuota', "$400.000", ),
-  createData('Cuota', "$400.000", ),
-]
-          
-
-
-
-
 const Gastos = () => {
 
   const [gastos, setGastos] = useState([])

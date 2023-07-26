@@ -1,23 +1,14 @@
-// import React from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { axiosDeleteElement, axiosGetElement, axiosPutElement } from "../../hooks/axiosElement";
-import { axiosDeleteProvider, axiosGetProviders } from "../../hooks/axiosProvider";
-import {axiosGet, axiosDelete} from "../../hooks/axiosGeneral"
+import {axiosGet, axiosDelete, axiosPut} from "../../hooks/axiosGeneral"
 
 function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([])
 
-
   const editItem = (_id) => {
-    // axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
-    axios.put(`/api/client/${_id}`, inputFields)
-      .then((res) => console.log(res.data))
-      .catch(err => console.log(err))
-
     let edited = []
     const itemBody = tBody.find((item) => item.id === _id)
     let itemBody2 = []
@@ -33,51 +24,58 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
         }
       }
     }
-
-    const newState = tBody.map((item) => {
+    let newElementEdited;
+    //const newState = 
+    tBody.map((item) => {
       if (item.id === id) {
-        if (type === "clientes") {
-          return {
-            ...item,
-            nombre: edited[1],
+        if (type === "clients") {
+          newElementEdited = {
+            name: edited[1],
             plan: edited[2],
-            celular: edited[3],
-            mail: edited[4],
-            inicio: edited[5],
-            vencimiento: edited[6],
+            contact: edited[3],
+            email: edited[4],
+            dateIn: edited[5],
+            dateOut: edited[6],
           }
+          // console.log("EDIT-ELEMENT:", newElementEdited)
+          axiosPut(newElementEdited, _id, "client")
         }
         if (type === "provider") {
-          return {
-            // ...item,
+          newElementEdited = {
             name: edited[1],
             product: edited[2],
             contact: edited[3],
             email: edited[4],
-            // date: edited[5],
             description: edited[5],
             provider: edited[6],
           };
+          axiosPut(newElementEdited, _id, "provider")
         }
-        if (type === "elements") {
-          return {
-            // ...item,
+        // if (type === "elements") {
+        if (type === "element-client") {
+          newElementEdited = {
             name: edited[1],
             state: edited[2],
-            description: edited[6],
-            type: edited[3],// Stock
-            price: edited[4],
-            date: edited[5],
+            description: edited[3],
+            stock: edited[4],// Stock
+            price: edited[5],
+            date: edited[6],
           }
+          axiosPut(newElementEdited, _id, "elements")
+        }
+        if (type === "employee") {
+          newElementEdited = {
+            name: edited[1],
+            email: edited[2],
+            contact: edited[3],
+            occupation: edited[4],
+          }
+          axiosPut(newElementEdited, _id, "employee")
         }
       }
       return item
     })
-    axiosPutElement(newState, _id)
-
-    setTBody(tBody)
-
-    toast.success(`Elemento ${id} editado`);
+    toast.success(`Elemento: ${itemBody.name.toUpperCase()}, editado`);
     setInputFields([]);
   };
   const handleDelete = async (id, type) => {
@@ -100,31 +98,40 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   }
   function handleChange(i, e) {
     let event = e.target.value
+    // console.log("EVENT:", event)
     const values = [...inputFields]
     const number = /[0-9]/
-    if (i === 6) {
-      if (!event.match(number)) {
-        event
-      } else {
-        if (event.length === 2 && event.match(number)) {
-          event = event + "-"
+    if (type === "element-client") {
+      // Fecha elementos
+      if (i === 6) {
+        if (!event.match(number)) {
+          event
+        } else {
+          if (event.length === 2 && event.match(number)) {
+            event = event + "-"
+          }
+          if (event.length === 5 && event.match(number)) {
+            event = event + "-"
+          }
         }
-        if (event.length === 5 && event.match(number)) {
-          event = event + "-"
+      }
+    }
+    if (type === "clients") {
+      // Fecha cliente
+      if (i >= 5) {
+        if (!event.match(number)) {
+          event
+        } else {
+          if (event.length === 2 && event.match(number)) {
+            event = event + "-"
+          }
+          if (event.length === 5 && event.match(number)) {
+            event = event + "-"
+          }
         }
       }
     }
     values[i] = event
-    setInputFields(values)
-  }
-  const deleteItem = () => {
-    const newBody = tBody.filter((item) => item.id !== id)
-    setTBody(newBody)
-    toast.success(`Elemento ${id} eliminado`)
-  }
-  function handleChange(i, event) {
-    const values = [...inputFields]
-    values[i] = event.target.value
     setInputFields(values)
   }
 
@@ -133,6 +140,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
       {/* The button to open modal */}
       <label htmlFor={`my_modal_${id}`} className=' shrink-0'>
         {/* <img src={editIcon} alt="Imagen de Lápiz que quiere indicar, editar la fila" className=' btn p-0.5 bg-pallete-white hover:bg-pallete-green' /> */}
+        <BiEditAlt/>
       </label>
       <input type="checkbox" id={`my_modal_${id}`} className="modal-toggle" />
 

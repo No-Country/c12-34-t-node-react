@@ -5,11 +5,11 @@ export const getElementsGym = async (_: Request, res: Response) => {
   try {
     const infoElements = await Elements.findAll({
       include: {
-        model: Admin,
-        attributes: ["user"],
+        model: Provider,
+        attributes: ["name"],
         include: [{
-          model: Provider,
-          attributes: ["name"],
+          model: Admin,
+          attributes: ["user"],
         }],
       },
     });

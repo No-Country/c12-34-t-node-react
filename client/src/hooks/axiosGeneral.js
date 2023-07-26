@@ -4,31 +4,43 @@ import { toast } from "react-toastify";
 export const axiosGet = async (setTBody, setTError, type) => {
   try {
     const { data } = (await axios(`/api/${type}`))
-    console.log("GET:", data)
+    // console.log("GET:", data)
     setTBody(data)
   } catch (error) {
-    // console.log(error.response.data);
-    console.log(error);
-    // setTError(error.response.data.error);
-    setTError(error);
+    console.log(error.response.data);
+    setTError(error.response.data.error);
   }
 }
 
 export const axiosPost = async (newElement, type) => {
-  await axios.post(`/api/${type}`, newElement)
-  .then(res => {
-    console.log("POST:", res.data)
+  try {
+    const { data } = (await axios.post(`/api/${type}`, newElement))
+    console.log("POST:", data)
     setTimeout(() => {
       window.location.reload();
     }, 1000);
-  }).catch(error => console.log(error.response.data.error))
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const axiosPut = async (newElementEdited, _id, type) => {
+  try {
+    const { data } = (await axios.put(`/api/${type}/${_id}`, newElementEdited))
+    console.log("EDIT:", data)
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const axiosDelete = async (id, type) => {
   try {
     const { data } = (await axios.delete(`/api/${type}/${id}`))
     console.log("DELETE:", data)
-    toast.success(`Proveedor ${id} eliminado`);
+    toast.success(`Proveedor: ${data.deleted.name.toUpperCase()}, eliminado`);
   } catch (error) {
     // console.log(error.response.data.error);
     console.log(error);
