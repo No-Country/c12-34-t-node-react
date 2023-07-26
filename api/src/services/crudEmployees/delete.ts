@@ -1,12 +1,14 @@
 import { Request, Response } from "express";
-import {Employees} from "../../models/Employees";
+import { Employees } from "../../models/Employees";
+import { IEmployees } from "interfaces/IEmployees";
 
 export const deleteEmployesGym = async (req: Request, res: Response) => {
   const { id } = req.params;
   
   try {
-    
-    if (id.length < 36) {
+    const employee = await Employees.findAll();
+    const deleted = employee.find((el: IEmployees) => el.id === id);
+    if (!deleted) {
       throw Error(`El empleado no existe`);
     } else {
       await Employees.destroy({
@@ -14,7 +16,7 @@ export const deleteEmployesGym = async (req: Request, res: Response) => {
           id
         }
       });
-      return res.status(200).json({ message: "El empleado ha sido eliminado", });
+      return res.status(200).json({ message: "El empleado ha sido eliminado", deleted });
     }
   } catch (error) {
     if (error instanceof Error) {

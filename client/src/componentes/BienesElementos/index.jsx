@@ -5,6 +5,7 @@ import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
 import { useEffect } from "react";
 import { axiosGet } from "../../hooks/axiosGeneral";
+import axios from "axios";
 
 const BienesElementos = () => {
     const title = "Bienes / Elementos";
@@ -17,13 +18,34 @@ const BienesElementos = () => {
       "Stock",
       "Precio",
       "Fecha",
+      "Proveedor"
     ];
     const [tBody, setTBody] = useState([]);
     const [error, setTError] = useState("");
+    const [allProviders, setAllProviders] = useState([])
+    useEffect(() => {
+      axiosGet(setTBody, setTError, "elements")
+      axios.get(`/api/providers`)
+        .then((res)  => {
+          setAllProviders(res.data)
+        })
+        .catch(error => console.log(error))
+    }, []);
 
     useEffect(() => {
       axiosGet(setTBody, setTError, "elements")
+      
+      //Setear proveedores
+      axios.get(`/api/providers`)
+        .then((res)  => {
+          setAllProviders(res.data)
+        })
+        .catch(error => console.log(error))
     }, []);
+
+    // useEffect(() => {
+    //   axiosGet(setTBody, setTError, "elements")
+    // }, [allProviders])
   
     return (
       <div className="flex flex-col justify-center gap-10 w-full">
@@ -44,6 +66,7 @@ const BienesElementos = () => {
             type={type}
             error={error}
             setTError={setTError}
+            allProviders={allProviders}
           />
           <ButtonAdd
             tBody={tBody}
@@ -51,6 +74,7 @@ const BienesElementos = () => {
             tHeader={tableHeader}
             type={type}
             setTError={setTError}
+            allProviders={allProviders}
           />
         </div>
       </div>
