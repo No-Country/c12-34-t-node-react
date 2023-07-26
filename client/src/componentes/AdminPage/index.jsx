@@ -35,48 +35,42 @@ const AdminPage = () => {
   }, [userCtx.length]);
 
   return (
-    <div className="flex w-full">
-      <main className="flex flex-col w-full gap-2 m-5 mt-10 ">
-        <div>
-          <Title title={"Perfil administrador"} />
+
+    <main className='grow flex flex-col w-full gap-2 p-5 ml-auto bg-pallete-white dark:bg-pallete-lightgrey'>
+
+      <Title title={'Perfil administrador'} />
+      <section className='flex flex-col'>
+
+        <div className=" self-center flex gap-7 hero-content">
+          <span className="avatar">
+            <div className="w-[min(400px,20vw)] rounded-full">
+              <img src={profesor} />
+            </div>
+          </span>
+
+          <div className='ml-10 md:ml-[8rem] '>
+            <div className="mb-2">
+              <label htmlFor=""> <p className='text-pallete-black font-PoppinsSemibold text-sm md:text-lg'>Nombre y Apellido:</p></label>
+              <p className=" font-PoppinsRegular ">{userCtx.userNameRegistered}</p>
+            </div>
+
+            <div className="mb-2">
+              <label htmlFor=""> <p className='text-pallete-black font-PoppinsSemibold text-sm md:text-lg'>Correo:</p></label>
+              <p className=" font-PoppinsRegular ">{userCtx.userEmailRegistered}</p>
+            </div>
+
+
+            <ModalEditarPerfil />
+
+          </div>
+
         </div>
 
-        <section className="flex flex-col">
-          <div className=" w-full h-auto flex flex-col md:flex-row gap-7 hero-content mt-10 2xl:ml-[10rem]">
-            <span className="avatar">
-              <div className="md:w-[min(500px,40vw)] rounded-full">
-                <img src={profesor} />
-              </div>
-            </span>
+      </section>
 
-            <div className="ml-10 text-xl text-black md:ml-[8rem] ">
-              <div className="mb-2">
-                <label htmlFor="">
-                  {" "}
-                  <b>Nombre y Apellidos</b>
-                </label>
-                <p className="font-[Poppins] font-[400] ">
-                  {userCtx.userNameRegistered}
-                </p>
-              </div>
+    </main>
+  )
+}
 
-              <div className="mb-2">
-                <label htmlFor="">
-                  {" "}
-                  <b>Correo</b>
-                </label>
-                <p className="font-[Poppins] font-[400] ">
-                  {userCtx.userEmailRegistered}
-                </p>
-              </div>
+export default AdminPage
 
-              <ModalEditarPerfil />
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-};
-
-export default AdminPage;

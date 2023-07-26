@@ -3,9 +3,17 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
 import { axiosGet, axiosPost } from "../../hooks/axiosGeneral";
 
-const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
-  const { userId } = useContext(UserContext);
 
+const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) => {
+  const { userId } = useContext(UserContext)
+
+  let providers;
+  if (type === "element-client") {
+    providers = allProviders?.map(({ id, name }) => {
+      return {id, name}
+    });
+  }
+    
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
     const notNull = inputField.filter((x) => x);
@@ -13,58 +21,62 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
     if (notNull.length < tHeader.length) {
       return toast.error("Debes llenar todos los campos");
     }
-    let newId;
-    if (tBody.length < 1) {
-      newId = 1;
-    } else {
-      newId = tBody[tBody.length - 1].id + 1;
-    }
-    let newElement;
+
+    let newElement
     /* -------------------------------------------------------------------------- */
     /*                              Definiendo tipos                              */
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
       newElement = {
-        id: newId,
-        nombre: inputField[0],
-        plan: inputField[1],
-        celular: inputField[2],
-        mail: inputField[3],
-        inicio: inputField[4],
-        vencimiento: inputField[5],
-      };
+
+          nombre: inputField[0],
+          plan: inputField[1],
+          celular: inputField[2],
+          mail: inputField[3],
+          inicio: inputField[4],
+          vencimiento: inputField[5],
+      }
     } else if (type === "provider") {
       newElement = {
-        name: inputField[0],
-        product: inputField[1],
-        contact: inputField[2],
-        email: inputField[3],
-        description: inputField[4],
-        provider: inputField[5],
-        adminId: userId,
-      };
-      axiosPost(newElement, "provider");
+          name: inputField[0],
+          product: inputField[1],
+          contact: inputField[2],
+          email: inputField[3],
+          description: inputField[4],
+          provider: inputField[5],
+          adminId: userId,
+      }
+      // console.log("NEW-ELEMENT:", newElement)
+      axiosPost(newElement, "provider")
     } else if (type === "element-client") {
+      const selectedProvider = inputField[6]// Nombre del Elemento
+      const providerId = providers.find((item)=> selectedProvider === item.name)
+      
       newElement = {
-        name: inputField[0],
-        state: inputField[1],
-        description: inputField[2],
-        type: inputField[3], // Stock
-        price: inputField[4],
-        date: inputField[5],
-        providerId: "c3d22dde-d53d-479f-80d3-407db1eb7d18",
-        adminId: userId,
-      };
-      axiosPost(newElement, "element-client");
+
+          name: inputField[0],
+          state: inputField[1],
+          description: inputField[2],
+          stock: inputField[3],
+          price: inputField[4],
+          date: inputField[5],
+          providerId: providerId.id,
+          adminId: userId,
+      }
+      axiosPost(newElement, "element-client")
     } else if (type === "employee") {
       newElement = {
-        name: inputField[0],
-        email: inputField[1],
-        contact: inputField[2],
-        occupation: inputField[3], // Stock
-      };
-      axiosPost(newElement, "employee");
+          name: inputField[0],
+          email: inputField[1],
+          contact: inputField[2],
+          occupation: inputField[3],
+      }
+      axiosPost(newElement, "employee")
     }
+    // setTBody((items) => {
+    //   console.log("ITEMS:", items)
+    //   return [...items, newElement]
+    // })
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
@@ -103,23 +115,32 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           <div className="grid gap-4">
             {tBody &&
               tHeader.map((item, i) => {
-                // console.log("BUTTON-ADD:", tBody, "INDEX:", i)
-                // if (i < 6) {
                 return (
                   <div key={i}>
                     <label className="block" htmlFor={`input-${i}`}>
                       {item}
                     </label>
-                    <input
-                      id={`input-${i}`}
-                      value={inputField[i] || ""}
-                      onChange={(e) => handleChange(i, e)}
-                      type="text"
-                      className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
-                    />
+                    {type === "element-client" && i === 6 ? (
+                        <select className="select" onChange={(e) => handleChange(i, e)} >
+                          <option>Seleccionar proveedor</option>
+                          {providers.map((el) => {
+                            return (
+                              <option key={el.id}>{el.name}</option>
+                            );
+                          })}
+                        </select>
+                    ) : (
+                      <input
+                        id={`input-${i}`}
+                        value={inputField[i] || ""}
+                        onChange={(e) => handleChange(i, e)}
+                        type="text"
+                        className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
+                      />
+                    )}
                   </div>
                 );
-                // }
+
               })}
           </div>
           <div className="modal-action">

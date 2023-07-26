@@ -5,11 +5,11 @@ export const getProvider = async (req: Request, res: Response) => {
   try {
     const proveedores = await Provider.findAll({
       include: {
-        model: Admin,
-        attributes: ["user"],
+        model: Elements,
+        attributes: ["name"],
         include: [{
-          model: Elements,
-          attributes: ["name"],
+          model: Admin,
+          attributes: ["user"],
         }],
       }
     })

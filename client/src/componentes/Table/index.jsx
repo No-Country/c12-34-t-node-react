@@ -2,6 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ButtonsTable from "./ButtonsTable";
 
 const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
+  const providersName = tBody?.map(({ provider }) => provider?.name);
   return (
     <>
       <div className="w-full overflow-x-scroll scroll-smooth h-full rounded-lg">
@@ -22,21 +23,23 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
           <tbody>
             {tBody.length >= 1 ? (
               tBody.map((data, i) => {
-                // console.log("TABLE-DATA-0:", Object.values(data))
                 return (
                   <tr key={i}>
                     {Object.values(data).map((item, subI) => {
                       // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
-                      if (subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9)
+                      if (subI !== 0 && subI !== 7 && subI !== 8) {
                         return (
+
                           <td key={subI}>
                             <div className="flex flex-row gap-2">
                               <p className="font-PoppinsRegular whitespace-nowrap">
                                 {item}
+
                               </p>
                             </div>
                           </td>
                         );
+
                     })}
                     <ButtonsTable
                       id={data.id}
@@ -51,11 +54,13 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
             ) : (
               <tr>
                 <td colSpan={tHeader.length + 1} className="text-center">
-                  <p className="text-lg font-PoppinsRegular text-pallete-grey">
-                    {error}
+
+                  <p className=' text-lg font-PoppinsRegular text-pallete-grey'>
+                    {error ? error : "No hay información disponible"}
                   </p>
-                </td>
-              </tr>
+                </td >
+              </tr >
+
             )}
           </tbody>
         </table>

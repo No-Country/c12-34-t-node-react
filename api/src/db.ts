@@ -12,17 +12,16 @@ export const db = new Sequelize(
   }
 );
 
-/*
-export const db = new Sequelize(
-  `${process.env.DEPLOY}`,
-  {
-    host: `${process.env.DB_HOST}`,
-    dialect: "postgres",
-    logging: false,
-    dialectOptions: {
-      ssl: {
-        require: true
-      }
-    }
-  }
-);*/
+// export const db = new Sequelize(
+//   `${process.env.DEPLOY}`,
+//   {
+//     host: `${process.env.DB_HOST}`,
+//     dialect: "postgres",
+//     logging: false,
+//     dialectOptions: {
+//       ssl: {
+//         require: true
+//       }
+//     }
+//   }
+// );

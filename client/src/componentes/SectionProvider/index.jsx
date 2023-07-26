@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Table from "../Table";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import ButtonAdd from "../Table/ButtonAdd";
 import SectionTitle from "../Title";
-import Logo from "./FitnessCenterLogoGym.png";
 import { useEffect } from "react";
 import { axiosGet } from "../../hooks/axiosGeneral";
 
@@ -25,6 +24,10 @@ const IndexTable = () => {
   useEffect(() => {
     axiosGet(setTBody, setTError, "providers");
   }, []);
+
+  // useEffect(() => {
+  //   axiosGet(setTBody, setTError, "providers")
+  // }, [tBody]);
 
   return (
     <div className="flex flex-col w-full gap-2 m-2 sm:m-5">
