@@ -37,7 +37,7 @@ const ModalEditarPerfil = () => {
   return (
     <div>
       <button
-        className="btn btn-md px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow  leading-6 text-pallete-black border-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue dark:focus-visible:outline-amber-400"
+        className="btn btn-md px-5 sm:px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow  leading-6 text-pallete-black border-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue dark:focus-visible:outline-amber-400"
         onClick={() => window.my_modal_3.showModal()}
       >
         Editar Perfil

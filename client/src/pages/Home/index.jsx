@@ -39,7 +39,7 @@ const HomePrincipal = () => {
     ? <Navigate to='/' />
     : */ }
       <>
-        <div className="flex gap-1 bg-pallete-white">
+        <div className="flex bg-pallete-white">
           <Sidebar />
           <Routes>
 
