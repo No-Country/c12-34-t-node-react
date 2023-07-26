@@ -24,10 +24,10 @@ const Sidebar = () => {
 
 
   return (
-    <section className="fixed gap-6 h-[90vh]">
+    <section className="flex gap-6 h-[90vh]">
       <div
-        className={` bg-pallete-grey dark:bg-pallete-white min-h-screen ${open ? " w-56" : " w-16"
-          } duration-500 text-pallete-white dark:text-pallete-grey`}
+        className={` bg-pallete-lightgrey dark:bg-pallete-grey min-h-screen ${open ? " w-56" : " w-16"
+          } duration-500 text-pallete-grey dark:text-pallete-white`}
       >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
@@ -44,8 +44,8 @@ const Sidebar = () => {
               to={menu.link}
               key={menu.name}
               className={` 
-              ${menu?.margin && "mt-1"} group flex items-center text-sm gap-3 p-2 mx-3.5 bg-inherit hover:bg-pallete-lightgrey hover:text-pallete-grey dark:hover:text-pallete-white rounded-md transition-colors
-              ${view.link === menu.link ? 'bg-pallete-white hover:bg-pallete-white dark:bg-pallete-lightgrey dark:hover:bg-pallete-lightgrey text-pallete-grey dark:text-pallete-white rounded-r-none mr-0 shadow-xl transition-colors' : ''}
+              ${menu?.margin && "mt-1"} group flex items-center text-sm gap-3 p-2 mx-3.5 rounded-md transition-colors duration-300
+              ${view.link === menu.link ? 'bg-pallete-white hover:bg-pallete-white dark:bg-pallete-lightgrey dark:hover:bg-pallete-lightgrey rounded-r-none mr-0 shadow-xl' : 'bg-inherit hover:bg-pallete-white dark:hover:bg-pallete-lightgrey hover:text-pallete-black'}
               `}
             >
               <div>{createElement(menu?.icon, { size: "19" })}</div>
