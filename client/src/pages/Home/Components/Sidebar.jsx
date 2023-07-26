@@ -24,10 +24,10 @@ const Sidebar = () => {
 
 
   return (
-    <section className="flex gap-6 h-full">
+    <section className="fixed gap-6 h-[90vh]">
       <div
-        className={` bg-pallete-grey min-h-screen ${open ? " w-56" : " w-16"
-          } duration-500 text-pallete-white`}
+        className={` bg-pallete-grey dark:bg-pallete-white min-h-screen ${open ? " w-56" : " w-16"
+          } duration-500 text-pallete-white dark:text-pallete-grey`}
       >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
@@ -44,8 +44,8 @@ const Sidebar = () => {
               to={menu.link}
               key={menu.name}
               className={` 
-              ${menu?.margin && "mt-1"} group flex items-center text-sm gap-3 p-2 mx-3.5 hover:bg-pallete-lightgrey hover:text-pallete-grey rounded-md transition-colors
-              ${view.link === menu.link ? 'bg-pallete-white hover:bg-pallete-white text-pallete-grey rounded-r-none mr-0 shadow-xl transition-colors' : ''}
+              ${menu?.margin && "mt-1"} group flex items-center text-sm gap-3 p-2 mx-3.5 bg-inherit hover:bg-pallete-lightgrey hover:text-pallete-grey dark:hover:text-pallete-white rounded-md transition-colors
+              ${view.link === menu.link ? 'bg-pallete-white hover:bg-pallete-white dark:bg-pallete-lightgrey dark:hover:bg-pallete-lightgrey text-pallete-grey dark:text-pallete-white rounded-r-none mr-0 shadow-xl transition-colors' : ''}
               `}
             >
               <div>{createElement(menu?.icon, { size: "19" })}</div>
@@ -57,7 +57,7 @@ const Sidebar = () => {
               </h2>
               <h2
                 className={`${open && "hidden"
-                  } absolute left-48 bg-pallete-white text-pallete-black font-PoppinsMedium whitespace-pre rounded-md drop-shadow-lg p-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit z-50  `}
+                  } absolute left-48 bg-pallete-white text-pallete-black font-PoppinsMedium whitespace-pre rounded-md drop-shadow-lg p-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-20 group-hover:transition-all group-hover:w-fit z-50  `}
               >
                 {menu?.name}
               </h2>

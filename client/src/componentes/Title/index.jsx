@@ -7,7 +7,7 @@ const Title = ({ title }) => {
       <header className='flex justify-center items-center'>
         <img className='w-32 ' src={Logo} alt="FitnessCenterLogoGym logo de la marca y aplicación web Fitness Center" />
       </header>
-      <h3 className='self-start text-2xl font-PoppinsBold border-b-2 border-spacing-14 border-pallete-green inline'>
+      <h3 className='self-start text-2xl font-PoppinsBold border-b-2 border-spacing-14 text-pallete-black border-pallete-green inline'>
         {title}
       </h3>
     </>
