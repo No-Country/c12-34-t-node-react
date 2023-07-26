@@ -68,11 +68,10 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
           newElementEdited = {
             name: edited[1],
             email: edited[2],
-            contact: edited[6],
-            occupation: edited[3],
+            contact: edited[3],
+            occupation: edited[4],
           }
           axiosPut(newElementEdited, _id, "employee")
-          axiosGet(setTBody, setTError, "employees")
         }
       }
       return item

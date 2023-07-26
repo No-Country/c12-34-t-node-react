@@ -9,24 +9,20 @@ import { axiosGet } from "../../hooks/axiosGeneral";
 const IndexTable = () => {
   const title = "Staff";
   const type = "employee";
+  
   const tableHeader = [
     "Nombre completo",
-    "Ocupación",
-    "Celular",
     "Email",
+    "Celular",
+    "Ocupación",
   ];
+
   const [tBody, setTBody] = useState([]);
   const [error, setTError] = useState("");
-
-  // const current = (newStaff) => {
-  //   console.log("CURRENT:", newStaff)
-  //   setTBody((prev) => [...prev, newStaff]);
-  // }
 
   useEffect(() => {
     axiosGet(setTBody, setTError, "employees")
   }, []);
-  
 
   // useEffect(() => {
   //   axiosGet(setTBody, setTError, "employees")

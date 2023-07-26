@@ -13,14 +13,23 @@ export const axiosGet = async (setTBody, setTError, type) => {
 }
 
 export const axiosPost = async (newElement, type) => {
-  await axios.post(`/api/${type}`, newElement)
-  .then(res => {
-    console.log("POST:", res.data)
+  try {
+    const { data } = (await axios.post(`/api/${type}`, newElement))
+    console.log("POST:", data)
     // setTimeout(() => {
     //   window.location.reload();
     // }, 1000);
-  })
-  .catch(error => console.log(error.response.data.error))
+  } catch (error) {
+    console.log(error)
+  }
+  // await axios.post(`/api/${type}`, newElement)
+  // .then(res => {
+  //   console.log("POST:", res.data)
+  //   // setTimeout(() => {
+  //   //   window.location.reload();
+  //   // }, 1000);
+  // })
+  // .catch(error => console.log(error.response.data.error))
 };
 
 export const axiosPut = (newElementEdited, _id, type) => {

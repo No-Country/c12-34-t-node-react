@@ -64,11 +64,15 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           name: inputField[0],
           email: inputField[1],
           contact: inputField[2],
-          occupation: inputField[3],// Stock
+          occupation: inputField[3],
       }
+      console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "employee")
     }
-    // setTBody((items) => [...items, newElement])
+    setTBody((items) => {
+      console.log("ITEMS:", items)
+      return [...items, newElement]
+    })
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
