@@ -22,6 +22,10 @@ const IndexTable = () => {
     axiosGet(setTBody, setTError, "employees")
   }, []);
 
+  useEffect(() => {
+    axiosGet(setTBody, setTError, "employees")
+  }, [tBody]);
+
   return (
     <div className="flex flex-col  gap-10 w-full">
       <ToastContainer autoClose={1000} />

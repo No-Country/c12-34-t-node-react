@@ -70,7 +70,9 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           occupation: inputField[3],// Stock
       }
       axiosPost(newElement, "employee")
+      axiosGet(setTBody, setTError, "employees")
     }
+    // setTBody((items) => [...items, newElement])
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
