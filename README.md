@@ -65,13 +65,44 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 
 `TOKEN=`
 
-`GOOGLE_CLIENT_ID=`193481864569-0cmrhpfe0mnut2f52mrdne07bqcgakd7.apps.googleusercontent.com
 
-`GOOGLE_CLIENT_SECRET=`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
+# Equipo de Developer
+![image 41](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/a4237411-75f6-4aef-b0df-67b9fe3d7ccf)
+`UX/UI`
+|Caro M.
+![image 45](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/2454ab4a-e094-4fc8-b5b2-1f334b4d5d77)
+`QA`
+|Pieri S.
 
-`GOOGLE_CALLBACK_URL=`http://localhost:3001/auth/google/callback
 
-`SECRET_SESSION=`cd8ef67f-7012-4d19-8b9a-04ce60a0d54d
+![image 48 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/11313427-4ad5-4e8a-80b3-089a9ff91fa2)
+`Frontend`
+|Andy M.
+![image 43](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/ea1111dc-e894-444e-a464-8791158616e0)
+`Frontend`
+|Octavio S.
+
+
+![image 47 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/c6c5e63e-630f-4760-997a-733776e37e11)
+`Frontend`
+|Franco S.
+![image 50 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/6732f9e9-4a1b-45c9-acb5-9cc8c88edfbf)
+`Frontend`
+|Joaquin R.
+![image 44](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/6b5e2e7a-31eb-46ec-b83f-cd856778136a)
+`Frontend`
+|Nico L.
+
+
+
+
+![image 42](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/af59607a-0d8c-475b-bc40-73c09adc3bb2)
+`Backend`
+|Jerlib G.
+![image 49 - copia](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/055f6245-0204-4724-9bdb-9d0d44642413)
+`Backend`
+|Carlos M.
+
 
 
 

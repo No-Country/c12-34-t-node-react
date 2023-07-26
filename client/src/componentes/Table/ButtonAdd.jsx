@@ -3,9 +3,17 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../store/userContext";
 import {axiosGet, axiosPost} from "../../hooks/axiosGeneral"
 
-const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
+const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) => {
   const { userId } = useContext(UserContext)
-  
+
+  let providers;
+  if (type === "element-client") {
+    providers = allProviders?.map(({ id, name }) => {
+      return {id, name}
+    });
+    // console.log("providers in add:", providers)
+  }
+    
   const [inputField, setInputField] = useState([]);
   const addElement = () => {
     const notNull = inputField.filter((x) => x)
@@ -38,14 +46,19 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
       }
       axiosPost(newElement, "provider")
     } else if (type === "element-client") {
+      const selectedProvider = inputField[6]// Nombre del Elemento
+      console.log("ID:", selectedProvider)
+      const providerId = providers.find((item)=> selectedProvider === item.name)
+      // console.log("ID:", providerId)
+      
       newElement = {
           name: inputField[0],
           state: inputField[1],
           description: inputField[2],
-          type: inputField[3],// Stock
+          type: inputField[3],
           price: inputField[4],
           date: inputField[5],
-          providerId: "c3d22dde-d53d-479f-80d3-407db1eb7d18",
+          providerId: providerId.id,
           adminId: userId,
       }
       axiosPost(newElement, "element-client")
@@ -57,7 +70,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           occupation: inputField[3],// Stock
       }
       axiosPost(newElement, "employee")
-    } 
+    }
     setInputField([]);
     toast.success("Nuevo elemento agregado");
   };
@@ -98,23 +111,31 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError }) => {
           <div className="grid gap-4">
             {tBody &&
               tHeader.map((item, i) => {
-                // console.log("BUTTON-ADD:", tBody, "INDEX:", i)
-                // if (i < 6) {
                 return (
                   <div key={i}>
                     <label className="block" htmlFor={`input-${i}`}>
                       {item}
                     </label>
-                    <input
-                      id={`input-${i}`}
-                      value={inputField[i] || ""}
-                      onChange={(e) => handleChange(i, e)}
-                      type="text"
-                      className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
-                    />
+                    {type === "element-client" && i === 6 ? (
+                        <select className="select" onChange={(e) => handleChange(i, e)} >
+                          <option>Seleccionar proveedor</option>
+                          {providers.map((el) => {
+                            return (
+                              <option key={el.id}>{el.name}</option>
+                            );
+                          })}
+                        </select>
+                    ) : (
+                      <input
+                        id={`input-${i}`}
+                        value={inputField[i] || ""}
+                        onChange={(e) => handleChange(i, e)}
+                        type="text"
+                        className="w-full input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
+                      />
+                    )}
                   </div>
-                )
-                // }
+                );
               })}
           </div>
           <div className="modal-action">

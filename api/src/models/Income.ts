@@ -24,7 +24,7 @@ Income.init(
   },
   {
     sequelize: db,
-    modelName: "expense",
+    modelName: "income",
     timestamps: false,
   }
 );

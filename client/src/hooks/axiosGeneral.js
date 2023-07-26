@@ -16,10 +16,12 @@ export const axiosPost = async (newElement, type) => {
   await axios.post(`/api/${type}`, newElement)
   .then(res => {
     console.log("POST:", res.data)
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  }).catch(error => console.log(error.response.data.error))
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1000);
+  })
+  .catch(error => console.log(error.response.data))
+  // .catch(error => console.log(error.response.data.error))
 };
 
 export const axiosPut = (newElementEdited, _id, type) => {
