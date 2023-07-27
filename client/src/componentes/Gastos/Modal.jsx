@@ -22,7 +22,7 @@ const ModalGastos = ({title, setGastoNuevo}) => {
       expense: expense,
       userId: userCtx.userId
     })
-    axios.post(`${VITE_BACKEND_URL}/api/expense`, newExpense) 
+    axios.post(`/api/expense`, newExpense) 
          .then((res) => { 
           console.log(res.data)
           setGastoNuevo(newExpense)

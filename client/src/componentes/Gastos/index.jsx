@@ -30,7 +30,7 @@ const Gastos = () => {
 
   useEffect(() => {
     axios
-      .get(`${VITE_BACKEND_URL}/api/expenses`)
+      .get(`/api/expenses`)
       .then((res) => {
         console.log(res.data.expenses);
         setGastos(res.data.expenses);
@@ -42,7 +42,7 @@ const Gastos = () => {
 
   useEffect(() => {
     axios
-      .get(`${VITE_BACKEND_URL}/api/income`)
+      .get(`/api/income`)
       .then((res) => {
         setIngresos(res.data);
       })

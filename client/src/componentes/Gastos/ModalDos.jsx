@@ -20,7 +20,7 @@ const ModalDos = ({setIncomeNuevo}) => {
       income: income,
       userId: userCtx.userId
     })
-    axios.post(`${VITE_BACKEND_URL}/api/income`, newIncome) 
+    axios.post(`/api/income`, newIncome) 
          .then((res) => { 
           console.log(res.data)
           setIncomeNuevo(newIncome)
