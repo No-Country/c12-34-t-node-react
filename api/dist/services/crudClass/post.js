@@ -37,7 +37,15 @@ const postClassGym = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (errorWeekDays)
             throw new Error(`Incorrecto o falta el día de la clase`);
         else {
-            let createClass = yield relations_1.ClassGroup.create(clase);
+            let createClass = yield relations_1.ClassGroup.create({
+                name: clase.name,
+                trainer: clase.trainer,
+                duration: clase.duration,
+                schedule: clase.schedule,
+                inDay: clase.inDay,
+                weekDays: clase.weekDays,
+                img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
+            });
             // createClass = JSON.parse(JSON.stringify(createClass))
             // console.log("CREATE:", createClass)
             return res.status(200).json({ message: `Ah sido agregada una nueva clase grupal`, createClass });

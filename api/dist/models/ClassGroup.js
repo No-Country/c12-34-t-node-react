@@ -34,6 +34,9 @@ ClassGroup.init({
     weekDays: {
         type: sequelize_1.DataTypes.ENUM(IClassGroup_1.WeekDays.Friday, IClassGroup_1.WeekDays.Monday, IClassGroup_1.WeekDays.Saturday, IClassGroup_1.WeekDays.Sunday, IClassGroup_1.WeekDays.Thursday, IClassGroup_1.WeekDays.Tuesday, IClassGroup_1.WeekDays.Wednesday),
         allowNull: false,
+    },
+    img: {
+        type: sequelize_1.DataTypes.STRING,
     }
 }, {
     sequelize: db_1.db,

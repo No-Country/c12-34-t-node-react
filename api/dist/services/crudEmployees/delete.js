@@ -14,7 +14,9 @@ const Employees_1 = require("../../models/Employees");
 const deleteEmployesGym = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        if (id.length < 36) {
+        const employee = yield Employees_1.Employees.findAll();
+        const deleted = employee.find((el) => el.id === id);
+        if (!deleted) {
             throw Error(`El empleado no existe`);
         }
         else {
@@ -23,7 +25,7 @@ const deleteEmployesGym = (req, res) => __awaiter(void 0, void 0, void 0, functi
                     id
                 }
             });
-            return res.status(200).json({ message: "El empleado ha sido eliminado", });
+            return res.status(200).json({ message: "El empleado ha sido eliminado", deleted });
         }
     }
     catch (error) {

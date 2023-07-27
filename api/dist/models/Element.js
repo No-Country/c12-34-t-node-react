@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../db");
 const sequelize_1 = require("sequelize");
-const IElements_1 = require("./../interfaces/IElements");
 class Elements extends sequelize_1.Model {
 }
 Elements.init({
@@ -16,14 +15,19 @@ Elements.init({
         allowNull: false,
     },
     state: {
-        type: sequelize_1.DataTypes.ENUM(IElements_1.State.En_reparacion, IElements_1.State.Nuevo, IElements_1.State.Usado),
-        allowNull: false,
-    },
-    description: {
+        // type: DataTypes.ENUM(
+        //   State.En_reparacion,
+        //   State.Nuevo,
+        //   State.Usado,
+        // ),
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    type: {
+    // description: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    stock: {
         // type: DataTypes.ENUM(
         //   Types.Element,
         //   Types.Machine,

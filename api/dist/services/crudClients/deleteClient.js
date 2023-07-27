@@ -17,12 +17,14 @@ const Clientes_1 = __importDefault(require("../../models/Clientes"));
 const deleteClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const cliente = yield Clientes_1.default.destroy({
+        const employee = yield Clientes_1.default.findAll();
+        const deleted = employee.find((el) => el.id === id);
+        yield Clientes_1.default.destroy({
             where: {
                 id: id
             }
         });
-        return res.status(200).json({ msg: "El Cliente esta eliminado", cliente });
+        return res.status(200).json({ msg: "El Cliente esta eliminado", deleted });
     }
     catch (error) {
         console.log(error);

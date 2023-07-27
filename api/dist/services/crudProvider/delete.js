@@ -14,12 +14,14 @@ const relations_1 = require("../../models/relations");
 const deleteProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const proveedor = yield relations_1.Provider.destroy({
+        const employee = yield relations_1.Provider.findAll();
+        const deleted = employee.find((el) => el.id === id);
+        yield relations_1.Provider.destroy({
             where: {
                 id: id
             }
         });
-        return res.status(200).json({ msg: "El Proveedor esta eliminado", proveedor });
+        return res.status(200).json({ msg: "El Proveedor esta eliminado", deleted });
     }
     catch (error) {
         console.log(error);

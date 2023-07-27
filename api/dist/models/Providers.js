@@ -27,9 +27,9 @@ Provider.init({
         allowNull: false,
         unique: true,
     },
-    description: {
-        type: sequelize_1.DataTypes.STRING,
-    },
+    // description: {
+    //   type: DataTypes.STRING,
+    // },
     provider: {
         type: sequelize_1.DataTypes.STRING,
     },
