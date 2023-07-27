@@ -27,18 +27,40 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                   <tr key={i}>
                     {Object.values(data).map((item, subI) => {
                       // console.log("TABLE-ITEMS:", item, "INDEX:", subI)
-                      if (subI !== 0 && subI !== 7 && subI !== 8) {
+                      if (type === "provider") {
+                        if (subI !== 0 && subI !== 6 && subI !== 7 && subI !== 8) {
+                          return (
+                            <td key={subI}>
+                              <div className="flex flex-row gap-2">
+                                <p className="font-PoppinsRegular whitespace-nowrap">
+                                  {subI !== 9 ? item : providersName[i]}
+                                </p>
+                              </div>
+                            </td>
+                          );
+                        }
+                      } else if (type === "element-client") {
+                        if (subI !== 0 && subI !== 6 && subI !== 8) {
+                          return (
+                            <td key={subI}>
+                              <div className="flex flex-row gap-2">
+                                <p className="font-PoppinsRegular whitespace-nowrap">
+                                {subI !== 7 ? item : providersName[i]}
+                                </p>
+                              </div>
+                            </td>
+                          );
+                        }
+                      } else if (subI !== 0 && subI !== 7 && subI !== 8) {
                         return (
-
                           <td key={subI}>
                             <div className="flex flex-row gap-2">
                               <p className="font-PoppinsRegular whitespace-nowrap">
                                 {item}
-
                               </p>
                             </div>
                           </td>
-                        )
+                        );
                       }
                     })}
                     <ButtonsTable

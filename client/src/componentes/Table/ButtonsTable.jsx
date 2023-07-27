@@ -1,10 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { axiosPutElement } from "../../hooks/axiosElement";
-
-
-import { axiosGet, axiosDelete } from "../../hooks/axiosGeneral";
+import { axiosGet, axiosDelete, axiosPut } from "../../hooks/axiosGeneral";
 import editIcon from "../../assets/imgs/editIcon.png";
 import deleteIcon from "../../assets/imgs/deleteIcon.png";
 
@@ -12,12 +9,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
   const [inputFields, setInputFields] = useState([]);
 
   const editItem = (_id) => {
-    // axios.put(`${VITE_BACKEND_URL}/api/client/${_id}`, inputFields)
-    axios
-      .put(`/api/client/${_id}`, inputFields)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-
     let edited = [];
     const itemBody = tBody.find((item) => item.id === _id);
     let itemBody2 = [];
@@ -42,7 +33,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
           newElementEdited = {
             name: edited[1],
             plan: edited[2],
-
             contact: edited[3],
             email: edited[4],
             dateIn: edited[5],
@@ -50,7 +40,6 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
           }
           // console.log("EDIT-ELEMENT:", newElementEdited)
           axiosPut(newElementEdited, _id, "client")
-
         }
         if (type === "provider") {
           newElementEdited = {
@@ -58,8 +47,8 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
             product: edited[2],
             contact: edited[3],
             email: edited[4],
-            description: edited[5],
-            provider: edited[6],
+            // description: edited[5],
+            provider: edited[5],
           };
           axiosPut(newElementEdited, _id, "provider")
         }
@@ -68,11 +57,10 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
           newElementEdited = {
             name: edited[1],
             state: edited[2],
-
-            description: edited[3],
-            stock: edited[4],// Stock
-            price: edited[5],
-            date: edited[6],
+            // description: edited[3],
+            stock: edited[3],// Stock
+            price: edited[4],
+            date: edited[5],
           }
           axiosPut(newElementEdited, _id, "elements")
         }
@@ -117,7 +105,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     const number = /[0-9]/
     if (type === "element-client") {
       // Fecha elementos
-      if (i === 6) {
+      if (i === 5) {
         if (!event.match(number)) {
           event
         } else {
@@ -148,7 +136,7 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
     values[i] = event;
     setInputFields(values);
   }
-
+  
   return (
     <td className="grow flex flex-nowrap my-2 items-center gap-3 px-1">
       {/* The button to open modal */}
@@ -174,13 +162,39 @@ function ButtonsTable({ id, tBody, setTBody, type, setTError }) {
               return (
                 <div key={i} className="grid gap-4">
                   {Object.values(data).map((item, subI) => {
-                    if (
-                      tBody[i].id === id &&
-                      subI !== 0 &&
-                      subI !== 7 &&
-                      subI !== 8 &&
-                      subI !== 9
-                    ) {
+                    if(type === "element-client"){
+                      if(tBody[i].id === id && subI !== 0 && subI !== 6 && subI !== 7 && subI !== 8 && subI !== 9){
+                          return (
+                            <input
+                              id={`input_${subI}`}
+                              key={subI}
+                              type="text"
+                              // type={subI >= 6 ? "date" : "text"}
+                              maxLength={subI >= 6 ? 10 : 100}
+                              placeholder={item}
+                              value={inputFields[subI] || ""}
+                              className="input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
+                              onChange={(e) => handleChange(subI, e)}
+                            />
+                          );
+                        }
+                    } else if (type === "provider") {
+                      if (tBody[i].id === id && subI !== 0 && subI !== 6 && subI !== 7 && subI !== 8 && subI !== 9) {
+                        return (
+                          <input
+                            id={`input_${subI}`}
+                            key={subI}
+                            type="text"
+                            // type={subI >= 6 ? "date" : "text"}
+                            maxLength={subI >= 6 ? 10 : 100}
+                            placeholder={item}
+                            value={inputFields[subI] || ""}
+                            className="input input-sm input-bordered placeholder:font-PoppinsRegular font-PoppinsRegular"
+                            onChange={(e) => handleChange(subI, e)}
+                          />
+                        );
+                      }
+                    } else if (tBody[i].id === id && subI !== 0 && subI !== 7 && subI !== 8 && subI !== 9) {
                       // No ver IDs: && subI !== 0
                       return (
                         <input

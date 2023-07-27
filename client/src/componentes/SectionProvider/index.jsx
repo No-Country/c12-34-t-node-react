@@ -15,7 +15,7 @@ const IndexTable = () => {
     "Producto",
     "Celular",
     "Email",
-    "Descripción",
+    // "Descripción",
     "Empresa",
   ];
   const [tBody, setTBody] = useState([]);

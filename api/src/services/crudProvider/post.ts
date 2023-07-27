@@ -10,7 +10,6 @@ export const postProvider = async (req: Request, res: Response) => {
       !proveedor.name ||
       !proveedor.product ||
       !proveedor.contact ||
-      !proveedor.description ||
       !proveedor.email ||
       !proveedor.provider
     )

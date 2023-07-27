@@ -28,7 +28,6 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
     /* -------------------------------------------------------------------------- */
     if (type === "clientes") {
       newElement = {
-
           nombre: inputField[0],
           plan: inputField[1],
           celular: inputField[2],
@@ -42,24 +41,23 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
           product: inputField[1],
           contact: inputField[2],
           email: inputField[3],
-          description: inputField[4],
-          provider: inputField[5],
+          // description: inputField[4],
+          provider: inputField[4],
           adminId: userId,
       }
-      // console.log("NEW-ELEMENT:", newElement)
+      console.log("NEW-ELEMENT:", newElement)
       axiosPost(newElement, "provider")
     } else if (type === "element-client") {
-      const selectedProvider = inputField[6]// Nombre del Elemento
+      const selectedProvider = inputField[5]// Nombre del Elemento
       const providerId = providers.find((item)=> selectedProvider === item.name)
       
       newElement = {
-
           name: inputField[0],
           state: inputField[1],
-          description: inputField[2],
-          stock: inputField[3],
-          price: inputField[4],
-          date: inputField[5],
+          // description: inputField[2],
+          stock: inputField[2],
+          price: inputField[3],
+          date: inputField[4],
           providerId: providerId.id,
           adminId: userId,
       }
@@ -78,13 +76,13 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
     //   return [...items, newElement]
     // })
     setInputField([]);
-    toast.success("Nuevo elemento agregado");
+    // toast.success("Nuevo elemento agregado");
   };
   function handleChange(i, e) {
     let event = e.target.value;
     const values = [...inputField];
     const number = /[0-9]/;
-    if (i === 5) {
+    if (i === 4) {
       if (!event.match(number)) {
         event;
       } else {
@@ -97,6 +95,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
       }
     }
     values[i] = event;
+    setInputField(values)
   }
   return (
     <div className="flex justify-center">
@@ -120,7 +119,7 @@ const ButtonAdd = ({ tBody, setTBody, tHeader, type, setTError, allProviders }) 
                     <label className="block" htmlFor={`input-${i}`}>
                       {item}
                     </label>
-                    {type === "element-client" && i === 6 ? (
+                    {type === "element-client" && i === 5 ? (
                         <select className="select" onChange={(e) => handleChange(i, e)} >
                           <option>Seleccionar proveedor</option>
                           {providers.map((el) => {

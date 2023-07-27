@@ -28,7 +28,10 @@ const ModalClientes = ({reset}) => {
     axios.post(`${VITE_BACKEND_URL}/api/client`, newUserToBeSaved)
          .then((res) => {
           console.log(res.data);
-          reset(newUserToBeSaved)
+          // reset(newUserToBeSaved)
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
       })
       .catch(err => {
         console.log(err)

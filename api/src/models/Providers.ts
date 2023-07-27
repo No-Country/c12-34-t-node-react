@@ -9,7 +9,7 @@ class Provider extends Model<IProvider> implements IProvider {
   product!: string;
   contact!: string;
   email!: string;
-  description!: string;
+  // description!: string;
   provider!: string;
   // date!: string;
 }
@@ -38,9 +38,9 @@ Provider.init(
       allowNull: false,
       unique: true,
     },
-    description: {
-      type: DataTypes.STRING,
-    },
+    // description: {
+    //   type: DataTypes.STRING,
+    // },
     provider: {
       type: DataTypes.STRING,
     },
