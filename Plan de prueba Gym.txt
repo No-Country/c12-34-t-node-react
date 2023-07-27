@@ -1,0 +1,293 @@
+﻿Sistema de Gestión de un Gimnasio: Fitness Center Gym
+C12-34-T-Node-React
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                    Junio 2023
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Contenido
+
+
+Introducción……………………………………………………………………….4
+
+
+1. Estrategia de Testing……………………………………………………5
+       1.1 ALCANCE…………………………………………………………………………..5
+       1.2 ENFOQUE DE LAS PRUEBAS…………………………………………………….5
+  1.2.1 REQUERIMIENTOS FUNCIONALES……………………………………….5
+       1.3 AMBIENTES DE TESTING…………………………………………………………6
+  1.3.1 GESTIÓN DE AMBIENTES………………………………………………….6
+  1.3.2 HERRAMIENTAS DE TESTING……………………………………………..6
+2. RECURSOS…………………………………………………………………6
+3. TRACKING Y REPORTES…………………………………………………6
+3.1 ESTADO DE LAS PRUEBAS……………………………………………………..6
+3.2 HERRAMIENTAS DE TRACKING……………………………………………7
+
+
+4. NOMENCLATURA DE CASOS DE PRUEBA……………………………….7
+
+
+5. PROCEDIMIENTO DE REPORTES DE DEFECTOS………………………7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+VERSION
+	FECHA
+	DESCRIPCIÓN
+	PREPARADO POR:
+	1.0
+	03/06/2023
+	Descripción de la estrategia de testing del sistema de gestión de un gimnasio:Fitness Center Gym
+	Pierina Sabino
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTRODUCCION
+El presente Plan de Pruebas tiene como objetivo principal garantizar que el Sistema de Gestión del Gimnasio funcione de manera confiable, precisa y segura, proporcionando una experiencia fluida.Se llevaran a cabo una serie de actividades de pruebas exhaustivas y bien estructuradas para identificar y corregir posibles problemas antes de la implementación y puesta en marcha del sistema.Este documento describe el enfoque, el alcance y los procedimientos que se utilizaran para llevar a cabo las pruebas del sistema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. ESTRATEGIA DE TESTING
+1.1 ALCANCE
+* Pruebas de Pantalla de Registro: se evaluará la funcionalidad de registro de nuevos usuarios al sistema. Se verificará que se recopilen y almacenen correctamente los datos requeridos durante el proceso de registro.
+* Pruebas de Pantalla de Inicio de Sesión (Login): se verificará la capacidad de inicio de sesión de los usuarios registrados. 
+* Pruebas de Pantalla de Perfil de Administrador:se comprobará que el administrador pueda acceder a su perfil, modificar su información personal.
+* Pruebas de Pantalla de Clientes: se evaluará la gestión de clientes incluyendo la capacidad de agregar nuevos clientes, ver y editar la información de los clientes existentes.
+* Pruebas de Pantalla de Proveedores: se verificará el registro de nuevos proveedores, la visualización y modificación de la información de los proveedores
+* Pruebas de Pantalla de Staff: se comprobará que el sistema permita la incorporación de nuevos miembros del staff, modificación y eliminación del staff existente.
+* Pruebas de Pantalla de Reservas: se evaluará la capacidad de gestionar las clases ofrecidas por el gimnasio, esto incluye la programación de clases.
+* Pruebas de Pantalla de Gastos e Ingresos:se verificará que el sistema permita el registro y seguimiento de los gastos e ingresos del gimnasio, incluyendo pagos de servicios.
+
+
+
+
+1.2 ENFOQUES DE LAS PRUEBAS
+A continuación se detallan los tipos de pruebas que se ejecutarán en este proyecto.
+
+
+    1.2.1 REQUERIMIENTOS FUNCIONALES
+* Pruebas Funcionales: estas pruebas se ejecutarán para probar los componentes del sistema definidos en las especificaciones del diseño.
+* Pruebas de Integración: estas pruebas se ejecutarán para verificar que los módulos implementados funcionen correctamente al integrarse.
+* Pruebas de Regresión: estas pruebas se ejecutarán  luego de haberse implementado un release y que se hayan detectado errores en el mismo
+
+
+
+
+1.3 AMBIENTES DE TESTING
+
+
+1.3.1 GESTIÓN DE AMBIENTES
+
+
+El ambiente de testing es un entorno creado para llevar a cabo pruebas y validar la calidad del software, en dicho ambiente se llevarán a cabo la ejecución de los diferentes casos de pruebas, los navegadores a usar en el proyecto serán los siguientes: Chrome, Firefox y Opera.
+
+
+1.3.2 HERRAMIENTAS DE TESTING
+* Jira/ Qmetry: Herramienta para el diseño y ejecución de casos de prueba.
+* Trello: Herramienta para gestión de incidencias.
+
+
+2. RECURSOS
+
+
+🧑‍💼Líder:responsable del seguimiento del proyecto
+🧑‍💻Desarrolladores:responsables de traducir los requisitos y especificaciones del software en código funcional.
+🧑‍💻QA Manual:responsable del análisis de las historias de usuario, diseño y ejecución de casos de prueba.Análisis de los errores detectados y derivación a los desarrolladores para su corrección.
+
+
+
+
+
+
+3. TRACKING Y REPORTES
+
+
+3.1 ESTADO DE LAS PRUEBAS
+
+
+El resultado de las pruebas de deberá clasificar de la siguiente manera:
+* No Ejecutado:caso de prueba no ejecutado.
+* Paso:resultado exitoso.
+* Fallo:resultado erroneo.
+* Bloqueado:no se pudo ejecutar por algún error.
+
+
+
+
+
+
+
+
+
+
+3.2 HERRAMIENTAS DE TRACKING
+
+
+Las herramientas definidas para el seguimiento de las ejecuciones de los casos de prueba y errores detectados son los siguientes: Jira y Trello.
+
+
+4. NOMENCLATURA DE CASOS DE PRUEBA
+
+
+* ID: número único de cada caso de prueba.
+* Título: breve descripción que identifique que se está probando.
+* Precondiciones:todo lo que necesito previamente para poder ejecutar ese caso de prueba,
+* Pasos: paso a paso de como probar ese caso de prueba
+* Resultado esperado: que es lo que debería de hacer el sistema al ejecutar estos pasos.
+
+
+
+
+5. PROCEDIMIENTO DE REPORTES DE DEFECTOS
+* Id 
+* Título:breve descripción de qué se trata el error y que se logre entender cuál es la falla
+* Precondiciones: que es lo que necesito tener previamente configurado para poder ejecutar los pasos.
+* Pasos de reproducción:
+* Resultado Actual: Que es lo que está pasando ahora
+* Resultado Esperado: Como debería funcionar la aplicación
+* Screenshot/Video: Captura de pantalla o video del error
+* Browser: Especificar en qué navegador se encontró la falla
+* Ambiente: Especificar en qué ambiente se encontró el error
