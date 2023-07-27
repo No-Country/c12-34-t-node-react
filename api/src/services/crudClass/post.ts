@@ -4,16 +4,18 @@ import { ClassGroup } from "../../models/relations";
 
 export const postClassGym = async (req: Request, res: Response) => {
   const clase = req.body as IClassGroup;
+  console.log(req.body)
 
   const errorName = typeof clase.name !== "string" || clase.name.length === 0
   const errorTrainer = typeof clase.trainer !== "string" || clase.trainer.length === 0
   const errorDuration = typeof clase.duration !== "string" || clase.duration.length === 0
   const errorSchedule = typeof clase.schedule !== "string" || clase.schedule.length === 0
+  const errorImg = typeof clase.img !== "string" || clase.img.length === 0
   const errorInDay = typeof clase.inDay !== "string" || !Object.values(InDay).includes(clase.inDay)
   const errorWeekDays = typeof clase.weekDays !== "string" || !Object.values(WeekDays).includes(clase.weekDays)
   
   try {
-    if (errorName && errorTrainer && errorDuration && errorSchedule && errorInDay) {
+    if (errorName && errorTrainer && errorDuration && errorSchedule && errorInDay && errorImg) {
       throw new Error(`Faltan todas las propiedades`);
     }
     if (errorName) throw new Error(`Incorrecto o falta el nombre de la clase`);
@@ -22,6 +24,8 @@ export const postClassGym = async (req: Request, res: Response) => {
     if (errorSchedule) throw new Error(`Incorrecto o falta el horario de la clase`);
     if (errorInDay) throw new Error(`Incorrecto o falta la jornada de la clase`);
     if (errorWeekDays) throw new Error(`Incorrecto o falta el día de la clase`);
+    if (errorImg) throw new Error(`Incorrecto o falta la imagen`);
+  
     else {
       let createClass = await ClassGroup.create(clase);
       // createClass = JSON.parse(JSON.stringify(createClass))

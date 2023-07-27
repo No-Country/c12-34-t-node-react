@@ -10,6 +10,7 @@ class ClassGroup extends Model<IClassGroup> implements IClassGroup {
   schedule!: string;// HORARIO
   inDay!: InDay;
   weekDays!: WeekDays;
+  img!: string
 }
 
 ClassGroup.init(
@@ -34,6 +35,9 @@ ClassGroup.init(
     schedule: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    img: {
+      type: DataTypes.STRING
     },
     inDay: {
       type: DataTypes.ENUM(InDay.Afternoon, InDay.Morning, InDay.Night),

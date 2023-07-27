@@ -21,5 +21,6 @@ export interface IClassGroup {
   duration: string;
   schedule: string; // HORARIO
   inDay: InDay;
-  weekDays: WeekDays
+  weekDays: WeekDays,
+  img: string;
 }
