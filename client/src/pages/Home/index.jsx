@@ -47,7 +47,7 @@ const HomePrincipal = () => {
             <Route path='/bienes' element={<Bienes />} />
             <Route path='/bienes/maquinas' element={<ConstructionPage />} />
             <Route path='/bienes/elementos' element={<BienesElementos />} />
-            <Route path='/bienes/mobiliario' element={<BienesMobiliario />} />
+            <Route path='/bienes/mobiliario' element={<ConstructionPage />} />
             <Route path="/staff" element={<SectionStaff />} />
             <Route path="/clientes" element={<SectionClients />} />
             <Route path="/proveedores" element={<SectionProvider />} />

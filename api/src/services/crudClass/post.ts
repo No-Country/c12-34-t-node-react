@@ -23,7 +23,15 @@ export const postClassGym = async (req: Request, res: Response) => {
     if (errorInDay) throw new Error(`Incorrecto o falta la jornada de la clase`);
     if (errorWeekDays) throw new Error(`Incorrecto o falta el día de la clase`);
     else {
-      let createClass = await ClassGroup.create(clase);
+      let createClass = await ClassGroup.create({
+        name: clase.name,
+        trainer: clase.trainer,
+        duration: clase.duration,
+        schedule: clase.schedule,
+        inDay: clase.inDay,
+        weekDays: clase.weekDays,
+        img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
+      });
       // createClass = JSON.parse(JSON.stringify(createClass))
       // console.log("CREATE:", createClass)
 

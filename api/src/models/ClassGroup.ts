@@ -10,6 +10,7 @@ class ClassGroup extends Model<IClassGroup> implements IClassGroup {
   schedule!: string;// HORARIO
   inDay!: InDay;
   weekDays!: WeekDays;
+  img!: string;
 }
 
 ClassGroup.init(
@@ -50,6 +51,9 @@ ClassGroup.init(
         WeekDays.Wednesday
       ),
       allowNull: false,
+    },
+    img: {
+      type: DataTypes.STRING,
     }
   },
   {
