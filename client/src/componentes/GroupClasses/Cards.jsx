@@ -17,7 +17,7 @@ export const Cards = ({ card }) => {
       className="card w-auto  bg-[#343A40]  shadow-xl h-auto mx-auto px-5"
     >
       <button
-        className="btn btn-outline btn-error mt-3 mx-auto w-14"
+        className="btn btn-outline btn-error mt-3 mx-auto w-14 text-xl"
         onClick={() => deleteClass(card.id)}
       >
         X

@@ -8,9 +8,9 @@ const { VITE_BACKEND_URL } = import.meta.env;
 axios.defaults.baseURL = VITE_BACKEND_URL
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )
