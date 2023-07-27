@@ -21,15 +21,16 @@ const AdminPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("EL ID DEL CONTEXTO FUE SETEADO A" + userCtx.userId);
+      console.log("EL ID DEL CONTEXTO FUE SETEADO A: " + userCtx);
+      console.log("EL ID DEL CONTEXTO FUE SETEADO A: " + userCtx.userId);
       console.log(
-        "EL NOMBRE DEL CONTEXTO FUE SETEADO A" + userCtx.userNameRegistered
+        "EL NOMBRE DEL CONTEXTO FUE SETEADO A: " + userCtx.userNameRegistered
       );
       console.log(
-        "EL EMAIL DEL CONTEXTO FUE SETEADO A" + userCtx.userEmailRegistered
+        "EL EMAIL DEL CONTEXTO FUE SETEADO A: " + userCtx.userEmailRegistered
       );
       console.log(
-        "EL TOKEN DEL CONTEXTO FUE SETEADO A" + userCtx.userTokenRegistered
+        "EL TOKEN DEL CONTEXTO FUE SETEADO A: " + userCtx.userTokenRegistered
       );
     }, 2500);
   }, [userCtx.length]);
@@ -54,10 +55,10 @@ const AdminPage = () => {
               <p className=" font-PoppinsRegular text-pallete-black text-sm md:text-lg">{userCtx.userNameRegistered}</p>
             </div>
 
-            <div className="mb-2">
+            {/* <div className="mb-2">
               <label htmlFor=""> <p className='text-pallete-black font-PoppinsSemibold text-sm md:text-lg'>Correo:</p></label>
               <p className=" font-PoppinsRegular text-pallete-black text-sm md:text-lg">{userCtx.userEmailRegistered}</p>
-            </div>
+            </div> */}
 
             <ModalEditarPerfil />
           </div>

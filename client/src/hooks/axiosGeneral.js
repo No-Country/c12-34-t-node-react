@@ -19,6 +19,7 @@ export const axiosPost = async (newElement, type) => {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+    toast.success("Nuevo elemento agregado");
   } catch (error) {
     console.log(error)
   }

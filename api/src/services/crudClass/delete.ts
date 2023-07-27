@@ -1,20 +1,20 @@
 import { Request, Response } from "express";
-import {Elements} from "../../models/relations";
+import {ClassGroup} from "../../models/relations";
 
 export const deleteClassGroupGym = async (req: Request, res: Response) => {
   const { id } = req.params;
-  
+
   try {
-    
-    if (id.length < 36) {
+     const info = await ClassGroup.findByPk(id)
+    if (!info) {
       throw Error(`La clase grupal no existe`);
     } else {
-      await Elements.destroy({
+      await ClassGroup.destroy({
         where: {
           id
         }
       });
-      return res.status(200).json({ message: "La clase grupal ha sido eliminada", });
+      return res.status(200).json({ message: "La clase grupal ha sido eliminada", info});
     }
   } catch (error) {
     if (error instanceof Error) {

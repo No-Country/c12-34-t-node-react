@@ -14,7 +14,7 @@ const BienesElementos = () => {
     const tableHeader = [
       "Elemento",
       "Estado",
-      "Descripcion",
+      // "Descripcion",
       "Stock",
       "Precio",
       "Fecha",

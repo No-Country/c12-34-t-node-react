@@ -26,6 +26,9 @@ const ModalGastos = ({title, setGastoNuevo}) => {
          .then((res) => { 
           console.log(res.data)
           setGastoNuevo(newExpense)
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 1000);
          })
          .catch((err) => { 
           console.log(err)

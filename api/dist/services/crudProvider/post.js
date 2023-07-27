@@ -17,7 +17,6 @@ const postProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (!proveedor.name ||
             !proveedor.product ||
             !proveedor.contact ||
-            !proveedor.description ||
             !proveedor.email ||
             !proveedor.provider)
             return res.status(400).json({ msg: "Todos los campos son requeridos" });

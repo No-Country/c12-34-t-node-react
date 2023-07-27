@@ -4,7 +4,7 @@ export interface IProvider {
   product: string;
   contact: string;
   email: string;
-  description: string;
+  // description: string;
   provider: string;
   date?: string
 }

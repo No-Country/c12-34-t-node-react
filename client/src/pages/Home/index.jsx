@@ -47,12 +47,12 @@ const HomePrincipal = () => {
             <Route path='/bienes' element={<Bienes />} />
             <Route path='/bienes/maquinas' element={<ConstructionPage />} />
             <Route path='/bienes/elementos' element={<BienesElementos />} />
-            <Route path='/bienes/mobiliario' element={<BienesMobiliario />} />
+            <Route path='/bienes/mobiliario' element={<ConstructionPage />} />
             <Route path="/staff" element={<SectionStaff />} />
             <Route path="/clientes" element={<SectionClients />} />
             <Route path="/proveedores" element={<SectionProvider />} />
             <Route path='/horarios' element={<Horarios />} />
-            <Route path='/reservas' element={<GroupClasses />} />
+            <Route path='/clasesgrupales' element={<GroupClasses />} />
             <Route path='/gastos' element={<Gastos />} />
 
             <Route path='*' element={<NotFound />} />

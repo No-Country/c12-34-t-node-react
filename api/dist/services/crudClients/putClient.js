@@ -16,12 +16,17 @@ exports.updateClient = void 0;
 const Clientes_1 = __importDefault(require("../../models/Clientes"));
 const updateClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const client = req.body;
-    console.log(id);
-    console.log(req.body);
+    const cliente = req.body;
     try {
-        const cliente = yield Clientes_1.default.update(client, { where: { id } });
-        return res.status(200).json({ msg: "Cliente actualizado", cliente });
+        const info = yield Clientes_1.default.findAll();
+        const client = info.find((el) => el.id === id);
+        if (!client) {
+            return res.json({ msg: "El cliente no existe" });
+        }
+        else {
+            yield Clientes_1.default.update(cliente, { where: { id } });
+            return res.status(200).json({ msg: "Cliente actualizado", client });
+        }
     }
     catch (error) {
         console.log(error);

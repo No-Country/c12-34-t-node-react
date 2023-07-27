@@ -6,7 +6,7 @@ class Elements extends Model<IElements> implements IElements {
   id!: string;
   name!: string;
   stock!: string;
-  description!: string;
+  // description!: string;
   price!: number;
   date!: string;
   // state!: State;
@@ -32,10 +32,10 @@ Elements.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // description: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     stock: {
       // type: DataTypes.ENUM(
       //   Types.Element,

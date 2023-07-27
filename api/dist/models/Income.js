@@ -20,7 +20,7 @@ Income.init({
     },
 }, {
     sequelize: db_1.db,
-    modelName: "expense",
+    modelName: "income",
     timestamps: false,
 });
 exports.default = Income;

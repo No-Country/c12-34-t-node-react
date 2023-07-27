@@ -28,7 +28,10 @@ const ModalClientes = ({reset}) => {
     axios.post(`${VITE_BACKEND_URL}/api/client`, newUserToBeSaved)
          .then((res) => {
           console.log(res.data);
-          reset(newUserToBeSaved)
+          // reset(newUserToBeSaved)
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
       })
       .catch(err => {
         console.log(err)
@@ -41,7 +44,7 @@ const ModalClientes = ({reset}) => {
 
   return (
     <div className='text-black'>
-    <button className="btn btn-active btn-primary mb-5" onClick={() => window.my_modal_5.showModal()}>Agregar</button>
+    <button className="btn btn-md px-10 py-1.5 mx-auto rounded-xl flex justify-center text-sm shadow-sm font-PoppinsSemibold bg-pallete-yellow hover:bg-pallete-yellow hover:shadow-md leading-6 text-pallete-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pallete-blue" onClick={() => window.my_modal_5.showModal()}>Agregar</button>
     <dialog id="my_modal_5" className="modal  sm:modal-middle mx-auto">
       <form method="dialog" className="modal-box bg-slate-400">
         <div className='px-4 py-6'>

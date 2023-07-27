@@ -14,8 +14,7 @@ const Employees_1 = require("../../models/Employees");
 const postEmployees = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const usuario = req.body;
     try {
-        // if (!usuario.name || !usuario.password || !usuario.email) {
-        if (Object.values(usuario).length < 4) {
+        if (!usuario.name || !usuario.contact || !usuario.email) {
             return res.status(400).json({ msg: "Todos los campos son requeridos" });
         }
         const existUser = yield Employees_1.Employees.findOne({
