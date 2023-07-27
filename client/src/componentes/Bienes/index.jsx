@@ -1,24 +1,28 @@
 import { Link } from "react-router-dom"
 import Title from '../Title'
+import machineIcon from "../../assets/imgs/machineIcon.png"
+import weightsIcon from "../../assets/imgs/weightsIcon.png"
+import gymIcon from "../../assets/imgs/gymIcon.png"
+
 
 const MENU = [
   {
     id: 1,
-    img: ["imagebienes1.jpg"],
+    img: [machineIcon],
     title: ["Máquinas"],
     desc: ["aparatos de sala de musculación"],
     alt: "Máquinas",
     link: "/home/bienes/maquinas"
   }, {
     id: 2,
-    img: ["imagebienes2.jpg"],
+    img: [weightsIcon],
     title: ["Elementos"],
     desc: ["pesas, colchonetas, etc"],
     alt: "Elementos",
     link: "/home/bienes/elementos"
   }, {
     id: 3,
-    img: ["imagebienes3.jpg"],
+    img: [gymIcon],
     title: ["Mobiliario"],
     desc: ["muebles, estantes, etc"],
     alt: "Mobiliario",
@@ -27,7 +31,7 @@ const MENU = [
 
 const Bienes = () => {
   return (
-    <main className='flex flex-col w-full gap-2 m-5'>
+    <main className='flex flex-col w-full gap-2 p-5'>
       <Title title={'Bienes'} />
       <section className='flex flex-col items-center justify-between gap-5'>
         {
@@ -41,7 +45,7 @@ const Bienes = () => {
                   <h3 className='text-base text-pallete-black group-hover:text-pallete-white font-PoppinsSemibold '>{`${el.title}`}</h3>
                   <p className='text-sm text-pallete-black group-hover:text-pallete-white font-PoppinsMedium '>{`${el.desc}`}</p>
                 </div>
-                <img className='peer-hover/img:-translate-x-2 w-12 transition-all' src={`/${el.img}`} alt={`${el.alt}`} />
+                <img className='peer-hover/img:-translate-x-2 w-12 transition-all' src={el.img} alt={`${el.alt}`} />
               </div>
             </Link>
           ))
