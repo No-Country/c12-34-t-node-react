@@ -1,45 +1,37 @@
-import { useState } from "react";
-import profesor from "../../assets/imgs/profesor.jpg";
-import axios from "axios";
-import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
-import { UserContext } from "../../store/userContext";
-
-import { useState } from 'react'
-import profesor from "../../img/profesor.jpg"
-import axios from 'axios'
-import 'react-toastify/dist/ReactToastify.css'
-import { useContext } from 'react'
-import { UserContext } from '../../store/userContext'
+import { useState, useContext } from 'react'
+import profesor from "../../assets/imgs/profesor.jpg"
+import axios from "axios"
+import "react-toastify/dist/ReactToastify.css"
+import { UserContext } from "../../store/userContext"
 
 
 const ModalEditarPerfil = () => {
-  const [name, setName] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("")
+  const [cargo, setCargo] = useState("")
+  const [email, setEmail] = useState("")
 
-  const userCtx = useContext(UserContext);
+  const userCtx = useContext(UserContext)
 
-  console.log(userCtx.userId);
+  console.log(userCtx.userId)
 
   const editProfile = () => {
     const dataUpdated = {
       name,
       cargo,
       email,
-    };
+    }
     axios
       .put(`/api/update-user/${userCtx.userId}`, dataUpdated)
       .then((res) => {
-        console.log(res.data.user);
-        userCtx.updateUserEmailRegistered(res.data.user.email);
-        userCtx.updateUserNameRegistered(res.data.user.name);
-        userCtx.updateUserCargoRegistered(res.data.user.cargo);
+        console.log(res.data.user)
+        userCtx.updateUserEmailRegistered(res.data.user.email)
+        userCtx.updateUserNameRegistered(res.data.user.name)
+        userCtx.updateUserCargoRegistered(res.data.user.cargo)
       })
       .catch((err) => {
-        console.log(err);
-      });
-  };
+        console.log(err)
+      })
+  }
 
   return (
     <div>
@@ -114,9 +106,9 @@ const ModalEditarPerfil = () => {
       </dialog>
 
     </div>
-  );
-};
+  )
+}
 
 
 
-export default ModalEditarPerfil;
+export default ModalEditarPerfil
