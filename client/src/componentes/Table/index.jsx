@@ -1,8 +1,8 @@
-import "react-toastify/dist/ReactToastify.css";
-import ButtonsTable from "./ButtonsTable";
+import "react-toastify/dist/ReactToastify.css"
+import ButtonsTable from "./ButtonsTable"
 
 const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
-  const providersName = tBody?.map(({ provider }) => provider?.name);
+  const providersName = tBody?.map(({ provider }) => provider?.name)
   return (
     <>
       <div className="w-full overflow-x-scroll scroll-smooth h-full rounded-lg">
@@ -38,8 +38,8 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                               </p>
                             </div>
                           </td>
-                        );
-
+                        )
+                      }
                     })}
                     <ButtonsTable
                       id={data.id}
@@ -49,7 +49,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
                       setTError={setTError}
                     />
                   </tr>
-                );
+                )
               })
             ) : (
               <tr>
@@ -66,7 +66,7 @@ const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
         </table>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

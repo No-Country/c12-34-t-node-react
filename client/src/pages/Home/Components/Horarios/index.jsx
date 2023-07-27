@@ -1,31 +1,12 @@
 import styles from './styles.module.css'
 import LOGO from '../../../../assets/imgs/logoBlackTypo.png'
-import Draggable, {DraggableCore} from "react-draggable";
-
+import Draggable, { DraggableCore } from "react-draggable"
+import { Title } from "../../../../componentes/index"
 
 const Horarios = () => {
   return (
-    <div className={styles.container}>
-      <div style={{
-          display:'flex',
-          width:'100%',
-          maxWidth:'1600px',
-          gap:'550px',
-          alignItems:'center',
-          // border:'3px solid orange',
-          margin:'0 auto'
-        }}>
-          <h2 
-            className='text-4xl text-black font-bold'
-            style={{borderBottom:'2px solid',borderColor:'#5FCA56', paddingBottom:'10px', marginTop:'80px'}}>
-            Horarios
-          </h2>
-
-          <span style={{maxHeight:'240px', maxWidth:'200px', alignSelf:'center'}}>
-            <img style={{height:'100%', width:'100%'}} src={LOGO} alt="logotipo del gym" />
-          </span>
-        </div>
-
+    <main className="flex flex-col w-full gap-2 px-auto py-2 sm:p-5">
+      <Title title={"Horarios"} />
 
       <div className={styles.content}>
         <div className={styles.sidebar}>
@@ -57,82 +38,82 @@ const Horarios = () => {
           <div className={styles.classTimes}>
             <div className={styles.tenAM}>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   Zumba
                   #Profe María
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Zumba</p>
                   <p>#Profe María</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Zumba</p>
                   <p>#Profe María</p>
-              </div>
+                </div>
               </Draggable>
             </div>
 
             <div className={styles.twoPM}>
 
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Spinning</p>
                   <p>#Profe Ro</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Spinning</p>
                   <p>#Profe Ro</p>
-              </div>
+                </div>
               </Draggable>
 
-              
+
               <Draggable>
-              <div className={styles.customBox}>
+                <div className={styles.customBox}>
                   <p>Zumba</p>
-                  <span style={{color:'#F96B6B', fontSize:'.7rem', wordWrap:'break-word'}}>Suspendida del 7/4 al 19/4</span>
+                  <span style={{ color: '#F96B6B', fontSize: '.7rem', wordWrap: 'break-word' }}>Suspendida del 7/4 al 19/4</span>
                   <p>#Profe María</p>
-                  <span style={{position:'absolute', height:'12px', width:'12px', backgroundColor:'#F96B6B', borderRadius:'50%', top:'0', right:'0'}}></span>
-              </div>
+                  <span style={{ position: 'absolute', height: '12px', width: '12px', backgroundColor: '#F96B6B', borderRadius: '50%', top: '0', right: '0' }}></span>
+                </div>
               </Draggable>
-           
+
             </div>
 
             <div className={styles.threePM}>
 
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Yoga</p>
                   <p>#Profe Noe</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Yoga</p>
                   <p>#Profe Noe</p>
-              </div>
+                </div>
               </Draggable>
-           
+
             </div>
 
             <div className={styles.twoPM}>
 
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Yoga</p>
                   <p>#Profe Noe</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Yoga</p>
                   <p>#Profe Noe</p>
-              </div>
+                </div>
               </Draggable>
 
             </div>
@@ -140,16 +121,16 @@ const Horarios = () => {
             <div className={styles.sixPM}>
 
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Crossfit</p>
                   <p>#Profe Ale</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Crossfit</p>
                   <p>#Profe Ale</p>
-              </div>
+                </div>
               </Draggable>
 
             </div>
@@ -157,16 +138,16 @@ const Horarios = () => {
             <div className={styles.threePM}>
 
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Aerobox</p>
                   <p>#Profe Carla</p>
-              </div>
+                </div>
               </Draggable>
               <Draggable>
-              <div className={styles.box}>
+                <div className={styles.box}>
                   <p>Aerobox</p>
                   <p>#Profe Carla</p>
-              </div>
+                </div>
               </Draggable>
 
             </div>
@@ -175,7 +156,7 @@ const Horarios = () => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 
