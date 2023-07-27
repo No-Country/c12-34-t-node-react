@@ -9,7 +9,7 @@ export const getClassGroupGym = async (_: Request, res: Response) => {
         attributes: ["user"],
       },
     });
-    if (!classGroup) {
+    if (!classGroup.length) {
       return res.status(400).json({ msg: "De momento no se han añadido clases grupales" });
     }
     return res.status(200).json(classGroup);

@@ -13,7 +13,7 @@ export const getProvider = async (req: Request, res: Response) => {
         }],
       }
     })
-    if (!proveedores) {
+    if (!proveedores.length) {
       return res.status(400).json({ msg: "No hay proveedores disponibles" });
     } else {
       return res.status(200).json(proveedores)

@@ -23,7 +23,7 @@ const getElementsGym = (_, res) => __awaiter(void 0, void 0, void 0, function* (
                     }],
             },
         });
-        if (!infoElements) {
+        if (!infoElements.length) {
             return res.status(400).json({ msg: "No hay nada" });
         }
         return res.status(200).json(infoElements);

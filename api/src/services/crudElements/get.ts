@@ -13,7 +13,7 @@ export const getElementsGym = async (_: Request, res: Response) => {
         }],
       },
     });
-    if (!infoElements) {
+    if (!infoElements.length) {
       return res.status(400).json({ msg: "No hay nada" });
     }
     return res.status(200).json(infoElements);

@@ -23,7 +23,7 @@ const getProvider = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                     }],
             }
         });
-        if (!proveedores) {
+        if (!proveedores.length) {
             return res.status(400).json({ msg: "No hay proveedores disponibles" });
         }
         else {

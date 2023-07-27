@@ -19,7 +19,7 @@ const getIncomeGym = (_, res) => __awaiter(void 0, void 0, void 0, function* () 
                 attributes: ["user"],
             },
         });
-        if (!incomes) {
+        if (!incomes.length) {
             return res.status(400).json({ msg: "De momento no se han añadido las ganancias mensuales" });
         }
         return res.status(200).json(incomes);
