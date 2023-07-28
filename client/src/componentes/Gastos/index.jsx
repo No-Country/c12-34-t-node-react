@@ -12,7 +12,6 @@ import ModalGastos from "./Modal";
 import ModalDos from "./ModalDos";
 import { Grid } from "@mui/material";
 import axios from "axios";
-const { VITE_BACKEND_URL } = import.meta.env;
 import { useEffect, useState } from "react";
 
 const Gastos = () => {
@@ -32,9 +31,7 @@ const Gastos = () => {
     axios
       .get(`/api/expenses`)
       .then((res) => {
-        console.log(res.data.expenses);
         setGastos(res.data.expenses);
-        console.log(res.data.gastos);
         setTotalGastado(res.data.gastos);
       })
       .catch((err) => console.log(err));
@@ -53,6 +50,26 @@ const Gastos = () => {
     return ingresos.reduce((total, row) => total + parseInt(row.income), 0);
   };
 
+  const handleDeleteExpenses = (id) => {
+    axios.delete(`/api/expense/${id}`)
+      .then(res => console.log("DELETE:", res.data))
+      .catch(error => console.log(error));
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
+
+  const handleDeleteIncome = (id) => {
+    axios.delete(`/api/income/${id}`)
+      .then(res => console.log("DELETE:", res.data))
+      .catch(error => console.log(error));
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  }
+
   return (
     <div className="mx-auto h-full">
       <div className="mt-[20px]">
@@ -60,7 +77,7 @@ const Gastos = () => {
       </div>
 
       <div className="sm:mx-auto md:float-right">
-        <Grid container alignItems="center" justifyContent="flex-end">
+        <Grid container alignItems="center" justifyContent="flex-center">
           <Grid item xs={12} md={6}>
             <ChartComponent />
           </Grid>
@@ -93,20 +110,21 @@ const Gastos = () => {
                     </TableCell>
 
                     <TableCell align="right">
-                      {" "}
-                      <b>{gasto.expense}</b>{" "}
+                      <b className="text-pallete-lightgrey" >{gasto.expense}</b>{" "}
                     </TableCell>
                     <TableCell className="text-right">
-                      <img
+                      {/* <img
                         src={iconEdit}
                         className="w-[15px] h-[15px] cursor-pointer"
-                      ></img>
+                      ></img> */}
                     </TableCell>
                     <TableCell className="text-right">
-                      <img
-                        src={iconDelete}
-                        className="w-[15px] h-[15px] cursor-pointer"
-                      ></img>
+                      <button onClick={() => handleDeleteExpenses(gasto.id)} >
+                        <img
+                          src={iconDelete}
+                          className="w-[15px] h-[15px] cursor-pointer"
+                        ></img>
+                      </button>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -157,20 +175,21 @@ const Gastos = () => {
                       {row.name}
                     </TableCell>
                     <TableCell align="right">
-                      {" "}
-                      <b className="text-teal-400">{row.income}</b>{" "}
+                      <b className="text-teal-400">{row.income}</b>
                     </TableCell>
                     <TableCell className="text-right">
-                      <img
+                      {/* <img
                         src={iconEdit}
                         className="w-[15px] h-[15px] cursor-pointer"
-                      ></img>
+                      ></img> */}
                     </TableCell>
                     <TableCell className="text-right">
-                      <img
-                        src={iconDelete}
-                        className="w-[15px] h-[15px] cursor-pointer"
-                      ></img>
+                      <button onClick={() => handleDeleteIncome(row.id)} >
+                        <img
+                          src={iconDelete}
+                          className="w-[15px] h-[15px] cursor-pointer"
+                        ></img>
+                      </button>
                     </TableCell>
                   </TableRow>
                 ))}

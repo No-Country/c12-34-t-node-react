@@ -1,16 +1,11 @@
 import axios from "axios"
 import { useState } from 'react'
 import { Link, Navigate, useNavigate } from "react-router-dom"
-import Section from "../Section"
-import { CgAsterisk } from 'react-icons/cg'
 import 'react-toastify/dist/ReactToastify.css'
 import swAlert from "@sweetalert/with-react"
 import { useContext } from "react"
 import { UserContext } from "../../store/userContext"
 import logo from "./assets/Group 409ss.png"
-import gmail from './assets/gmail.png'
-const { VITE_BACKEND_URL } = import.meta.env
-
 
 const Login = () => {
 
@@ -76,9 +71,9 @@ const Login = () => {
         :
         <main
           className='flex items-center justify-center gap-10 sm:gap-0 my-4 mx-2 sm:mx-5 md:mx-20 mt-10'>
-          <Link to="/" className='basis-1/2 mx-auto hidden md:block'>
+          <div className='basis-1/2 mx-auto hidden md:block'>
             <img src={logo} alt="Logo de Fitness Center Gym" className='basis-1/2 w-[30vw] mx-auto ' />
-          </Link>
+          </div>
           <div className="basis-1/2 w-[50vh] flex flex-1 flex-col gap-5 justify-center p-6 sm:py-12 lg:px-8 rounded-lg bg-gray-200 bg-opacity-60 shadow-md ">
             <h2 className="text-center text-2xl font-PoppinsBold leading-9 tracking-tight text-pallete-black">Inicio de sesión</h2>
             <form className='w-full' action="#" method="POST" >
@@ -106,11 +101,6 @@ const Login = () => {
                     />
                   </div>
                 </div>
-
-                <label className="label cursor-pointer p-0 w-fit">
-                  <input type="checkbox" className="checkbox checkbox-sm border " />
-                  <span className="label-text ml-2 mr-auto font-PoppinsMedium ">Recuérdame</span>
-                </label> 
 
                 <button
                   onClick={logUser}

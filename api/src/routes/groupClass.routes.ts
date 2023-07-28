@@ -9,7 +9,7 @@ export const groupClassRoutes = Router()
 
 // ─── Clases Grupales ───────────────────────────────────────────────────────────────
 
-groupClassRoutes.get("/api/class-group", authToken, getClassGroupGym)
+groupClassRoutes.get("/api/class-group", getClassGroupGym)
 
 groupClassRoutes.post("/api/class-group", authToken, postClassGym)
 

@@ -8,13 +8,12 @@ export const deleteExpensesGym = async (req: Request, res: Response) => {
   try {
     let resta = 0;
 
-    if (id.length < 36) {
+    const info = await Expense.findAll();
+    const menos = info.find((el: IExpense) => el.id === id);
+
+    if (!menos) {
       throw Error(`El gastos no existe`);
     } else {
-      const info = await Expense.findAll();
-      const menos = await Expense.findByPk(id);
-      console.log("MENOS:", menos?.expense)
-      
       info.map((el: IExpense) => {
         return resta += Number(el.expense);
       });

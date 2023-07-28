@@ -45,11 +45,11 @@ const Header = () => {
 
       </div>
 
-      <nav className={styles.navMenu}>
-        <a href="#galeria">Galería</a>
-        <a href="#colaboradores">Colaboradores</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+      {token !== null && (
+          <nav className={styles.navMenu}>
+            <Link to="/home/admin">Dashboard</Link>
+          </nav>
+      )}
 
       { token === null
         ? <div className={styles.login}>
@@ -83,8 +83,6 @@ const Header = () => {
       <SideMenu
        isOpen={showMenu}
       />
-
-      {/* {showMenu && <SideMenu isOpen={showMenu} />} */}
       </div>
 
     </div>
@@ -92,36 +90,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <div className={styles.burgerMenu} onClick={handleMenuClick}>
-          <div className={styles.lines}></div>
-          <div className={styles.lines}></div>
-          <div className={styles.lines}></div>
-        </div>
-          {showMenu && (
-          <nav className={styles.navMenu}>
-              <Link to="/movies">Movies</Link>
-              <Link to="/tvshows">TV Shows</Link>
-              <Link to="/mylist">My Lists</Link>
-          </nav> 
-          )} */
-}
-
-//   <div className={styles.container}>
-//     <div className={styles.left}>
-//       <Link className={styles.linkLogo} to="/">
-//         <img src={streamiaIMG} />
-//       </Link>
-
-//       <nav className={`${styles.navMenu} ${showMenu ? styles.showMenu : ""}`}>
-//         <Link to="/movies">Movies</Link>
-//         <Link to="/tvshows">TV Shows</Link>
-//         <Link to="/mylist">My Lists</Link>
-//       </nav>
-//     </div>
-//     <div className={styles.right}>
-//       <Button>Log In</Button>
-//     </div>
-//   </div>
-// );

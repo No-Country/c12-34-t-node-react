@@ -28,13 +28,13 @@ const [userId, setUserId] = useState(() => {
 });
 
 const [userEmailRegistered, setUserEmailRegistered] = useState(() => {          
-    const storedUserNameRegistered = sessionStorage.getItem('userNameRegistered');
+    const storedUserNameRegistered = sessionStorage.getItem('userEmailRegistered');
     return storedUserNameRegistered !== null ? storedUserNameRegistered : null;   
 });
 
 
 const [userTokenRegistered, setUserTokenRegistered] = useState(() => {          
-    const storedUserNameRegistered = sessionStorage.getItem('userNameRegistered');
+    const storedUserNameRegistered = sessionStorage.getItem('userTokenRegistered');
     return storedUserNameRegistered !== null ? storedUserNameRegistered : null;   
 });
 
@@ -60,7 +60,7 @@ const updateUserNameRegistered = (name) => {
 
 const updateUserEmailRegistered = (email) => { 
     setUserEmailRegistered(email)
-    console.log("Cambiando nombre")
+    console.log("Cambiando email")
     sessionStorage.setItem('userEmailRegistered', email);  
 }
 const updateUserTokenRegistered = (token) => { 

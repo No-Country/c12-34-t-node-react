@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from "axios"
-const { VITE_BACKEND_URL } = import.meta.env
 import { useEffect, useState } from 'react';
 import { useContext } from "react";
 import { UserContext } from "../../store/userContext";
@@ -11,23 +10,24 @@ const ModalDos = ({setIncomeNuevo}) => {
 
   const [name, setName] = useState("")
   const [income, setIncome] = useState("")
-  //const [date, setDate] = useState("")
-  
 
    const sendNewIncome = () => {
     const newIncome = ( { 
       name: name,
       income: income,
-      userId: userCtx.userId
+      adminId: userCtx.userId
     })
     axios.post(`/api/income`, newIncome) 
          .then((res) => { 
           console.log(res.data)
-          setIncomeNuevo(newIncome)
+          // setIncomeNuevo(newIncome)
          })
          .catch((err) => { 
           console.log(err)
          })
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
     }
 
 

@@ -9,7 +9,7 @@ export const expensesRoutes = Router()
 
 // ─── Gastos Mensuales ───────────────────────────────────────────────────────────────
 
-expensesRoutes.get("/api/expenses", authToken, getExpensesGym)
+expensesRoutes.get("/api/expenses", getExpensesGym)
 
 expensesRoutes.post("/api/expense", authToken, postExpenseGym)
 

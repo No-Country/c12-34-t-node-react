@@ -169,11 +169,6 @@ const Register = () => {
                 </div>
               </div>
 
-              <label className="label cursor-pointer p-0 w-fit">
-                <input type="checkbox" className="checkbox checkbox-sm border " />
-                <span className="label-text ml-2 mr-auto font-PoppinsMedium ">Recuérdame</span>
-              </label>
-
               <button
                 onClick={register}
                 type="submit"

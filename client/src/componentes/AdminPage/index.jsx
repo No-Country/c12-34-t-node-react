@@ -55,10 +55,10 @@ const AdminPage = () => {
               <p className=" font-PoppinsRegular text-pallete-black text-sm md:text-lg">{userCtx.userNameRegistered}</p>
             </div>
 
-            {/* <div className="mb-2">
+            <div className="mb-2">
               <label htmlFor=""> <p className='text-pallete-black font-PoppinsSemibold text-sm md:text-lg'>Correo:</p></label>
               <p className=" font-PoppinsRegular text-pallete-black text-sm md:text-lg">{userCtx.userEmailRegistered}</p>
-            </div> */}
+            </div>
 
             <ModalEditarPerfil />
           </div>

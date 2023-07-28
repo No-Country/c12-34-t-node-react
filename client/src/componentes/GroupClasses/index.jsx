@@ -36,7 +36,7 @@ const GroupClasses = () => {
     axios
       .get("/api/class-group")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTodasLasClases(res.data);
         setClasesFiltradas(res.data);
       })
@@ -54,7 +54,7 @@ const GroupClasses = () => {
       duration,
       img,
     };
-    console.log(newClassToBeSaved);
+    // console.log(newClassToBeSaved);
     axios
       .post("/api/class-group", newClassToBeSaved)
       .then((res) => {
