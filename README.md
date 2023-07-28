@@ -1,6 +1,7 @@
 
 
-![image](https://github.com/No-Country/c12-34-t-node-react/assets/87939958/8f1cb103-2fcf-4487-b68e-4227d56f37ed)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/ce0b0e27-114d-4c25-8427-83d94f112432)
+
 
 
 
@@ -24,10 +25,6 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 🔧 Tecnologias
 
 [![2023-07-17-13h38-11.png](https://i.postimg.cc/KvzJdjC7/2023-07-17-13h38-11.png)](https://postimg.cc/3WsXG88W)
-
-
-
-
 
 
 
@@ -64,6 +61,22 @@ La necesidad de crear este sistema surge de los desafíos que enfrentan los gimn
 `DB_HOST=`
 
 `TOKEN=`
+
+
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/7884d773-35a2-4631-8358-47667d4864bf)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/8aeff34a-6d59-41fd-a175-b23744fa46e7)
+
+
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/dcc720b8-c69d-42f4-9f50-0abc213e1e02)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/8272c0c1-ad04-4051-a835-169b6aa85ebd)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/9b049739-ac47-4656-a714-76c6d6a95c37)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/7da63aef-c762-4f0a-839b-83234a8a63d9)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/6733771d-e75d-4dc0-9e08-dcda2fae4521)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/d8e7961c-29e4-4095-a962-49ac583d231b)
+![image](https://github.com/No-Country/c12-34-t-node-react/assets/84889284/b5ac823e-4304-4bbc-854c-70f22570d6a0)
+
+
+
 
 
 # Equipo de Developer
