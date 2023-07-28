@@ -77,7 +77,7 @@ const Gastos = () => {
       </div>
 
       <div className="sm:mx-auto md:float-right">
-        <Grid container alignItems="center" justifyContent="flex-end">
+        <Grid container alignItems="center" justifyContent="flex-center">
           <Grid item xs={12} md={6}>
             <ChartComponent />
           </Grid>
@@ -110,7 +110,7 @@ const Gastos = () => {
                     </TableCell>
 
                     <TableCell align="right">
-                      <b>{gasto.expense}</b>{" "}
+                      <b className="text-pallete-lightgrey" >{gasto.expense}</b>{" "}
                     </TableCell>
                     <TableCell className="text-right">
                       {/* <img

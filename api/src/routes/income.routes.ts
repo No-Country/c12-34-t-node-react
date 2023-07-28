@@ -9,7 +9,7 @@ export const incomeRoutes = Router()
 
 // ─── Ingresos Mensuales ───────────────────────────────────────────────────────────────
 
-incomeRoutes.get("/api/income", authToken, getIncomeGym)
+incomeRoutes.get("/api/income", getIncomeGym)
 
 incomeRoutes.post("/api/income", authToken, postIncomeGym)
 

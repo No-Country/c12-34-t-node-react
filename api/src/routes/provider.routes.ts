@@ -9,9 +9,9 @@ export const providerRoutes = Router()
 
 // ─── Proveedor ───────────────────────────────────────────────────────────────
 
-providerRoutes.get("/api/providers", authToken, getProvider)
+providerRoutes.get("/api/providers", getProvider)
 
-providerRoutes.post("/api/provider", postProvider)
+providerRoutes.post("/api/provider", authToken, postProvider)
 
 providerRoutes.put("/api/provider/:id", authToken, putProvider)
 

@@ -9,7 +9,7 @@ export const elementRoutes = Router()
 
 // ─── Productos ───────────────────────────────────────────────────────────────
 
-elementRoutes.get("/api/elements", authToken, getElementsGym);
+elementRoutes.get("/api/elements", getElementsGym);
 
 // RELACION ELEMENTO VS PROVEEDOR VS ADMIN
 elementRoutes.post("/api/element-client", authToken, postRelationElements);

@@ -11,7 +11,7 @@ const ConstructionPage = () => {
         </h2>
 
         <button className="font-[Poppins] btn md:px-[4rem] md:btn-md lg:btn-lg bg-[#5FCA56] text-black hover:bg-[#aceca6] mt-[150px]">
-          <Link to="/">Home principal</Link>
+          <Link to="/home/bienes">Volver</Link>
         </button>
       </div>
     </div>
