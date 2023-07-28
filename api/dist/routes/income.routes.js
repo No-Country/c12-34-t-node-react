@@ -9,7 +9,7 @@ const post_1 = require("../services/crudIncome/post");
 const put_1 = require("../services/crudIncome/put");
 exports.incomeRoutes = (0, express_1.Router)();
 // ─── Ingresos Mensuales ───────────────────────────────────────────────────────────────
-exports.incomeRoutes.get("/api/income", authToken_1.authToken, get_1.getIncomeGym);
+exports.incomeRoutes.get("/api/income", get_1.getIncomeGym);
 exports.incomeRoutes.post("/api/income", authToken_1.authToken, post_1.postIncomeGym);
 exports.incomeRoutes.delete("/api/income/:id", authToken_1.authToken, delete_1.deleteIncomeGym);
 exports.incomeRoutes.put("/api/income/:id", authToken_1.authToken, put_1.putIncomeGym);

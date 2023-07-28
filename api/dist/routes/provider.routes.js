@@ -9,7 +9,7 @@ const put_1 = require("../services/crudProvider/put");
 const delete_1 = require("../services/crudProvider/delete");
 exports.providerRoutes = (0, express_1.Router)();
 // ─── Proveedor ───────────────────────────────────────────────────────────────
-exports.providerRoutes.get("/api/providers", authToken_1.authToken, get_1.getProvider);
-exports.providerRoutes.post("/api/provider", post_1.postProvider);
+exports.providerRoutes.get("/api/providers", get_1.getProvider);
+exports.providerRoutes.post("/api/provider", authToken_1.authToken, post_1.postProvider);
 exports.providerRoutes.put("/api/provider/:id", authToken_1.authToken, put_1.putProvider);
 exports.providerRoutes.delete("/api/provider/:id", authToken_1.authToken, delete_1.deleteProvider);

@@ -15,13 +15,12 @@ const deleteExpensesGym = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const { id } = req.params;
     try {
         let resta = 0;
-        if (id.length < 36) {
+        const info = yield relations_1.Expense.findAll();
+        const menos = info.find((el) => el.id === id);
+        if (!menos) {
             throw Error(`El gastos no existe`);
         }
         else {
-            const info = yield relations_1.Expense.findAll();
-            const menos = yield relations_1.Expense.findByPk(id);
-            console.log("MENOS:", menos === null || menos === void 0 ? void 0 : menos.expense);
             info.map((el) => {
                 return resta += Number(el.expense);
             });
