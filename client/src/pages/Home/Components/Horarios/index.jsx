@@ -1,12 +1,12 @@
-import styles from './styles.module.css'
-import Draggable from "react-draggable"
-import { Title } from "../../../../componentes/index"
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import styles from './styles.module.css';
+// import Draggable from "react-draggable"
+import { Title } from "../../../../componentes/index";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const Horarios = () => {
   const [horarios, setHorarios] = useState([]);
-  
+
   useEffect(() => {
     axios.get("/api/class-group")
       .then((res) => {
@@ -63,10 +63,10 @@ const Horarios = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Horarios
+export default Horarios;
 
 // const Horarios = () => {
 //   const [horarios, setHorarios] = useState([]);
