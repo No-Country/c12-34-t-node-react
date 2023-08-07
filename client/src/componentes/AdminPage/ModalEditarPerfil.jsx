@@ -7,7 +7,6 @@ import { UserContext } from "../../store/userContext"
 
 const ModalEditarPerfil = () => {
   const [name, setName] = useState("")
-  const [cargo, setCargo] = useState("")
   const [email, setEmail] = useState("")
 
   const userCtx = useContext(UserContext)
@@ -17,7 +16,6 @@ const ModalEditarPerfil = () => {
   const editProfile = () => {
     const dataUpdated = {
       name,
-      cargo,
       email,
     }
     axios
