@@ -23,4 +23,5 @@ export interface IClassGroup {
   inDay: InDay;
   weekDays: WeekDays
   img: string
+  adminId?: string
 }
