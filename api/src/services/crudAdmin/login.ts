@@ -9,24 +9,20 @@ export const loginUser = async (req: Request, res: Response) => {
   const usuario = req.body as IAdmin
 
   try {
-    const validation = validateLogin(usuario);
-    console.log("EXISTE:", validation)
+    const validation = await validateLogin(usuario);
 
     const existUser = await Admin.findOne({
       where: {
-        // email: usuario.email
         email: validation.email
       }
     });
 
     if (!existUser) {
-      // return res.status(401).json({ msg: "Esta cuenta no esta registrada" })
       return res.status(401).json({ error: "Esta cuenta no esta registrada" })
     }
 
     const passwordEncriptado = existUser.password
 
-    // const compararPassword = await passwordCorrecto(usuario.password, passwordEncriptado)
     const compararPassword = await passwordCorrecto(validation.password, passwordEncriptado)
 
     if (compararPassword) {
@@ -39,7 +35,6 @@ export const loginUser = async (req: Request, res: Response) => {
 
       return res.status(200).json({ msg: "Session y token valido", data })
     } else {
-      // return res.status(403).json({ msg: "Clave invalida" })
       return res.status(403).json({ error: "Clave invalida" })
     }
   } catch (error) {
