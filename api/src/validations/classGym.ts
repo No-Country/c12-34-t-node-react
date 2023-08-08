@@ -17,8 +17,9 @@ export const validationClass = (clase: IClassGroup): IClassGroup => {
     throw new Error(`Debes agregar un tiempo de duración`);
   }
 
-  // SE VERIFICA LA HORA DE LA CLASE (06:00 AM / am - 23:00 PM / pm)
+  // SE VERIFICA LA HORA DE LA CLASE (06:00 AM / am - 22:00 PM / pm)
   if (!regexSchedule.test(clase.schedule)) {
+    console.log("HORARIO:", clase.schedule)
     throw new Error(`El horario debe ser entre: 06:00 (AM / am) - 22:00 (PM / pm)`);
   }
   

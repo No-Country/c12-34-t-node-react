@@ -7,27 +7,15 @@ export const number = /[0-9]/;
 // https://stackoverflow.com/questions/32044846/regex-for-iso-8601-durations
 export const regexDuration = /^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+S)?)?$/;
 
-// https://stackoverflow.com/questions/7536755/regular-expression-for-matching-hhmm-time-format
-// ^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$
-// ^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
-
-// HH:MM 12-hour format, optional leading 0, mandatory meridiems (AM/PM)
-// /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/
-
-// export const regexSchedule = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))/;
-// export const regexSchedule = /(0[1-9]|1[0-2]):([0-5][0-9]) ((a|p)m|(A|P)M)/;
-
-export const regexSchedule = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9] ((a|p)m|(A|P)M)/;// OK
-// export const regexSchedule = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9] ((a)m|(A)M)/;// OK
 //? MAÑANA
-// export const regexSchedule = /(1[0-9]|2[0-3]):[0-5][0-9] ((a)m|(A)M)/;// OK
+// *                                   06-09 | 10-12 : 00 - 59 
+// export const regexScheduleMorning = /^(0[6-9]|1[0-2]):[0-5][0-9] ((a)m|(A)M)$/;// OK
+export const mañana = /^(0[6-9]|1[0-2]):[0-5][0-9] ((a)m|(A)M)$/;
+export const tarde =  /^(1[3-9]|2[0-2]):[0-5][0-9] ((p)m|(P)M)$/;
+// export const regexSchedule = mañana ? mañana : tarde;
 
+// *                            06-09 | 10-12| 13-19| 20-22 : 00 - 59 
+// export const regexSchedule = /^(0[6-9]|1[0-2]|1[3-9]|2[0-2]):[0-5][0-9] ((a|p)m|(A|P)M)$/;// OK
 
-// export const regexSchedule = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9] ((p)m|(P)M)/;// OK
-//* TARDE - NOCHE
-// export const regexSchedule = /(1[0-9]|2[0-3]):[0-5][0-9] ((p)m|(P)M)/;// OK
-
-
-// export const regexSchedule = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
-
-// export const regexSchedule = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+// *                            06-09 | 10-12 : 00 - 59              | 13-19 | 20-22 : 00 - 59 
+export const regexSchedule = /^(0[6-9]|1[0-2]):[0-5][0-9] ((a)m|(A)M)|(1[3-9]|2[0-2]):[0-5][0-9] ((p)m|(P)M)$/;// OK
