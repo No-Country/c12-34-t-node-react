@@ -8,7 +8,6 @@ export const postClassGym = async (req: Request, res: Response) => {
   
   try {
     const validations = validationClass(clase);
-    const userId = await Admin.findByPk(clase.adminId)
 
     let createClass = await ClassGroup.create({
       name: validations.name,
@@ -20,8 +19,6 @@ export const postClassGym = async (req: Request, res: Response) => {
       img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
       adminId: clase.adminId
     });
-    // createClass = JSON.parse(JSON.stringify(createClass))
-    // console.log("CREATE:", createClass)
 
     return res.status(200).json({ message: `Ah sido agregada una nueva clase grupal`, createClass });
   } catch (error) {

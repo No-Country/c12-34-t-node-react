@@ -13,13 +13,12 @@ export const validationClass = (clase: IClassGroup): IClassGroup => {
   validationName(clase.trainer);
 
   // SE VERIFICA EL TIEMPO DE DURACION EN "MINUTOS"
-  if (regexDuration.test(clase.duration)) {
-    throw new Error(`Debes agregar un tiempo de duración`);
+  if (!regexDuration.test(clase.duration)) {
+    throw new Error(`El tiempo de duración debe ser entre: 30 min - 120 min`);
   }
 
   // SE VERIFICA LA HORA DE LA CLASE (06:00 AM / am - 22:00 PM / pm)
   if (!regexSchedule.test(clase.schedule)) {
-    console.log("HORARIO:", clase.schedule)
     throw new Error(`El horario debe ser entre: 06:00 (AM / am) - 22:00 (PM / pm)`);
   }
   
@@ -28,7 +27,7 @@ export const validationClass = (clase: IClassGroup): IClassGroup => {
   }
   
   if (!Object.values(WeekDays).includes(clase.weekDays)) {
-    throw new Error(`Debes seleccionar un día de la semana`);
+    throw new Error(`Debes seleccionar un día (Lunes - Domingo)`);
   }
 
   return clase;
