@@ -9,24 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.putClassGroupGym = void 0;
+exports.deleteAdmin = void 0;
 const relations_1 = require("../../models/relations");
-const putClassGroupGym = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const current = req.body;
     try {
-        if (id.length < 36) {
-            throw Error(`La clase grupal no existe`);
+        const eliminar = yield relations_1.Admin.findByPk(id);
+        if (!eliminar) {
+            throw Error(`El administrador no existe`);
         }
         else {
-            yield relations_1.ClassGroup.update(current, {
+            yield relations_1.Admin.destroy({
                 where: {
-                    id,
+                    id
                 }
             });
             return res.status(200).json({
-                change: "Los datos de la clase grupal se actualizaron",
-                current
+                message: "El administrador ha sido eliminado",
+                eliminar
             });
         }
     }
@@ -34,7 +34,7 @@ const putClassGroupGym = (req, res) => __awaiter(void 0, void 0, void 0, functio
         if (error instanceof Error) {
             return res.status(404).json({ error: error.message, });
         }
-        return res.status(400).json({ error: "Error en putClassGroupGym por:" + error });
+        return res.status(400).json({ error: "Error en deleteAdmin por:" + error });
     }
 });
-exports.putClassGroupGym = putClassGroupGym;
+exports.deleteAdmin = deleteAdmin;
