@@ -10,39 +10,25 @@ import swAlert from "@sweetalert/with-react"
 import logo from "./assets/Group 409ss.png"
 const { VITE_BACKEND_URL } = import.meta.env;
 
-
 const Register = () => {
   const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
 
   const navigate = useNavigate()
 
+  const userData = {
+    user: name,
+    password,
+    email,
+    confirmPassword,
+  }
+
   const register = (e) => {
     e.preventDefault();
-
-    const userData = {
-      user: name,
-      password: password,
-      email: email,
-    }
-
-    const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-    {
-      if (userData.user === '' || userData.password === '') {
-        toast.error('Los campos no pueden estar vacíos');
-        return;
-      }
-
-      if (email !== '' && !regexEmail.test(email)) {
-        toast.error('El e-mail no es válido');
-        return;
-      }
-    }
-
+    
     axios.post(`/api/auth`, userData)
-
       .then(res => {
         localStorage.setItem('user', userData.user)
         swAlert(<h2> {name},  Te has registrado correctamente</h2>)
@@ -50,8 +36,9 @@ const Register = () => {
         console.log(res.data)
       })
       .catch(err => {
-        swAlert(<h2>{err.response.data.msg}</h2>)
-        console.log(err)
+        swAlert(<h2>{err.response.data.error}</h2>)
+        // console.log(err)
+        console.log(err.response.data.error)
       })
   }
 
@@ -66,7 +53,6 @@ const Register = () => {
     window.location.href = `${VITE_BACKEND_URL}/google`;
     console.log(window.location.href);
   };
-
 
   return (
     <>
@@ -128,7 +114,7 @@ const Register = () => {
               <div>
                 <div className="flex items-center">
                   <label
-                    htmlFor="email"
+                    htmlFor="password"
                     className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']"
                   >
                     Contraseña
@@ -136,11 +122,13 @@ const Register = () => {
                 </div>
 
                 <div className="mt-2">
-                  <input onChange={(e) => setPassword(e.target.value)}
+                  <input 
+                    onChange={(e) => setPassword(e.target.value)}
                     id="password"
                     name="password"
                     placeholder="Contraseña"
                     type="password"
+                    value={password}
                     required
                     className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
                   />
@@ -150,7 +138,7 @@ const Register = () => {
               <div>
                 <div className="flex items-center">
                   <label
-                    htmlFor="email"
+                    htmlFor="confirmPassword"
                     className="block text-sm font-PoppinsSemibold leading-6 text-pallete-black after:content-['*']"
                   >
                     Repetir contraseña
@@ -158,11 +146,13 @@ const Register = () => {
                 </div>
 
                 <div className="mt-2">
-                  <input
-                    id="password"
+                  <input 
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    id="confirmPassword"
                     name="password"
                     placeholder="Repetir contraseña"
                     type="password"
+                    value={confirmPassword}
                     required
                     className="input input-sm block w-full rounded-md font-PoppinsRegular bg-pallete-black text-pallete-white ring-1 ring-inset ring-pallete-grey focus:ring-2 focus:ring-inset focus:ring-pallete-blue sm:text-sm sm:leading-6"
                   />

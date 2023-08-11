@@ -12,28 +12,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerUser = void 0;
 const relations_1 = require("../../models/relations");
 const bcrypt_1 = require("../../helper/bcrypt");
+const register_1 = require("../../validations/register");
 const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const usuario = req.body;
     try {
-        if (!usuario.user || !usuario.password || !usuario.email)
-            return res.status(400).json({ msg: "Todos los campos son requeridos" });
+        const validations = (0, register_1.validateRegister)(usuario);
         const existUser = yield relations_1.Admin.findOne({
             where: { email: usuario.email },
         });
         if (existUser) {
-            return res.status(400).json({ msg: "El usuario ya existe", existUser });
+            return res.status(400).json({ error: "El usuario ya existe", existUser });
         }
-        const encriptado = yield (0, bcrypt_1.passwordHashado)(usuario.password);
+        const encriptado = yield (0, bcrypt_1.passwordHashado)(validations.password);
         const newUser = yield relations_1.Admin.create({
-            user: usuario.user,
-            email: usuario.email,
+            user: validations.user,
+            email: validations.email,
             password: encriptado,
         });
         if (newUser) {
-            return res.status(200).json({ msg: "Usuario creado", newUser });
+            return res.status(200).json({ message: "Usuario creado", newUser });
         }
     }
     catch (error) {
+        if (error instanceof Error) {
+            return res.status(400).json({ error: error.message });
+        }
         console.log(error);
     }
 });

@@ -48,29 +48,24 @@ const [userCargoRegistered, setUserCargoRegistered] = useState(() => {
 
 const updateUser = (id) => {                 
     setUserId(id);
-    console.log("aca estoy ")
     sessionStorage.setItem('userId', id);       
 };
 
 const updateUserNameRegistered = (name) => { 
     setUserNameRegistered(name)
-    console.log("Cambiando nombre")
     sessionStorage.setItem('userNameRegistered', name);  
 }
 
 const updateUserEmailRegistered = (email) => { 
     setUserEmailRegistered(email)
-    console.log("Cambiando email")
     sessionStorage.setItem('userEmailRegistered', email);  
 }
 const updateUserTokenRegistered = (token) => { 
     setUserTokenRegistered(token)
-    console.log("Cambiando Token")
     sessionStorage.setItem('userTokenRegistered', token);  
 }
 const updateUserCargoRegistered = (cargo) => { 
   setUserCargoRegistered(cargo)
-  console.log("Cambiando Cargo")
   sessionStorage.setItem('userCargoRegistered', cargo);  
 }
 

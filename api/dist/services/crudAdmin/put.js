@@ -11,18 +11,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.upDateUser = void 0;
 const relations_1 = require("../../models/relations");
+const updateAdmin_1 = require("../../validations/updateAdmin");
 const upDateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const user = req.body;
     try {
+        const current = yield (0, updateAdmin_1.validateUpdateAdmin)(user);
         if (id.length < 36) {
             throw new Error("El usuario no existe");
         }
         else {
-            yield relations_1.Admin.update(user, {
+            yield relations_1.Admin.update(current, {
                 where: { id, },
             });
-            return res.status(200).json({ change: "Actualización del usuario completa", user, });
+            return res.status(200).json({ change: "Actualización del usuario completa", current, });
         }
     }
     catch (error) {

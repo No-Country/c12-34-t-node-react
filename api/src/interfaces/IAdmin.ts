@@ -9,4 +9,5 @@ export interface IAdmin {
   user: string;
   email: string;
   password: string;
+  confirmPassword?: string;
 }

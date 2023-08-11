@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useContext } from "react";
 import { UserContext } from "../../store/userContext";
 import Title from "../Title";
@@ -6,32 +5,15 @@ import profesor from "../../assets/imgs/profesor.jpg";
 import ModalEditarPerfil from "./ModalEditarPerfil";
 
 const AdminPage = () => {
-  const getUsers = () => {
-    axios
-      .get(`/api/all-users`)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const userCtx = useContext(UserContext);
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("EL ID DEL CONTEXTO FUE SETEADO A: " + userCtx);
-      console.log("EL ID DEL CONTEXTO FUE SETEADO A: " + userCtx.userId);
-      console.log(
-        "EL NOMBRE DEL CONTEXTO FUE SETEADO A: " + userCtx.userNameRegistered
-      );
-      console.log(
-        "EL EMAIL DEL CONTEXTO FUE SETEADO A: " + userCtx.userEmailRegistered
-      );
-      console.log(
-        "EL TOKEN DEL CONTEXTO FUE SETEADO A: " + userCtx.userTokenRegistered
-      );
+      // console.log("ID DEL CONTEXTO:", userCtx.userId);
+      console.log("NOMBRE DEL CONTEXTO:", userCtx.userNameRegistered);
+      console.log("EMAIL DEL CONTEXTO:", userCtx.userEmailRegistered);
+      // console.log("TOKEN DEL CONTEXTO:", userCtx.userTokenRegistered);
     }, 2500);
   }, [userCtx.length]);
 

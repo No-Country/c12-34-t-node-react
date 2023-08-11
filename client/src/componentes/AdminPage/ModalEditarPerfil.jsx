@@ -2,34 +2,35 @@ import { useState, useContext } from 'react'
 import profesor from "../../assets/imgs/profesor.jpg"
 import axios from "axios"
 import "react-toastify/dist/ReactToastify.css"
+import swAlert from "@sweetalert/with-react";
 import { UserContext } from "../../store/userContext"
 
 
 const ModalEditarPerfil = () => {
   const [name, setName] = useState("")
-  const [cargo, setCargo] = useState("")
   const [email, setEmail] = useState("")
 
   const userCtx = useContext(UserContext)
-
-  console.log(userCtx.userId)
+  const dataUpdated = {
+    user: name,
+    email,
+  }
 
   const editProfile = () => {
-    const dataUpdated = {
-      name,
-      cargo,
-      email,
-    }
     axios
       .put(`/api/update-user/${userCtx.userId}`, dataUpdated)
       .then((res) => {
-        console.log(res.data.user)
-        userCtx.updateUserEmailRegistered(res.data.user.email)
-        userCtx.updateUserNameRegistered(res.data.user.name)
-        userCtx.updateUserCargoRegistered(res.data.user.cargo)
+        console.log("RES:", res.data)
+        userCtx.updateUserNameRegistered(res.data.current.user)
+        userCtx.updateUserEmailRegistered(res.data.current.email)
+        swAlert(<h2>{res.data.change}</h2>);
+        setTimeout(() => {
+          window.location.reload()
+        }, 2500);
       })
       .catch((err) => {
-        console.log(err)
+        swAlert(<h2>{err.response.data.error}</h2>);
+        console.log(err.response.data.error)
       })
   }
 
