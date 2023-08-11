@@ -15,10 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getClients = void 0;
 // import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
 const Clientes_1 = __importDefault(require("../../models/Clientes"));
+const IAdmin_1 = require("../../interfaces/IAdmin");
 const getClients = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Me llego algo");
     try {
-        const allClient = yield Clientes_1.default.findAll();
+        const allClient = yield Clientes_1.default.findAll({
+            where: {
+                role: IAdmin_1.Rol.Client
+            }
+        });
         if (!allClient.length) {
             throw new Error("No hay Clientes registrados");
         }
