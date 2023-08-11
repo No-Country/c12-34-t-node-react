@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import Draggable from "react-draggable"
+import Draggable from "react-draggable";
 import { Title } from "../../../../componentes/index";
 import axios from 'axios';
 import { useEffect, useState } from 'react';

@@ -1,11 +1,15 @@
 import { Request, Response } from "express";
 // import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
 import Client from "../../models/Clientes";
+import { Rol } from "../../interfaces/IAdmin";
 
 export const getClients = async (_: Request, res: Response) => {
-  console.log("Me llego algo")
   try {
-    const allClient = await Client.findAll();
+    const allClient = await Client.findAll({
+      where: {
+        role: Rol.Client
+      }
+    });
 
     if (!allClient.length) {
       throw new Error("No hay Clientes registrados");

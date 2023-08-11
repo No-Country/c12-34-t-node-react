@@ -10,7 +10,9 @@ import "../helper/auth"
 
 import Jwt from "jsonwebtoken"
 import { IGoogle } from "../interfaces/IGoogle"
-import { IAdmin } from "../interfaces/IAdmin"
+import { IAdmin, Rol } from '../interfaces/IAdmin';
+import { checkRoleMiddleware } from "../helper/checkRoles"
+import { authToken } from "../middlewares/authToken"
 
 export const adminRoutes = Router()
 
@@ -20,7 +22,8 @@ adminRoutes.post("/api/auth", registerUser)
 
 adminRoutes.post("/api/login", loginUser)
 
-adminRoutes.get("/api/all-users", getAllUsers)
+adminRoutes.get("/api/all-users", authToken, checkRoleMiddleware(Rol.Admin), getAllUsers)
+// adminRoutes.get("/api/all-users", getAllUsers)
 
 adminRoutes.put("/api/update-user/:id", upDateUser)
 

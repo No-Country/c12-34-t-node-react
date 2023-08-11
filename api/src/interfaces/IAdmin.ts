@@ -10,4 +10,5 @@ export interface IAdmin {
   email: string;
   password: string;
   confirmPassword?: string;
+  role?: Rol
 }

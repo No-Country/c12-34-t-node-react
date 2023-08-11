@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
 import { ClassGroup, Elements, Expense, Provider, Admin } from "../../models/relations";
+import { Rol } from "../../interfaces/IAdmin";
 
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
-    const allUsers = await Admin.findAll({
+    const allAdmin = await Admin.findAll({
+      where: {
+        role: Rol.Admin
+      },
       include: [{
         model: Elements,
         attributes: ["name"],
@@ -28,10 +32,10 @@ export const getAllUsers = async (_: Request, res: Response) => {
       attributes: ["id", "user", "email"],
     });
 
-    if (!allUsers.length) {
+    if (!allAdmin.length) {
       throw new Error("No hay usuarios registrados");
     } else {
-      return res.status(200).json(allUsers);
+      return res.status(200).json(allAdmin);
     }
   } catch (error) {
     if (error instanceof Error) {
