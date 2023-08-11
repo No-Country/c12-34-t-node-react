@@ -1,16 +1,21 @@
-import { regexDuration, regexSchedule } from "../helper/utils";
+import { regexDuration, regexImages, regexSchedule } from "../helper/utils";
 import { IClassGroup, InDay, WeekDays } from "../interfaces/IClassGroup";
-import { validationName } from "./name";
+import { validationClassName, validationFullName } from "./name";
 
 export const validationClass = (clase: IClassGroup): IClassGroup => {
 
+  // SE VERIFICAN TODOS LOS CAMPOS  
+  if (!clase.name && !clase.trainer && !clase.duration && !clase.schedule && !clase.inDay && !clase.weekDays) {
+    throw new Error("Todos los campos son requeridos");
+  }
+
   // SE VERIFICA QUE EL NOMBRE NO TENGA NUMEROS INCLUIDOS
   // SE VERIFICA QUE EL NOMBRE TENGA MINIMO 3 CARACTERES
-  validationName(clase.name);
+  validationClassName(clase.name);
   
   // SE VERIFICA QUE EL ENTRENADOR NO TENGA NUMEROS INCLUIDOS
   // SE VERIFICA QUE EL ENTRENADOR TENGA MINIMO 3 CARACTERES
-  validationName(clase.trainer);
+  validationFullName(clase.trainer);
 
   // SE VERIFICA EL TIEMPO DE DURACION EN "MINUTOS"
   if (!regexDuration.test(clase.duration)) {
@@ -19,7 +24,7 @@ export const validationClass = (clase: IClassGroup): IClassGroup => {
 
   // SE VERIFICA LA HORA DE LA CLASE (06:00 AM / am - 22:00 PM / pm)
   if (!regexSchedule.test(clase.schedule)) {
-    throw new Error(`El horario debe ser entre: 06:00 (AM / am) - 22:00 (PM / pm)`);
+    throw new Error(`El horario debe ser entre: 10:00 (AM / am) - 20:00 (PM / pm)`);
   }
   
   if (!Object.values(InDay).includes(clase.inDay)) {
@@ -28,6 +33,10 @@ export const validationClass = (clase: IClassGroup): IClassGroup => {
   
   if (!Object.values(WeekDays).includes(clase.weekDays)) {
     throw new Error(`Debes seleccionar un día (Lunes - Domingo)`);
+  }
+  
+  if (!regexImages.test(clase.img)) {
+    throw new Error(`El enlace de la imagen debe ser http / https y con jpeg - jpg - png - gif - bmp`);
   }
 
   return clase;

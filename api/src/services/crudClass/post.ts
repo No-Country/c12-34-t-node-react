@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { IClassGroup } from "../../interfaces/IClassGroup";
-import { Admin, ClassGroup } from "../../models/relations";
+import { ClassGroup } from "../../models/relations";
 import { validationClass } from "../../validations/classGym";
 
 export const postClassGym = async (req: Request, res: Response) => {
@@ -16,7 +16,8 @@ export const postClassGym = async (req: Request, res: Response) => {
       schedule: validations.schedule,
       inDay: validations.inDay,
       weekDays: validations.weekDays,
-      img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
+      // img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
+      img: validations.img,
       adminId: clase.adminId
     });
 

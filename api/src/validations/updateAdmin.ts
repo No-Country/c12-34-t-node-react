@@ -1,7 +1,7 @@
 import { Admin } from "../models/Admin";
 import { IAdmin } from "../interfaces/IAdmin";
 import { validationEmail } from "./gmail";
-import { validationName } from "./name";
+import { validationFullName } from "./name";
 
 export const validateUpdateAdmin = async (admin: IAdmin): Promise<IAdmin> => {
 
@@ -11,7 +11,7 @@ export const validateUpdateAdmin = async (admin: IAdmin): Promise<IAdmin> => {
   }
 
   // SE VERIFICA QUE NO TENGA NUMEROS Y CANTIDAD DE LETRAS
-  validationName(admin.user);
+  validationFullName(admin.user);
 
   // SE VERIFICA QUE EL CORREO SEA VALIDO
   validationEmail(admin.email);

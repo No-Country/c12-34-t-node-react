@@ -1,15 +1,14 @@
 import "./clases.css";
 import Logo from "../Title/assets/FitnessCenterLogoGym.png";
 import { Cards } from "./Cards";
-import { useFilter } from "./useFilter";
 import { Buttons } from "./Buttons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../../store/userContext";
+import swAlert from "@sweetalert/with-react";
 
 const GroupClasses = () => {
-  const { filteredCards, setFilter } = useFilter();
 
   const [todasLasClases, setTodasLasClases] = useState([]);
   const [name, setname] = useState("");
@@ -21,7 +20,7 @@ const GroupClasses = () => {
   const [img, setImg] = useState("");
   const userCtx = useContext(UserContext);
 
-  const [horarioSeleccionado, setHorarioSeleccionado] = useState("Mañana");
+  const [horarioSeleccionado, setHorarioSeleccionado] = useState("");
   const [clasesFiltradas, setClasesFiltradas] = useState([]);
 
   const filtrarClasesPorHorario = (horario) => {
@@ -50,21 +49,23 @@ const GroupClasses = () => {
       schedule,
       inDay,
       weekDays,
-      adminId: userCtx.userId,
       duration,
       img,
+      adminId: userCtx.userId,
     };
-    // console.log(newClassToBeSaved);
+    console.log(newClassToBeSaved);
     axios
       .post("/api/class-group", newClassToBeSaved)
       .then((res) => {
+        swAlert(<h2>{res.data.message}</h2>);
         console.log(res.data);
         setTimeout(() => {
           window.location.reload();
-        }, 200);
+        }, 1000);
       })
       .catch((err) => {
-        console.log(err);
+        swAlert(<h2>{err.response.data.error}</h2>);
+        console.log(err.response.data.error);
       });
   };
 
@@ -103,7 +104,7 @@ const GroupClasses = () => {
               <button className="btn float-right w-2 h-[2px]">x</button>
               <input
                 type="text"
-                placeholder="name"
+                placeholder="className"
                 className="input w-full bg-white rounded-lg py-2 px-3 mb-2 text-center"
                 onChange={(e) => setname(e.target.value)}
               />
@@ -114,7 +115,7 @@ const GroupClasses = () => {
                 <input
                   type="text"
                   className="input w-full bg-white rounded-lg py-2 px-3 text-center"
-                  placeholder="trainer"
+                  placeholder="name trainer"
                   onChange={(e) => setTrainer(e.target.value)}
                 />
               </div>
@@ -144,6 +145,7 @@ const GroupClasses = () => {
                   className="select w-full bg-white rounded-lg py-2 px-3 text-center"
                   onChange={(e) => setInDay(e.target.value)}
                 >
+                  <option value="">Elije una jornada</option>
                   <option value="Mañana">Mañana</option>
                   <option value="Tarde">Tarde</option>
                   <option value="Noche">Noche</option>
@@ -157,11 +159,14 @@ const GroupClasses = () => {
                   className="select w-full bg-white rounded-lg py-2 px-3 text-center"
                   onChange={(e) => setWeekDays(e.target.value)}
                 >
+                  <option value="">Elije un día</option>
                   <option value="Lunes">Lunes</option>
                   <option value="Martes">Martes</option>
                   <option value="Miercoles">Miercoles</option>
                   <option value="Jueves">Jueves</option>
                   <option value="Viernes">Viernes</option>
+                  <option value="Sabado">Sabado</option>
+                  <option value="Domingo">Domingo</option>
                 </select>
               </div>
 

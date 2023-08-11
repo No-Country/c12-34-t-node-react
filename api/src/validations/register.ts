@@ -1,7 +1,7 @@
 import { IAdmin } from "interfaces/IAdmin";
 import { validationEmail } from "./gmail";
 import { validationPassword } from "./password";
-import { validationName } from "./name";
+import { validationFullName } from "./name";
 
 export const validateRegister = (admin: IAdmin): IAdmin => {
   
@@ -9,7 +9,7 @@ export const validateRegister = (admin: IAdmin): IAdmin => {
     throw new Error("Todos los campos son requeridos")
   }
 
-  validationName(admin.user);
+  validationFullName(admin.user);
 
   validationEmail(admin.email);
 
