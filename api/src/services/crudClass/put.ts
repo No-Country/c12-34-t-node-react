@@ -16,7 +16,10 @@ export const putClassGroupGym = async (req: Request, res: Response) => {
         }
       });
     
-      return res.status(200).json({ change: "Los datos de la clase grupal se actualizaron", current });
+      return res.status(200).json({
+        change: "Los datos de la clase grupal se actualizaron", 
+        current
+      });
     }
   } catch (error) {
     if (error instanceof Error) {

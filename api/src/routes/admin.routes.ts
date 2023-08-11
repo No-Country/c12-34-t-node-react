@@ -3,6 +3,7 @@ import { registerUser } from "../services/crudAdmin/register"
 import { loginUser } from "../services/crudAdmin/login"
 import { getAllUsers } from "../services/crudAdmin/get"
 import { upDateUser } from "../services/crudAdmin/put"
+import { deleteAdmin } from "../services/crudAdmin/delete"
 import "dotenv/config";
 
 import passport from "passport"
@@ -26,6 +27,8 @@ adminRoutes.get("/api/all-users", authToken, checkRoleMiddleware(Rol.Admin), get
 // adminRoutes.get("/api/all-users", getAllUsers)
 
 adminRoutes.put("/api/update-user/:id", upDateUser)
+
+adminRoutes.delete("/api/delete-admin/:id", deleteAdmin)
 
 // ─── Google ─────────────────────────────────────────────────────────────────
 

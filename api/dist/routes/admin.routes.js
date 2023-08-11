@@ -9,6 +9,7 @@ const register_1 = require("../services/crudAdmin/register");
 const login_1 = require("../services/crudAdmin/login");
 const get_1 = require("../services/crudAdmin/get");
 const put_1 = require("../services/crudAdmin/put");
+const delete_1 = require("../services/crudAdmin/delete");
 require("dotenv/config");
 const passport_1 = __importDefault(require("passport"));
 require("../helper/auth");
@@ -23,6 +24,7 @@ exports.adminRoutes.post("/api/login", login_1.loginUser);
 exports.adminRoutes.get("/api/all-users", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IAdmin_1.Rol.Admin), get_1.getAllUsers);
 // adminRoutes.get("/api/all-users", getAllUsers)
 exports.adminRoutes.put("/api/update-user/:id", put_1.upDateUser);
+exports.adminRoutes.delete("/api/delete-admin/:id", delete_1.deleteAdmin);
 // ─── Google ─────────────────────────────────────────────────────────────────
 exports.adminRoutes.get("/google", passport_1.default.authenticate("google", {
     scope: ["email", "profile"]
