@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../db");
 const sequelize_1 = require("sequelize");
+const IAdmin_1 = require("../interfaces/IAdmin");
 class Client extends sequelize_1.Model {
 }
 Client.init({
@@ -31,6 +32,10 @@ Client.init({
     dateOut: {
         type: sequelize_1.DataTypes.STRING,
     },
+    role: {
+        type: sequelize_1.DataTypes.ENUM(IAdmin_1.Rol.Admin, IAdmin_1.Rol.Client, IAdmin_1.Rol.Employees),
+        defaultValue: IAdmin_1.Rol.Client
+    }
 }, {
     sequelize: db_1.db,
     modelName: "client",

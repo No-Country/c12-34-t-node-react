@@ -11,9 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllUsers = void 0;
 const relations_1 = require("../../models/relations");
+const IAdmin_1 = require("../../interfaces/IAdmin");
 const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = yield relations_1.Admin.findAll({
+        const allAdmin = yield relations_1.Admin.findAll({
+            where: {
+                role: IAdmin_1.Rol.Admin
+            },
             include: [{
                     model: relations_1.Elements,
                     attributes: ["name"],
@@ -37,11 +41,11 @@ const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
                 }],
             attributes: ["id", "user", "email"],
         });
-        if (!allUsers.length) {
+        if (!allAdmin.length) {
             throw new Error("No hay usuarios registrados");
         }
         else {
-            return res.status(200).json(allUsers);
+            return res.status(200).json(allAdmin);
         }
     }
     catch (error) {

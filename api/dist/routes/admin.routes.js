@@ -13,11 +13,15 @@ require("dotenv/config");
 const passport_1 = __importDefault(require("passport"));
 require("../helper/auth");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const IAdmin_1 = require("../interfaces/IAdmin");
+const checkRoles_1 = require("../helper/checkRoles");
+const authToken_1 = require("../middlewares/authToken");
 exports.adminRoutes = (0, express_1.Router)();
 // ─── Usuario ─────────────────────────────────────────────────────────────────
 exports.adminRoutes.post("/api/auth", register_1.registerUser);
 exports.adminRoutes.post("/api/login", login_1.loginUser);
-exports.adminRoutes.get("/api/all-users", get_1.getAllUsers);
+exports.adminRoutes.get("/api/all-users", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IAdmin_1.Rol.Admin), get_1.getAllUsers);
+// adminRoutes.get("/api/all-users", getAllUsers)
 exports.adminRoutes.put("/api/update-user/:id", put_1.upDateUser);
 // ─── Google ─────────────────────────────────────────────────────────────────
 exports.adminRoutes.get("/google", passport_1.default.authenticate("google", {

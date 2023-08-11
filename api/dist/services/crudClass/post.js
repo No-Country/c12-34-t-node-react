@@ -23,7 +23,6 @@ const postClassGym = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             schedule: validations.schedule,
             inDay: validations.inDay,
             weekDays: validations.weekDays,
-            // img: clase.img || "https://pymstatic.com/6843/conversions/spinning-wide.jpg",
             img: validations.img,
             adminId: clase.adminId
         });
