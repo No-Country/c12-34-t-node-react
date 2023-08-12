@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ClassGroup, Elements, Expense, Provider, Admin } from "../../models/relations";
+import { ClassGroup, Elements, Expense, Provider, Admin, Employees } from "../../models/relations";
 import { Rol } from "../../interfaces/IAdmin";
 
 export const getAllUsers = async (_: Request, res: Response) => {
@@ -15,6 +15,9 @@ export const getAllUsers = async (_: Request, res: Response) => {
           model: Provider,
           attributes: ["name"],
         }],
+      }, {
+        model: Employees,
+        attributes: ["name"]
       }, {
         model: ClassGroup,
         attributes: ["name"]

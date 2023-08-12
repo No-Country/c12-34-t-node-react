@@ -1,4 +1,4 @@
-import { fullName, nameClass, } from "../helper/utils";
+import { fullName, nameClass, } from "../../helper/regex";
 
 export const validationFullName = (name: string): string => {
   

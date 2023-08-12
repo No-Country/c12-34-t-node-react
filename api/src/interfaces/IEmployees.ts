@@ -10,4 +10,5 @@ export interface IEmployees {
   email: string;
   contact: string;
   occupation: string;
+  adminId?: string
 }

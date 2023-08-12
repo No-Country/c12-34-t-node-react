@@ -124,7 +124,7 @@ const GroupClasses = () => {
                 <input
                   type="text"
                   className="input w-full bg-white rounded-lg py-2 px-3 text-center"
-                  placeholder="duration"
+                  placeholder="duration (30 min - 120 min)"
                   onChange={(e) => setDuration(e.target.value)}
                 />
               </div>
@@ -133,7 +133,7 @@ const GroupClasses = () => {
                 <input
                   type="text"
                   className="input w-full bg-white rounded-lg py-2 px-3 text-center"
-                  placeholder="schedule"
+                  placeholder="schedule: 10:00 (AM / am) - 20:00 (PM / pm)"
                   onChange={(e) => setSchedule(e.target.value)}
                 />
               </div>
