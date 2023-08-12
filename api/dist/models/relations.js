@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Income = exports.Expense = exports.ClassGroup = exports.Provider = exports.Elements = exports.Admin = void 0;
+exports.Income = exports.Expense = exports.ClassGroup = exports.Provider = exports.Elements = exports.Employees = exports.Admin = void 0;
 const Admin_1 = require("./Admin");
 Object.defineProperty(exports, "Admin", { enumerable: true, get: function () { return Admin_1.Admin; } });
 const Element_1 = __importDefault(require("./Element"));
@@ -16,9 +16,14 @@ const Expense_1 = __importDefault(require("./Expense"));
 exports.Expense = Expense_1.default;
 const Income_1 = __importDefault(require("./Income"));
 exports.Income = Income_1.default;
+const Employees_1 = require("./Employees");
+Object.defineProperty(exports, "Employees", { enumerable: true, get: function () { return Employees_1.Employees; } });
 // RELACION USER VS PRODUCT
 Admin_1.Admin.hasMany(Element_1.default);
 Element_1.default.belongsTo(Admin_1.Admin);
+// RELACION USER VS PRODUCT
+Admin_1.Admin.hasMany(Employees_1.Employees);
+Employees_1.Employees.belongsTo(Admin_1.Admin);
 // RELACION USER VS GROUP_CLASS
 Admin_1.Admin.hasMany(ClassGroup_1.default);
 ClassGroup_1.default.belongsTo(Admin_1.Admin);

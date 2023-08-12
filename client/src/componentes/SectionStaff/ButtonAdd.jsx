@@ -4,9 +4,9 @@ import { axiosPostEmployees } from "../../hooks/axiosEmployees";
 
 export const ButtonAdd = ({ tBody, tHeader, type }) => {
   const { userId } = useContext(UserContext);
-
+  
   const [inputField, setInputField] = useState([]);
-
+  
   const addElement = () => {
     if (type === "employee") {
       let newElement = {

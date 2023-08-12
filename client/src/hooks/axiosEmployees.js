@@ -9,7 +9,6 @@ export const axiosGetEmployees = async (setTBody, setTError, type) => {
   } catch (error) {
     console.log(error.response.data);
     setTError(error.response.data.error);
-    return toast.error("Debes llenar todos los campos");
   }
 }
 
@@ -22,8 +21,8 @@ export const axiosPostEmployees = async (newElement, type) => {
       window.location.reload();
     }, 1000);
   } catch (error) {
-    console.log(error.response.data.error)
-    return toast.error(error.response.data.error);
+    console.log(error.response.data)
+    toast.success(error.response.data);
   }
 };
 

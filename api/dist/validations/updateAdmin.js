@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateUpdateAdmin = void 0;
 const Admin_1 = require("../models/Admin");
-const gmail_1 = require("./gmail");
-const name_1 = require("./name");
+const gmail_1 = require("./items/gmail");
+const name_1 = require("./items/name");
 const validateUpdateAdmin = (admin) => __awaiter(void 0, void 0, void 0, function* () {
     // SE VERIFICAN TODOS LOS CAMPOS
     if (!admin.user && !admin.email) {

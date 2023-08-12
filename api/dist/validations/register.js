@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateRegister = void 0;
-const gmail_1 = require("./gmail");
-const password_1 = require("./password");
-const name_1 = require("./name");
+const gmail_1 = require("./items/gmail");
+const password_1 = require("./items/password");
+const name_1 = require("./items/name");
 const validateRegister = (admin) => {
     if (!admin.user && !admin.password && !admin.email) {
         throw new Error("Todos los campos son requeridos");
