@@ -16,11 +16,7 @@ const IndexTable = () => {
 
   useEffect(() => {
     axiosGetEmployees(setTBody, setTError, "employees")
-  }, [tBody])
-
-  // useEffect(() => {
-  //   axiosGet(setTBody, setTError, "employees")
-  // }, [tBody]);
+  }, []);
 
   return (
     <main className="flex flex-col w-full gap-2 px-auto py-2 sm:p-5">

@@ -1,5 +1,5 @@
 import "react-toastify/dist/ReactToastify.css"
-import ButtonsTable from "../Table/ButtonsTable"
+import { ButtonsTable } from "./ButtonsTable";
 
  export const Table = ({ tHeader, tBody, setTBody, type, error, setTError }) => {
   // console.log("BODY EMPLOY:", tBody)
