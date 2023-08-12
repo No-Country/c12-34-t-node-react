@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateLogin = void 0;
-const gmail_1 = require("./gmail");
-const password_1 = require("./password");
+const gmail_1 = require("./items/gmail");
+const password_1 = require("./items/password");
 const relations_1 = require("../models/relations");
 const validateLogin = (admin) => __awaiter(void 0, void 0, void 0, function* () {
     if (!admin.email && !admin.password) {

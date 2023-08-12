@@ -1,7 +1,7 @@
 import { Admin } from "../models/Admin";
 import { IAdmin } from "../interfaces/IAdmin";
-import { validationEmail } from "./gmail";
-import { validationFullName } from "./name";
+import { validationEmail } from "./items/gmail";
+import { validationFullName } from "./items/name";
 
 export const validateUpdateAdmin = async (admin: IAdmin): Promise<IAdmin> => {
 

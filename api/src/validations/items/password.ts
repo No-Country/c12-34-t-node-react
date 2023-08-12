@@ -1,4 +1,4 @@
-import { regexPassword } from "../helper/utils"
+import { regexPassword } from "../../helper/regex"
 
 export const validationPassword = (password: string): string => {
 

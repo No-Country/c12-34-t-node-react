@@ -1,6 +1,6 @@
-import { regexDuration, regexImages, regexSchedule } from "../helper/utils";
+import { regexDuration, regexImages, regexSchedule } from "../helper/regex";
 import { IClassGroup, InDay, WeekDays } from "../interfaces/IClassGroup";
-import { validationClassName, validationFullName } from "./name";
+import { validationClassName, validationFullName } from "./items/name";
 
 export const validationClass = (clase: IClassGroup): IClassGroup => {
 

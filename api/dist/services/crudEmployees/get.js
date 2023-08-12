@@ -10,10 +10,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllEmployees = void 0;
-const Employees_1 = require("../../models/Employees");
+const relations_1 = require("../../models/relations");
+const relations_2 = require("../../models/relations");
 const getAllEmployees = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allEmployees = yield Employees_1.Employees.findAll();
+        const allEmployees = yield relations_1.Employees.findAll({
+            include: {
+                model: relations_2.Admin,
+                attributes: ["user"],
+            }
+        });
         if (!allEmployees.length) {
             throw new Error("No hay empleados registrados");
         }

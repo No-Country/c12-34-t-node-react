@@ -1,26 +1,22 @@
 import React, { useState } from "react"
-import Table from "../Table"
 import { ToastContainer } from "react-toastify"
-import ButtonAdd from "../Table/ButtonAdd"
 import Title from "../Title"
 import { useEffect } from "react"
-import { axiosGet } from "../../hooks/axiosGeneral"
+import { Table } from "./Table"
+import { ButtonAdd } from "./ButtonAdd"
+import { axiosGetEmployees } from "../../hooks/axiosEmployees"
 
 const IndexTable = () => {
 
   const type = "employee"
-  const tableHeader = ["Nombre completo", "Ocupación", "Celular", "Email"]
+  const tableHeader = ["Nombre completo", "Email", "Celular", "Ocupación"]
 
   const [tBody, setTBody] = useState([])
   const [error, setTError] = useState("")
 
   useEffect(() => {
-    axiosGet(setTBody, setTError, "employees")
-  }, [])
-
-  // useEffect(() => {
-  //   axiosGet(setTBody, setTError, "employees")
-  // }, [tBody]);
+    axiosGetEmployees(setTBody, setTError, "employees")
+  }, []);
 
   return (
     <main className="flex flex-col w-full gap-2 px-auto py-2 sm:p-5">

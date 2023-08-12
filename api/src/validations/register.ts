@@ -1,7 +1,7 @@
 import { IAdmin } from "interfaces/IAdmin";
-import { validationEmail } from "./gmail";
-import { validationPassword } from "./password";
-import { validationFullName } from "./name";
+import { validationEmail } from "./items/gmail";
+import { validationPassword } from "./items/password";
+import { validationFullName } from "./items/name";
 
 export const validateRegister = (admin: IAdmin): IAdmin => {
   

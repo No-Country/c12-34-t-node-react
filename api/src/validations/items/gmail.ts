@@ -1,4 +1,4 @@
-import { dominiosPermitidosRegex, emailRegex } from "../helper/utils";
+import { dominiosPermitidosRegex, emailRegex } from "../../helper/regex";
 
 export const validationEmail = (gmail: string): string => {
 

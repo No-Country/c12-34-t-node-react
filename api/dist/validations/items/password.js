@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validationPassword = void 0;
-const utils_1 = require("../helper/utils");
+const regex_1 = require("../../helper/regex");
 const validationPassword = (password) => {
-    if (!utils_1.regexPassword.test(password)) {
+    if (!regex_1.regexPassword.test(password)) {
         // return res.status(400).json({
         //   message: 'La contraseña debe contener al menos 8 caracteres incluyendo: mayúsculas, minúsculas, números y caracteres especiales ( @, $, !, %, *, ?, _ , - o &.)'
         // });

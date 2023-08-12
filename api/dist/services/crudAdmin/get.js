@@ -26,6 +26,9 @@ const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
                             attributes: ["name"],
                         }],
                 }, {
+                    model: relations_1.Employees,
+                    attributes: ["name"]
+                }, {
                     model: relations_1.ClassGroup,
                     attributes: ["name"]
                 }, {
