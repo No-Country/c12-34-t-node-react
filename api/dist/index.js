@@ -11,13 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
 const db_1 = require("./db");
-const forceStatus = `${process.env.STATUS}` === "ACTIVE";
-const port = process.env.PORT || 3002;
+require("dotenv/config");
+const { PORT } = process.env;
 // Modificar el "force" desde la variable de entorno, ACTIVE || IN_ACTIVE
 db_1.db.sync({ alter: true }).then(() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        app_1.app.listen(port, () => {
-            console.log(`Escuchandoo en el puerto: http://localhost:${port}`);
+        app_1.app.listen(PORT, () => {
+            console.log(`Escuchandoo en el puerto: http://localhost:${PORT}`);
         });
         yield db_1.db.authenticate();
         console.log("Conexion a sequelize");

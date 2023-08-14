@@ -1,14 +1,13 @@
 import { app } from "./app";
 import { db } from "./db";
-
-const forceStatus = `${process.env.STATUS}` === "ACTIVE"
-const port = process.env.PORT || 3002;
+import "dotenv/config";
+const { PORT } = process.env;
 
 // Modificar el "force" desde la variable de entorno, ACTIVE || IN_ACTIVE
 db.sync({ alter: true }).then(async () => {
   try {
-    app.listen(port, () => {
-      console.log(`Escuchandoo en el puerto: http://localhost:${port}`);
+    app.listen(PORT, () => {
+      console.log(`Escuchandoo en el puerto: http://localhost:${PORT}`);
     });
     await db.authenticate();
     console.log("Conexion a sequelize");

@@ -9,10 +9,10 @@ const putClient_1 = require("../services/crudClients/putClient");
 const deleteClient_1 = require("../services/crudClients/deleteClient");
 const authToken_1 = require("../middlewares/authToken");
 const checkRoles_1 = require("../helper/checkRoles");
-const IClient_1 = require("../interfaces/IClient");
+const IAdmin_1 = require("../interfaces/IAdmin");
 exports.clientRoutes = (0, express_1.Router)();
 // ─── Usuario ─────────────────────────────────────────────────────────────────
-exports.clientRoutes.get("/api/clients", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IClient_1.Rol.Client), getClient_1.getClients);
+exports.clientRoutes.get("/api/clients", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IAdmin_1.TypeRole.Client), getClient_1.getClients);
 exports.clientRoutes.post("/api/client", authToken_1.authToken, postClient_1.createClient);
 exports.clientRoutes.put("/api/client/:id", authToken_1.authToken, putClient_1.updateClient);
 exports.clientRoutes.delete("/api/client/:id", authToken_1.authToken, deleteClient_1.deleteClient);

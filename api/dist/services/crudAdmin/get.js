@@ -16,7 +16,7 @@ const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const allAdmin = yield relations_1.Admin.findAll({
             where: {
-                role: IAdmin_1.Rol.Admin
+                role: IAdmin_1.TypeRole.Admin
             },
             include: [{
                     model: relations_1.Elements,

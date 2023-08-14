@@ -20,7 +20,7 @@ const getClients = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const allClient = yield Clientes_1.default.findAll({
             where: {
-                role: IAdmin_1.Rol.Client
+                role: IAdmin_1.TypeRole.Client
             }
         });
         if (!allClient.length) {

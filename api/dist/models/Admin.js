@@ -27,9 +27,9 @@ Admin.init({
         unique: true
     },
     role: {
-        type: sequelize_1.DataTypes.ENUM(IAdmin_1.Rol.Admin, IAdmin_1.Rol.Client, IAdmin_1.Rol.Employees),
-        defaultValue: IAdmin_1.Rol.Admin
-    }
+        type: sequelize_1.DataTypes.ENUM(IAdmin_1.TypeRole.Admin),
+        defaultValue: IAdmin_1.TypeRole.Admin,
+    },
 }, {
     sequelize: db_1.db,
     modelName: "admin",

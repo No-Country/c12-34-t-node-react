@@ -33,9 +33,9 @@ Client.init({
         type: sequelize_1.DataTypes.STRING,
     },
     role: {
-        type: sequelize_1.DataTypes.ENUM(IAdmin_1.Rol.Admin, IAdmin_1.Rol.Client, IAdmin_1.Rol.Employees),
-        defaultValue: IAdmin_1.Rol.Client
-    }
+        type: sequelize_1.DataTypes.ENUM(IAdmin_1.TypeRole.Client),
+        defaultValue: IAdmin_1.TypeRole.Client
+    },
 }, {
     sequelize: db_1.db,
     modelName: "client",
