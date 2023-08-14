@@ -1,7 +1,7 @@
-export enum Rol {
-  Admin = "Administrador",
+export enum TypeRole {
+  Admin = "Admin",
   Employees = "Empleados",
-  Client = "Clientes",
+  Client = "Client",
 }
 
 export interface IAdmin {
@@ -10,5 +10,5 @@ export interface IAdmin {
   email: string;
   password: string;
   confirmPassword?: string;
-  role?: Rol
+  role?: TypeRole
 }

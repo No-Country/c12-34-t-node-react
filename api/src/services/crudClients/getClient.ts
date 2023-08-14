@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 // import { ClassGroup, Elements, Expense, Provider, User } from "../../models/relations";
 import Client from "../../models/Clientes";
-import { Rol } from "../../interfaces/IAdmin";
+import { TypeRole } from "../../interfaces/IAdmin";
 
 export const getClients = async (_: Request, res: Response) => {
   try {
     const allClient = await Client.findAll({
       where: {
-        role: Rol.Client
+        role: TypeRole.Client
       }
     });
 

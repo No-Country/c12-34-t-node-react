@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { ClassGroup, Elements, Expense, Provider, Admin, Employees } from "../../models/relations";
-import { Rol } from "../../interfaces/IAdmin";
+import { TypeRole } from "../../interfaces/IAdmin";
 
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const allAdmin = await Admin.findAll({
       where: {
-        role: Rol.Admin
+        role: TypeRole.Admin
       },
       include: [{
         model: Elements,

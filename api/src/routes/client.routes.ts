@@ -6,14 +6,14 @@ import { updateClient } from "../services/crudClients/putClient";
 import { deleteClient } from "../services/crudClients/deleteClient";
 import { authToken } from "../middlewares/authToken";
 import { checkRoleMiddleware } from "../helper/checkRoles";
-import { Rol } from "../interfaces/IClient";
+import { TypeRole } from "../interfaces/IAdmin";
 
 
 export const clientRoutes = Router()
 
 // ─── Usuario ─────────────────────────────────────────────────────────────────
 
-clientRoutes.get("/api/clients", authToken, checkRoleMiddleware(Rol.Client), getClients)
+clientRoutes.get("/api/clients", authToken, checkRoleMiddleware(TypeRole.Client), getClients)
 
 clientRoutes.post("/api/client", authToken, createClient)
 

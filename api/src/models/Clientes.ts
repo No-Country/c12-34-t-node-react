@@ -1,7 +1,7 @@
 import { IClient } from "../interfaces/IClient";
 import { db } from "../db";
 import { Model, DataTypes } from "sequelize";
-import { Rol } from "../interfaces/IAdmin";
+import { TypeRole } from "../interfaces/IAdmin";
 
 class Client extends Model<IClient> implements IClient {
   id!: string;
@@ -13,7 +13,7 @@ class Client extends Model<IClient> implements IClient {
   dateIn!: string;
   dateOut!: string;
   contact!: string;
-  role!: Rol
+  role!: TypeRole
 }
 
 Client.init(
@@ -45,15 +45,9 @@ Client.init(
       type: DataTypes.STRING,
     },
     role: {
-      type: DataTypes.ENUM(
-        Rol.Admin,
-        Rol.Client,
-        Rol.Employees
-      ),
-      defaultValue: Rol.Client
-
-    }
-
+      type: DataTypes.ENUM(TypeRole.Client),
+      defaultValue: TypeRole.Client
+    },
   },
   {
     sequelize: db,
@@ -61,6 +55,5 @@ Client.init(
     timestamps: false,
   }
 );
-
 
 export default Client;

@@ -11,7 +11,7 @@ import "../helper/auth"
 
 import Jwt from "jsonwebtoken"
 import { IGoogle } from "../interfaces/IGoogle"
-import { IAdmin, Rol } from '../interfaces/IAdmin';
+import { IAdmin, TypeRole } from '../interfaces/IAdmin';
 import { checkRoleMiddleware } from "../helper/checkRoles"
 import { authToken } from "../middlewares/authToken"
 
@@ -23,7 +23,7 @@ adminRoutes.post("/api/auth", registerUser)
 
 adminRoutes.post("/api/login", loginUser)
 
-adminRoutes.get("/api/all-users", authToken, checkRoleMiddleware(Rol.Admin), getAllUsers)
+adminRoutes.get("/api/all-users", authToken, checkRoleMiddleware(TypeRole.Admin), getAllUsers)
 // adminRoutes.get("/api/all-users", getAllUsers)
 
 adminRoutes.put("/api/update-user/:id", upDateUser)

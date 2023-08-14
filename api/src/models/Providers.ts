@@ -2,16 +2,13 @@ import { db } from "../db";
 import { IProvider } from "../interfaces/IProviders"
 import { Model, DataTypes } from "sequelize";
 
-
 class Provider extends Model<IProvider> implements IProvider {
   id!: string;
   name!: string;
   product!: string;
   contact!: string;
   email!: string;
-  // description!: string;
   provider!: string;
-  // date!: string;
 }
 
 Provider.init(
@@ -38,16 +35,9 @@ Provider.init(
       allowNull: false,
       unique: true,
     },
-    // description: {
-    //   type: DataTypes.STRING,
-    // },
     provider: {
       type: DataTypes.STRING,
     },
-    // date: {
-    //   type: DataTypes.DATEONLY,
-    //   allowNull: false,
-    // },
   },
   {
     sequelize: db,
@@ -55,6 +45,5 @@ Provider.init(
     timestamps: false,
   }
 );
-
 
 export default Provider;
