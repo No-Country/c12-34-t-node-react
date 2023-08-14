@@ -1,14 +1,13 @@
 import { db } from "../db";
-import { IAdmin, Rol } from '../interfaces/IAdmin';
+import { IAdmin, TypeRole } from '../interfaces/IAdmin';
 import { Model, DataTypes } from "sequelize";
-import Roles from "./Roles";
 
 export class Admin extends Model<IAdmin> implements IAdmin {
   id!: string;
   user!: string;
   email!: string;
   password!: string;
-  role!: Rol
+  role!: TypeRole
 }
 
 Admin.init(
@@ -32,14 +31,9 @@ Admin.init(
       unique: true
     },
     role: {
-      type: DataTypes.ENUM(
-        Rol.Admin,
-        Rol.Client,
-        Rol.Employees
-      ),
-      defaultValue: Rol.Admin
-
-    }
+      type: DataTypes.ENUM(TypeRole.Admin),
+      defaultValue: TypeRole.Admin,
+    },
   },
   {
     sequelize: db,

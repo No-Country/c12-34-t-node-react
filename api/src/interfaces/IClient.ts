@@ -1,8 +1,5 @@
-export enum Rol {
-  Admin = "Administrador",
-  Employees = "Empleados",
-  Client = "Clientes",
-}
+import { TypeRole } from "./IAdmin";
+
 export interface IClient {
   id?: string;
   name: string;
@@ -11,5 +8,5 @@ export interface IClient {
   dateIn: string;
   dateOut: string;
   contact: string;
-  role?: Rol
+  role?: TypeRole
 }

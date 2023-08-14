@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Admin } from "../models/relations";
+import { TypeRole } from "../interfaces/IAdmin";
 const { TOKEN } = process.env;
 
-export const checkRoleMiddleware = (role: string) => {
+export const checkRoleMiddleware = (role: TypeRole) => {
   return async (req: Request, res: Response, next: NextFunction) => {
 
     if (req.rawHeaders) {
@@ -18,12 +19,13 @@ export const checkRoleMiddleware = (role: string) => {
         const decodedToken = jwt.verify(token, TOKEN as string) as JwtPayload
         // console.log("DECODED TOKEN:", decodedToken)
         // console.log("DECODED TOKEN:", decodedToken.id)
-        // console.log("ROLE:", role)
+        console.log("ROLE:", role)
         const admin = await Admin.findOne({
           where: {
             email: decodedToken.id // CORREO DEL ADMIN
           }
         })
+        console.log("ROLE - 2:", admin?.role)
         
         if (admin?.role !== role) {
           return res.status(403).json({ message: 'No tienes permiso para acceder a esta ruta.' });
