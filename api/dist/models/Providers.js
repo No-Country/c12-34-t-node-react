@@ -27,16 +27,9 @@ Provider.init({
         allowNull: false,
         unique: true,
     },
-    // description: {
-    //   type: DataTypes.STRING,
-    // },
     provider: {
         type: sequelize_1.DataTypes.STRING,
     },
-    // date: {
-    //   type: DataTypes.DATEONLY,
-    //   allowNull: false,
-    // },
 }, {
     sequelize: db_1.db,
     modelName: "provider",

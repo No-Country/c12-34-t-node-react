@@ -21,7 +21,7 @@ exports.adminRoutes = (0, express_1.Router)();
 // ─── Usuario ─────────────────────────────────────────────────────────────────
 exports.adminRoutes.post("/api/auth", register_1.registerUser);
 exports.adminRoutes.post("/api/login", login_1.loginUser);
-exports.adminRoutes.get("/api/all-users", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IAdmin_1.Rol.Admin), get_1.getAllUsers);
+exports.adminRoutes.get("/api/all-users", authToken_1.authToken, (0, checkRoles_1.checkRoleMiddleware)(IAdmin_1.TypeRole.Admin), get_1.getAllUsers);
 // adminRoutes.get("/api/all-users", getAllUsers)
 exports.adminRoutes.put("/api/update-user/:id", put_1.upDateUser);
 exports.adminRoutes.delete("/api/delete-admin/:id", delete_1.deleteAdmin);

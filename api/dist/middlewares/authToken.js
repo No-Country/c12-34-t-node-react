@@ -15,16 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.authToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const Admin_1 = require("../models/Admin");
+const { TOKEN } = process.env;
 const authToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    // console.log("REQ.USERID:", typeof req)
     if (req.headers.authorization) {
         try {
             const token = req.headers.authorization.split(" ")[1];
-            const payload = jsonwebtoken_1.default.verify(token, process.env.TOKEN || "CL@VE");
-            const usuarioid = yield Admin_1.Admin.findOne({
+            const payload = jsonwebtoken_1.default.verify(token, TOKEN);
+            yield Admin_1.Admin.findOne({
                 where: { email: payload.id },
             });
-            req.usuarioId = usuarioid;
             return next();
         }
         catch (error) {
